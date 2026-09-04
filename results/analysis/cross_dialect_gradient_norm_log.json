@@ -1,0 +1,43 @@
+{
+  "schema": "cross-dialect-gradient-norm-log-v1",
+  "status": "failed",
+  "seed": 20260829,
+  "b4": {
+    "pair_count": 3123,
+    "cross_count": 14821,
+    "mixed_nonzero_count": 15029,
+    "pair_norm": 0.07271475344896317,
+    "cross_norm": 0.08483866602182388,
+    "mixed_nonzero_norm": 0.0938546359539032,
+    "mixed_total_norm": 0.061705268919467926,
+    "pair_norm_per_example": 2.328362279513385e-05,
+    "cross_norm_per_example": 5.724220045522088e-06,
+    "mixed_nonzero_norm_per_example": 6.2449021243082825e-06,
+    "mixed_total_norm_per_example": 3.4387689993309323e-06,
+    "mixed_to_cross_normalized_ratio": 1.090961217880249,
+    "pair_cross_cosine": -0.7043561935424805,
+    "pair_mixed_nonzero_cosine": -0.7119847536087036
+  },
+  "same_count_no_cross": {
+    "pair_count": 3123,
+    "cross_count": 14821,
+    "mixed_nonzero_count": 15029,
+    "pair_norm": 0.14416156709194183,
+    "cross_norm": 0.04264087602496147,
+    "mixed_nonzero_norm": 0.046305783092975616,
+    "mixed_total_norm": 0.025998562574386597,
+    "pair_norm_per_example": 4.616124351741746e-05,
+    "cross_norm_per_example": 2.877058022932033e-06,
+    "mixed_nonzero_norm_per_example": 3.0810954285698244e-06,
+    "mixed_total_norm_per_example": 1.4488722399619292e-06,
+    "mixed_to_cross_normalized_ratio": 1.0709187984466553,
+    "pair_cross_cosine": -0.672295093536377,
+    "pair_mixed_nonzero_cosine": -0.695462167263031
+  },
+  "criteria": {
+    "normalized_mixed_to_cross_ratio": 1.0709187984466553,
+    "normalized_ratio_threshold": 0.3,
+    "pair_cross_cosine_absolute": 0.672295093536377,
+    "cosine_threshold": 0.3
+  }
+}

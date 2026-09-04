@@ -1,0 +1,503 @@
+{
+  "schema": "reference-sensitivity-clustered-v1",
+  "status": "evaluated",
+  "model_name": "chinese_hubert_large",
+  "references": {
+    "binary_taxonomy": {
+      "reference": "taxonomy",
+      "selected": {
+        "lambda_cross": 0.5,
+        "lambda_dialect": 0.05,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001
+      },
+      "target_distribution": {
+        "pair_count": 4000,
+        "zero_count": 2062,
+        "nonzero_count": 1938,
+        "unique_target_count": 2,
+        "target_histogram": {
+          "0.000000": 2062,
+          "1.000000": 1938
+        }
+      },
+      "b0": {
+        "mae": 0.48631508155493963
+      },
+      "b3": {
+        "mae": 0.45804963693904865,
+        "gain": 0.05812166985550868,
+        "ci": {
+          "lower": 0.04361118757966142,
+          "upper": 0.07171124632558246,
+          "confidence_level": 0.95
+        }
+      },
+      "b4": {
+        "mae": 0.44406014148019785,
+        "gain": 0.08688799027090874,
+        "ci": {
+          "lower": 0.07231540514339951,
+          "upper": 0.10123426441729017,
+          "confidence_level": 0.95
+        }
+      },
+      "linear": {
+        "b3": {
+          "mae": 0.4311411275948559,
+          "gain": 0.11345310078328438,
+          "ci": {
+            "lower": 0.10040769339953198,
+            "upper": 0.12594792104422053,
+            "confidence_level": 0.95
+          }
+        },
+        "b4": {
+          "mae": 0.4334388333476196,
+          "gain": 0.1087283742841245,
+          "ci": {
+            "lower": 0.09484777954911235,
+            "upper": 0.12148695657090496,
+            "confidence_level": 0.95
+          }
+        },
+        "paired_b4_vs_b3": {
+          "pair_count": 4000,
+          "mae_delta_b3_minus_b4": -0.002297705752763803,
+          "ci": {
+            "lower": -0.003959663681873789,
+            "upper": -0.0006345088423784698,
+            "confidence_level": 0.95
+          },
+          "bootstrap_replicates": 1000,
+          "passed": false,
+          "resampling_unit": "pair_id_fallback_for_legacy_rows"
+        },
+        "seed_sweep": {
+          "selected": {
+            "lambda_cross": 1.0,
+            "lambda_dialect": 0.1,
+            "learning_rate": 0.0003,
+            "weight_decay": 0.001,
+            "fixed_epochs": 28,
+            "head_kind": "linear",
+            "selection_unit": "calibration_speaker_folds"
+          },
+          "distribution": {
+            "seed_count": 5,
+            "seeds": [
+              20260829,
+              20260830,
+              20260831,
+              20260901,
+              20260902
+            ],
+            "b3_mae": {
+              "median": 0.4352823474227516,
+              "iqr": 0.0012654378907778763,
+              "minimum": 0.4311411275948559,
+              "maximum": 0.4363567110451519
+            },
+            "b4_mae": {
+              "median": 0.43883127440177977,
+              "iqr": 0.001556361443497245,
+              "minimum": 0.4334388333476196,
+              "maximum": 0.4390806780595112
+            },
+            "b3_gain": {
+              "median": 0.10493759307035345,
+              "iqr": 0.002602094688759757,
+              "minimum": 0.10272840058764224,
+              "maximum": 0.11345310078328438
+            },
+            "b4_gain": {
+              "median": 0.09764000532604407,
+              "iqr": 0.003200314986162772,
+              "minimum": 0.0971271615603645,
+              "maximum": 0.1087283742841245
+            },
+            "b3_minus_b4_mae": {
+              "median": -0.002824448711942318,
+              "iqr": 0.0006514076125883617,
+              "minimum": -0.0037877319322049963,
+              "maximum": -0.0022977057527637235
+            },
+            "all_b4_better_than_b3": false
+          },
+          "clustered_b3_minus_b4": {
+            "schema": "clustered-paired-bootstrap-v1",
+            "observed_delta": -0.003836070833551339,
+            "ci": {
+              "lower": -0.005902421810378383,
+              "upper": -0.0018878652871757856,
+              "confidence_level": 0.95
+            },
+            "bootstrap_replicates": 1000,
+            "seed": 20260829,
+            "resampling_unit": "speaker_cluster_within_matched_stratum",
+            "estimand": "equal speaker-cluster means within stratum, then equal stratum means",
+            "nested_utterance_sampling": true
+          },
+          "all_b3_better_than_b4": true,
+          "clustered_negative_increment_supported": true
+        }
+      },
+      "shuffled": {
+        "mae": 0.43835719258433514,
+        "gain": 0.09861485030911307,
+        "ci": {
+          "lower": 0.08402494802151042,
+          "upper": 0.1139184885433582,
+          "confidence_level": 0.95
+        }
+      },
+      "target_permuted": {
+        "mae": 0.44399313159197146,
+        "gain": 0.08702578136719169,
+        "ci": {
+          "lower": 0.07137620046519853,
+          "upper": 0.10243572416177689,
+          "confidence_level": 0.95
+        }
+      },
+      "paired_b4_vs_b3": {
+        "pair_count": 4000,
+        "mae_delta_b3_minus_b4": 0.013989495458850724,
+        "ci": {
+          "lower": 0.005716765633296142,
+          "upper": 0.014691372903743219,
+          "confidence_level": 0.95
+        },
+        "bootstrap_replicates": 1000,
+        "passed": true,
+        "resampling_unit": "speaker_cluster_within_matched_stratum",
+        "nested_utterance_sampling": true
+      },
+      "seed_sweep": {
+        "passed": true,
+        "distribution": {
+          "seed_count": 5,
+          "seeds": [
+            20260829,
+            20260830,
+            20260831,
+            20260901,
+            20260902
+          ],
+          "b3_mae": {
+            "median": 0.45632870374781614,
+            "iqr": 0.00021283607108552038,
+            "minimum": 0.4542466737362031,
+            "maximum": 0.4573644355852329
+          },
+          "b4_mae": {
+            "median": 0.44384372651120796,
+            "iqr": 0.0009261187925310721,
+            "minimum": 0.4422621820687624,
+            "maximum": 0.44553757691333135
+          },
+          "b3_gain": {
+            "median": 0.06166039044326017,
+            "iqr": 0.00043765056679920256,
+            "minimum": 0.059530635729289356,
+            "maximum": 0.06594162721871856
+          },
+          "b4_gain": {
+            "median": 0.08733300005406809,
+            "iqr": 0.0019043595966012627,
+            "minimum": 0.08384996926524804,
+            "maximum": 0.09058509833855632
+          },
+          "b3_minus_b4_mae": {
+            "median": 0.012975917551346028,
+            "iqr": 0.0023595311228116755,
+            "minimum": 0.01040294722499513,
+            "maximum": 0.01421423038907449
+          },
+          "all_b4_better_than_b3": true
+        },
+        "clustered_b3_minus_b4": {
+          "schema": "clustered-paired-bootstrap-v1",
+          "observed_delta": 0.010971613456437134,
+          "ci": {
+            "lower": 0.007667378441438738,
+            "upper": 0.014449418119568427,
+            "confidence_level": 0.95
+          },
+          "bootstrap_replicates": 1000,
+          "seed": 20260829,
+          "resampling_unit": "speaker_cluster_within_matched_stratum",
+          "estimand": "equal speaker-cluster means within stratum, then equal stratum means",
+          "nested_utterance_sampling": true
+        }
+      },
+      "semantic_specificity_supported": false,
+      "architecture_boundary": {
+        "strongest_projection": "linear_b3",
+        "gains": {
+          "mlp_b4": 0.08688799027090874,
+          "linear_b3": 0.11345310078328438,
+          "linear_b4": 0.1087283742841245
+        },
+        "mlp_cross_loss_increment_supported": true,
+        "linear_cross_loss_increment_supported": false,
+        "cross_loss_increment_architecture_robust": false,
+        "selected_wording": "The independently weighted cross loss improved the multilayer perceptron but not the linear projection; the increment was architecture-dependent."
+      }
+    },
+    "continuous_sinitic": {
+      "reference": "sincomp",
+      "selected": {
+        "lambda_cross": 0.25,
+        "lambda_dialect": 0.1,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.001
+      },
+      "target_distribution": {
+        "pair_count": 4000,
+        "zero_count": 2062,
+        "nonzero_count": 1938,
+        "unique_target_count": 29
+      },
+      "b0": {
+        "mae": 0.3928621647040202
+      },
+      "b3": {
+        "mae": 0.36733818502977683,
+        "gain": 0.06496929958493956,
+        "ci": {
+          "lower": 0.04780199104391266,
+          "upper": 0.08122436500484065,
+          "confidence_level": 0.95
+        }
+      },
+      "b4": {
+        "mae": 0.36043752448567923,
+        "gain": 0.08253439280102087,
+        "ci": {
+          "lower": 0.0663711464647508,
+          "upper": 0.09934599526304697,
+          "confidence_level": 0.95
+        }
+      },
+      "linear": {
+        "b3": {
+          "mae": 0.35392585836335855,
+          "gain": 0.09910933105506865,
+          "ci": {
+            "lower": 0.08661864765851315,
+            "upper": 0.11158642722459282,
+            "confidence_level": 0.95
+          }
+        },
+        "b4": {
+          "mae": 0.3548078398874485,
+          "gain": 0.09686431587333322,
+          "ci": {
+            "lower": 0.08420094238639443,
+            "upper": 0.10951391078742068,
+            "confidence_level": 0.95
+          }
+        },
+        "paired_b4_vs_b3": {
+          "pair_count": 4000,
+          "mae_delta_b3_minus_b4": -0.0008819815240899719,
+          "ci": {
+            "lower": -0.0013089411429316729,
+            "upper": -0.00039864231148498537,
+            "confidence_level": 0.95
+          },
+          "bootstrap_replicates": 1000,
+          "passed": false,
+          "resampling_unit": "pair_id_fallback_for_legacy_rows"
+        },
+        "seed_sweep": {
+          "selected": {
+            "lambda_cross": 0.25,
+            "lambda_dialect": 0.1,
+            "learning_rate": 0.0003,
+            "weight_decay": 0.001,
+            "fixed_epochs": 29,
+            "head_kind": "linear",
+            "selection_unit": "calibration_speaker_folds"
+          },
+          "distribution": {
+            "seed_count": 5,
+            "seeds": [
+              20260829,
+              20260830,
+              20260831,
+              20260901,
+              20260902
+            ],
+            "b3_mae": {
+              "median": 0.35644798982504633,
+              "iqr": 0.0013552240359068768,
+              "minimum": 0.35392585836335855,
+              "maximum": 0.35787669386225157
+            },
+            "b4_mae": {
+              "median": 0.3573871536011095,
+              "iqr": 0.0011165153320827903,
+              "minimum": 0.3548078398874485,
+              "maximum": 0.3587689480816705
+            },
+            "b3_gain": {
+              "median": 0.09268944212637036,
+              "iqr": 0.003449617086256948,
+              "minimum": 0.08905278742768839,
+              "maximum": 0.09910933105506865
+            },
+            "b4_gain": {
+              "median": 0.09029887398201689,
+              "iqr": 0.002842002698131965,
+              "minimum": 0.08678162390118509,
+              "maximum": 0.09686431587333322
+            },
+            "b3_minus_b4_mae": {
+              "median": -0.0008922542194189087,
+              "iqr": 5.718225197320903e-05,
+              "minimum": -0.0011151377906283289,
+              "maximum": -0.0008764290868042424
+            },
+            "all_b4_better_than_b3": false
+          },
+          "clustered_b3_minus_b4": {
+            "schema": "clustered-paired-bootstrap-v1",
+            "observed_delta": -0.0013002478161355806,
+            "ci": {
+              "lower": -0.0018524411451692766,
+              "upper": -0.0007307959485252686,
+              "confidence_level": 0.95
+            },
+            "bootstrap_replicates": 1000,
+            "seed": 20260829,
+            "resampling_unit": "speaker_cluster_within_matched_stratum",
+            "estimand": "equal speaker-cluster means within stratum, then equal stratum means",
+            "nested_utterance_sampling": true
+          },
+          "all_b3_better_than_b4": true,
+          "clustered_negative_increment_supported": true
+        }
+      },
+      "shuffled": {
+        "mae": 0.3588298471907668,
+        "gain": 0.08662660996864661,
+        "ci": {
+          "lower": 0.06956837217761275,
+          "upper": 0.1037072069492968,
+          "confidence_level": 0.95
+        }
+      },
+      "target_permuted": {
+        "mae": 0.36130703777083806,
+        "gain": 0.08032111454905708,
+        "ci": {
+          "lower": 0.06416806522366153,
+          "upper": 0.09690054110234707,
+          "confidence_level": 0.95
+        }
+      },
+      "paired_b4_vs_b3": {
+        "pair_count": 4000,
+        "mae_delta_b3_minus_b4": 0.006067420258035116,
+        "ci": {
+          "lower": 0.0033550354964086474,
+          "upper": 0.00874624625722839,
+          "confidence_level": 0.95
+        },
+        "bootstrap_replicates": 1000,
+        "passed": true,
+        "resampling_unit": "speaker_cluster_within_matched_stratum",
+        "nested_utterance_sampling": true
+      },
+      "seed_sweep": {
+        "passed": true,
+        "distribution": {
+          "seed_count": 5,
+          "seeds": [
+            20260829,
+            20260830,
+            20260831,
+            20260901,
+            20260902
+          ],
+          "b3_mae": {
+            "median": 0.36722303131666806,
+            "iqr": 0.002817269866080885,
+            "minimum": 0.3664475190277096,
+            "maximum": 0.3732579126107646
+          },
+          "b4_mae": {
+            "median": 0.36133598311728077,
+            "iqr": 0.0011495036613556886,
+            "minimum": 0.3598781060949058,
+            "maximum": 0.3647300623849909
+          },
+          "b3_gain": {
+            "median": 0.06526241438054613,
+            "iqr": 0.00717114071853521,
+            "minimum": 0.04990109472116087,
+            "maximum": 0.06723642042804301
+          },
+          "b4_gain": {
+            "median": 0.08024743642720353,
+            "iqr": 0.0029259719174579146,
+            "minimum": 0.07160807236355743,
+            "maximum": 0.08395834868436461
+          },
+          "b3_minus_b4_mae": {
+            "median": 0.006569412932803831,
+            "iqr": 0.0030801841399371588,
+            "minimum": 0.005117469577856526,
+            "maximum": 0.008644860991742331
+          },
+          "all_b4_better_than_b3": true
+        },
+        "clustered_b3_minus_b4": {
+          "schema": "clustered-paired-bootstrap-v1",
+          "observed_delta": 0.004907986087180866,
+          "ci": {
+            "lower": 0.0027862765120997943,
+            "upper": 0.0069035617357997014,
+            "confidence_level": 0.95
+          },
+          "bootstrap_replicates": 1000,
+          "seed": 20260829,
+          "resampling_unit": "speaker_cluster_within_matched_stratum",
+          "estimand": "equal speaker-cluster means within stratum, then equal stratum means",
+          "nested_utterance_sampling": true
+        }
+      },
+      "semantic_specificity_supported": false,
+      "architecture_boundary": {
+        "strongest_projection": "linear_b3",
+        "gains": {
+          "mlp_b4": 0.08253439280102087,
+          "linear_b3": 0.09910933105506865,
+          "linear_b4": 0.09686431587333322
+        },
+        "mlp_cross_loss_increment_supported": true,
+        "linear_cross_loss_increment_supported": false,
+        "cross_loss_increment_architecture_robust": false,
+        "selected_wording": "The independently weighted cross loss improved the multilayer perceptron but not the linear projection; the increment was architecture-dependent."
+      }
+    }
+  },
+  "decision": {
+    "efficacy_across_references_supported": true,
+    "semantic_specificity_across_references_supported": false,
+    "cross_loss_increment_architecture_robust": false,
+    "linear_b3_strongest_across_references": true,
+    "selected_wording": "Trainable projection benefits persisted across both references. The linear pair-only head was strongest, and semantic controls plus the linear architecture blocked a general cross-loss mechanism claim."
+  },
+  "public_release_redaction": {
+    "schema": "public-release-redaction-v1",
+    "reason": "upstream_license_not_specified",
+    "scope": "fields_that_would_reconstruct_the_continuous_reference",
+    "reconstruction_route": "obtain_pinned_upstream_commit_and_rebuild_locally",
+    "removed": [
+      "references.continuous_sinitic.target_distribution.target_histogram"
+    ]
+  }
+}

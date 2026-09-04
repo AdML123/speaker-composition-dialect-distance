@@ -1,0 +1,391 @@
+{
+  "calibration": {
+    "cross_group_utterance_overlap_count": 894,
+    "groups": {
+      "A": {
+        "max_speaker_pair_count": 45,
+        "max_utterance_pair_count": 1,
+        "nonreused_utterance_count": 2000,
+        "pair_count": 1000,
+        "reused_utterance_count": 0,
+        "speaker_pair_participation_quantiles": {
+          "0.0": 3.0,
+          "0.25": 7.0,
+          "0.5": 9.0,
+          "0.75": 11.0,
+          "0.95": 17.14999999999999,
+          "1.0": 45.0
+        },
+        "unique_speaker_count": 100,
+        "unique_utterance_count": 2000
+      },
+      "B": {
+        "max_speaker_pair_count": 51,
+        "max_utterance_pair_count": 1,
+        "nonreused_utterance_count": 2000,
+        "pair_count": 1000,
+        "reused_utterance_count": 0,
+        "speaker_pair_participation_quantiles": {
+          "0.0": 8.0,
+          "0.25": 14.75,
+          "0.5": 19.0,
+          "0.75": 23.25,
+          "0.95": 32.14999999999999,
+          "1.0": 51.0
+        },
+        "unique_speaker_count": 100,
+        "unique_utterance_count": 2000
+      }
+    },
+    "pair_count": 2000,
+    "schema": "matched-design-summary-v1",
+    "strata": [
+      {
+        "A_pair_count": 8,
+        "A_unique_speaker_count": 2,
+        "A_unique_utterance_count": 16,
+        "B_pair_count": 0,
+        "B_unique_speaker_count": 0,
+        "B_unique_utterance_count": 0,
+        "matched_stratum": "calibration|Beijing|phase1:Dialect",
+        "max_speaker_pair_count": 7,
+        "recording_condition": "phase1:Dialect",
+        "unique_speaker_count": 2,
+        "unique_utterance_count": 16
+      },
+      {
+        "A_pair_count": 45,
+        "A_unique_speaker_count": 10,
+        "A_unique_utterance_count": 90,
+        "B_pair_count": 11,
+        "B_unique_speaker_count": 11,
+        "B_unique_utterance_count": 22,
+        "matched_stratum": "calibration|Ji-Lu|phase1:Dialect",
+        "max_speaker_pair_count": 17,
+        "recording_condition": "phase1:Dialect",
+        "unique_speaker_count": 11,
+        "unique_utterance_count": 104
+      },
+      {
+        "A_pair_count": 20,
+        "A_unique_speaker_count": 10,
+        "A_unique_utterance_count": 40,
+        "B_pair_count": 8,
+        "B_unique_speaker_count": 9,
+        "B_unique_utterance_count": 16,
+        "matched_stratum": "calibration|Jiang-Huai|phase1:Dialect",
+        "max_speaker_pair_count": 6,
+        "recording_condition": "phase1:Dialect",
+        "unique_speaker_count": 12,
+        "unique_utterance_count": 50
+      },
+      {
+        "A_pair_count": 29,
+        "A_unique_speaker_count": 7,
+        "A_unique_utterance_count": 58,
+        "B_pair_count": 8,
+        "B_unique_speaker_count": 5,
+        "B_unique_utterance_count": 16,
+        "matched_stratum": "calibration|Jiao-Liao|phase1:Dialect",
+        "max_speaker_pair_count": 13,
+        "recording_condition": "phase1:Dialect",
+        "unique_speaker_count": 7,
+        "unique_utterance_count": 65
+      },
+      {
+        "A_pair_count": 26,
+        "A_unique_speaker_count": 5,
+        "A_unique_utterance_count": 52,
+        "B_pair_count": 5,
+        "B_unique_speaker_count": 5,
+        "B_unique_utterance_count": 10,
+        "matched_stratum": "calibration|Lan-Yin|phase1:Dialect",
+        "max_speaker_pair_count": 10,
+        "recording_condition": "phase1:Dialect",
+        "unique_speaker_count": 6,
+        "unique_utterance_count": 57
+      },
+      {
+        "A_pair_count": 65,
+        "A_unique_speaker_count": 23,
+        "A_unique_utterance_count": 130,
+        "B_pair_count": 43,
+        "B_unique_speaker_count": 34,
+        "B_unique_utterance_count": 86,
+        "matched_stratum": "calibration|Mandarin|phase1:Accent",
+        "max_speaker_pair_count": 30,
+        "recording_condition": "phase1:Accent",
+        "unique_speaker_count": 36,
+        "unique_utterance_count": 188
+      },
+      {
+        "A_pair_count": 266,
+        "A_unique_speaker_count": 61,
+        "A_unique_utterance_count": 532,
+        "B_pair_count": 304,
+        "B_unique_speaker_count": 76,
+        "B_unique_utterance_count": 608,
+        "matched_stratum": "calibration|Mandarin|phase1:Mandarin",
+        "max_speaker_pair_count": 47,
+        "recording_condition": "phase1:Mandarin",
+        "unique_speaker_count": 76,
+        "unique_utterance_count": 853
+      },
+      {
+        "A_pair_count": 127,
+        "A_unique_speaker_count": 39,
+        "A_unique_utterance_count": 254,
+        "B_pair_count": 118,
+        "B_unique_speaker_count": 60,
+        "B_unique_utterance_count": 236,
+        "matched_stratum": "calibration|Mandarin|phase2:clean",
+        "max_speaker_pair_count": 50,
+        "recording_condition": "phase2:clean",
+        "unique_speaker_count": 61,
+        "unique_utterance_count": 392
+      },
+      {
+        "A_pair_count": 359,
+        "A_unique_speaker_count": 92,
+        "A_unique_utterance_count": 718,
+        "B_pair_count": 498,
+        "B_unique_speaker_count": 100,
+        "B_unique_utterance_count": 996,
+        "matched_stratum": "calibration|Mandarin|phase2:noisy",
+        "max_speaker_pair_count": 40,
+        "recording_condition": "phase2:noisy",
+        "unique_speaker_count": 100,
+        "unique_utterance_count": 1267
+      },
+      {
+        "A_pair_count": 40,
+        "A_unique_speaker_count": 6,
+        "A_unique_utterance_count": 80,
+        "B_pair_count": 4,
+        "B_unique_speaker_count": 3,
+        "B_unique_utterance_count": 8,
+        "matched_stratum": "calibration|Southwestern|phase1:Dialect",
+        "max_speaker_pair_count": 10,
+        "recording_condition": "phase1:Dialect",
+        "unique_speaker_count": 6,
+        "unique_utterance_count": 83
+      },
+      {
+        "A_pair_count": 15,
+        "A_unique_speaker_count": 3,
+        "A_unique_utterance_count": 30,
+        "B_pair_count": 1,
+        "B_unique_speaker_count": 2,
+        "B_unique_utterance_count": 2,
+        "matched_stratum": "calibration|Zhongyuan|phase1:Dialect",
+        "max_speaker_pair_count": 6,
+        "recording_condition": "phase1:Dialect",
+        "unique_speaker_count": 3,
+        "unique_utterance_count": 31
+      }
+    ],
+    "stratum_count": 11
+  },
+  "evaluation": {
+    "cross_group_utterance_overlap_count": 6244,
+    "groups": {
+      "A": {
+        "max_speaker_pair_count": 36,
+        "max_utterance_pair_count": 1,
+        "nonreused_utterance_count": 6246,
+        "pair_count": 3123,
+        "reused_utterance_count": 0,
+        "speaker_pair_participation_quantiles": {
+          "0.0": 1.0,
+          "0.25": 2.0,
+          "0.5": 3.0,
+          "0.75": 5.0,
+          "0.95": 9.0,
+          "1.0": 36.0
+        },
+        "unique_speaker_count": 779,
+        "unique_utterance_count": 6246
+      },
+      "B": {
+        "max_speaker_pair_count": 98,
+        "max_utterance_pair_count": 1,
+        "nonreused_utterance_count": 19714,
+        "pair_count": 9857,
+        "reused_utterance_count": 0,
+        "speaker_pair_participation_quantiles": {
+          "0.0": 1.0,
+          "0.25": 3.0,
+          "0.5": 5.0,
+          "0.75": 17.0,
+          "0.95": 25.09999999999991,
+          "1.0": 98.0
+        },
+        "unique_speaker_count": 1999,
+        "unique_utterance_count": 19714
+      }
+    },
+    "pair_count": 12980,
+    "schema": "matched-design-summary-v1",
+    "strata": [
+      {
+        "A_pair_count": 56,
+        "A_unique_speaker_count": 14,
+        "A_unique_utterance_count": 112,
+        "B_pair_count": 132,
+        "B_unique_speaker_count": 37,
+        "B_unique_utterance_count": 264,
+        "matched_stratum": "evaluation|Beijing|phase1:Dialect",
+        "max_speaker_pair_count": 68,
+        "recording_condition": "phase1:Dialect",
+        "unique_speaker_count": 37,
+        "unique_utterance_count": 265
+      },
+      {
+        "A_pair_count": 570,
+        "A_unique_speaker_count": 138,
+        "A_unique_utterance_count": 1140,
+        "B_pair_count": 1404,
+        "B_unique_speaker_count": 216,
+        "B_unique_utterance_count": 2808,
+        "matched_stratum": "evaluation|Ji-Lu|phase1:Dialect",
+        "max_speaker_pair_count": 131,
+        "recording_condition": "phase1:Dialect",
+        "unique_speaker_count": 216,
+        "unique_utterance_count": 2808
+      },
+      {
+        "A_pair_count": 422,
+        "A_unique_speaker_count": 127,
+        "A_unique_utterance_count": 844,
+        "B_pair_count": 1135,
+        "B_unique_speaker_count": 227,
+        "B_unique_utterance_count": 2270,
+        "matched_stratum": "evaluation|Jiang-Huai|phase1:Dialect",
+        "max_speaker_pair_count": 120,
+        "recording_condition": "phase1:Dialect",
+        "unique_speaker_count": 227,
+        "unique_utterance_count": 2271
+      },
+      {
+        "A_pair_count": 274,
+        "A_unique_speaker_count": 82,
+        "A_unique_utterance_count": 548,
+        "B_pair_count": 721,
+        "B_unique_speaker_count": 143,
+        "B_unique_utterance_count": 1442,
+        "matched_stratum": "evaluation|Jiao-Liao|phase1:Dialect",
+        "max_speaker_pair_count": 58,
+        "recording_condition": "phase1:Dialect",
+        "unique_speaker_count": 143,
+        "unique_utterance_count": 1442
+      },
+      {
+        "A_pair_count": 397,
+        "A_unique_speaker_count": 71,
+        "A_unique_utterance_count": 794,
+        "B_pair_count": 826,
+        "B_unique_speaker_count": 85,
+        "B_unique_utterance_count": 1652,
+        "matched_stratum": "evaluation|Lan-Yin|phase1:Dialect",
+        "max_speaker_pair_count": 82,
+        "recording_condition": "phase1:Dialect",
+        "unique_speaker_count": 85,
+        "unique_utterance_count": 1652
+      },
+      {
+        "A_pair_count": 1,
+        "A_unique_speaker_count": 1,
+        "A_unique_utterance_count": 2,
+        "B_pair_count": 160,
+        "B_unique_speaker_count": 283,
+        "B_unique_utterance_count": 320,
+        "matched_stratum": "evaluation|Mandarin|phase1:Accent",
+        "max_speaker_pair_count": 4,
+        "recording_condition": "phase1:Accent",
+        "unique_speaker_count": 283,
+        "unique_utterance_count": 320
+      },
+      {
+        "A_pair_count": 26,
+        "A_unique_speaker_count": 25,
+        "A_unique_utterance_count": 52,
+        "B_pair_count": 862,
+        "B_unique_speaker_count": 1179,
+        "B_unique_utterance_count": 1724,
+        "matched_stratum": "evaluation|Mandarin|phase1:Mandarin",
+        "max_speaker_pair_count": 7,
+        "recording_condition": "phase1:Mandarin",
+        "unique_speaker_count": 1179,
+        "unique_utterance_count": 1724
+      },
+      {
+        "A_pair_count": 4,
+        "A_unique_speaker_count": 4,
+        "A_unique_utterance_count": 8,
+        "B_pair_count": 337,
+        "B_unique_speaker_count": 568,
+        "B_unique_utterance_count": 674,
+        "matched_stratum": "evaluation|Mandarin|phase2:clean",
+        "max_speaker_pair_count": 8,
+        "recording_condition": "phase2:clean",
+        "unique_speaker_count": 568,
+        "unique_utterance_count": 674
+      },
+      {
+        "A_pair_count": 32,
+        "A_unique_speaker_count": 32,
+        "A_unique_utterance_count": 64,
+        "B_pair_count": 1140,
+        "B_unique_speaker_count": 1667,
+        "B_unique_utterance_count": 2280,
+        "matched_stratum": "evaluation|Mandarin|phase2:noisy",
+        "max_speaker_pair_count": 13,
+        "recording_condition": "phase2:noisy",
+        "unique_speaker_count": 1667,
+        "unique_utterance_count": 2280
+      },
+      {
+        "A_pair_count": 32,
+        "A_unique_speaker_count": 20,
+        "A_unique_utterance_count": 64,
+        "B_pair_count": 175,
+        "B_unique_speaker_count": 93,
+        "B_unique_utterance_count": 350,
+        "matched_stratum": "evaluation|Northeastern|phase1:Dialect",
+        "max_speaker_pair_count": 17,
+        "recording_condition": "phase1:Dialect",
+        "unique_speaker_count": 93,
+        "unique_utterance_count": 350
+      },
+      {
+        "A_pair_count": 598,
+        "A_unique_speaker_count": 130,
+        "A_unique_utterance_count": 1196,
+        "B_pair_count": 1346,
+        "B_unique_speaker_count": 160,
+        "B_unique_utterance_count": 2692,
+        "matched_stratum": "evaluation|Southwestern|phase1:Dialect",
+        "max_speaker_pair_count": 62,
+        "recording_condition": "phase1:Dialect",
+        "unique_speaker_count": 160,
+        "unique_utterance_count": 2692
+      },
+      {
+        "A_pair_count": 711,
+        "A_unique_speaker_count": 151,
+        "A_unique_utterance_count": 1422,
+        "B_pair_count": 1619,
+        "B_unique_speaker_count": 195,
+        "B_unique_utterance_count": 3238,
+        "matched_stratum": "evaluation|Zhongyuan|phase1:Dialect",
+        "max_speaker_pair_count": 70,
+        "recording_condition": "phase1:Dialect",
+        "unique_speaker_count": 195,
+        "unique_utterance_count": 3238
+      }
+    ],
+    "stratum_count": 12
+  },
+  "schema": "matched-design-disclosure-v1",
+  "status": "passed"
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "matched-pair-audit-v1",
+  "matching_mode": "exact_content",
+  "seed": 20260829,
+  "record_count": 4407,
+  "group_limits": {
+    "A": 1000,
+    "B": 1000
+  },
+  "group_summary": {
+    "A": {
+      "requested": 1000,
+      "available": 0,
+      "sampled": 0,
+      "status": "partial"
+    },
+    "B": {
+      "requested": 1000,
+      "available": 0,
+      "sampled": 0,
+      "status": "partial"
+    }
+  },
+  "pair_count": 0,
+  "pairs": [],
+  "exclusions": [
+    {
+      "group": "A",
+      "reason": "insufficient_nonoverlapping_capacity",
+      "requested": 1000,
+      "available": 0,
+      "sampled": 0
+    },
+    {
+      "group": "B",
+      "reason": "insufficient_nonoverlapping_capacity",
+      "requested": 1000,
+      "available": 0,
+      "sampled": 0
+    }
+  ],
+  "audit": {
+    "matching_fields": [
+      "split",
+      "dialect_label",
+      "recording_condition",
+      "content_id"
+    ],
+    "content_cluster_count": 3070,
+    "speaker_count": 100,
+    "dialect_count": 9,
+    "stratum_count": 4407,
+    "raw_transcripts_in_output": false
+  },
+  "status": "passed"
+}

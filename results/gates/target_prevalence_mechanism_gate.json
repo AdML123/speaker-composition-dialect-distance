@@ -1,0 +1,87 @@
+{
+  "schema": "target-prevalence-mechanism-gate-v1",
+  "status": "evaluated",
+  "fixed_pair_association_supported": true,
+  "natural_pool_ecological_only": true,
+  "balanced_slope_contrast": {
+    "schema": "clustered-slope-bootstrap-v1",
+    "observed_delta_beta": 0.03682654976951571,
+    "ci": {
+      "lower": 0.029706664007243762,
+      "upper": 0.044084734699375114,
+      "confidence_level": 0.95
+    },
+    "bootstrap_replicates": 1000,
+    "resampling_unit": "speaker_cluster_within_q",
+    "nested_utterance_sampling": true,
+    "q_cells": [
+      0.1,
+      0.25,
+      0.5,
+      0.75
+    ]
+  },
+  "mean_gain_contrast": {
+    "schema": "clustered-mean-gain-contrast-v1",
+    "contrast": "prevalence_balanced_minus_ordinary_mean_gain_across_internal_q",
+    "estimate": 0.0015648379089981818,
+    "ci": {
+      "lower": -0.0004016686797224298,
+      "upper": 0.003725165359259671,
+      "confidence_level": 0.95
+    },
+    "bootstrap_replicates": 1000,
+    "resampling_unit": "evaluation_speaker_cluster",
+    "speaker_cluster_count": 1046
+  },
+  "seed_slope_distribution": {
+    "seed_count": 5,
+    "seed_results": [
+      {
+        "seed": 20260829,
+        "beta_ordinary": 0.057350924945184525,
+        "beta_balanced": 0.01541882381474024,
+        "delta_beta": 0.04193210113044429
+      },
+      {
+        "seed": 20260830,
+        "beta_ordinary": 0.044973075463671214,
+        "beta_balanced": 0.013322372606685595,
+        "delta_beta": 0.03165070285698562
+      },
+      {
+        "seed": 20260831,
+        "beta_ordinary": 0.055026077645170056,
+        "beta_balanced": 0.005300044315549241,
+        "delta_beta": 0.04972603332962081
+      },
+      {
+        "seed": 20260901,
+        "beta_ordinary": 0.04645065131961421,
+        "beta_balanced": 0.014094154756121262,
+        "delta_beta": 0.03235649656349295
+      },
+      {
+        "seed": 20260902,
+        "beta_ordinary": 0.04445885651122747,
+        "beta_balanced": 0.015991441544192613,
+        "delta_beta": 0.028467414967034855
+      }
+    ],
+    "median_delta_beta": 0.03235649656349295,
+    "iqr_delta_beta": 0.01028139827345867,
+    "minimum_delta_beta": 0.028467414967034855,
+    "maximum_delta_beta": 0.04972603332962081,
+    "all_positive": true
+  },
+  "decision": "association_only_unless_balanced_slope_and_process_chain_pass",
+  "q_grid": [
+    0.0,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "inference": "seed-paired speaker-cluster means within q, 1000 cluster bootstrap replicates"
+}

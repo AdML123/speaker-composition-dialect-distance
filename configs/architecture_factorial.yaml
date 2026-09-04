@@ -1,0 +1,29 @@
+schema: architecture-factorial-protocol-v1
+status: locked_before_training
+architecture_factorial:
+  heads:
+    - linear
+    - mlp_parameter_matched
+    - mlp_wide
+  hidden_dims:
+    - null
+    - 205
+    - 512
+  lambda_cross_grid:
+    - 0.0
+    - 0.25
+    - 0.5
+    - 1.0
+  primary_lambda_cross: 0.5
+  epochs: 30
+  batch_size: 256
+  learning_rate: 0.0003
+  weight_decay: 0.001
+  lambda_dialect: 0.1
+  early_stopping: false
+  seeds:
+    - 20260829
+    - 20260830
+    - 20260831
+    - 20260901
+    - 20260902

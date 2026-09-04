@@ -1,0 +1,128 @@
+schema: speaker-confound-dialect-distance-v1
+protocol:
+  seed: 20260829
+  sampling_rate_hz: 16000
+  channels: 1
+extractors:
+  count: 3
+  models:
+    - name: wavlm_large
+      source: MODEL_CACHE/wavlm-large
+      revision: 07d9d3d8576fd3d718ee7b16b2b6242e9610d9af
+      provenance_record: results/provenance/model_inventory.yaml
+      dimension: 1024
+      status: locked
+      license: MIT
+      checkpoint_hash: 92063b9e2a29279a9fe4f7e6703f5eeece903c7b3e471aebf2d9997f24fcdc5b
+      cache_root: MODEL_CACHE
+    - name: chinese_hubert_large
+      source: MODEL_CACHE/chinese-hubert-large
+      revision: 90cb660492214f687e60f5ca509b20edae6e75bd
+      provenance_record: results/provenance/model_inventory.yaml
+      dimension: 1024
+      status: locked
+      license: mit
+      checkpoint_hash: 482c19cd60877832995d790ed10dd1203b1f8c86ed7a69b4bd27f470fc27ee43
+      cache_root: MODEL_CACHE
+    - name: chinese_wav2vec2_large
+      source: MODEL_CACHE/chinese-wav2vec2-large
+      revision: e3aa671ca0cfe7978171a8ebbcc4bdfecdfb2f95
+      provenance_record: results/provenance/model_inventory.yaml
+      dimension: 1024
+      status: locked
+      license: mit
+      checkpoint_hash: c8a5554a79c3bbbe76f2e43d3d4b4369c8c2abd5515e623192e0381d7e5e7b3f
+      cache_root: MODEL_CACHE
+embedding:
+  pooling: mean
+distance:
+  metric: cosine
+statistics:
+  repeats: 5
+  multiple_testing: holm
+  bootstrap_replicates: 1000
+gates:
+  group_c_min_pairs: 200
+  correction_improvement: 0.05
+  matched_speaker_tolerance: 0.01
+speaker_proxy:
+  name: ecapa
+  source: speechbrain/spkrec-ecapa-voxceleb
+  status: locked
+  checkpoint: embedding_model.ckpt
+  revision: 0f99f2d
+  checkpoint_hash: 0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2
+  provenance_record: results/provenance/model_inventory.yaml
+  dimension: 192
+  license: apache-2.0
+  cache_root: MODEL_CACHE
+speaker_regression:
+  status: locked
+  feature_source: ecapa
+  target_source: cell_offset_minus_dialect_main_effect
+  model: block_regularized_rank1_dialect_modulation
+  parameterization: block_regularized_shared_ridge_plus_rank1_dialect_modulation
+  regularization_family: block_diagonal_ridge
+  rank: 1
+  base_alpha_grid: [1.0, 3.0, 10.0, 30.0]
+  uniform_control_alpha_grid: [1.0, 10.0, 30.0, 100.0, 300.0, 1000.0]
+  w_penalty_multiplier: 100.0
+  bias_penalty_multiplier: 10.0
+  low_rank_penalty_multiplier: 1.0
+  als_max_iter: 100
+  als_n_restarts: 5
+  als_convergence_tol: 1.0e-06
+  als_convergence_patience: 20
+  inner_cv_folds: 5
+  leave_pair_out: true
+projection_head:
+  status: proposed
+  input_dim: 1024
+  hidden_dim: 512
+  output_dim: 256
+  dropout: 0.20
+  activation: gelu
+  optimizer: adamw
+  max_epochs: 100
+  early_stopping_patience: 10
+  batch_size: 256
+  inner_cv_folds: 5
+  lambda_cross_grid: [0.25, 0.5, 1.0]
+  lambda_dialect_grid: [0.05, 0.1]
+  learning_rate_grid: [0.0001, 0.0003]
+  weight_decay_grid: [0.0001, 0.001]
+  bootstrap_replicates: 1000
+  seed: 20260829
+  seed_sweep: [20260829, 20260830, 20260831, 20260901, 20260902]
+gradient_isolation:
+  lambda_cross_values: [0.0, 0.05, 0.1, 0.25, 0.5, 1.0, 2.0, 5.0]
+  seeds: [20260829, 20260830, 20260831, 20260901, 20260902]
+  same_dialect_pair_count_match: true
+  gradient_probe_seed: 20260829
+  normalized_gradient_threshold: 0.3
+  gradient_cosine_threshold: 0.3
+references:
+  taxonomy:
+    status: locked
+    source: Language Atlas of China 2012 Mandarin subgroup taxonomy
+    matrix: results/references/taxonomy_matrix.json
+    provenance_record: results/provenance/reference_matrices.yaml
+  sincomp:
+    status: locked
+    source: YiYang-github/Sinitic_Data Data4 overall_distance
+    matrix: results/references/sinitic_data4_overall_matrix.json
+    provenance_record: results/provenance/reference_matrices.yaml
+    source_commit: 820b9d15a74cbee82109f0bf54cf791fe16596ef
+    upstream_license: not_specified
+    public_distribution: rebuild_locally_from_pinned_upstream
+corpora:
+  primary:
+    name: KeSpeech
+    role: primary
+    status: locked_for_revision
+    experimental_scope: sole_corpus
+  out_of_scope:
+    - name: 3D-Speaker
+      role: related_work_only
+      experimental_use: false
+      reason: "Cross-corpus replication is deferred to preserve the four-page evidence chain."

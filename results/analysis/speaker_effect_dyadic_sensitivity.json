@@ -1,0 +1,93 @@
+{
+  "models": [
+    {
+      "ci": {
+        "confidence_level": 0.95,
+        "lower": 0.20611802190715392,
+        "upper": 0.23700636817634788
+      },
+      "effective_pair_count_quantiles": {
+        "A": [
+          2938.875,
+          3132.0,
+          3327.05
+        ],
+        "B": [
+          9181.825,
+          9832.0,
+          10438.949999999999
+        ]
+      },
+      "estimand": "median_of_stratum_weighted_median_B_minus_A",
+      "model_name": "chinese_hubert_large",
+      "point_estimate": 0.21789048210672543,
+      "replicates_requested": 1000,
+      "replicates_used": 1000,
+      "resampling_unit": "speaker_endpoints_within_matched_stratum",
+      "schema": "dyadic-ab-bootstrap-v1",
+      "seed": 20260829,
+      "source_file": "results\\distances\\kespeech_evaluation_matched\\chinese_hubert_large.json",
+      "zero_effective_arm_replicates": 0
+    },
+    {
+      "ci": {
+        "confidence_level": 0.95,
+        "lower": 0.003671028901853339,
+        "upper": 0.004291793259809514
+      },
+      "effective_pair_count_quantiles": {
+        "A": [
+          2938.875,
+          3132.0,
+          3327.05
+        ],
+        "B": [
+          9181.825,
+          9832.0,
+          10438.949999999999
+        ]
+      },
+      "estimand": "median_of_stratum_weighted_median_B_minus_A",
+      "model_name": "chinese_wav2vec2_large",
+      "point_estimate": 0.003906644816954102,
+      "replicates_requested": 1000,
+      "replicates_used": 1000,
+      "resampling_unit": "speaker_endpoints_within_matched_stratum",
+      "schema": "dyadic-ab-bootstrap-v1",
+      "seed": 20260829,
+      "source_file": "results\\distances\\kespeech_evaluation_matched\\chinese_wav2vec2_large.json",
+      "zero_effective_arm_replicates": 0
+    },
+    {
+      "ci": {
+        "confidence_level": 0.95,
+        "lower": 0.11930301545154744,
+        "upper": 0.14095716516640572
+      },
+      "effective_pair_count_quantiles": {
+        "A": [
+          2938.875,
+          3132.0,
+          3327.05
+        ],
+        "B": [
+          9181.825,
+          9832.0,
+          10438.949999999999
+        ]
+      },
+      "estimand": "median_of_stratum_weighted_median_B_minus_A",
+      "model_name": "wavlm_large",
+      "point_estimate": 0.1285359572569846,
+      "replicates_requested": 1000,
+      "replicates_used": 1000,
+      "resampling_unit": "speaker_endpoints_within_matched_stratum",
+      "schema": "dyadic-ab-bootstrap-v1",
+      "seed": 20260829,
+      "source_file": "results\\distances\\kespeech_evaluation_matched\\wavlm_large.json",
+      "zero_effective_arm_replicates": 0
+    }
+  ],
+  "schema": "speaker-effect-dyadic-sensitivity-v1",
+  "status": "evaluated"
+}

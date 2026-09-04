@@ -1,0 +1,18 @@
+{
+  "schema": "target-prevalence-rule-transfer-gate-v1",
+  "status": "failed",
+  "transfer_axis": "cross_backbone",
+  "primary": {
+    "q_sensitivity_reduced": true,
+    "mean_gain_improved": false,
+    "all_seed_slope_contrasts_positive": true
+  },
+  "orthogonal": {
+    "q_sensitivity_reduced": false,
+    "mean_gain_improved": false,
+    "all_seed_slope_contrasts_positive": false
+  },
+  "rule_transfer_supported": false,
+  "selected_wording": "Target prevalence is associated with the loss-structure effect under the tested configuration; a transferable balancing rule was not established.",
+  "rule_selection_unit": "calibration_speaker_folds_only"
+}

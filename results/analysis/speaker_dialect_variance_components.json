@@ -1,0 +1,58 @@
+{
+  "schema": "speaker-dialect-variance-identifiability-v1",
+  "status": "failed",
+  "record_count": 4407,
+  "speaker_count": 100,
+  "dialect_count": 9,
+  "speaker_dialect_cell_count": 158,
+  "singleton_cell_count": 8,
+  "singleton_cells": [
+    {
+      "speaker_id": "1000798",
+      "dialect_label": "Northeastern",
+      "count": 1
+    },
+    {
+      "speaker_id": "1013236",
+      "dialect_label": "Jiao-Liao",
+      "count": 1
+    },
+    {
+      "speaker_id": "1019649",
+      "dialect_label": "Lan-Yin",
+      "count": 1
+    },
+    {
+      "speaker_id": "1019715",
+      "dialect_label": "Jiang-Huai",
+      "count": 1
+    },
+    {
+      "speaker_id": "1022717",
+      "dialect_label": "Ji-Lu",
+      "count": 1
+    },
+    {
+      "speaker_id": "1023961",
+      "dialect_label": "Zhongyuan",
+      "count": 1
+    },
+    {
+      "speaker_id": "1025845",
+      "dialect_label": "Zhongyuan",
+      "count": 1
+    },
+    {
+      "speaker_id": "1029722",
+      "dialect_label": "Beijing",
+      "count": 1
+    }
+  ],
+  "dialect_condition_aliases": [],
+  "criteria": {
+    "all_speaker_dialect_cells_repeated": false,
+    "dialect_not_fully_aliased_with_condition": true
+  },
+  "selected_wording": "factorial bookkeeping notation",
+  "reason": "speaker-by-dialect interaction cannot be separated from utterance residuals in singleton cells"
+}

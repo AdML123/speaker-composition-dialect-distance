@@ -1,0 +1,185 @@
+{
+  "schema": "speaker-effect-clustered-gate-v1",
+  "seed": 20260829,
+  "bootstrap_replicates": 1000,
+  "permutations": 1000,
+  "holm_family": "all configured extractors",
+  "status": "passed",
+  "models": [
+    {
+      "model_name": "chinese_hubert_large",
+      "estimand": "median_of_stratum_median_B_minus_A",
+      "effect": 0.21789048210672543,
+      "ci": {
+        "lower": 0.20750008455042399,
+        "upper": 0.23583701293484965,
+        "confidence_level": 0.95
+      },
+      "bootstrap_tail_p_nonpositive": 0.000999000999000999,
+      "clustered_bootstrap": {
+        "schema": "clustered-bootstrap-v1",
+        "effect": 0.21789048210672543,
+        "ci": {
+          "lower": 0.20750008455042399,
+          "upper": 0.23583701293484965,
+          "confidence_level": 0.95
+        },
+        "bootstrap_replicates": 1000,
+        "bootstrap_tail_p_nonpositive": 0.000999000999000999,
+        "seed": 20260829,
+        "resampling": {
+          "unit": "speaker_cluster_within_matched_stratum",
+          "utterance_within_speaker": true,
+          "nested_utterance_sampling": "row observations resampled within selected speaker clusters"
+        },
+        "matched_stratum_count": 12,
+        "speaker_cluster_count": 1999
+      },
+      "sign_flip": {
+        "schema": "cluster-sign-flip-v1",
+        "observed_effect": 0.21789048210672543,
+        "null_type": "cluster_sign_flip",
+        "exchangeability_unit": "speaker_cluster_within_matched_stratum",
+        "permutations": 1000,
+        "raw_p": 0.000999000999000999,
+        "seed": 20260829,
+        "matched_stratum_count": 12,
+        "speaker_cluster_count": 795,
+        "null_summary": {
+          "min": -0.11897702644227087,
+          "max": 0.11986479962402709,
+          "median": -0.002737640311880528
+        }
+      },
+      "matched_stratum_count": 12,
+      "speaker_cluster_count": 1999,
+      "utterance_count": 19716,
+      "resampling_unit": "speaker_cluster_within_matched_stratum",
+      "test_type": "nested_speaker_cluster_bootstrap_with_optional_cluster_sign_flip",
+      "raw_p": 0.000999000999000999,
+      "status": "passed",
+      "holm_adjusted_p": 0.002997002997002997
+    },
+    {
+      "model_name": "chinese_wav2vec2_large",
+      "estimand": "median_of_stratum_median_B_minus_A",
+      "effect": 0.003906644816954102,
+      "ci": {
+        "lower": 0.003728704486907891,
+        "upper": 0.004122331721361003,
+        "confidence_level": 0.95
+      },
+      "bootstrap_tail_p_nonpositive": 0.000999000999000999,
+      "clustered_bootstrap": {
+        "schema": "clustered-bootstrap-v1",
+        "effect": 0.003906644816954102,
+        "ci": {
+          "lower": 0.003728704486907891,
+          "upper": 0.004122331721361003,
+          "confidence_level": 0.95
+        },
+        "bootstrap_replicates": 1000,
+        "bootstrap_tail_p_nonpositive": 0.000999000999000999,
+        "seed": 20260829,
+        "resampling": {
+          "unit": "speaker_cluster_within_matched_stratum",
+          "utterance_within_speaker": true,
+          "nested_utterance_sampling": "row observations resampled within selected speaker clusters"
+        },
+        "matched_stratum_count": 12,
+        "speaker_cluster_count": 1999
+      },
+      "sign_flip": {
+        "schema": "cluster-sign-flip-v1",
+        "observed_effect": 0.003906644816954102,
+        "null_type": "cluster_sign_flip",
+        "exchangeability_unit": "speaker_cluster_within_matched_stratum",
+        "permutations": 1000,
+        "raw_p": 0.000999000999000999,
+        "seed": 20260829,
+        "matched_stratum_count": 12,
+        "speaker_cluster_count": 795,
+        "null_summary": {
+          "min": -0.002068979264832599,
+          "max": 0.0021408302722934064,
+          "median": -4.4010296824423256e-05
+        }
+      },
+      "matched_stratum_count": 12,
+      "speaker_cluster_count": 1999,
+      "utterance_count": 19716,
+      "resampling_unit": "speaker_cluster_within_matched_stratum",
+      "test_type": "nested_speaker_cluster_bootstrap_with_optional_cluster_sign_flip",
+      "raw_p": 0.000999000999000999,
+      "status": "passed",
+      "holm_adjusted_p": 0.002997002997002997
+    },
+    {
+      "model_name": "wavlm_large",
+      "estimand": "median_of_stratum_median_B_minus_A",
+      "effect": 0.1285359572569846,
+      "ci": {
+        "lower": 0.12001266909662121,
+        "upper": 0.13840609658312192,
+        "confidence_level": 0.95
+      },
+      "bootstrap_tail_p_nonpositive": 0.000999000999000999,
+      "clustered_bootstrap": {
+        "schema": "clustered-bootstrap-v1",
+        "effect": 0.1285359572569846,
+        "ci": {
+          "lower": 0.12001266909662121,
+          "upper": 0.13840609658312192,
+          "confidence_level": 0.95
+        },
+        "bootstrap_replicates": 1000,
+        "bootstrap_tail_p_nonpositive": 0.000999000999000999,
+        "seed": 20260829,
+        "resampling": {
+          "unit": "speaker_cluster_within_matched_stratum",
+          "utterance_within_speaker": true,
+          "nested_utterance_sampling": "row observations resampled within selected speaker clusters"
+        },
+        "matched_stratum_count": 12,
+        "speaker_cluster_count": 1999
+      },
+      "sign_flip": {
+        "schema": "cluster-sign-flip-v1",
+        "observed_effect": 0.1285359572569846,
+        "null_type": "cluster_sign_flip",
+        "exchangeability_unit": "speaker_cluster_within_matched_stratum",
+        "permutations": 1000,
+        "raw_p": 0.000999000999000999,
+        "seed": 20260829,
+        "matched_stratum_count": 12,
+        "speaker_cluster_count": 795,
+        "null_summary": {
+          "min": -0.06199829569296171,
+          "max": 0.0697366413050765,
+          "median": -0.0008914906096288491
+        }
+      },
+      "matched_stratum_count": 12,
+      "speaker_cluster_count": 1999,
+      "utterance_count": 19716,
+      "resampling_unit": "speaker_cluster_within_matched_stratum",
+      "test_type": "nested_speaker_cluster_bootstrap_with_optional_cluster_sign_flip",
+      "raw_p": 0.000999000999000999,
+      "status": "passed",
+      "holm_adjusted_p": 0.002997002997002997
+    }
+  ],
+  "inference_contract": {
+    "primary_uncertainty": "nested speaker-cluster bootstrap with utterance rows resampled within selected clusters",
+    "p_value": "cluster sign-flip when exchangeable paired clusters exist; otherwise bootstrap tail proportion",
+    "bootstrap_tail_is_not_permutation": true
+  },
+  "corpus": "KeSpeech",
+  "matching_mode": "condition_aware",
+  "source_distance_reports": [
+    "results/distances/kespeech_evaluation_matched/chinese_hubert_large.json",
+    "results/distances/kespeech_evaluation_matched/chinese_wav2vec2_large.json",
+    "results/distances/kespeech_evaluation_matched/wavlm_large.json"
+  ],
+  "status_note": "Exact transcript matching was audited separately and was infeasible at the requested non-overlapping scale."
+}

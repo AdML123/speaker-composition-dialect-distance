@@ -1,0 +1,35 @@
+{
+  "schema": "estimand-weighting-gate-v2",
+  "status": "passed",
+  "required_weightings": [
+    "pair",
+    "endpoint_speaker",
+    "dialect_relation",
+    "matched_stratum"
+  ],
+  "primary_projection_checks": {
+    "pair": {
+      "five_of_five_positive": true,
+      "five_of_five_clustered_lower_bounds_positive": true
+    },
+    "endpoint_speaker": {
+      "five_of_five_positive": true,
+      "five_of_five_clustered_lower_bounds_positive": true
+    },
+    "dialect_relation": {
+      "five_of_five_positive": true,
+      "five_of_five_clustered_lower_bounds_positive": true
+    },
+    "matched_stratum": {
+      "five_of_five_positive": true,
+      "five_of_five_clustered_lower_bounds_positive": true
+    }
+  },
+  "primary_phenomenon_dyadic_ci": {
+    "confidence_level": 0.95,
+    "lower": 0.20611802190715392,
+    "upper": 0.23700636817634788
+  },
+  "selected_wording": "The HuBERT association and linear-correction direction survive the declared dependence and weighting analyses.",
+  "failure_wording": "A reversed or nonpositive clustered result makes the pair-weighted conclusion weighting-dependent."
+}

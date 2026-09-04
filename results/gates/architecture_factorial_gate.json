@@ -1,0 +1,47 @@
+{
+  "schema": "architecture-factorial-gate-v1",
+  "status": "passed",
+  "run_count": 120,
+  "run_count_ok": true,
+  "schedule_match": true,
+  "evaluation_labels_used": false,
+  "primary_lambda_cross": 0.5,
+  "interaction_definition": "(matched MLP error at lambda 0 minus lambda 0.5) minus (linear error at lambda 0 minus lambda 0.5)",
+  "interactions": {
+    "taxonomy": {
+      "schema": "clustered-paired-bootstrap-v1",
+      "observed_delta": 0.005569154809009785,
+      "ci": {
+        "lower": 0.0030568062175630895,
+        "upper": 0.008122252733040822,
+        "confidence_level": 0.95
+      },
+      "bootstrap_tail_p_nonpositive": 0.000999000999000999,
+      "bootstrap_replicates": 1000,
+      "seed": 20260829,
+      "resampling_unit": "speaker_cluster_within_matched_stratum",
+      "estimand": "equal speaker-cluster means within stratum, then equal stratum means",
+      "nested_utterance_sampling": true,
+      "holm_adjusted_p": 0.001998001998001998,
+      "passed": true
+    },
+    "city_nearest": {
+      "schema": "clustered-paired-bootstrap-v1",
+      "observed_delta": 0.007358092130529617,
+      "ci": {
+        "lower": 0.005173767267550122,
+        "upper": 0.009521991582994284,
+        "confidence_level": 0.95
+      },
+      "bootstrap_tail_p_nonpositive": 0.000999000999000999,
+      "bootstrap_replicates": 1000,
+      "seed": 20260829,
+      "resampling_unit": "speaker_cluster_within_matched_stratum",
+      "estimand": "equal speaker-cluster means within stratum, then equal stratum means",
+      "nested_utterance_sampling": true,
+      "holm_adjusted_p": 0.001998001998001998,
+      "passed": true
+    }
+  },
+  "failure_action": "describe_added_loss_as_capacity_or_optimization_contingent"
+}

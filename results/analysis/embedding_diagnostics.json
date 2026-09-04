@@ -1,0 +1,93 @@
+{
+  "schema": "embedding-diagnostics-batch-v1",
+  "reports": [
+    {
+      "schema": "embedding-diagnostics-v1",
+      "model_name": "chinese_hubert_large",
+      "split": "evaluation",
+      "layer": "last_hidden_state",
+      "pooling": "mean",
+      "sample_rate_hz": 16000,
+      "channels": 1,
+      "explicit_l2_normalization": false,
+      "embedding_count": 19723,
+      "dimension": 1024,
+      "norm_summary": {
+        "minimum": 1.169817165814125,
+        "median": 1.551660897593725,
+        "maximum": 5.198124292197776
+      },
+      "per_dimension_variance": {
+        "minimum": 0.0001441662475106204,
+        "median": 0.001204684368677386,
+        "maximum": 0.1981259165637608,
+        "mean": 0.0016706563730726793
+      },
+      "finite": true
+    },
+    {
+      "schema": "embedding-diagnostics-v1",
+      "model_name": "chinese_wav2vec2_large",
+      "split": "evaluation",
+      "layer": "last_hidden_state",
+      "pooling": "mean",
+      "sample_rate_hz": 16000,
+      "channels": 1,
+      "explicit_l2_normalization": false,
+      "embedding_count": 19723,
+      "dimension": 1024,
+      "norm_summary": {
+        "minimum": 1.989726530028024,
+        "median": 2.2522934789995652,
+        "maximum": 2.3153407935334482
+      },
+      "per_dimension_variance": {
+        "minimum": 2.871899546566344e-26,
+        "median": 7.705102797743559e-13,
+        "maximum": 0.0019004477527049819,
+        "mean": 3.7320723727141146e-05
+      },
+      "finite": true
+    },
+    {
+      "schema": "embedding-diagnostics-v1",
+      "model_name": "wavlm_large",
+      "split": "evaluation",
+      "layer": "last_hidden_state",
+      "pooling": "mean",
+      "sample_rate_hz": 16000,
+      "channels": 1,
+      "explicit_l2_normalization": false,
+      "embedding_count": 19723,
+      "dimension": 1024,
+      "norm_summary": {
+        "minimum": 1.7643118423521753,
+        "median": 2.170732089721381,
+        "maximum": 7.015569373429011
+      },
+      "per_dimension_variance": {
+        "minimum": 3.74673756547932e-06,
+        "median": 0.001494370431427197,
+        "maximum": 0.09919640338410758,
+        "mean": 0.0020046308274003465
+      },
+      "finite": true
+    }
+  ],
+  "contract": {
+    "schema": "embedding-preprocessing-contract-v1",
+    "status": "passed",
+    "mismatches": {},
+    "dimensions": [
+      1024
+    ],
+    "required_same_fields": [
+      "split",
+      "layer",
+      "pooling",
+      "sample_rate_hz",
+      "channels",
+      "explicit_l2_normalization"
+    ]
+  }
+}

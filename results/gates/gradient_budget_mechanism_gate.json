@@ -1,0 +1,59 @@
+{
+  "schema": "gradient-budget-mechanism-gate-v1",
+  "status": "evaluated",
+  "q0": 0.5,
+  "ratio_grid": [
+    {
+      "generic_count": 1,
+      "cross_count": 1,
+      "rho": 1.0
+    },
+    {
+      "generic_count": 2,
+      "cross_count": 1,
+      "rho": 2.0
+    },
+    {
+      "generic_count": 4,
+      "cross_count": 1,
+      "rho": 4.0
+    },
+    {
+      "generic_count": 8,
+      "cross_count": 1,
+      "rho": 8.0
+    }
+  ],
+  "primary_interaction": {
+    "schema": "speaker-cluster-interaction-bootstrap-v1",
+    "estimate": 0.0006654023231229588,
+    "ci": {
+      "lower": -0.0003808730628638128,
+      "upper": 0.0016735160266887787,
+      "confidence_level": 0.95
+    },
+    "bootstrap_replicates": 1000,
+    "resampling_unit": "evaluation_speaker_cluster",
+    "speaker_cluster_count": 1046
+  },
+  "lambda_star_by_rho": {
+    "1.0": 0.0,
+    "2.0": 0.0,
+    "4.0": 0.0,
+    "8.0": 0.0
+  },
+  "gradient_summary": {
+    "eta_sep_median": 0.0,
+    "eta_sep_cv": 0.0,
+    "cosine_median": 0.006902324967086315,
+    "logging_interval_epochs": 5,
+    "readout_count": 420
+  },
+  "placebo_compatible": false,
+  "classification": {
+    "schema": "pool-ratio-mechanism-classification-v1",
+    "status": "mechanism_unresolved",
+    "compatible_mechanisms": []
+  },
+  "selected_wording": "Target prevalence affects the loss-structure result under the tested configuration; the pool-ratio audit does not promote a unique gradient-budget mechanism."
+}

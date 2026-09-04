@@ -1,0 +1,38 @@
+{
+  "checks": {
+    "all_matrices_validate": true,
+    "all_subgroups_have_source_rows": true,
+    "city_nearest_matches_locked_provenance": true,
+    "mandarin_proxy_preserved": true,
+    "source_archive_hash": true
+  },
+  "failure_action": "report_construction_specific_result_only",
+  "matched_stratum_note": "not defined in the locked A-D projection pair manifest",
+  "phase": "construction_and_projection",
+  "projection_stability_status": "reference_stable",
+  "schema": "reference-representative-gate-v1",
+  "status": "passed",
+  "variant_checks": {
+    "city_nearest": {
+      "at_least_four_of_five_pair_seeds_positive": true,
+      "matched_stratum_available": false,
+      "pair_weighted_median_positive": true,
+      "relation_weighted_median_positive": true,
+      "speaker_weighted_median_positive": true
+    },
+    "subgroup_aggregate": {
+      "at_least_four_of_five_pair_seeds_positive": true,
+      "matched_stratum_available": false,
+      "pair_weighted_median_positive": true,
+      "relation_weighted_median_positive": true,
+      "speaker_weighted_median_positive": true
+    },
+    "subgroup_medoid": {
+      "at_least_four_of_five_pair_seeds_positive": true,
+      "matched_stratum_available": false,
+      "pair_weighted_median_positive": true,
+      "relation_weighted_median_positive": true,
+      "speaker_weighted_median_positive": true
+    }
+  }
+}

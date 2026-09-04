@@ -1,0 +1,130 @@
+{
+  "schema": "matched-pairing-audit-v2",
+  "corpus": "KeSpeech",
+  "splits": {
+    "calibration": {
+      "condition_aware": {
+        "matching_mode": "condition_aware",
+        "group_summary": {
+          "A": {
+            "requested": 1000,
+            "available": 39314,
+            "sampled": 1000,
+            "status": "ok"
+          },
+          "B": {
+            "requested": 1000,
+            "available": 2164525,
+            "sampled": 1000,
+            "status": "ok"
+          }
+        },
+        "audit": {
+          "matching_fields": [
+            "split",
+            "dialect_label",
+            "recording_condition"
+          ],
+          "content_cluster_count": 3070,
+          "speaker_count": 100,
+          "dialect_count": 9,
+          "stratum_count": 12,
+          "raw_transcripts_in_output": false
+        }
+      },
+      "exact_content": {
+        "matching_mode": "exact_content",
+        "group_summary": {
+          "A": {
+            "requested": 1000,
+            "available": 0,
+            "sampled": 0,
+            "status": "partial"
+          },
+          "B": {
+            "requested": 1000,
+            "available": 0,
+            "sampled": 0,
+            "status": "partial"
+          }
+        },
+        "audit": {
+          "matching_fields": [
+            "split",
+            "dialect_label",
+            "recording_condition",
+            "content_id"
+          ],
+          "content_cluster_count": 3070,
+          "speaker_count": 100,
+          "dialect_count": 9,
+          "stratum_count": 4407,
+          "raw_transcripts_in_output": false
+        }
+      }
+    },
+    "evaluation": {
+      "condition_aware": {
+        "matching_mode": "condition_aware",
+        "group_summary": {
+          "A": {
+            "requested": 3123,
+            "available": 150862,
+            "sampled": 3123,
+            "status": "ok"
+          },
+          "B": {
+            "requested": 19235,
+            "available": 22101933,
+            "sampled": 9857,
+            "status": "partial"
+          }
+        },
+        "audit": {
+          "matching_fields": [
+            "split",
+            "dialect_label",
+            "recording_condition"
+          ],
+          "content_cluster_count": 19060,
+          "speaker_count": 1999,
+          "dialect_count": 9,
+          "stratum_count": 12,
+          "raw_transcripts_in_output": false
+        }
+      },
+      "exact_content": {
+        "matching_mode": "exact_content",
+        "group_summary": {
+          "A": {
+            "requested": 3123,
+            "available": 10,
+            "sampled": 2,
+            "status": "partial"
+          },
+          "B": {
+            "requested": 19235,
+            "available": 5,
+            "sampled": 5,
+            "status": "partial"
+          }
+        },
+        "audit": {
+          "matching_fields": [
+            "split",
+            "dialect_label",
+            "recording_condition",
+            "content_id"
+          ],
+          "content_cluster_count": 19060,
+          "speaker_count": 1999,
+          "dialect_count": 9,
+          "stratum_count": 19714,
+          "raw_transcripts_in_output": false
+        }
+      }
+    }
+  },
+  "discourse_level": "unavailable",
+  "interpretation": "condition-aware results are the primary feasible matched analysis; exact-content capacity is reported as a boundary"
+}

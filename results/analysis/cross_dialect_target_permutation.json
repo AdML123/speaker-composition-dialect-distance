@@ -1,0 +1,31 @@
+{
+  "schema": "cross-dialect-target-permutation-report-v1",
+  "status": "evaluated",
+  "seed": 20260829,
+  "control_target": "cross_loss_pair_distance_target",
+  "pool_size": 14821,
+  "pair_id_set_digest": "0ab8aa32349e52204cb94811a34bb9877c57aee16b878b96d4960e1bebc1e178",
+  "target_assignment_digest_before": "7067e446a6bce573a90af2ac19016c9077d6738fdfa4a8f04cb08ce579f5426f",
+  "target_assignment_digest_after": "3d02d2223e6e27a2506b260d3f9a14fdf6f85723467b59162619d7ce331c9907",
+  "target_assignment_changed": true,
+  "target_histogram_before": {
+    "0": 880,
+    "1": 13941
+  },
+  "target_histogram_after": {
+    "0": 880,
+    "1": 13941
+  },
+  "pair_ids_unchanged": true,
+  "evaluation_targets_unchanged": true,
+  "method_improvement_ratio": 0.08688799027090874,
+  "target_permuted_improvement_ratio": 0.08702578136719169,
+  "target_permuted_ci": {
+    "lower": 0.07137620046519853,
+    "upper": 0.10243572416177689,
+    "confidence_level": 0.95
+  },
+  "shuffled_improvement_ratio": 0.09861485030911307,
+  "semantic_specificity_supported": false,
+  "wording": "The separately weighted term improved held-out error, but target permutation and shuffled pairing did not isolate semantic cross-dialect supervision."
+}

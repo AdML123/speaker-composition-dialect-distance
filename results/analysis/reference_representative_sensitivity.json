@@ -1,0 +1,600 @@
+{
+  "city_nearest_indices": {
+    "Beijing": 139,
+    "Ji-Lu": 203,
+    "Jiang-Huai": 806,
+    "Jiao-Liao": 180,
+    "Lan-Yin": 524,
+    "Mandarin": 139,
+    "Northeastern": 156,
+    "Southwestern": 650,
+    "Zhongyuan": 1035
+  },
+  "city_nearest_matches_locked_provenance": true,
+  "matrix_comparison": {
+    "pairs": [
+      {
+        "comparable_relation_orderings": 623,
+        "left": "city_nearest",
+        "pearson": 0.900016149328,
+        "rank_order_reversals": 132,
+        "right": "subgroup_aggregate",
+        "spearman": 0.761174803555
+      },
+      {
+        "comparable_relation_orderings": 623,
+        "left": "city_nearest",
+        "pearson": 0.926714421096,
+        "rank_order_reversals": 113,
+        "right": "subgroup_medoid",
+        "spearman": 0.828674481515
+      },
+      {
+        "comparable_relation_orderings": 623,
+        "left": "subgroup_aggregate",
+        "pearson": 0.884781307241,
+        "rank_order_reversals": 121,
+        "right": "subgroup_medoid",
+        "spearman": 0.809609686977
+      }
+    ],
+    "relation_count": 36
+  },
+  "matrix_paths": {
+    "city_nearest": "results\\references\\sinitic_data4_city_nearest.json",
+    "subgroup_aggregate": "results\\references\\sinitic_data4_subgroup_aggregate.json",
+    "subgroup_medoid": "results\\references\\sinitic_data4_subgroup_medoid.json"
+  },
+  "matrix_sha256": {
+    "city_nearest": "6aa0375f7c028a7b89471225f5327c66b919b79bc1c850f0e27128835465bb2e",
+    "subgroup_aggregate": "24e4cf95cac3a3820fe8c876476f22e9911cfde4834851190a5d30b3c45972e0",
+    "subgroup_medoid": "4f8bdc1f23257e889c56d4f52a0b1ff7b049265417cedaab5c9e77c0a18ed746"
+  },
+  "normalization_maxima": {
+    "city_nearest": 0.6733844637626939,
+    "subgroup_aggregate": 0.6355545890771876,
+    "subgroup_medoid": 0.6695570764336355
+  },
+  "projection_sweep": {
+    "model_name": "chinese_hubert_large",
+    "pair_manifest": "results\\pairs\\kespeech_evaluation_1000.json",
+    "pair_manifest_sha256": "59404e971b7b5c7a6e2b828be3fd935c9b09e2b9ed4db942b1ca4843dae5d18d",
+    "schema": "reference-variant-linear-sweep-v1",
+    "selection_policy": "fixed_before_evaluation_no_variant_selection",
+    "status": "evaluated",
+    "variants": [
+      {
+        "fixed_epochs": 29,
+        "gain_distribution": {
+          "dialect_relation": {
+            "iqr": 0.0040151249916619,
+            "maximum": 0.21559923364362474,
+            "median": 0.21155576971011303,
+            "minimum": 0.20445622559465834
+          },
+          "endpoint_speaker": {
+            "iqr": 0.0025355551006832067,
+            "maximum": 0.17353777745880505,
+            "median": 0.1623436993983049,
+            "minimum": 0.15950419132831808
+          },
+          "matched_stratum": null,
+          "pair": {
+            "iqr": 0.0015950961322968166,
+            "maximum": 0.10974897333090869,
+            "median": 0.10469342121383869,
+            "minimum": 0.10400045964730578
+          }
+        },
+        "head_kind": "linear",
+        "lambda_cross": 0.0,
+        "lambda_dialect": 0.1,
+        "learning_rate": 0.0003,
+        "matrix_path": "results\\references\\sinitic_data4_city_nearest.json",
+        "matrix_sha256": "6aa0375f7c028a7b89471225f5327c66b919b79bc1c850f0e27128835465bb2e",
+        "pair_manifest_hash": "59404e971b7b5c7a6e2b828be3fd935c9b09e2b9ed4db942b1ca4843dae5d18d",
+        "seed_results": [
+          {
+            "baseline_mae": {
+              "dialect_relation": 0.45121906479808044,
+              "endpoint_speaker": 0.49827909192948433,
+              "matched_stratum": null,
+              "pair": 0.3928621647040202
+            },
+            "gain": {
+              "dialect_relation": 0.2122104355598185,
+              "endpoint_speaker": 0.17353777745880505,
+              "matched_stratum": null,
+              "pair": 0.10974897333090869
+            },
+            "method_mae": {
+              "dialect_relation": 0.3554656705243858,
+              "endpoint_speaker": 0.41180884576185,
+              "matched_stratum": null,
+              "pair": 0.3497459454671956
+            },
+            "seed": 20260829,
+            "selected_epoch": 29
+          },
+          {
+            "baseline_mae": {
+              "dialect_relation": 0.45121906479808044,
+              "endpoint_speaker": 0.49827909192948433,
+              "matched_stratum": null,
+              "pair": 0.3928621647040202
+            },
+            "gain": {
+              "dialect_relation": 0.2081953105681566,
+              "endpoint_speaker": 0.16002497325395978,
+              "matched_stratum": null,
+              "pair": 0.10400045964730578
+            },
+            "method_mae": {
+              "dialect_relation": 0.3572773714681709,
+              "endpoint_speaker": 0.41854199357046123,
+              "matched_stratum": null,
+              "pair": 0.35200431899676654
+            },
+            "seed": 20260830,
+            "selected_epoch": 29
+          },
+          {
+            "baseline_mae": {
+              "dialect_relation": 0.45121906479808044,
+              "endpoint_speaker": 0.49827909192948433,
+              "matched_stratum": null,
+              "pair": 0.3928621647040202
+            },
+            "gain": {
+              "dialect_relation": 0.21155576971011303,
+              "endpoint_speaker": 0.162560528354643,
+              "matched_stratum": null,
+              "pair": 0.10425191926437115
+            },
+            "method_mae": {
+              "dialect_relation": 0.35576106823684517,
+              "endpoint_speaker": 0.41727857947735564,
+              "matched_stratum": null,
+              "pair": 0.3519055300272706
+            },
+            "seed": 20260831,
+            "selected_epoch": 29
+          },
+          {
+            "baseline_mae": {
+              "dialect_relation": 0.45121906479808044,
+              "endpoint_speaker": 0.49827909192948433,
+              "matched_stratum": null,
+              "pair": 0.3928621647040202
+            },
+            "gain": {
+              "dialect_relation": 0.21559923364362474,
+              "endpoint_speaker": 0.15950419132831808,
+              "matched_stratum": null,
+              "pair": 0.10584701539666796
+            },
+            "method_mae": {
+              "dialect_relation": 0.35393658022222124,
+              "endpoint_speaker": 0.41880148831546327,
+              "matched_stratum": null,
+              "pair": 0.35127887710782546
+            },
+            "seed": 20260901,
+            "selected_epoch": 29
+          },
+          {
+            "baseline_mae": {
+              "dialect_relation": 0.45121906479808044,
+              "endpoint_speaker": 0.49827909192948433,
+              "matched_stratum": null,
+              "pair": 0.3928621647040202
+            },
+            "gain": {
+              "dialect_relation": 0.20445622559465834,
+              "endpoint_speaker": 0.1623436993983049,
+              "matched_stratum": null,
+              "pair": 0.10469342121383869
+            },
+            "method_mae": {
+              "dialect_relation": 0.35896451789311334,
+              "endpoint_speaker": 0.4173866208128238,
+              "matched_stratum": null,
+              "pair": 0.35173208061568173
+            },
+            "seed": 20260902,
+            "selected_epoch": 29
+          }
+        ],
+        "seeds": [
+          20260829,
+          20260830,
+          20260831,
+          20260901,
+          20260902
+        ],
+        "selection_unit": "calibration_speaker_folds",
+        "variant": "city_nearest",
+        "weight_decay": 0.001
+      },
+      {
+        "fixed_epochs": 29,
+        "gain_distribution": {
+          "dialect_relation": {
+            "iqr": 0.004141995240862922,
+            "maximum": 0.1951636216810137,
+            "median": 0.1909232281753084,
+            "minimum": 0.18522741180460822
+          },
+          "endpoint_speaker": {
+            "iqr": 0.003349319899246389,
+            "maximum": 0.16070863609261785,
+            "median": 0.15007682288222451,
+            "minimum": 0.1460361658015313
+          },
+          "matched_stratum": null,
+          "pair": {
+            "iqr": 0.0013829304729750386,
+            "maximum": 0.09357550411554906,
+            "median": 0.08937866039906155,
+            "minimum": 0.08790392861148584
+          }
+        },
+        "head_kind": "linear",
+        "lambda_cross": 0.0,
+        "lambda_dialect": 0.1,
+        "learning_rate": 0.0003,
+        "matrix_path": "results\\references\\sinitic_data4_subgroup_medoid.json",
+        "matrix_sha256": "4f8bdc1f23257e889c56d4f52a0b1ff7b049265417cedaab5c9e77c0a18ed746",
+        "pair_manifest_hash": "59404e971b7b5c7a6e2b828be3fd935c9b09e2b9ed4db942b1ca4843dae5d18d",
+        "seed_results": [
+          {
+            "baseline_mae": {
+              "dialect_relation": 0.41400041957587586,
+              "endpoint_speaker": 0.45358719680047555,
+              "matched_stratum": null,
+              "pair": 0.36038787131864236
+            },
+            "gain": {
+              "dialect_relation": 0.1909232281753084,
+              "endpoint_speaker": 0.16070863609261785,
+              "matched_stratum": null,
+              "pair": 0.09357550411554906
+            },
+            "method_mae": {
+              "dialect_relation": 0.3349581230045175,
+              "endpoint_speaker": 0.3806918170535973,
+              "matched_stratum": null,
+              "pair": 0.3266643945828708
+            },
+            "seed": 20260829,
+            "selected_epoch": 29
+          },
+          {
+            "baseline_mae": {
+              "dialect_relation": 0.41400041957587586,
+              "endpoint_speaker": 0.45358719680047555,
+              "matched_stratum": null,
+              "pair": 0.36038787131864236
+            },
+            "gain": {
+              "dialect_relation": 0.18683835937777865,
+              "endpoint_speaker": 0.1472361688654854,
+              "matched_stratum": null,
+              "pair": 0.08790392861148584
+            },
+            "method_mae": {
+              "dialect_relation": 0.3366492604006072,
+              "endpoint_speaker": 0.38680275569713857,
+              "matched_stratum": null,
+              "pair": 0.3287083616058031
+            },
+            "seed": 20260830,
+            "selected_epoch": 29
+          },
+          {
+            "baseline_mae": {
+              "dialect_relation": 0.41400041957587586,
+              "endpoint_speaker": 0.45358719680047555,
+              "matched_stratum": null,
+              "pair": 0.36038787131864236
+            },
+            "gain": {
+              "dialect_relation": 0.19098035461864157,
+              "endpoint_speaker": 0.1505854887647318,
+              "matched_stratum": null,
+              "pair": 0.08858611619819531
+            },
+            "method_mae": {
+              "dialect_relation": 0.3349344726330087,
+              "endpoint_speaker": 0.38528354707285134,
+              "matched_stratum": null,
+              "pair": 0.32846250947358885
+            },
+            "seed": 20260831,
+            "selected_epoch": 29
+          },
+          {
+            "baseline_mae": {
+              "dialect_relation": 0.41400041957587586,
+              "endpoint_speaker": 0.45358719680047555,
+              "matched_stratum": null,
+              "pair": 0.36038787131864236
+            },
+            "gain": {
+              "dialect_relation": 0.1951636216810137,
+              "endpoint_speaker": 0.1460361658015313,
+              "matched_stratum": null,
+              "pair": 0.08996904667117035
+            },
+            "method_mae": {
+              "dialect_relation": 0.3332025983139887,
+              "endpoint_speaker": 0.3873470617230695,
+              "matched_stratum": null,
+              "pair": 0.3279641181042517
+            },
+            "seed": 20260901,
+            "selected_epoch": 29
+          },
+          {
+            "baseline_mae": {
+              "dialect_relation": 0.41400041957587586,
+              "endpoint_speaker": 0.45358719680047555,
+              "matched_stratum": null,
+              "pair": 0.36038787131864236
+            },
+            "gain": {
+              "dialect_relation": 0.18522741180460822,
+              "endpoint_speaker": 0.15007682288222451,
+              "matched_stratum": null,
+              "pair": 0.08937866039906155
+            },
+            "method_mae": {
+              "dialect_relation": 0.3373161933718145,
+              "endpoint_speaker": 0.38551427140460587,
+              "matched_stratum": null,
+              "pair": 0.32817688615611273
+            },
+            "seed": 20260902,
+            "selected_epoch": 29
+          }
+        ],
+        "seeds": [
+          20260829,
+          20260830,
+          20260831,
+          20260901,
+          20260902
+        ],
+        "selection_unit": "calibration_speaker_folds",
+        "variant": "subgroup_medoid",
+        "weight_decay": 0.001
+      },
+      {
+        "fixed_epochs": 29,
+        "gain_distribution": {
+          "dialect_relation": {
+            "iqr": 0.004996536351929176,
+            "maximum": 0.22292592603247352,
+            "median": 0.21928664322876312,
+            "minimum": 0.21324444944861684
+          },
+          "endpoint_speaker": {
+            "iqr": 0.003018036595302309,
+            "maximum": 0.1728915725149662,
+            "median": 0.16260507998949553,
+            "minimum": 0.15966331903837847
+          },
+          "matched_stratum": null,
+          "pair": {
+            "iqr": 0.0009277662088839622,
+            "maximum": 0.1131796568542771,
+            "median": 0.10857112078217512,
+            "minimum": 0.10700404842165294
+          }
+        },
+        "head_kind": "linear",
+        "lambda_cross": 0.0,
+        "lambda_dialect": 0.1,
+        "learning_rate": 0.0003,
+        "matrix_path": "results\\references\\sinitic_data4_subgroup_aggregate.json",
+        "matrix_sha256": "24e4cf95cac3a3820fe8c876476f22e9911cfde4834851190a5d30b3c45972e0",
+        "pair_manifest_hash": "59404e971b7b5c7a6e2b828be3fd935c9b09e2b9ed4db942b1ca4843dae5d18d",
+        "seed_results": [
+          {
+            "baseline_mae": {
+              "dialect_relation": 0.47476306883764724,
+              "endpoint_speaker": 0.5161606771516163,
+              "matched_stratum": null,
+              "pair": 0.40868914466545375
+            },
+            "gain": {
+              "dialect_relation": 0.2208523888296703,
+              "endpoint_speaker": 0.1728915725149662,
+              "matched_stratum": null,
+              "pair": 0.1131796568542771
+            },
+            "method_mae": {
+              "dialect_relation": 0.36991051095674765,
+              "endpoint_speaker": 0.42692084600848357,
+              "matched_stratum": null,
+              "pair": 0.3624338475121497
+            },
+            "seed": 20260829,
+            "selected_epoch": 29
+          },
+          {
+            "baseline_mae": {
+              "dialect_relation": 0.47476306883764724,
+              "endpoint_speaker": 0.5161606771516163,
+              "matched_stratum": null,
+              "pair": 0.40868914466545375
+            },
+            "gain": {
+              "dialect_relation": 0.2158558524777411,
+              "endpoint_speaker": 0.1597664029033278,
+              "matched_stratum": null,
+              "pair": 0.10700404842165294
+            },
+            "method_mae": {
+              "dialect_relation": 0.3722826818887484,
+              "endpoint_speaker": 0.43369554244295666,
+              "matched_stratum": null,
+              "pair": 0.3649577516402676
+            },
+            "seed": 20260830,
+            "selected_epoch": 29
+          },
+          {
+            "baseline_mae": {
+              "dialect_relation": 0.47476306883764724,
+              "endpoint_speaker": 0.5161606771516163,
+              "matched_stratum": null,
+              "pair": 0.40868914466545375
+            },
+            "gain": {
+              "dialect_relation": 0.21928664322876312,
+              "endpoint_speaker": 0.1627844394986301,
+              "matched_stratum": null,
+              "pair": 0.10772025405461907
+            },
+            "method_mae": {
+              "dialect_relation": 0.3706538691432534,
+              "endpoint_speaker": 0.43213775063025706,
+              "matched_stratum": null,
+              "pair": 0.3646650461727261
+            },
+            "seed": 20260831,
+            "selected_epoch": 29
+          },
+          {
+            "baseline_mae": {
+              "dialect_relation": 0.47476306883764724,
+              "endpoint_speaker": 0.5161606771516163,
+              "matched_stratum": null,
+              "pair": 0.40868914466545375
+            },
+            "gain": {
+              "dialect_relation": 0.22292592603247352,
+              "endpoint_speaker": 0.15966331903837847,
+              "matched_stratum": null,
+              "pair": 0.10857112078217512
+            },
+            "method_mae": {
+              "dialect_relation": 0.36892607207099576,
+              "endpoint_speaker": 0.4337487502804923,
+              "matched_stratum": null,
+              "pair": 0.36431730617761693
+            },
+            "seed": 20260901,
+            "selected_epoch": 29
+          },
+          {
+            "baseline_mae": {
+              "dialect_relation": 0.47476306883764724,
+              "endpoint_speaker": 0.5161606771516163,
+              "matched_stratum": null,
+              "pair": 0.40868914466545375
+            },
+            "gain": {
+              "dialect_relation": 0.21324444944861684,
+              "endpoint_speaker": 0.16260507998949553,
+              "matched_stratum": null,
+              "pair": 0.10864802026350304
+            },
+            "method_mae": {
+              "dialect_relation": 0.3735224796048274,
+              "endpoint_speaker": 0.43223032895594554,
+              "matched_stratum": null,
+              "pair": 0.3642858781943678
+            },
+            "seed": 20260902,
+            "selected_epoch": 29
+          }
+        ],
+        "seeds": [
+          20260829,
+          20260830,
+          20260831,
+          20260901,
+          20260902
+        ],
+        "selection_unit": "calibration_speaker_folds",
+        "variant": "subgroup_aggregate",
+        "weight_decay": 0.001
+      }
+    ]
+  },
+  "schema": "reference-representative-sensitivity-v1",
+  "source_archive": "SOURCE_ARCHIVE_LOCAL_PATH_REDACTED",
+  "source_archive_sha256": "020f399824a9e4073f4092078099b5c9b6a995f1ef7d6eae6887f6b1250923c5",
+  "source_counts": {
+    "Beijing": 16,
+    "Ji-Lu": 55,
+    "Jiang-Huai": 60,
+    "Jiao-Liao": 21,
+    "Lan-Yin": 15,
+    "Mandarin": 16,
+    "Northeastern": 49,
+    "Southwestern": 253,
+    "Zhongyuan": 103
+  },
+  "status": "reference_stable",
+  "subgroup_medoid_indices": {
+    "Beijing": 139,
+    "Ji-Lu": 177,
+    "Jiang-Huai": 403,
+    "Jiao-Liao": 190,
+    "Lan-Yin": 785,
+    "Mandarin": 139,
+    "Northeastern": 901,
+    "Southwestern": 646,
+    "Zhongyuan": 1050
+  },
+  "validations": {
+    "city_nearest": {
+      "diagonal_zero": true,
+      "finite": true,
+      "label_count": 9,
+      "maximum": 1.0,
+      "missing_labels": [],
+      "name": "sinitic_data4_city_nearest",
+      "schema": "reference-matrix-validation-v1",
+      "shape": [
+        9,
+        9
+      ],
+      "status": "passed",
+      "symmetric": true
+    },
+    "subgroup_aggregate": {
+      "diagonal_zero": true,
+      "finite": true,
+      "label_count": 9,
+      "maximum": 1.0,
+      "missing_labels": [],
+      "name": "sinitic_data4_subgroup_aggregate",
+      "schema": "reference-matrix-validation-v1",
+      "shape": [
+        9,
+        9
+      ],
+      "status": "passed",
+      "symmetric": true
+    },
+    "subgroup_medoid": {
+      "diagonal_zero": true,
+      "finite": true,
+      "label_count": 9,
+      "maximum": 1.0,
+      "missing_labels": [],
+      "name": "sinitic_data4_subgroup_medoid",
+      "schema": "reference-matrix-validation-v1",
+      "shape": [
+        9,
+        9
+      ],
+      "status": "passed",
+      "symmetric": true
+    }
+  }
+}

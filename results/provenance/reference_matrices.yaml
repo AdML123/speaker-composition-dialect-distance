@@ -1,0 +1,178 @@
+schema: reference-matrix-provenance-v1
+taxonomy:
+  status: locked
+  source: Language Atlas of China 2012 Mandarin subgroup taxonomy, as operationalized
+    for KeSpeech labels
+  matrix: results/references/taxonomy_matrix.json
+  coverage:
+    status: complete
+    labels:
+    - Beijing
+    - Ji-Lu
+    - Jiang-Huai
+    - Jiao-Liao
+    - Lan-Yin
+    - Mandarin
+    - Northeastern
+    - Southwestern
+    - Zhongyuan
+    missing_labels: []
+sincomp:
+  status: locked
+  source: YiYang-github/Sinitic_Data Data4 overall_distance
+  matrix: results/references/sinitic_data4_overall_matrix.json
+  coverage:
+    status: complete
+    labels:
+    - Beijing
+    - Ji-Lu
+    - Jiang-Huai
+    - Jiao-Liao
+    - Lan-Yin
+    - Mandarin
+    - Northeastern
+    - Southwestern
+    - Zhongyuan
+    missing_labels: []
+  area_counts:
+    东北官话: 49
+    中原官话: 103
+    兰银官话: 15
+    冀鲁官话: 55
+    北京官话: 16
+    江淮官话: 60
+    胶辽官话: 21
+    西南官话: 253
+  representatives:
+    Beijing:
+      index: 139
+      area: 北京官话
+      slice: 京师片
+      slices: 系属不明
+      coordinate_lon_lat:
+      - 116.11055844
+      - 39.9512065
+      target_name: Beijing
+      target_lon_lat:
+      - 116.4074
+      - 39.9042
+      target_distance_km: 25.845855
+    Ji-Lu:
+      index: 203
+      area: 冀鲁官话
+      slice: 冀鲁官话
+      slices: 石济片
+      coordinate_lon_lat:
+      - 116.958333333333
+      - 36.775
+      target_name: Jinan
+      target_lon_lat:
+      - 117.1201
+      - 36.6512
+      target_distance_km: 19.935552
+    Jiang-Huai:
+      index: 806
+      area: 江淮官话
+      slice: 洪巢片
+      slices: 无
+      coordinate_lon_lat:
+      - 117.231280443614
+      - 31.8381849288031
+      target_name: Hefei
+      target_lon_lat:
+      - 117.2272
+      - 31.8206
+      target_distance_km: 1.992995
+    Jiao-Liao:
+      index: 180
+      area: 胶辽官话
+      slice: 无
+      slices: 无
+      coordinate_lon_lat:
+      - 120.422373
+      - 36.071148
+      target_name: Qingdao
+      target_lon_lat:
+      - 120.3826
+      - 36.0671
+      target_distance_km: 3.603016
+    Lan-Yin:
+      index: 524
+      area: 兰银官话
+      slice: 金城片
+      slices: 无
+      coordinate_lon_lat:
+      - 103.851571162583
+      - 36.0540081315666
+      target_name: Lanzhou
+      target_lon_lat:
+      - 103.8343
+      - 36.0611
+      target_distance_km: 1.741348
+    Mandarin:
+      index: 139
+      area: 北京官话
+      slice: 京师片
+      slices: 系属不明
+      coordinate_lon_lat:
+      - 116.11055844
+      - 39.9512065
+      target_name: Beijing standard Mandarin proxy
+      target_lon_lat:
+      - 116.4074
+      - 39.9042
+      target_distance_km: 25.845855
+    Northeastern:
+      index: 156
+      area: 东北官话
+      slice: 无
+      slices: 无
+      coordinate_lon_lat:
+      - 123.25
+      - 41.48
+      target_name: Shenyang
+      target_lon_lat:
+      - 123.4315
+      - 41.8057
+      target_distance_km: 39.231103
+    Southwestern:
+      index: 650
+      area: 西南官话
+      slice: 灌赤片
+      slices: 岷江小片
+      coordinate_lon_lat:
+      - 104.016666666667
+      - 30.4416666666667
+      target_name: Chengdu
+      target_lon_lat:
+      - 104.0668
+      - 30.5728
+      target_distance_km: 15.352008
+    Zhongyuan:
+      index: 1035
+      area: 中原官话
+      slice: 关中片
+      slices: 东府小片
+      coordinate_lon_lat:
+      - 108.7317535728
+      - 34.340067501
+      target_name: Xi'an
+      target_lon_lat:
+      - 108.9398
+      - 34.3416
+      target_distance_km: 19.102203
+  source_commit: 820b9d15a74cbee82109f0bf54cf791fe16596ef
+  source_url: https://github.com/YiYang-github/Sinitic_Data/tree/820b9d15a74cbee82109f0bf54cf791fe16596ef
+  source_accessed: 2026-09-04
+  upstream_license: not_specified
+  source_archive_sha256: 020f399824a9e4073f4092078099b5c9b6a995f1ef7d6eae6887f6b1250923c5
+  source_commit_archive_sha256: 621c8bce1fc49e5bc8e05103c810d675447c6d43d572bac3334bdff385a74692
+  redistribution:
+    status: not_redistributed
+    reason: upstream_license_not_specified
+    public_route: obtain_the_pinned_upstream_commit_and_rebuild_locally
+  derived_matrix_sha256:
+    city_nearest: 6aa0375f7c028a7b89471225f5327c66b919b79bc1c850f0e27128835465bb2e
+    overall: 463f787aa316b3750f806d16157d822e55080fbdfb8f8ca8d393efaa07c5ddde
+    subgroup_aggregate: 24e4cf95cac3a3820fe8c876476f22e9911cfde4834851190a5d30b3c45972e0
+    subgroup_medoid: 4f8bdc1f23257e889c56d4f52a0b1ff7b049265417cedaab5c9e77c0a18ed746

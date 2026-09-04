@@ -1,0 +1,40 @@
+{
+  "schema": "reference-matrices-audit-v1",
+  "status": "passed",
+  "validations": [
+    {
+      "schema": "reference-matrix-validation-v1",
+      "name": "taxonomy_mandarin_subgroup",
+      "status": "passed",
+      "label_count": 9,
+      "shape": [
+        9,
+        9
+      ],
+      "missing_labels": [],
+      "finite": true,
+      "symmetric": true,
+      "diagonal_zero": true,
+      "maximum": 1.0
+    },
+    {
+      "schema": "reference-matrix-validation-v1",
+      "name": "sinitic_data4_overall_distance",
+      "status": "passed",
+      "label_count": 9,
+      "shape": [
+        9,
+        9
+      ],
+      "missing_labels": [],
+      "finite": true,
+      "symmetric": true,
+      "diagonal_zero": true,
+      "maximum": 0.6733844637626939
+    }
+  ],
+  "taxonomy_definition": "binary Mandarin-subgroup proxy with Beijing-Mandarin fixed to zero",
+  "continuous_definition": "Sinitic_Data Data4 overall-distance values for mapped subgroup representatives",
+  "provenance_file": "results/provenance/reference_matrices.yaml",
+  "source_archive_hash_recorded": true
+}

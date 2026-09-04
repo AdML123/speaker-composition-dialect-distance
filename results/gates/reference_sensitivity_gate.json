@@ -1,0 +1,9 @@
+{
+  "schema": "reference-sensitivity-gate-v1",
+  "status": "passed",
+  "efficacy_across_references_supported": true,
+  "semantic_specificity_across_references_supported": false,
+  "cross_loss_increment_architecture_robust": false,
+  "linear_b3_strongest_across_references": true,
+  "selected_wording": "Trainable projection benefits persisted across both references. The linear pair-only head was strongest, and semantic controls plus the linear architecture blocked a general cross-loss mechanism claim."
+}

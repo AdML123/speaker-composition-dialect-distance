@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+title: Speaker-Composition Sensitivity of Frozen-Embedding Dialect Distance
+message: Please cite the archived software record and the IEEE Signal Processing Letters article when available.
+type: software
+version: 1.0.0
+date-released: 2026-09-04
+repository-code: https://github.com/AdML123/speaker-composition-dialect-distance
+url: https://doi.org/10.5281/zenodo.22306303
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22306303
+    description: Archived software and aggregate evidence record
+authors:
+  - family-names: Zhang
+    given-names: Yuefei
+    orcid: https://orcid.org/0009-0007-5653-393X
+  - family-names: Xu
+    given-names: Ying
+    orcid: https://orcid.org/0009-0003-2744-8462
+  - family-names: Tao
+    given-names: Xiaoying
+    orcid: https://orcid.org/0009-0009-9231-2629
+keywords:
+  - speech representation
+  - dialect distance
+  - speaker composition
+  - metric calibration
+license: MIT

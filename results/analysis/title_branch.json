@@ -1,0 +1,11 @@
+{
+  "schema": "title-branch-v1",
+  "selected_title": "Speaker-Composition Sensitivity of Frozen-Embedding Dialect Distance",
+  "alternative_title": "Testing Speaker Composition Effects in Frozen Speech Embeddings for Dialect Distance",
+  "decision_gate": "results/gates/speaker_effect_clustered_gate.json",
+  "decision_status": "neutral_association_title_selected",
+  "decision_date": "2026-09-04",
+  "reason": "All three extractors pass the positive clustered A/B contrast gate, but exact transcript and discourse matching are unavailable at the required scale; the title therefore names sensitivity without asserting exclusive speaker causality.",
+  "matching_mode": "condition_aware",
+  "exact_content_boundary": "Exact-content support is infeasible at the requested scale and is reported as a capacity boundary."
+}

@@ -1,0 +1,137 @@
+{
+  "schema": "reference-matrix-v1",
+  "name": "taxonomy_mandarin_subgroup",
+  "labels": [
+    "Beijing",
+    "Ji-Lu",
+    "Jiang-Huai",
+    "Jiao-Liao",
+    "Lan-Yin",
+    "Mandarin",
+    "Northeastern",
+    "Southwestern",
+    "Zhongyuan"
+  ],
+  "distance_scale": "0=same Mandarin subgroup proxy, 1=different Mandarin subgroup inside Mandarin macrogenus",
+  "source": "Language Atlas of China 2012 Mandarin subgroup taxonomy, as operationalized for KeSpeech labels",
+  "coverage": {
+    "status": "complete",
+    "labels": [
+      "Beijing",
+      "Ji-Lu",
+      "Jiang-Huai",
+      "Jiao-Liao",
+      "Lan-Yin",
+      "Mandarin",
+      "Northeastern",
+      "Southwestern",
+      "Zhongyuan"
+    ],
+    "missing_labels": []
+  },
+  "notes": [
+    "All KeSpeech labels are Mandarin-family labels, so this reference is intentionally low-resolution.",
+    "Mandarin is treated as a Beijing-standard proxy; therefore Beijing-Mandarin taxonomy distance is 0."
+  ],
+  "matrix": {
+    "Beijing": {
+      "Beijing": 0.0,
+      "Ji-Lu": 1.0,
+      "Jiang-Huai": 1.0,
+      "Jiao-Liao": 1.0,
+      "Lan-Yin": 1.0,
+      "Mandarin": 0.0,
+      "Northeastern": 1.0,
+      "Southwestern": 1.0,
+      "Zhongyuan": 1.0
+    },
+    "Ji-Lu": {
+      "Beijing": 1.0,
+      "Ji-Lu": 0.0,
+      "Jiang-Huai": 1.0,
+      "Jiao-Liao": 1.0,
+      "Lan-Yin": 1.0,
+      "Mandarin": 1.0,
+      "Northeastern": 1.0,
+      "Southwestern": 1.0,
+      "Zhongyuan": 1.0
+    },
+    "Jiang-Huai": {
+      "Beijing": 1.0,
+      "Ji-Lu": 1.0,
+      "Jiang-Huai": 0.0,
+      "Jiao-Liao": 1.0,
+      "Lan-Yin": 1.0,
+      "Mandarin": 1.0,
+      "Northeastern": 1.0,
+      "Southwestern": 1.0,
+      "Zhongyuan": 1.0
+    },
+    "Jiao-Liao": {
+      "Beijing": 1.0,
+      "Ji-Lu": 1.0,
+      "Jiang-Huai": 1.0,
+      "Jiao-Liao": 0.0,
+      "Lan-Yin": 1.0,
+      "Mandarin": 1.0,
+      "Northeastern": 1.0,
+      "Southwestern": 1.0,
+      "Zhongyuan": 1.0
+    },
+    "Lan-Yin": {
+      "Beijing": 1.0,
+      "Ji-Lu": 1.0,
+      "Jiang-Huai": 1.0,
+      "Jiao-Liao": 1.0,
+      "Lan-Yin": 0.0,
+      "Mandarin": 1.0,
+      "Northeastern": 1.0,
+      "Southwestern": 1.0,
+      "Zhongyuan": 1.0
+    },
+    "Mandarin": {
+      "Beijing": 0.0,
+      "Ji-Lu": 1.0,
+      "Jiang-Huai": 1.0,
+      "Jiao-Liao": 1.0,
+      "Lan-Yin": 1.0,
+      "Mandarin": 0.0,
+      "Northeastern": 1.0,
+      "Southwestern": 1.0,
+      "Zhongyuan": 1.0
+    },
+    "Northeastern": {
+      "Beijing": 1.0,
+      "Ji-Lu": 1.0,
+      "Jiang-Huai": 1.0,
+      "Jiao-Liao": 1.0,
+      "Lan-Yin": 1.0,
+      "Mandarin": 1.0,
+      "Northeastern": 0.0,
+      "Southwestern": 1.0,
+      "Zhongyuan": 1.0
+    },
+    "Southwestern": {
+      "Beijing": 1.0,
+      "Ji-Lu": 1.0,
+      "Jiang-Huai": 1.0,
+      "Jiao-Liao": 1.0,
+      "Lan-Yin": 1.0,
+      "Mandarin": 1.0,
+      "Northeastern": 1.0,
+      "Southwestern": 0.0,
+      "Zhongyuan": 1.0
+    },
+    "Zhongyuan": {
+      "Beijing": 1.0,
+      "Ji-Lu": 1.0,
+      "Jiang-Huai": 1.0,
+      "Jiao-Liao": 1.0,
+      "Lan-Yin": 1.0,
+      "Mandarin": 1.0,
+      "Northeastern": 1.0,
+      "Southwestern": 1.0,
+      "Zhongyuan": 0.0
+    }
+  }
+}

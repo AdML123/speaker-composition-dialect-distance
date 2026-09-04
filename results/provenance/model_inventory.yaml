@@ -1,0 +1,30 @@
+schema: public-model-inventory-v1
+cache_root: MODEL_CACHE
+models:
+  extractors:
+    - name: wavlm_large
+      source: microsoft/wavlm-large
+      revision: 07d9d3d8576fd3d718ee7b16b2b6242e9610d9af
+      checkpoint_hash: 92063b9e2a29279a9fe4f7e6703f5eeece903c7b3e471aebf2d9997f24fcdc5b
+      dimension: 1024
+      license: MIT
+    - name: chinese_hubert_large
+      source: TencentGameMate/chinese-hubert-large
+      revision: 90cb660492214f687e60f5ca509b20edae6e75bd
+      checkpoint_hash: 482c19cd60877832995d790ed10dd1203b1f8c86ed7a69b4bd27f470fc27ee43
+      dimension: 1024
+      license: MIT
+    - name: chinese_wav2vec2_large
+      source: TencentGameMate/chinese-wav2vec2-large
+      revision: e3aa671ca0cfe7978171a8ebbcc4bdfecdfb2f95
+      checkpoint_hash: c8a5554a79c3bbbe76f2e43d3d4b4369c8c2abd5515e623192e0381d7e5e7b3f
+      dimension: 1024
+      license: MIT
+  speaker_proxy:
+    name: ecapa
+    source: speechbrain/spkrec-ecapa-voxceleb
+    revision: 0f99f2d
+    checkpoint: embedding_model.ckpt
+    checkpoint_hash: 0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2
+    dimension: 192
+    license: Apache-2.0

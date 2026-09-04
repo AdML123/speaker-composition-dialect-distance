@@ -1,0 +1,328 @@
+{
+  "schema": "matched-pair-audit-v1",
+  "matching_mode": "exact_content",
+  "seed": 20260829,
+  "record_count": 19723,
+  "group_limits": {
+    "A": 3123,
+    "B": 19235
+  },
+  "group_summary": {
+    "A": {
+      "requested": 3123,
+      "available": 10,
+      "sampled": 2,
+      "status": "partial"
+    },
+    "B": {
+      "requested": 19235,
+      "available": 5,
+      "sampled": 5,
+      "status": "partial"
+    }
+  },
+  "pair_count": 7,
+  "pairs": [
+    {
+      "pair_id": "A-000001",
+      "group": "A",
+      "split": "evaluation",
+      "dialect_labels": [
+        "Southwestern"
+      ],
+      "speaker_ids": [
+        "1008021"
+      ],
+      "content_ids": [
+        "3de16fad6feeb460e89a890330f79ba30d0344916cc1b9310aaa251c5629aaef",
+        "3de16fad6feeb460e89a890330f79ba30d0344916cc1b9310aaa251c5629aaef"
+      ],
+      "source_utterance_ids": [
+        "1008021_a3503da1",
+        "1008021_d53487c0"
+      ],
+      "utterance_ids": [
+        "1008021_a3503da1",
+        "1008021_d53487c0"
+      ],
+      "matched_stratum": "evaluation|Southwestern|phase1:Dialect|3de16fad6feeb460e89a890330f79ba30d0344916cc1b9310aaa251c5629aaef",
+      "recording_conditions": [
+        "phase1:Dialect",
+        "phase1:Dialect"
+      ],
+      "source_record_hashes": [
+        "50817a96dcaf3b601a69b83337264ea23cd4981493b98632a0da44dc9d23cb80",
+        "4aa2288e16701a3167fa8b2ee7334c8f91ae1bc486a291fd492edda37ffececa"
+      ],
+      "matched_fields": [
+        "content_id",
+        "dialect_label",
+        "recording_condition",
+        "split"
+      ]
+    },
+    {
+      "pair_id": "A-000002",
+      "group": "A",
+      "split": "evaluation",
+      "dialect_labels": [
+        "Southwestern"
+      ],
+      "speaker_ids": [
+        "1008021"
+      ],
+      "content_ids": [
+        "3de16fad6feeb460e89a890330f79ba30d0344916cc1b9310aaa251c5629aaef",
+        "3de16fad6feeb460e89a890330f79ba30d0344916cc1b9310aaa251c5629aaef"
+      ],
+      "source_utterance_ids": [
+        "1008021_28a0b4d0",
+        "1008021_fa38496d"
+      ],
+      "utterance_ids": [
+        "1008021_28a0b4d0",
+        "1008021_fa38496d"
+      ],
+      "matched_stratum": "evaluation|Southwestern|phase1:Dialect|3de16fad6feeb460e89a890330f79ba30d0344916cc1b9310aaa251c5629aaef",
+      "recording_conditions": [
+        "phase1:Dialect",
+        "phase1:Dialect"
+      ],
+      "source_record_hashes": [
+        "f20516884e37a7a722889cb1c86b48de452fa3a6b4af75de6f77eede88ecab72",
+        "a82a27599d6591507a0121191adcb5bb0a45a429b54f8be89ba6c4fb1574c738"
+      ],
+      "matched_fields": [
+        "content_id",
+        "dialect_label",
+        "recording_condition",
+        "split"
+      ]
+    },
+    {
+      "pair_id": "B-000001",
+      "group": "B",
+      "split": "evaluation",
+      "dialect_labels": [
+        "Ji-Lu"
+      ],
+      "speaker_ids": [
+        "1004817",
+        "1015298"
+      ],
+      "content_ids": [
+        "36bc02c468256585b2331123043b7330cf2f4b4b18e8176c6cf691910e881e92",
+        "36bc02c468256585b2331123043b7330cf2f4b4b18e8176c6cf691910e881e92"
+      ],
+      "source_utterance_ids": [
+        "1004817_4ee2f048",
+        "1015298_a10d8921"
+      ],
+      "utterance_ids": [
+        "1004817_4ee2f048",
+        "1015298_a10d8921"
+      ],
+      "matched_stratum": "evaluation|Ji-Lu|phase1:Dialect|36bc02c468256585b2331123043b7330cf2f4b4b18e8176c6cf691910e881e92",
+      "recording_conditions": [
+        "phase1:Dialect",
+        "phase1:Dialect"
+      ],
+      "source_record_hashes": [
+        "902b6024b32381b24e7ac3b998066993c5255207279ff2d370d3deab20525fb9",
+        "91dce9e2f961e2937a3d1d3237ca697efef4bdf0ad98ebd32d51efda3aff52c0"
+      ],
+      "matched_fields": [
+        "content_id",
+        "dialect_label",
+        "recording_condition",
+        "split"
+      ]
+    },
+    {
+      "pair_id": "B-000002",
+      "group": "B",
+      "split": "evaluation",
+      "dialect_labels": [
+        "Lan-Yin"
+      ],
+      "speaker_ids": [
+        "1002451",
+        "1019992"
+      ],
+      "content_ids": [
+        "2d95c66cd6d6ddfe510096aac6fa89d15a19fdb0070f6fb2b053bcca8a333f2b",
+        "2d95c66cd6d6ddfe510096aac6fa89d15a19fdb0070f6fb2b053bcca8a333f2b"
+      ],
+      "source_utterance_ids": [
+        "1002451_c97d8379",
+        "1019992_1257d283"
+      ],
+      "utterance_ids": [
+        "1002451_c97d8379",
+        "1019992_1257d283"
+      ],
+      "matched_stratum": "evaluation|Lan-Yin|phase1:Dialect|2d95c66cd6d6ddfe510096aac6fa89d15a19fdb0070f6fb2b053bcca8a333f2b",
+      "recording_conditions": [
+        "phase1:Dialect",
+        "phase1:Dialect"
+      ],
+      "source_record_hashes": [
+        "50a2361b44ad0dd3f28a51654bb5c09daa20c48d2db7a7f7304316508d5bf151",
+        "aef083d546f7d62f4cd707fe7a176d335b9535df81346404117a3de53b60951c"
+      ],
+      "matched_fields": [
+        "content_id",
+        "dialect_label",
+        "recording_condition",
+        "split"
+      ]
+    },
+    {
+      "pair_id": "B-000003",
+      "group": "B",
+      "split": "evaluation",
+      "dialect_labels": [
+        "Ji-Lu"
+      ],
+      "speaker_ids": [
+        "1020810",
+        "1028192"
+      ],
+      "content_ids": [
+        "ee1c8eb7c3f4e2f59951154ef9332b5912776d2e8c08f330f9747a882e05418f",
+        "ee1c8eb7c3f4e2f59951154ef9332b5912776d2e8c08f330f9747a882e05418f"
+      ],
+      "source_utterance_ids": [
+        "1020810_8023a33c",
+        "1028192_19fbeeb1"
+      ],
+      "utterance_ids": [
+        "1020810_8023a33c",
+        "1028192_19fbeeb1"
+      ],
+      "matched_stratum": "evaluation|Ji-Lu|phase1:Dialect|ee1c8eb7c3f4e2f59951154ef9332b5912776d2e8c08f330f9747a882e05418f",
+      "recording_conditions": [
+        "phase1:Dialect",
+        "phase1:Dialect"
+      ],
+      "source_record_hashes": [
+        "c7ce500b68dfec65ba819dfcb69161bbb3fc8c42704ea998ee1c744f6806ff4a",
+        "5c488aae290b33e2cebc88af1f43543c923b5396b7b6aefef830db3550e94e3d"
+      ],
+      "matched_fields": [
+        "content_id",
+        "dialect_label",
+        "recording_condition",
+        "split"
+      ]
+    },
+    {
+      "pair_id": "B-000004",
+      "group": "B",
+      "split": "evaluation",
+      "dialect_labels": [
+        "Southwestern"
+      ],
+      "speaker_ids": [
+        "1006876",
+        "1014777"
+      ],
+      "content_ids": [
+        "1fd2a3c716ac88c01e0a0169d3dae1ed4d86f27a27e0151e45aac102038cadd2",
+        "1fd2a3c716ac88c01e0a0169d3dae1ed4d86f27a27e0151e45aac102038cadd2"
+      ],
+      "source_utterance_ids": [
+        "1006876_8d06d9a2",
+        "1014777_0bed3137"
+      ],
+      "utterance_ids": [
+        "1006876_8d06d9a2",
+        "1014777_0bed3137"
+      ],
+      "matched_stratum": "evaluation|Southwestern|phase1:Dialect|1fd2a3c716ac88c01e0a0169d3dae1ed4d86f27a27e0151e45aac102038cadd2",
+      "recording_conditions": [
+        "phase1:Dialect",
+        "phase1:Dialect"
+      ],
+      "source_record_hashes": [
+        "c39a6e56bdf445c5d3dadbd93f2d55dd01261c597cc2bc80098aa8371e4ef678",
+        "67dc2c126e90e1e71f649d9b250e2a8baf17f082ba88a86a04c4704516322aeb"
+      ],
+      "matched_fields": [
+        "content_id",
+        "dialect_label",
+        "recording_condition",
+        "split"
+      ]
+    },
+    {
+      "pair_id": "B-000005",
+      "group": "B",
+      "split": "evaluation",
+      "dialect_labels": [
+        "Ji-Lu"
+      ],
+      "speaker_ids": [
+        "1008524",
+        "1028811"
+      ],
+      "content_ids": [
+        "bbd4ea321c6082bdd8c63c67773b5b09b6fecdcdbd05a1f649987067229dfe21",
+        "bbd4ea321c6082bdd8c63c67773b5b09b6fecdcdbd05a1f649987067229dfe21"
+      ],
+      "source_utterance_ids": [
+        "1008524_b326c545",
+        "1028811_1c4789d7"
+      ],
+      "utterance_ids": [
+        "1008524_b326c545",
+        "1028811_1c4789d7"
+      ],
+      "matched_stratum": "evaluation|Ji-Lu|phase1:Dialect|bbd4ea321c6082bdd8c63c67773b5b09b6fecdcdbd05a1f649987067229dfe21",
+      "recording_conditions": [
+        "phase1:Dialect",
+        "phase1:Dialect"
+      ],
+      "source_record_hashes": [
+        "8b198502a1929fb84fb143cc05810eedfb017daf0c81f1fd1fb08059e55b6e30",
+        "18e5110bbed1d5f227f70dc01979babe05aa2d920bf273a380209c0be481fa33"
+      ],
+      "matched_fields": [
+        "content_id",
+        "dialect_label",
+        "recording_condition",
+        "split"
+      ]
+    }
+  ],
+  "exclusions": [
+    {
+      "group": "A",
+      "reason": "insufficient_nonoverlapping_capacity",
+      "requested": 3123,
+      "available": 10,
+      "sampled": 2
+    },
+    {
+      "group": "B",
+      "reason": "insufficient_nonoverlapping_capacity",
+      "requested": 19235,
+      "available": 5,
+      "sampled": 5
+    }
+  ],
+  "audit": {
+    "matching_fields": [
+      "split",
+      "dialect_label",
+      "recording_condition",
+      "content_id"
+    ],
+    "content_cluster_count": 19060,
+    "speaker_count": 1999,
+    "dialect_count": 9,
+    "stratum_count": 19714,
+    "raw_transcripts_in_output": false
+  },
+  "status": "passed"
+}

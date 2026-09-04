@@ -1,0 +1,11 @@
+{
+  "schema": "speaker-dialect-variance-gate-v1",
+  "status": "failed",
+  "identifiability": {
+    "all_speaker_dialect_cells_repeated": false,
+    "dialect_not_fully_aliased_with_condition": true
+  },
+  "reason": "speaker-by-dialect interaction cannot be separated from utterance residuals in singleton cells",
+  "selected_wording": "factorial bookkeeping notation",
+  "variance_components_reported": false
+}

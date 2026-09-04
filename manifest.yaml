@@ -1,0 +1,74 @@
+schema: code-release-manifest-v3
+title: Speaker-Composition Sensitivity of Frozen-Embedding Dialect Distance
+status: publication_authorized_pending_external_verification
+publication:
+  github_owner_repository: AdML123/speaker-composition-dialect-distance
+  visibility: public
+  default_branch: main
+  release_tag: v1.0.0
+  zenodo_mode: publish_now
+  github_release_url: https://github.com/AdML123/speaker-composition-dialect-distance/releases/tag/v1.0.0
+  zenodo_doi: 10.5281/zenodo.22306303
+scope:
+  experimental_corpus: KeSpeech
+  trainable_correction_encoder: chinese_hubert_large
+  frozen_contrast_encoders:
+    - chinese_hubert_large
+    - chinese_wav2vec2_large
+    - wavlm_large
+  primary_estimand: pair_weighted_condition_matched_speaker_composition_association
+  sensitivity_estimands:
+    - speaker_weighted
+    - dialect_relation_weighted
+    - matched_stratum_weighted
+  mechanism_classification: unresolved_within_prespecified_probes
+allowed_classes:
+  - source_code
+  - tests
+  - configuration
+  - sanitized_pair_manifests
+  - provenance_records
+  - locked_report_json
+  - author_created_reference_matrix
+  - reproduction_documentation
+excluded_classes:
+  - raw_audio
+  - transcript_text
+  - dataset_archives
+  - extracted_embeddings
+  - model_checkpoints
+  - credentials
+  - local_caches
+  - private_paths
+  - third_party_reference_matrices
+  - manuscript_source
+  - manuscript_pdf
+  - latex_or_tikz_source
+primary_evidence:
+  - results/pairs/kespeech_matched_strata_summary.json
+  - results/analysis/speaker_effect_dyadic_sensitivity.json
+  - results/analysis/estimand_weighting_sensitivity.json
+  - results/analysis/reference_representative_sensitivity.json
+  - results/analysis/architecture_cross_loss_factorial.json
+  - results/analysis/metric_baseline_and_ranking.json
+  - results/analysis/revision_endpoint_registry.json
+  - results/gates/matched_design_disclosure_gate.json
+  - results/gates/estimand_weighting_gate.json
+  - results/gates/reference_representative_gate.json
+  - results/gates/architecture_factorial_gate.json
+  - results/gates/practical_consequence_gate.json
+  - results/gates/statistical_semantics_gate.json
+data_route:
+  kespeech_project: https://github.com/KeSpeech/KeSpeech
+  kespeech_license: https://github.com/KeSpeech/KeSpeech/blob/main/dataset_license.md
+  dataset_doi: none_located
+  sinitic_data_commit: 820b9d15a74cbee82109f0bf54cf791fe16596ef
+  sinitic_data_license: not_specified_by_upstream
+  sinitic_derived_matrices: not_redistributed_rebuild_locally
+  derived_release_doi: 10.5281/zenodo.22306303
+verification:
+  public_tests:
+    command: python -m pytest tests -q
+    result: 226_passed_3_dependency_warnings
+  private_path_and_secret_scan: passed_zero_matches
+  checksum_algorithm: SHA-256

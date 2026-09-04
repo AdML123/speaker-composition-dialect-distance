@@ -1,0 +1,7 @@
+{
+  "schema": "reference-matrices-gate-v1",
+  "status": "passed",
+  "matrix_count": 2,
+  "both_9_by_9": true,
+  "sensitivity_result_required": true
+}

@@ -1,0 +1,127 @@
+{
+  "schema": "projection-seed-sweep-v1",
+  "status": "evaluated",
+  "model_name": "chinese_hubert_large",
+  "reference": "sincomp",
+  "selected": {
+    "lambda_cross": 0.25,
+    "lambda_dialect": 0.1,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.001,
+    "fixed_epochs": 29,
+    "head_kind": "linear",
+    "selection_unit": "calibration_speaker_folds"
+  },
+  "pair_count": 4000,
+  "calibration_pair_count": 3123,
+  "cross_pool_count": 14821,
+  "common_randomness": "same seed, initialization, pair batches, cross batches, optimizer, and evaluation pairs within each B3/B4 contrast",
+  "seed_results": [
+    {
+      "seed": 20260829,
+      "b3_mae": 0.35392585836335855,
+      "b4_mae": 0.3548078398874485,
+      "b3_gain": 0.09910933105506865,
+      "b4_gain": 0.09686431587333322,
+      "mae_delta_b3_minus_b4": -0.0008819815240899698,
+      "selected_epoch": 29,
+      "schedule_digest": "bda5bd386bdc0ef3828a12ad2ada1ac3c06986041d7c736c126dc0bd37a326da"
+    },
+    {
+      "seed": 20260830,
+      "b3_mae": 0.35787669386225157,
+      "b4_mae": 0.3587689480816705,
+      "b3_gain": 0.08905278742768839,
+      "b4_gain": 0.08678162390118509,
+      "mae_delta_b3_minus_b4": -0.0008922542194189087,
+      "selected_epoch": 29,
+      "schedule_digest": "1a8b26d763e47f40a207b10ef9110ee4701aefb4edd5dcf1ea0281ee3f149ab2"
+    },
+    {
+      "seed": 20260831,
+      "b3_mae": 0.35734574576070544,
+      "b4_mae": 0.3582221748475097,
+      "b3_gain": 0.09040427441026955,
+      "b4_gain": 0.08817339252459716,
+      "mae_delta_b3_minus_b4": -0.0008764290868042424,
+      "selected_epoch": 29,
+      "schedule_digest": "7427e5f1463808f281cbf1eb7302e798968ee46e3a16574956b26a34bf84adc2"
+    },
+    {
+      "seed": 20260901,
+      "b3_mae": 0.35644798982504633,
+      "b4_mae": 0.3573871536011095,
+      "b3_gain": 0.09268944212637036,
+      "b4_gain": 0.09029887398201689,
+      "mae_delta_b3_minus_b4": -0.0009391637760631788,
+      "selected_epoch": 29,
+      "schedule_digest": "e78a207e860d12e34f97707d41434f2d0597c98a7c99fa9b6beb779e4338e7ba"
+    },
+    {
+      "seed": 20260902,
+      "b3_mae": 0.35599052172479856,
+      "b4_mae": 0.3571056595154269,
+      "b3_gain": 0.0938538914965265,
+      "b4_gain": 0.09101539522272913,
+      "mae_delta_b3_minus_b4": -0.0011151377906283289,
+      "selected_epoch": 29,
+      "schedule_digest": "37a4c36339b642279d7faa90b70ac2a10354d84fdc219571118eae39ffd6062c"
+    }
+  ],
+  "distribution": {
+    "seed_count": 5,
+    "seeds": [
+      20260829,
+      20260830,
+      20260831,
+      20260901,
+      20260902
+    ],
+    "b3_mae": {
+      "median": 0.35644798982504633,
+      "iqr": 0.0013552240359068768,
+      "minimum": 0.35392585836335855,
+      "maximum": 0.35787669386225157
+    },
+    "b4_mae": {
+      "median": 0.3573871536011095,
+      "iqr": 0.0011165153320827903,
+      "minimum": 0.3548078398874485,
+      "maximum": 0.3587689480816705
+    },
+    "b3_gain": {
+      "median": 0.09268944212637036,
+      "iqr": 0.003449617086256948,
+      "minimum": 0.08905278742768839,
+      "maximum": 0.09910933105506865
+    },
+    "b4_gain": {
+      "median": 0.09029887398201689,
+      "iqr": 0.002842002698131965,
+      "minimum": 0.08678162390118509,
+      "maximum": 0.09686431587333322
+    },
+    "b3_minus_b4_mae": {
+      "median": -0.0008922542194189087,
+      "iqr": 5.718225197320903e-05,
+      "minimum": -0.0011151377906283289,
+      "maximum": -0.0008764290868042424
+    },
+    "all_b4_better_than_b3": false
+  },
+  "clustered_b3_minus_b4": {
+    "schema": "clustered-paired-bootstrap-v1",
+    "observed_delta": -0.0013002478161355806,
+    "ci": {
+      "lower": -0.0018524411451692766,
+      "upper": -0.0007307959485252686,
+      "confidence_level": 0.95
+    },
+    "bootstrap_replicates": 1000,
+    "seed": 20260829,
+    "resampling_unit": "speaker_cluster_within_matched_stratum",
+    "estimand": "equal speaker-cluster means within stratum, then equal stratum means",
+    "nested_utterance_sampling": true
+  },
+  "passed": false
+}

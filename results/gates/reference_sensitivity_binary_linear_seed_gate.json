@@ -1,0 +1,71 @@
+{
+  "schema": "projection-seed-sweep-gate-v1",
+  "status": "failed",
+  "model_name": "chinese_hubert_large",
+  "reference": "taxonomy",
+  "selected": {
+    "lambda_cross": 1.0,
+    "lambda_dialect": 0.1,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.001,
+    "fixed_epochs": 28,
+    "head_kind": "linear",
+    "selection_unit": "calibration_speaker_folds"
+  },
+  "distribution": {
+    "seed_count": 5,
+    "seeds": [
+      20260829,
+      20260830,
+      20260831,
+      20260901,
+      20260902
+    ],
+    "b3_mae": {
+      "median": 0.4352823474227516,
+      "iqr": 0.0012654378907778763,
+      "minimum": 0.4311411275948559,
+      "maximum": 0.4363567110451519
+    },
+    "b4_mae": {
+      "median": 0.43883127440177977,
+      "iqr": 0.001556361443497245,
+      "minimum": 0.4334388333476196,
+      "maximum": 0.4390806780595112
+    },
+    "b3_gain": {
+      "median": 0.10493759307035345,
+      "iqr": 0.002602094688759757,
+      "minimum": 0.10272840058764224,
+      "maximum": 0.11345310078328438
+    },
+    "b4_gain": {
+      "median": 0.09764000532604407,
+      "iqr": 0.003200314986162772,
+      "minimum": 0.0971271615603645,
+      "maximum": 0.1087283742841245
+    },
+    "b3_minus_b4_mae": {
+      "median": -0.002824448711942318,
+      "iqr": 0.0006514076125883617,
+      "minimum": -0.0037877319322049963,
+      "maximum": -0.0022977057527637235
+    },
+    "all_b4_better_than_b3": false
+  },
+  "clustered_b3_minus_b4": {
+    "schema": "clustered-paired-bootstrap-v1",
+    "observed_delta": -0.003836070833551339,
+    "ci": {
+      "lower": -0.005902421810378383,
+      "upper": -0.0018878652871757856,
+      "confidence_level": 0.95
+    },
+    "bootstrap_replicates": 1000,
+    "seed": 20260829,
+    "resampling_unit": "speaker_cluster_within_matched_stratum",
+    "estimand": "equal speaker-cluster means within stratum, then equal stratum means",
+    "nested_utterance_sampling": true
+  },
+  "common_randomness": "same seed, initialization, pair batches, cross batches, optimizer, and evaluation pairs within each B3/B4 contrast"
+}

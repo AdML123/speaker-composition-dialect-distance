@@ -1,0 +1,32 @@
+{
+  "schema": "statistical-semantics-gate-v1",
+  "status": "passed",
+  "declaration_status": "revision_time_declared_not_preregistered",
+  "gates": {
+    "G2": {
+      "status": "passed",
+      "selected_wording": "The HuBERT association and linear-correction direction survive the declared dependence and weighting analyses.",
+      "failure_wording": "A reversed or nonpositive clustered result makes the pair-weighted conclusion weighting-dependent."
+    },
+    "G3": {
+      "status": "passed",
+      "selected_wording": "Linear-correction direction is stable across the city-nearest, subgroup-medoid, and subgroup-aggregate constructions.",
+      "failure_wording": "The continuous-reference result is limited to the named construction."
+    },
+    "G4": {
+      "status": "passed",
+      "selected_wording": "The cross-loss increment differs between the linear and parameter-matched multilayer projections under both references.",
+      "failure_wording": "The added-loss result is described as capacity- or optimization-contingent."
+    },
+    "G5": {
+      "status": "passed",
+      "selected_wording": "Pair-only multilayer projections improved all three operational relation-order measures while reducing mean absolute error under both references; the lower-error linear map did not improve ordering.",
+      "failure_wording": "the correction results are limited to mean absolute error; no practical ordering claim is made"
+    },
+    "G6": {
+      "status": "passed",
+      "selected_wording": "Primary, supporting, confirmatory, and exploratory result families follow the revision-time endpoint registry.",
+      "failure_wording": "No manuscript is built until every result is assigned to the frozen statistical hierarchy."
+    }
+  }
+}

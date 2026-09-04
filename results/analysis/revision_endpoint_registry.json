@@ -1,0 +1,59 @@
+{
+  "schema": "revision-endpoint-registry-v1",
+  "declaration_status": "revision_time_declared_not_preregistered",
+  "primary": {
+    "phenomenon": {
+      "model": "chinese_hubert_large",
+      "estimand": "condition-aware same-dialect B-minus-A cosine-distance contrast",
+      "inference": "dyadic speaker bootstrap within matched strata"
+    },
+    "projection": {
+      "model": "chinese_hubert_large",
+      "reference": "taxonomy",
+      "contrast": "pair-weighted linear pair-only map versus frozen affine mean absolute error"
+    }
+  },
+  "supporting": {
+    "extractors": {
+      "models": [
+        "wavlm_large",
+        "chinese_wav2vec2_large"
+      ],
+      "adjustment": "holm",
+      "family": "two supporting speaker-composition contrasts"
+    }
+  },
+  "confirmatory": {
+    "continuous_reference_constructions": {
+      "variants": [
+        "city_nearest",
+        "subgroup_medoid",
+        "subgroup_aggregate"
+      ],
+      "reporting": "intervals and five-seed direction consistency"
+    },
+    "architecture_interactions": {
+      "references": [
+        "taxonomy",
+        "city_nearest"
+      ],
+      "adjustment": "holm",
+      "primary_lambda_cross": 0.5
+    }
+  },
+  "exploratory": {
+    "mechanism_probes": {
+      "members": [
+        "shuffled_pairing",
+        "target_permutation",
+        "target_prevalence",
+        "backbone_transfer",
+        "exposure_ratio",
+        "gradient_budget",
+        "regularization_placebo"
+      ],
+      "familywise_claim": false,
+      "reporting": "estimates and intervals without a global mechanism p-value"
+    }
+  }
+}

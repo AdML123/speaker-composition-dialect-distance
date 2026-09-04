@@ -1,0 +1,11 @@
+{
+  "schema": "correction-threshold-gate-v1",
+  "status": "passed",
+  "thresholds": [
+    0.03,
+    0.05,
+    0.1
+  ],
+  "all_five_branches_below_three_percent": true,
+  "selected_wording": "below the 5% operational threshold used in this analysis"
+}

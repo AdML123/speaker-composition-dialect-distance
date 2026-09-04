@@ -1,0 +1,12 @@
+{
+  "checks": {
+    "evaluation_A_no_within_group_utterance_reuse": true,
+    "evaluation_A_pair_count": true,
+    "evaluation_B_no_within_group_utterance_reuse": true,
+    "evaluation_B_pair_count": true,
+    "evaluation_stratum_count": true
+  },
+  "failure_action": "pause_before_downstream_analysis",
+  "schema": "matched-design-disclosure-gate-v1",
+  "status": "passed"
+}

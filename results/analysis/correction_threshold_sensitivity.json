@@ -1,0 +1,764 @@
+{
+  "schema": "correction-threshold-sensitivity-v1",
+  "operational_rationale": "3%, 5%, and 10% are reported as sensitivity thresholds, not inferential cutoffs or preregistered criteria",
+  "thresholds": [
+    0.03,
+    0.05,
+    0.1
+  ],
+  "rows": [
+    {
+      "method": "scalar_subtraction",
+      "model_name": "chinese_hubert_large",
+      "reference_name": "taxonomy_mandarin_subgroup",
+      "improvement_ratio": -0.0006244775169715558,
+      "ci": {
+        "lower": -0.0030479799272056297,
+        "upper": 0.001692883902447525,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "scalar_subtraction",
+      "model_name": "chinese_hubert_large",
+      "reference_name": "sinitic_data4_overall_distance",
+      "improvement_ratio": -0.0014104142230898337,
+      "ci": {
+        "lower": -0.0038807992583381667,
+        "upper": 0.0009765601738581487,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "scalar_subtraction",
+      "model_name": "chinese_wav2vec2_large",
+      "reference_name": "taxonomy_mandarin_subgroup",
+      "improvement_ratio": 0.0,
+      "ci": {
+        "lower": 0.0,
+        "upper": 0.0,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "scalar_subtraction",
+      "model_name": "chinese_wav2vec2_large",
+      "reference_name": "sinitic_data4_overall_distance",
+      "improvement_ratio": 0.0,
+      "ci": {
+        "lower": 0.0,
+        "upper": 0.0,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "scalar_subtraction",
+      "model_name": "wavlm_large",
+      "reference_name": "taxonomy_mandarin_subgroup",
+      "improvement_ratio": -0.001428059982863688,
+      "ci": {
+        "lower": -0.002261906785126291,
+        "upper": -0.0006040278709124623,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "scalar_subtraction",
+      "model_name": "wavlm_large",
+      "reference_name": "sinitic_data4_overall_distance",
+      "improvement_ratio": -0.001606812766979658,
+      "ci": {
+        "lower": -0.0024509763618854956,
+        "upper": -0.0007786364542463014,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "pca_removal",
+      "model_name": "chinese_hubert_large",
+      "reference_name": "taxonomy_mandarin_subgroup",
+      "improvement_ratio": -0.0017911879996388837,
+      "ci": {
+        "lower": -0.007971929268576695,
+        "upper": 0.0043051198688519,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "pca_removal",
+      "model_name": "chinese_hubert_large",
+      "reference_name": "sinitic_data4_overall_distance",
+      "improvement_ratio": -0.0035531676791747333,
+      "ci": {
+        "lower": -0.009671223609105686,
+        "upper": 0.0027701068911372344,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "pca_removal",
+      "model_name": "chinese_wav2vec2_large",
+      "reference_name": "taxonomy_mandarin_subgroup",
+      "improvement_ratio": -0.002673399209361211,
+      "ci": {
+        "lower": -0.013093347744397344,
+        "upper": 0.0066710484117525285,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "pca_removal",
+      "model_name": "chinese_wav2vec2_large",
+      "reference_name": "sinitic_data4_overall_distance",
+      "improvement_ratio": -0.006432590873239009,
+      "ci": {
+        "lower": -0.01747805546260242,
+        "upper": 0.003376460062291205,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "pca_removal",
+      "model_name": "wavlm_large",
+      "reference_name": "taxonomy_mandarin_subgroup",
+      "improvement_ratio": 0.0013314727366934209,
+      "ci": {
+        "lower": -0.0021473726632606003,
+        "upper": 0.004833684873053833,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "pca_removal",
+      "model_name": "wavlm_large",
+      "reference_name": "sinitic_data4_overall_distance",
+      "improvement_ratio": 0.001356586441001798,
+      "ci": {
+        "lower": -0.0022143507807385584,
+        "upper": 0.004898229870294939,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "speaker_mean_normalization",
+      "model_name": "chinese_hubert_large",
+      "reference_name": "taxonomy_mandarin_subgroup",
+      "improvement_ratio": 0.010834926333801169,
+      "ci": {
+        "lower": 0.002255808545221861,
+        "upper": 0.01930896980020325,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "speaker_mean_normalization",
+      "model_name": "chinese_hubert_large",
+      "reference_name": "sinitic_data4_overall_distance",
+      "improvement_ratio": 0.007654724472787707,
+      "ci": {
+        "lower": -0.0010351547702811274,
+        "upper": 0.016402645641681313,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "speaker_mean_normalization",
+      "model_name": "chinese_wav2vec2_large",
+      "reference_name": "taxonomy_mandarin_subgroup",
+      "improvement_ratio": 0.009912362294696603,
+      "ci": {
+        "lower": 0.005355042239605385,
+        "upper": 0.013828544392699094,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "speaker_mean_normalization",
+      "model_name": "chinese_wav2vec2_large",
+      "reference_name": "sinitic_data4_overall_distance",
+      "improvement_ratio": 0.009234688878281999,
+      "ci": {
+        "lower": 0.004836892979772896,
+        "upper": 0.013167338206792358,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "speaker_mean_normalization",
+      "model_name": "wavlm_large",
+      "reference_name": "taxonomy_mandarin_subgroup",
+      "improvement_ratio": 0.008802257826348197,
+      "ci": {
+        "lower": 0.0026455263421879447,
+        "upper": 0.014658640608734484,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "speaker_mean_normalization",
+      "model_name": "wavlm_large",
+      "reference_name": "sinitic_data4_overall_distance",
+      "improvement_ratio": 0.0066888354488396145,
+      "ci": {
+        "lower": 0.0004440308066988892,
+        "upper": 0.01264586059433222,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "ecapa_regression",
+      "model_name": "chinese_hubert_large",
+      "reference_name": "taxonomy_mandarin_subgroup",
+      "improvement_ratio": 0.021330753497457625,
+      "ci": {
+        "lower": 0.014318994611546449,
+        "upper": 0.028014795114133895,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "ecapa_regression",
+      "model_name": "chinese_hubert_large",
+      "reference_name": "sinitic_data4_overall_distance",
+      "improvement_ratio": 0.017772990782630244,
+      "ci": {
+        "lower": 0.010541620580549043,
+        "upper": 0.024308007139033562,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "ecapa_regression",
+      "model_name": "chinese_wav2vec2_large",
+      "reference_name": "taxonomy_mandarin_subgroup",
+      "improvement_ratio": 0.0032011965739195646,
+      "ci": {
+        "lower": -0.0020389553955227685,
+        "upper": 0.00761376905077168,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "ecapa_regression",
+      "model_name": "chinese_wav2vec2_large",
+      "reference_name": "sinitic_data4_overall_distance",
+      "improvement_ratio": 0.002068388787830847,
+      "ci": {
+        "lower": -0.0030788797162521185,
+        "upper": 0.0065140403045835515,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "ecapa_regression",
+      "model_name": "wavlm_large",
+      "reference_name": "taxonomy_mandarin_subgroup",
+      "improvement_ratio": 0.008313674805569733,
+      "ci": {
+        "lower": 0.0032133280084183217,
+        "upper": 0.013346751559950501,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "ecapa_regression",
+      "model_name": "wavlm_large",
+      "reference_name": "sinitic_data4_overall_distance",
+      "improvement_ratio": 0.006314914430524106,
+      "ci": {
+        "lower": 0.0011791196345051986,
+        "upper": 0.01122358706688744,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "rank1_dialect_modulation",
+      "model_name": "chinese_hubert_large",
+      "reference_name": "taxonomy_mandarin_subgroup",
+      "improvement_ratio": 0.02672589929164878,
+      "ci": {
+        "lower": 0.020791863887255187,
+        "upper": 0.03225386662415973,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "rank1_dialect_modulation",
+      "model_name": "chinese_hubert_large",
+      "reference_name": "sinitic_data4_overall_distance",
+      "improvement_ratio": 0.02452325909230006,
+      "ci": {
+        "lower": 0.01833249159370079,
+        "upper": 0.030070052382605943,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "rank1_dialect_modulation",
+      "model_name": "chinese_wav2vec2_large",
+      "reference_name": "taxonomy_mandarin_subgroup",
+      "improvement_ratio": 0.005045121305258183,
+      "ci": {
+        "lower": -0.0009592777758489482,
+        "upper": 0.010125198535228029,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "rank1_dialect_modulation",
+      "model_name": "chinese_wav2vec2_large",
+      "reference_name": "sinitic_data4_overall_distance",
+      "improvement_ratio": 0.0036359118249484333,
+      "ci": {
+        "lower": -0.002258039567406673,
+        "upper": 0.008739273426062838,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "rank1_dialect_modulation",
+      "model_name": "wavlm_large",
+      "reference_name": "taxonomy_mandarin_subgroup",
+      "improvement_ratio": 0.009675981454037757,
+      "ci": {
+        "lower": 0.004423383090905427,
+        "upper": 0.015070474962521391,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "method": "rank1_dialect_modulation",
+      "model_name": "wavlm_large",
+      "reference_name": "sinitic_data4_overall_distance",
+      "improvement_ratio": 0.007774479950851035,
+      "ci": {
+        "lower": 0.002352400876746103,
+        "upper": 0.012932597345299918,
+        "confidence_level": 0.95
+      },
+      "thresholds": [
+        {
+          "threshold": 0.03,
+          "passed": false
+        },
+        {
+          "threshold": 0.05,
+          "passed": false
+        },
+        {
+          "threshold": 0.1,
+          "passed": false
+        }
+      ]
+    }
+  ],
+  "all_below_three_percent": true,
+  "status": "passed",
+  "decision": "All five branches remain below 3%, 5%, and 10% operational thresholds."
+}

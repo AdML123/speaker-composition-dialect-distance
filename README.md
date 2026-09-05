@@ -40,7 +40,7 @@ KeSpeech must be obtained separately under its provider terms.
 - Dataset paper: https://datasets-benchmarks-proceedings.neurips.cc/paper_files/paper/2021/hash/0336dcbab05b9d5ad24f4333c7658a0e-Abstract-round2.html
 
 No official KeSpeech dataset DOI was located in the provider or proceedings
-records. DOI `10.5281/zenodo.22342256` identifies only this derived software
+records. DOI `10.5281/zenodo.22375525` identifies only this derived software
 and data package.
 
 The continuous reference uses Data4 from Sinitic_Data commit

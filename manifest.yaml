@@ -8,7 +8,7 @@ publication:
   release_tag: v1.1.0
   zenodo_mode: publish_now
   github_release_url: https://github.com/AdML123/speaker-composition-dialect-distance/releases/tag/v1.1.0
-  zenodo_doi: 10.5281/zenodo.22340177
+  zenodo_doi: 10.5281/zenodo.22341227
 scope:
   experimental_corpus: KeSpeech
   trainable_correction_encoder: chinese_hubert_large
@@ -65,7 +65,7 @@ data_route:
   sinitic_data_commit: 820b9d15a74cbee82109f0bf54cf791fe16596ef
   sinitic_data_license: not_specified_by_upstream
   sinitic_derived_matrices: not_redistributed_rebuild_locally
-  derived_release_doi: 10.5281/zenodo.22340177
+  derived_release_doi: 10.5281/zenodo.22341227
 verification:
   public_tests:
     command: python -m pytest tests -q

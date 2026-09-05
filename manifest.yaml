@@ -5,9 +5,9 @@ publication:
   github_owner_repository: AdML123/speaker-composition-dialect-distance
   visibility: public
   default_branch: main
-  release_tag: v1.1.2
+  release_tag: v1.1.3
   zenodo_mode: publish_now
-  github_release_url: https://github.com/AdML123/speaker-composition-dialect-distance/releases/tag/v1.1.2
+  github_release_url: https://github.com/AdML123/speaker-composition-dialect-distance/releases/tag/v1.1.3
   zenodo_doi: pending_publication
 scope:
   experimental_corpus: KeSpeech

@@ -1,0 +1,122 @@
+{
+  "schema": "sparse-stratum-dual-endpoint-gate-v1",
+  "status": "passed_with_declared_boundaries",
+  "declaration_status": "revision_time_declared_not_preregistered",
+  "gates": {
+    "G1_sparse_stratum": {
+      "status": "passed",
+      "artifact": "results/analysis/speaker_effect_support_sensitivity.json",
+      "gate": "results/gates/speaker_effect_support_gate.json",
+      "claim": "overlap-pair-weighted matched metadata-condition association"
+    },
+    "G2_cross_arm_dependency": {
+      "status": "passed",
+      "artifact": "results/analysis/speaker_effect_dependency_sensitivity.json",
+      "gate": "results/gates/cross_arm_dependency_gate.json",
+      "claim": "utterance-block sensitivity retains encoder directions"
+    },
+    "G3_projection_manifest": {
+      "status": "passed",
+      "artifact": "results/pairs/kespeech_projection_evaluation_summary.json",
+      "gate": "results/gates/projection_evaluation_manifest_gate.json",
+      "claim": "4,000-pair projection manifest is separate and identity-locked"
+    },
+    "G4_frozen_scope": {
+      "status": "passed",
+      "artifact": "results/analysis/frozen_correction_scope_audit.json",
+      "gate": "results/gates/frozen_correction_scope_gate.json",
+      "claim": "five predefined post-extraction branches have explicit scopes"
+    },
+    "G5_mae_intervals": {
+      "status": "passed",
+      "artifact": "results/analysis/estimand_weighting_intervals.json",
+      "gate": "results/gates/estimand_weighting_gate.json",
+      "claim": "HuBERT linear-map direction across four declared MAE weightings"
+    },
+    "G6_ordering_intervals": {
+      "status": "passed",
+      "artifact": "results/analysis/relation_ranking_clustered.json",
+      "gate": "results/gates/practical_consequence_gate.json",
+      "claim": "secondary relation-ordering contrasts with a declared tie policy"
+    },
+    "G7_reference_provenance": {
+      "status": "passed",
+      "artifact": "results/provenance/reference_matrices.yaml",
+      "gate": "results/gates/reference_representative_gate.json",
+      "claim": "continuous targets are operational and construction-specific"
+    },
+    "G8_model_provenance": {
+      "status": "passed",
+      "artifact": "results/provenance/model_inventory.yaml",
+      "equivalence_artifact": "results/provenance/transformer_loader_equivalence.json",
+      "claim": "strict checkpoint loading and extraction provenance are recorded"
+    },
+    "G9_citation_provenance": {
+      "status": "passed",
+      "artifact": "results/references/citation_verification.json",
+      "claim": "the pinned repository and official Data4 source are distinct citations"
+    }
+  },
+  "source_artifacts": {
+    "speaker_effect_support": "results/analysis/speaker_effect_support_sensitivity.json",
+    "speaker_effect_support_gate": "results/gates/speaker_effect_support_gate.json",
+    "speaker_effect_dependency": "results/analysis/speaker_effect_dependency_sensitivity.json",
+    "cross_arm_dependency_gate": "results/gates/cross_arm_dependency_gate.json",
+    "projection_summary": "results/pairs/kespeech_projection_evaluation_summary.json",
+    "projection_manifest_gate": "results/gates/projection_evaluation_manifest_gate.json",
+    "frozen_scope": "results/analysis/frozen_correction_scope_audit.json",
+    "frozen_scope_gate": "results/gates/frozen_correction_scope_gate.json",
+    "mae_intervals": "results/analysis/estimand_weighting_intervals.json",
+    "mae_intervals_gate": "results/gates/estimand_weighting_gate.json",
+    "ordering_intervals": "results/analysis/relation_ranking_clustered.json",
+    "ordering_intervals_gate": "results/gates/practical_consequence_gate.json",
+    "reference_provenance": "results/provenance/reference_matrices.yaml",
+    "reference_gate": "results/gates/reference_representative_gate.json",
+    "model_provenance": "results/provenance/model_inventory.yaml",
+    "loader_equivalence": "results/provenance/transformer_loader_equivalence.json",
+    "citation_provenance": "results/references/citation_verification.json"
+  },
+  "source_sha256": {
+    "speaker_effect_support": "56a5523fbdf904cd90d6835b218b484303939b253243fb19d448410903e14ffe",
+    "speaker_effect_support_gate": "b551c32d9cccfec821298d5ae8d174651aa2576ced7f8676aa5f505a03f1bb1a",
+    "speaker_effect_dependency": "480e07a3b91e3b167ce0c3119f448b82fe66e0fead12bb076f47dbcb00d0ebbc",
+    "cross_arm_dependency_gate": "bcc6d909e77d3dd863a0c7afda36f9428f26134c24f93c5897c8b708c3d605c4",
+    "projection_summary": "822d3d13aba4d83f94c7039cbe34febbcedaf925790f500bd399420f372e6898",
+    "projection_manifest_gate": "d24bdd7be8f404fb7fda603bf93f1506188790cd7e32dd902b5aa8eeb9d52af5",
+    "frozen_scope": "ad5b726147fab63a5f08df4c1c82b668dd76480db8f85d3a0d7eb63a903777d9",
+    "frozen_scope_gate": "99600fa6f93d2f2c31d0eeb6f0ec4672b723bc4d61dc6b5b3ca429274c107148",
+    "mae_intervals": "38faf8500360c36a66a1db0966adca8a801660908f6665c2d493179b6e9a1948",
+    "mae_intervals_gate": "09493dc165997d3d5cd14ef1e13707f1176830ae1a4bc673e94c258265c1b278",
+    "ordering_intervals": "1b69afa30f84f3c375cb38c2cd883f29e6b03fb39ac4df721fbf012abfb27931",
+    "ordering_intervals_gate": "58d2f3a598b34e50a889fdba45911110648af874fa490d08a8c03711dda2ff0b",
+    "reference_provenance": "0d7a0a76b25053b7822955e27fa409597464aa75b29039c10ebc05bdc77c0a3e",
+    "reference_gate": "5c0635aed04252bcb37628b68cbe8419fe9be2224125abb4dc9b0a14e2f9b672",
+    "model_provenance": "b5b8049c0550346273b631fe5c4b9a4564a496e219d0c40c29c6185b8e862cb2",
+    "loader_equivalence": "7705ffe920057eb9852a682cb34b7b83deeb940ee7b2b6d57b8401c7bfb261fa",
+    "citation_provenance": "6518ce3b0550d57c4460fb97ea77222291e5507e5dae677c77e215913c529b88"
+  },
+  "locked_input_verification": {
+    "status": "passed",
+    "protocol": "public_sanitized_inputs",
+    "checks": {
+      "results/pairs/kespeech_evaluation_matched.json": {
+        "expected_sha256": "05a50e05e788bf5aa5cd200ac4678d3f67d587c9bd9e85fe620d2cccdfa70dad",
+        "observed_sha256": "05a50e05e788bf5aa5cd200ac4678d3f67d587c9bd9e85fe620d2cccdfa70dad"
+      },
+      "results/pairs/kespeech_evaluation_1000.json": {
+        "expected_sha256": "59404e971b7b5c7a6e2b828be3fd935c9b09e2b9ed4db942b1ca4843dae5d18d",
+        "observed_sha256": "59404e971b7b5c7a6e2b828be3fd935c9b09e2b9ed4db942b1ca4843dae5d18d"
+      },
+      "results/pairs/kespeech_calibration_1000.json": {
+        "expected_sha256": "d8c787f23f7a7f6f0994ddca95e436ff66d1dd6265eb505cd2d42462894e238d",
+        "observed_sha256": "d8c787f23f7a7f6f0994ddca95e436ff66d1dd6265eb505cd2d42462894e238d"
+      },
+      "results/references/taxonomy_matrix.json": {
+        "expected_sha256": "9154e6ddc2fc9dc590703dc97a9be11ab8b6f7995aabeca0655a175d9102dc6b",
+        "observed_sha256": "9154e6ddc2fc9dc590703dc97a9be11ab8b6f7995aabeca0655a175d9102dc6b"
+      }
+    }
+  },
+  "boundary": "No scalar global winner, perceptual-ground-truth claim, identity-only causal claim, or cross-corpus transfer claim is authorized.",
+  "manuscript_status": "ready_to_submit"
+}

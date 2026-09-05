@@ -3,7 +3,12 @@ from pathlib import Path
 
 import torch
 
-from src.ecapa_embeddings import extract_ecapa_embeddings, run_ecapa_embeddings, run_ecapa_full_embeddings
+from src.ecapa_embeddings import (
+    _load_classifier,
+    extract_ecapa_embeddings,
+    run_ecapa_embeddings,
+    run_ecapa_full_embeddings,
+)
 from src.model_smoke import ModelSpec
 
 
@@ -11,6 +16,32 @@ class FakeClassifier:
     def encode_batch(self, waveform):
         scale = float(waveform.numel())
         return torch.tensor([[[scale, scale + 1.0]]], dtype=torch.float32)
+
+
+def test_load_classifier_pins_speechbrain_revision(monkeypatch, tmp_path):
+    captured = {}
+
+    def fake_from_hparams(**kwargs):
+        captured.update(kwargs)
+        return FakeClassifier()
+
+    monkeypatch.setattr(
+        "speechbrain.inference.speaker.EncoderClassifier.from_hparams",
+        fake_from_hparams,
+    )
+    spec = ModelSpec(
+        name="ecapa",
+        source="speechbrain/spkrec-ecapa-voxceleb",
+        revision="0f99f2d0ebe89ac095bcc5903c4dd8f72b367286",
+        provenance_record="prov.yaml",
+        dimension=192,
+        status="locked",
+        checkpoint="embedding_model.ckpt",
+        checkpoint_hash="hash",
+        cache_root=str(tmp_path),
+    )
+    _load_classifier(spec, torch.device("cpu"), tmp_path / "saved")
+    assert captured["fetch_config"].revision == spec.revision
 
 
 def test_extract_ecapa_embeddings_uses_injected_classifier(monkeypatch, tmp_path):

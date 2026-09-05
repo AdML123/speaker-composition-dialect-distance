@@ -1,0 +1,153 @@
+{
+  "annotated_projection_audit": {
+    "base_pair_identity_match": true,
+    "identity_mismatch_pair_ids": [],
+    "invalid_stratum_pair_ids": [],
+    "required_identity": "pair_id plus sorted source_utterance_ids",
+    "required_stratum_property": "contains every distinct dialect and metadata-condition endpoint token",
+    "symmetric_relation_strata": true
+  },
+  "annotated_projection_manifest": "results\\pairs\\kespeech_evaluation_1000_design_strata.json",
+  "annotated_projection_manifest_sha256": "6005bbf24a3ba1dfcba6c35f99c80ecbaaf83cb11fedb280cc48cd41cd2e8090",
+  "calibration_manifest": "results\\pairs\\kespeech_calibration_1000.json",
+  "calibration_speaker_count_in_pairs": 75,
+  "cross_group_utterance_id_sha256": "760fc0a552929ba32b4a044722c05704b06fb40c04c5e70f0aead0978778ef5e",
+  "cross_group_utterance_reuse_count": 2050,
+  "distinct_from_phenomenon_manifest": true,
+  "downstream_report_audit": [
+    {
+      "hash_locations": [
+        "/source_hashes/evaluation_pairs"
+      ],
+      "path": "results\\analysis\\architecture_cross_loss_factorial.json",
+      "reason": "expected_projection_manifest_hash_recorded",
+      "status": "verified"
+    },
+    {
+      "hash_locations": [
+        "/projection_sweep/pair_manifest_sha256",
+        "/projection_sweep/variants/0/pair_manifest_hash",
+        "/projection_sweep/variants/1/pair_manifest_hash",
+        "/projection_sweep/variants/2/pair_manifest_hash"
+      ],
+      "path": "results\\analysis\\reference_representative_sensitivity.json",
+      "reason": "expected_projection_manifest_hash_recorded",
+      "status": "verified"
+    },
+    {
+      "hash_locations": [
+        "/source_hashes/projection_manifest"
+      ],
+      "path": "results\\analysis\\estimand_weighting_intervals.json",
+      "reason": "expected_projection_manifest_hash_recorded",
+      "status": "verified"
+    },
+    {
+      "hash_locations": [
+        "/source_hashes/projection_manifest"
+      ],
+      "path": "results\\analysis\\relation_ranking_clustered.json",
+      "reason": "expected_projection_manifest_hash_recorded",
+      "status": "verified"
+    }
+  ],
+  "evaluation_calibration_speaker_overlap": [],
+  "evaluation_speaker_count": 1046,
+  "group_pair_counts": {
+    "A": 1000,
+    "B": 1000,
+    "C": 1000,
+    "D": 1000
+  },
+  "groups": {
+    "A": {
+      "dialect_label_count": 9,
+      "dialect_relation_count": 9,
+      "metadata_condition_count": 5,
+      "metadata_condition_relation_count": 11,
+      "pair_count": 1000,
+      "speaker_count": 215,
+      "utterance_count": 2000
+    },
+    "B": {
+      "dialect_label_count": 9,
+      "dialect_relation_count": 9,
+      "metadata_condition_count": 5,
+      "metadata_condition_relation_count": 10,
+      "pair_count": 1000,
+      "speaker_count": 244,
+      "utterance_count": 2000
+    },
+    "C": {
+      "dialect_label_count": 9,
+      "dialect_relation_count": 8,
+      "metadata_condition_count": 5,
+      "metadata_condition_relation_count": 4,
+      "pair_count": 1000,
+      "speaker_count": 1000,
+      "utterance_count": 2000
+    },
+    "D": {
+      "dialect_label_count": 9,
+      "dialect_relation_count": 36,
+      "metadata_condition_count": 5,
+      "metadata_condition_relation_count": 5,
+      "pair_count": 1000,
+      "speaker_count": 235,
+      "utterance_count": 2000
+    }
+  },
+  "invalidated_reports": [],
+  "invalidation_note": "Current downstream reports must record the locked projection-manifest hash. Weighting reports additionally require a symmetric design-stratum annotation. Superseded reports are not used for manuscript claims.",
+  "pair_count": 4000,
+  "pair_id_collision_audit": {
+    "different_utterance_identity_count": 2000,
+    "different_utterance_identity_pair_id_sha256": "c4993f87d28fa7a3100eeb86d89c710a194a1642da0d1c15b7a69e7b3c9b419f",
+    "required_join_identity": "pair_id plus sorted source_utterance_ids",
+    "safe_to_join_on_pair_id_alone": false,
+    "shared_pair_id_count": 2000
+  },
+  "phenomenon_manifest": "results\\pairs\\kespeech_evaluation_matched.json",
+  "phenomenon_manifest_sha256": "05a50e05e788bf5aa5cd200ac4678d3f67d587c9bd9e85fe620d2cccdfa70dad",
+  "projection_manifest": "results\\pairs\\kespeech_evaluation_1000.json",
+  "projection_manifest_sha256": "59404e971b7b5c7a6e2b828be3fd935c9b09e2b9ed4db942b1ca4843dae5d18d",
+  "protocol": "docs\\revision\\2026-09-04-sparse-stratum-dual-endpoint-protocol.yaml",
+  "protocol_sha256": "a56c56ba0fcd58d0585541f58d7e6df77a0607919d26fb3258ac8eaa154b7bef",
+  "sampling": {
+    "algorithm": "deterministic groupwise round-robin without within-group utterance reuse",
+    "implementation": "src.pair_sampling.sample_pairs",
+    "ordering": "recording_condition then utterance_id within sorted group strata",
+    "seed": 20260829,
+    "seed_role": "recorded protocol identifier; current deterministic selector does not randomize order"
+  },
+  "schema": "projection-evaluation-manifest-summary-v1",
+  "source_record_verification": {
+    "identity_fields": [
+      "utterance_id",
+      "speaker_id",
+      "dialect_label",
+      "split",
+      "recording_condition"
+    ],
+    "pair_source_identity_checked": 4000,
+    "status": "passed"
+  },
+  "source_records": "results\\provenance\\kespeech_manifest.json",
+  "status": "passed",
+  "symmetric_projection_audit": {
+    "base_pair_identity_match": true,
+    "identity_mismatch_pair_ids": [],
+    "invalid_stratum_pair_ids": [],
+    "required_identity": "pair_id plus sorted source_utterance_ids",
+    "required_stratum_property": "contains every distinct dialect and metadata-condition endpoint token",
+    "symmetric_relation_strata": true
+  },
+  "symmetric_projection_manifest": "results\\pairs\\kespeech_evaluation_1000_design_strata.json",
+  "symmetric_projection_manifest_sha256": "6005bbf24a3ba1dfcba6c35f99c80ecbaaf83cb11fedb280cc48cd41cd2e8090",
+  "within_group_utterance_reuse": {
+    "A": 0,
+    "B": 0,
+    "C": 0,
+    "D": 0
+  }
+}

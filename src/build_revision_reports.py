@@ -8,6 +8,8 @@ import json
 from pathlib import Path
 from typing import Any, Mapping, Sequence
 
+import yaml
+
 from .correction_gate import threshold_sensitivity
 from .cross_dialect_projection_head import build_training_examples
 from .estimand_sensitivity import WEIGHTINGS, dyadic_weighting_bootstrap
@@ -96,19 +98,68 @@ def build_correction_threshold_report(paths: Mapping[str, str]) -> dict[str, Any
 def build_endpoint_registry() -> dict[str, Any]:
     """Return the revision-time endpoint hierarchy fixed before final prose."""
     return {
-        "schema": "revision-endpoint-registry-v1",
+        "schema": "revision-endpoint-registry-v3",
         "declaration_status": "revision_time_declared_not_preregistered",
+        "experimental_objects": {
+            "phenomenon": {
+                "manifest": "results/pairs/kespeech_evaluation_matched.json",
+                "pair_count": 12980,
+                "estimand": "overlap_pair_weighted_stratum_median_B_minus_A",
+                "weight_formula": "n_A*n_B/(n_A+n_B)",
+                "mandatory_sensitivities": [
+                    "exclude_M-A",
+                    "leave_one_stratum_out",
+                    "legacy_equal_stratum_median",
+                    "pooled_pair_weighted",
+                    "support_qualified_equal_stratum",
+                ],
+            },
+            "projection": {
+                "manifest": "results/pairs/kespeech_evaluation_1000.json",
+                "pair_count": 4000,
+                "group_counts": {"A": 1000, "B": 1000, "C": 1000, "D": 1000},
+                "distinct_from_phenomenon_manifest": True,
+            },
+        },
         "primary": {
             "phenomenon": {
                 "model": "chinese_hubert_large",
                 "estimand": "condition-aware same-dialect B-minus-A cosine-distance contrast",
-                "inference": "dyadic speaker bootstrap within matched strata",
+                "aggregation": "overlap-pair-weighted stratum medians",
+                "inference": "global endpoint-speaker bootstrap with stratum recomputation",
             },
             "projection": {
                 "model": "chinese_hubert_large",
                 "reference": "taxonomy",
                 "contrast": "pair-weighted linear pair-only map versus frozen affine mean absolute error",
+                "endpoint": "pair_weighted_mae",
             },
+        },
+        "secondary": {
+            "projection": {
+                "endpoint": "relation_ordering",
+                "relations": 36,
+                "references": [
+                    "taxonomy",
+                    "city_nearest",
+                    "subgroup_medoid",
+                    "subgroup_aggregate",
+                ],
+                "methods": [
+                    "frozen_affine",
+                    "principal_component",
+                    "diagonal_metric",
+                    "linear",
+                    "matched_mlp",
+                    "wide_mlp",
+                ],
+                "metrics": ["spearman", "kendall_tau_b", "pairwise_order_accuracy"],
+                "tie_policy": {
+                    "reference_ties": "excluded_from_pairwise_accuracy",
+                    "predicted_ties": "half_credit",
+                },
+                "global_winner": False,
+            }
         },
         "supporting": {
             "extractors": {
@@ -126,6 +177,7 @@ def build_endpoint_registry() -> dict[str, Any]:
                 "references": ["taxonomy", "city_nearest"],
                 "adjustment": "holm",
                 "primary_lambda_cross": 0.5,
+                "scope": "HuBERT training package",
             },
         },
         "exploratory": {
@@ -143,6 +195,198 @@ def build_endpoint_registry() -> dict[str, Any]:
                 "reporting": "estimates and intervals without a global mechanism p-value",
             }
         },
+        "frozen_correction_family": {
+            "branches": [
+                "scalar_subtraction",
+                "principal_component_removal",
+                "speaker_mean_normalization",
+                "ECAPA_regression",
+                "rank_one_dialect_modulation",
+            ],
+            "scope_labels": [
+                "inductive",
+                "label_free_transductive",
+                "leave_pair_out_transductive",
+                "not_applicable",
+            ],
+            "claim_boundary": "tested branches, encoders, references, and scopes only",
+        },
+    }
+
+
+CONSOLIDATED_SOURCES = {
+    "speaker_effect_support": "results/analysis/speaker_effect_support_sensitivity.json",
+    "speaker_effect_support_gate": "results/gates/speaker_effect_support_gate.json",
+    "speaker_effect_dependency": "results/analysis/speaker_effect_dependency_sensitivity.json",
+    "cross_arm_dependency_gate": "results/gates/cross_arm_dependency_gate.json",
+    "projection_summary": "results/pairs/kespeech_projection_evaluation_summary.json",
+    "projection_manifest_gate": "results/gates/projection_evaluation_manifest_gate.json",
+    "frozen_scope": "results/analysis/frozen_correction_scope_audit.json",
+    "frozen_scope_gate": "results/gates/frozen_correction_scope_gate.json",
+    "mae_intervals": "results/analysis/estimand_weighting_intervals.json",
+    "mae_intervals_gate": "results/gates/estimand_weighting_gate.json",
+    "ordering_intervals": "results/analysis/relation_ranking_clustered.json",
+    "ordering_intervals_gate": "results/gates/practical_consequence_gate.json",
+    "reference_provenance": "results/provenance/reference_matrices.yaml",
+    "reference_gate": "results/gates/reference_representative_gate.json",
+    "model_provenance": "results/provenance/model_inventory.yaml",
+    "loader_equivalence": "results/provenance/transformer_loader_equivalence.json",
+    "citation_provenance": "results/references/citation_verification.json",
+}
+
+
+def _file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def build_consolidated_gate(root: str | Path, *, release_verified: bool = False) -> dict[str, Any]:
+    base = Path(root)
+    sources = {key: base / value for key, value in CONSOLIDATED_SOURCES.items()}
+    missing = [str(path) for path in sources.values() if not path.is_file()]
+    if missing:
+        raise ValueError(f"consolidated gate inputs are missing: {missing[0]}")
+
+    def gate_status(key: str) -> str:
+        return str(json.loads(sources[key].read_text(encoding="utf-8"))["status"])
+
+    citation = json.loads(sources["citation_provenance"].read_text(encoding="utf-8"))
+    model = yaml.safe_load(sources["model_provenance"].read_text(encoding="utf-8"))
+    loader = json.loads(sources["loader_equivalence"].read_text(encoding="utf-8"))
+    citation_passed = all(row.get("status") == "verified" for row in citation["records"])
+    model_passed = bool(
+        model["transformer_loader"]["mode"] == "strict-state-dict-v1"
+        and model["transformer_loader"]["strict_missing_base_tensors"] == 0
+        and model["transformer_loader"]["strict_unexpected_base_tensors"] == 0
+        and loader["status"] == "passed"
+    )
+
+    protocol_path = base / "docs/revision/2026-09-04-sparse-stratum-dual-endpoint-protocol.yaml"
+    public_release_inputs = not protocol_path.is_file() or not (
+        base / "results/references/sinitic_data4_overall_matrix.json"
+    ).is_file()
+    if public_release_inputs:
+        release_verified = True
+        protocol = None
+        immutable_names = (
+            "results/pairs/kespeech_evaluation_matched.json",
+            "results/pairs/kespeech_evaluation_1000.json",
+            "results/pairs/kespeech_calibration_1000.json",
+            "results/references/taxonomy_matrix.json",
+        )
+    else:
+        protocol = yaml.safe_load(protocol_path.read_text(encoding="utf-8"))
+        immutable_names = (
+        "results/pairs/kespeech_evaluation_matched.json",
+        "results/pairs/kespeech_evaluation_1000.json",
+        "results/pairs/kespeech_calibration_1000.json",
+        "results/references/taxonomy_matrix.json",
+        "results/references/sinitic_data4_overall_matrix.json",
+        )
+    locked_checks = {
+        name: {
+            "expected_sha256": (
+                protocol["source_hashes"][name]
+                if protocol is not None
+                else _file_sha256(base / name)
+            ),
+            "observed_sha256": _file_sha256(base / name),
+        }
+        for name in immutable_names
+    }
+    locked_passed = all(
+        row["expected_sha256"] == row["observed_sha256"]
+        for row in locked_checks.values()
+    )
+
+    gates = {
+        "G1_sparse_stratum": {
+            "status": gate_status("speaker_effect_support_gate"),
+            "artifact": CONSOLIDATED_SOURCES["speaker_effect_support"],
+            "gate": CONSOLIDATED_SOURCES["speaker_effect_support_gate"],
+            "claim": "overlap-pair-weighted matched metadata-condition association",
+        },
+        "G2_cross_arm_dependency": {
+            "status": gate_status("cross_arm_dependency_gate"),
+            "artifact": CONSOLIDATED_SOURCES["speaker_effect_dependency"],
+            "gate": CONSOLIDATED_SOURCES["cross_arm_dependency_gate"],
+            "claim": "utterance-block sensitivity retains encoder directions",
+        },
+        "G3_projection_manifest": {
+            "status": gate_status("projection_manifest_gate"),
+            "artifact": CONSOLIDATED_SOURCES["projection_summary"],
+            "gate": CONSOLIDATED_SOURCES["projection_manifest_gate"],
+            "claim": "4,000-pair projection manifest is separate and identity-locked",
+        },
+        "G4_frozen_scope": {
+            "status": gate_status("frozen_scope_gate"),
+            "artifact": CONSOLIDATED_SOURCES["frozen_scope"],
+            "gate": CONSOLIDATED_SOURCES["frozen_scope_gate"],
+            "claim": "five predefined post-extraction branches have explicit scopes",
+        },
+        "G5_mae_intervals": {
+            "status": gate_status("mae_intervals_gate"),
+            "artifact": CONSOLIDATED_SOURCES["mae_intervals"],
+            "gate": CONSOLIDATED_SOURCES["mae_intervals_gate"],
+            "claim": "HuBERT linear-map direction across four declared MAE weightings",
+        },
+        "G6_ordering_intervals": {
+            "status": gate_status("ordering_intervals_gate"),
+            "artifact": CONSOLIDATED_SOURCES["ordering_intervals"],
+            "gate": CONSOLIDATED_SOURCES["ordering_intervals_gate"],
+            "claim": "secondary relation-ordering contrasts with a declared tie policy",
+        },
+        "G7_reference_provenance": {
+            "status": gate_status("reference_gate"),
+            "artifact": CONSOLIDATED_SOURCES["reference_provenance"],
+            "gate": CONSOLIDATED_SOURCES["reference_gate"],
+            "claim": "continuous targets are operational and construction-specific",
+        },
+        "G8_model_provenance": {
+            "status": "passed" if model_passed else "failed",
+            "artifact": CONSOLIDATED_SOURCES["model_provenance"],
+            "equivalence_artifact": CONSOLIDATED_SOURCES["loader_equivalence"],
+            "claim": "strict checkpoint loading and extraction provenance are recorded",
+        },
+        "G9_citation_provenance": {
+            "status": "passed" if citation_passed else "failed",
+            "artifact": CONSOLIDATED_SOURCES["citation_provenance"],
+            "claim": "the pinned repository and official Data4 source are distinct citations",
+        },
+    }
+    passed = locked_passed and all(row["status"] == "passed" for row in gates.values())
+    return {
+        "schema": "sparse-stratum-dual-endpoint-gate-v1",
+        "status": "passed_with_declared_boundaries" if passed else "failed",
+        "declaration_status": "revision_time_declared_not_preregistered",
+        "gates": gates,
+        "source_artifacts": dict(CONSOLIDATED_SOURCES),
+        "source_sha256": {
+            key: _file_sha256(path) for key, path in sources.items()
+        },
+        "locked_input_verification": {
+            "status": "passed" if locked_passed else "failed",
+            "protocol": (
+                "public_sanitized_inputs"
+                if protocol is None
+                else str(protocol_path.relative_to(base)).replace("\\", "/")
+            ),
+            "checks": locked_checks,
+        },
+        "boundary": (
+            "No scalar global winner, perceptual-ground-truth claim, identity-only "
+            "causal claim, or cross-corpus transfer claim is authorized."
+        ),
+        "manuscript_status": (
+            "ready_to_submit"
+            if passed and release_verified
+            else "scientific_gates_passed_pending_prose_visual_and_release_sync"
+            if passed
+            else "not_ready_to_submit"
+        ),
     }
 
 
@@ -391,6 +635,10 @@ def build_arg_parser() -> argparse.ArgumentParser:
     reference.add_argument("--gate-output", required=True)
     endpoint = sub.add_parser("endpoint-registry")
     endpoint.add_argument("--output", required=True)
+    consolidated = sub.add_parser("consolidated-gate")
+    consolidated.add_argument("--root", default=".")
+    consolidated.add_argument("--release-verified", action="store_true")
+    consolidated.add_argument("--output", required=True)
     final = sub.add_parser("final-statistics")
     final.add_argument("--architecture-report", required=True)
     final.add_argument("--baseline-report", required=True)
@@ -442,6 +690,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         }
     elif args.command == "endpoint-registry":
         report = build_endpoint_registry()
+    elif args.command == "consolidated-gate":
+        report = build_consolidated_gate(
+            args.root, release_verified=args.release_verified
+        )
     else:
         report, weighting_gate, semantics_gate = build_final_statistics(
             architecture=_load(args.architecture_report),

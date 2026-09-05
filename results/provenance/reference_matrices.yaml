@@ -20,7 +20,6 @@ taxonomy:
 sincomp:
   status: locked
   source: YiYang-github/Sinitic_Data Data4 overall_distance
-  matrix: results/references/sinitic_data4_overall_matrix.json
   coverage:
     status: complete
     labels:
@@ -164,13 +163,48 @@ sincomp:
   source_commit: 820b9d15a74cbee82109f0bf54cf791fe16596ef
   source_url: https://github.com/YiYang-github/Sinitic_Data/tree/820b9d15a74cbee82109f0bf54cf791fe16596ef
   source_accessed: 2026-09-04
+  official_data4_source:
+    name: Chinese Language Resources Protection Project Collection and Display Platform
+    url: https://zhongguoyuyan.cn/index
+    role: upstream Data4 source named by Sinitic_Data
+    accessed: 2026-09-05
+  reconstruction:
+    raw_locations: 1289
+    raw_transcription_columns: 999
+    missing_value_rules:
+    - mark source transcriptions flagged as wrong as missing
+    - mark transcription values occurring fewer than 1000 times as unreliable and
+      missing
+    missingness_threshold: 0.3
+    missingness_comparison: strictly_less_than
+    missingness_filter: retain rows and columns with missing proportion strictly below
+      0.30
+    retained_locations: 1084
+    retained_words: 915
+    distance_field: overall_distance
+    distance_operation: arithmetic_mean_of_initials_finals_and_tones_distances
+  source_artifacts:
+    metadata: Data4/processed_info.pkl
+    distance_matrices: Data4/distance_matrices.npz
+    distance_key: overall
+  mappings:
+    city_nearest:
+      operation: nearest_coordinate_within_mandarin_subgroup
+      tie_break: lowest_source_index
+    overall:
+      operation: city_nearest_raw_overall_distance_submatrix
+    subgroup_aggregate:
+      operation: mean_all_cross_subgroup_source_distances
+    subgroup_medoid:
+      operation: minimum_mean_within_subgroup_distance
+      tie_break: lowest_source_index
   upstream_license: not_specified
   source_archive_sha256: 020f399824a9e4073f4092078099b5c9b6a995f1ef7d6eae6887f6b1250923c5
   source_commit_archive_sha256: 621c8bce1fc49e5bc8e05103c810d675447c6d43d572bac3334bdff385a74692
   redistribution:
     status: not_redistributed
     reason: upstream_license_not_specified
-    public_route: obtain_the_pinned_upstream_commit_and_rebuild_locally
+    public_route: obtain_pinned_upstream_commit_and_rebuild_locally
   derived_matrix_sha256:
     city_nearest: 6aa0375f7c028a7b89471225f5327c66b919b79bc1c850f0e27128835465bb2e
     overall: 463f787aa316b3750f806d16157d822e55080fbdfb8f8ca8d393efaa07c5ddde

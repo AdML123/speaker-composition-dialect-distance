@@ -16,17 +16,18 @@ from .model_smoke import TARGET_SAMPLE_RATE, ModelSpec, _speaker_proxy_spec, loa
 
 def _load_classifier(spec: ModelSpec, device: torch.device, savedir: str | Path | None):
     from speechbrain.inference.speaker import EncoderClassifier
-    from speechbrain.utils.fetching import LocalStrategy
+    from speechbrain.utils.fetching import FetchConfig, LocalStrategy
 
-    kwargs = {
-        "source": spec.source,
-        "run_opts": {"device": str(device)},
-        "local_strategy": LocalStrategy.COPY,
-    }
-    if savedir is not None:
-        kwargs["savedir"] = str(savedir)
     return EncoderClassifier.from_hparams(
-        **kwargs,
+        source=spec.source,
+        savedir=str(savedir or Path("DATASET_PATH_REDACTED/models/speechbrain-spkrec-ecapa-voxceleb")),
+        run_opts={"device": str(device)},
+        local_strategy=LocalStrategy.COPY,
+        fetch_config=FetchConfig(
+            allow_updates=False,
+            revision=spec.revision,
+            huggingface_cache_dir=spec.cache_root,
+        ),
     )
 
 

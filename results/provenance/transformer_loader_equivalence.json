@@ -1,0 +1,32 @@
+{
+  "schema": "transformer-loader-equivalence-v1",
+  "comparison": "locked-pilot-vectors-versus-strict-state-dict-loader",
+  "exact_equality_required": true,
+  "status": "passed",
+  "models": [
+    {
+      "model_name": "chinese_hubert_large",
+      "utterance_count": 105,
+      "maximum_absolute_difference": 0.0,
+      "locked_file_sha256": "5d08ab67e15943971f538ef6237fa33977074f5b128bed7b0b1d4a831da49295",
+      "strict_file_sha256": "5d08ab67e15943971f538ef6237fa33977074f5b128bed7b0b1d4a831da49295",
+      "status": "equivalent"
+    },
+    {
+      "model_name": "chinese_wav2vec2_large",
+      "utterance_count": 105,
+      "maximum_absolute_difference": 0.0,
+      "locked_file_sha256": "4f04db21e339527f77ebdb00631104af4ee2b6f7080ae75753021d71b9498014",
+      "strict_file_sha256": "4f04db21e339527f77ebdb00631104af4ee2b6f7080ae75753021d71b9498014",
+      "status": "equivalent"
+    },
+    {
+      "model_name": "wavlm_large",
+      "utterance_count": 105,
+      "maximum_absolute_difference": 0.0,
+      "locked_file_sha256": "87fb5a8369968b8f6634f50dd305b417160d5e7f96a538af5e1784874d9d538b",
+      "strict_file_sha256": "87fb5a8369968b8f6634f50dd305b417160d5e7f96a538af5e1784874d9d538b",
+      "status": "equivalent"
+    }
+  ]
+}

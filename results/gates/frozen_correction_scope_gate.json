@@ -1,0 +1,8 @@
+{
+  "all_rows_scope_validated": true,
+  "method_count": 5,
+  "schema": "frozen-correction-scope-gate-v1",
+  "status": "passed",
+  "strict_inductive_scores_recycled": false,
+  "table_family_wording": "predefined post-extraction branches"
+}

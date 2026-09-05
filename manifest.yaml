@@ -1,14 +1,14 @@
 schema: code-release-manifest-v3
 title: Speaker-Composition Sensitivity of Frozen-Embedding Dialect Distance
-status: publication_authorized_pending_external_verification
+status: publication_pending_final_external_verification
 publication:
   github_owner_repository: AdML123/speaker-composition-dialect-distance
   visibility: public
   default_branch: main
-  release_tag: v1.0.0
+  release_tag: v1.1.0
   zenodo_mode: publish_now
-  github_release_url: https://github.com/AdML123/speaker-composition-dialect-distance/releases/tag/v1.0.0
-  zenodo_doi: 10.5281/zenodo.22306303
+  github_release_url: https://github.com/AdML123/speaker-composition-dialect-distance/releases/tag/v1.1.0
+  zenodo_doi: 10.5281/zenodo.22340177
 scope:
   experimental_corpus: KeSpeech
   trainable_correction_encoder: chinese_hubert_large
@@ -65,7 +65,7 @@ data_route:
   sinitic_data_commit: 820b9d15a74cbee82109f0bf54cf791fe16596ef
   sinitic_data_license: not_specified_by_upstream
   sinitic_derived_matrices: not_redistributed_rebuild_locally
-  derived_release_doi: 10.5281/zenodo.22306303
+  derived_release_doi: 10.5281/zenodo.22340177
 verification:
   public_tests:
     command: python -m pytest tests -q

@@ -1,0 +1,14 @@
+{
+  "claim_branch": "three_encoder_supported",
+  "full_title_ready": true,
+  "hubert_support_gate": true,
+  "reason": "Statistical support and the locked utterance-block dependency sensitivity both pass; title wording remains limited to the matched KeSpeech protocol.",
+  "schema": "speaker-effect-support-gate-v1",
+  "status": "passed",
+  "supporting_family_gate": true,
+  "supporting_holm_adjusted_p": {
+    "chinese_wav2vec2_large": 0.0009765625,
+    "wavlm_large": 0.0009765625
+  },
+  "utterance_block_dependency": "passed"
+}

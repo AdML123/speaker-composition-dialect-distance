@@ -1,0 +1,4204 @@
+{
+  "boundary": "Ordering measures agreement with operational references, not perceptual ground truth or downstream task utility.",
+  "global_best_model_defined": false,
+  "linear_minus_matched_mlp_mae_support": {
+    "city_nearest": false,
+    "taxonomy": true
+  },
+  "matched_mlp_minus_linear_support": {
+    "city_nearest": {
+      "kendall_tau_b": true,
+      "pairwise_order_accuracy": true,
+      "spearman": true
+    },
+    "taxonomy": {
+      "kendall_tau_b": true,
+      "pairwise_order_accuracy": true,
+      "spearman": true
+    }
+  },
+  "model": "chinese_hubert_large",
+  "primary_endpoints": {
+    "calibration": "pair-weighted mean absolute error against the named operational reference",
+    "ordering": "relation-level Spearman, Kendall tau-b, and pairwise ordering accuracy against the named operational reference"
+  },
+  "primary_references": {
+    "city_nearest": {
+      "bootstrap_replicates": 1000,
+      "bootstrap_seed": 20260905,
+      "contrasts": {
+        "linear_minus_matched_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": -0.02841025001879346,
+              "upper": 0.0006114464708571017
+            },
+            "point_estimate": -0.013402050157906353
+          }
+        },
+        "matched_mlp_minus_linear": {
+          "kendall_tau_b": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.2138900097681781,
+              "upper": 0.5299364421122024
+            },
+            "point_estimate": 0.5075897246737361
+          },
+          "pairwise_order_accuracy": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.10754414125200645,
+              "upper": 0.26645264847512035
+            },
+            "point_estimate": 0.2552166934189406
+          },
+          "spearman": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.32382028653560646,
+              "upper": 0.7544132614386365
+            },
+            "point_estimate": 0.7373978731145425
+          }
+        },
+        "wide_mlp_minus_linear": {
+          "kendall_tau_b": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.2648884113509638,
+              "upper": 0.6130183451602148
+            },
+            "point_estimate": 0.5618603241671544
+          },
+          "pairwise_order_accuracy": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.13318619582664523,
+              "upper": 0.3082263242375602
+            },
+            "point_estimate": 0.2825040128410915
+          },
+          "spearman": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3947628032353246,
+              "upper": 0.8508531089963094
+            },
+            "point_estimate": 0.8284298787530934
+          }
+        }
+      },
+      "methods": {
+        "diagonal_metric": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3840423553204239,
+              "upper": 0.4023628297163661
+            },
+            "point_estimate": 0.3926668710218059
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.052674405390670725,
+                "upper": 0.1835623218159737
+              },
+              "point_estimate": 0.0654439582126515
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.47351524879614765,
+                "upper": 0.5922953451043339
+              },
+              "point_estimate": 0.5329052969502408
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.07334063707456669,
+                "upper": 0.2596697617700236
+              },
+              "point_estimate": 0.09515226614835812
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.39266688089936524,
+              "ordering": {
+                "kendall_tau_b": 0.0654439582126515,
+                "pairwise_order_accuracy": 0.5329052969502408,
+                "spearman": 0.09515226614835812
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.3926668710218059,
+              "ordering": {
+                "kendall_tau_b": 0.0654439582126515,
+                "pairwise_order_accuracy": 0.5329052969502408,
+                "spearman": 0.09515226614835812
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.3926659373146472,
+              "ordering": {
+                "kendall_tau_b": 0.0654439582126515,
+                "pairwise_order_accuracy": 0.5329052969502408,
+                "spearman": 0.09515226614835812
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.39266806998744985,
+              "ordering": {
+                "kendall_tau_b": 0.0654439582126515,
+                "pairwise_order_accuracy": 0.5329052969502408,
+                "spearman": 0.09515226614835812
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.3926662393484114,
+              "ordering": {
+                "kendall_tau_b": 0.0654439582126515,
+                "pairwise_order_accuracy": 0.5329052969502408,
+                "spearman": 0.09515226614835812
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "frozen_affine": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3842794863753582,
+              "upper": 0.4020440295594722
+            },
+            "point_estimate": 0.3928621647040202
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.017558135130223574,
+                "upper": 0.25706706024750053
+              },
+              "point_estimate": 0.10056022847309865
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.4911717495987159,
+                "upper": 0.6292536115569823
+              },
+              "point_estimate": 0.550561797752809
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.007223331706255595,
+                "upper": 0.3732730695138618
+              },
+              "point_estimate": 0.1667417925062568
+            }
+          },
+          "seed_count": 1,
+          "seed_values": [
+            {
+              "mae": 0.3928621647040202,
+              "ordering": {
+                "kendall_tau_b": 0.10056022847309865,
+                "pairwise_order_accuracy": 0.550561797752809,
+                "spearman": 0.1667417925062568
+              },
+              "seed": 0
+            }
+          ]
+        },
+        "linear": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.34485397646963206,
+              "upper": 0.3677398279517261
+            },
+            "point_estimate": 0.35557174171914685
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.18675471002146893,
+                "upper": 0.052674405390670725
+              },
+              "point_estimate": -0.09736784026760346
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.406099518459069,
+                "upper": 0.5264847512038523
+              },
+              "point_estimate": 0.4510433386837881
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.27466686623501696,
+                "upper": 0.07095861146733443
+              },
+              "point_estimate": -0.15747120635919076
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.35330734362231125,
+              "ordering": {
+                "kendall_tau_b": -0.10375261667859384,
+                "pairwise_order_accuracy": 0.4478330658105939,
+                "spearman": -0.15747120635919076
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.35716323042011316,
+              "ordering": {
+                "kendall_tau_b": -0.046289628979680336,
+                "pairwise_order_accuracy": 0.4767255216693419,
+                "spearman": -0.09437971730276927
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.35663573689311284,
+              "ordering": {
+                "kendall_tau_b": -0.11971455770606983,
+                "pairwise_order_accuracy": 0.43980738362760835,
+                "spearman": -0.17717120192170602
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.35557174171914685,
+              "ordering": {
+                "kendall_tau_b": -0.08459828744562267,
+                "pairwise_order_accuracy": 0.45746388443017655,
+                "spearman": -0.1198738292072008
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.3551935363357045,
+              "ordering": {
+                "kendall_tau_b": -0.09736784026760346,
+                "pairwise_order_accuracy": 0.4510433386837881,
+                "spearman": -0.15798623892291666
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "matched_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.35452231145486246,
+              "upper": 0.38512477500250236
+            },
+            "point_estimate": 0.3689737918770532
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.16752057108336035,
+                "upper": 0.4389533782555894
+              },
+              "point_estimate": 0.4102218844061326
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.5842295345104334,
+                "upper": 0.7207062600321027
+              },
+              "point_estimate": 0.7062600321027287
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.24822316304121578,
+                "upper": 0.610963816626883
+              },
+              "point_estimate": 0.5799266667553518
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.36556746764616366,
+              "ordering": {
+                "kendall_tau_b": 0.3367969556797431,
+                "pairwise_order_accuracy": 0.6693418940609952,
+                "spearman": 0.4950750518815114
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.3717789626403759,
+              "ordering": {
+                "kendall_tau_b": 0.3495665085017238,
+                "pairwise_order_accuracy": 0.6757624398073836,
+                "spearman": 0.49172734021729314
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.3734441467283275,
+              "ordering": {
+                "kendall_tau_b": 0.4453381546665797,
+                "pairwise_order_accuracy": 0.723916532905297,
+                "spearman": 0.6234469183901893
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.36717300988280444,
+              "ordering": {
+                "kendall_tau_b": 0.4357609900500941,
+                "pairwise_order_accuracy": 0.7191011235955056,
+                "spearman": 0.6292410347321057
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.3689737918770532,
+              "ordering": {
+                "kendall_tau_b": 0.4102218844061326,
+                "pairwise_order_accuracy": 0.7062600321027287,
+                "spearman": 0.5799266667553518
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "principal_component": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3866135665091366,
+              "upper": 0.40511124044909075
+            },
+            "point_estimate": 0.3953951873828572
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.027215109451846534,
+                "upper": 0.20910142745993526
+              },
+              "point_estimate": 0.08779067565111787
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.4863162118780096,
+                "upper": 0.6051364365971108
+              },
+              "point_estimate": 0.5441412520064205
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.044173932867373346,
+                "upper": 0.3013319169789109
+              },
+              "point_estimate": 0.1367411456692237
+            }
+          },
+          "seed_count": 1,
+          "seed_values": [
+            {
+              "mae": 0.3953951873828572,
+              "ordering": {
+                "kendall_tau_b": 0.08779067565111787,
+                "pairwise_order_accuracy": 0.5441412520064205,
+                "spearman": 0.1367411456692237
+              },
+              "seed": 0
+            }
+          ]
+        },
+        "wide_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3565108793481335,
+              "upper": 0.39004034756753114
+            },
+            "point_estimate": 0.37279268030002044
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.22506336848741126,
+                "upper": 0.5124581166871162
+              },
+              "point_estimate": 0.4644924838995509
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.6131621187800963,
+                "upper": 0.7576645264847512
+              },
+              "point_estimate": 0.7335473515248796
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.3317421311564153,
+                "upper": 0.6887659232847253
+              },
+              "point_estimate": 0.6709586723939026
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.3711667046233758,
+              "ordering": {
+                "kendall_tau_b": 0.4644924838995509,
+                "pairwise_order_accuracy": 0.7335473515248796,
+                "spearman": 0.6709586723939026
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.3748505464257931,
+              "ordering": {
+                "kendall_tau_b": 0.42618382543360855,
+                "pairwise_order_accuracy": 0.7142857142857143,
+                "spearman": 0.615463913652438
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.3774826724756698,
+              "ordering": {
+                "kendall_tau_b": 0.49322397774900767,
+                "pairwise_order_accuracy": 0.7479935794542536,
+                "spearman": 0.6815168399502834
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.3696319438769096,
+              "ordering": {
+                "kendall_tau_b": 0.45810770748856056,
+                "pairwise_order_accuracy": 0.7303370786516854,
+                "spearman": 0.6526750163816336
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.37279268030002044,
+              "ordering": {
+                "kendall_tau_b": 0.4804544249270269,
+                "pairwise_order_accuracy": 0.7415730337078652,
+                "spearman": 0.6752076910446413
+              },
+              "seed": 20260902
+            }
+          ]
+        }
+      },
+      "pair_count": 4000,
+      "pareto_flags": {
+        "diagonal_metric": false,
+        "frozen_affine": false,
+        "linear": true,
+        "matched_mlp": true,
+        "principal_component": false,
+        "wide_mlp": true
+      },
+      "pareto_metric": "spearman",
+      "relation_count": 36,
+      "resampling_unit": "global_endpoint_speaker",
+      "seed_aggregation": "median within paired speaker-bootstrap replicate",
+      "shared_resamples_across_methods": true,
+      "speaker_count": 1046,
+      "tie_policy": {
+        "predicted_tie": "half_credit",
+        "zero_reference_difference": "excluded"
+      }
+    },
+    "taxonomy": {
+      "bootstrap_replicates": 1000,
+      "bootstrap_seed": 20260905,
+      "contrasts": {
+        "linear_minus_matched_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": -0.03617845835174465,
+              "upper": -0.003480780460100519
+            },
+            "point_estimate": -0.019444902418858157
+          }
+        },
+        "matched_mlp_minus_linear": {
+          "kendall_tau_b": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.013468700594029465,
+              "upper": 0.24243661069253059
+            },
+            "point_estimate": 0.12121830534626529
+          },
+          "pairwise_order_accuracy": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.02857142857142858,
+              "upper": 0.5142857142857142
+            },
+            "point_estimate": 0.2571428571428571
+          },
+          "spearman": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.016271279927185717,
+              "upper": 0.2928830386893425
+            },
+            "point_estimate": 0.1464415193446713
+          }
+        },
+        "wide_mlp_minus_linear": {
+          "kendall_tau_b": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.01313198307917872,
+              "upper": 0.2424366106925306
+            },
+            "point_estimate": 0.13468700594029479
+          },
+          "pairwise_order_accuracy": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.027857142857142907,
+              "upper": 0.5142857142857143
+            },
+            "point_estimate": 0.2857142857142857
+          },
+          "spearman": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.015864497929006044,
+              "upper": 0.29288303868934257
+            },
+            "point_estimate": 0.16271279927185694
+          }
+        }
+      },
+      "methods": {
+        "diagonal_metric": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.47838110665152,
+              "upper": 0.4955135827395776
+            },
+            "point_estimate": 0.4859703653221901
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.12795265564328004,
+                "upper": 0.23570226039551587
+              },
+              "point_estimate": 0.18182745801939793
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.7714285714285715,
+                "upper": 1.0
+              },
+              "point_estimate": 0.8857142857142857
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.15457715930826413,
+                "upper": 0.2847473987257497
+              },
+              "point_estimate": 0.21966227901700694
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.4859705388182277,
+              "ordering": {
+                "kendall_tau_b": 0.18182745801939793,
+                "pairwise_order_accuracy": 0.8857142857142857,
+                "spearman": 0.21966227901700694
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.4859703653221901,
+              "ordering": {
+                "kendall_tau_b": 0.18182745801939793,
+                "pairwise_order_accuracy": 0.8857142857142857,
+                "spearman": 0.21966227901700694
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.48596973536009674,
+              "ordering": {
+                "kendall_tau_b": 0.18182745801939793,
+                "pairwise_order_accuracy": 0.8857142857142857,
+                "spearman": 0.21966227901700694
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.48597184789834225,
+              "ordering": {
+                "kendall_tau_b": 0.18182745801939793,
+                "pairwise_order_accuracy": 0.8857142857142857,
+                "spearman": 0.21966227901700694
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.4859693611907021,
+              "ordering": {
+                "kendall_tau_b": 0.18182745801939793,
+                "pairwise_order_accuracy": 0.8857142857142857,
+                "spearman": 0.21966227901700694
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "frozen_affine": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.4788781072189227,
+              "upper": 0.49585809845161205
+            },
+            "point_estimate": 0.48631508155493963
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.10067853694037036,
+                "upper": 0.23570226039551587
+              },
+              "point_estimate": 0.1683587574253685
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.7135714285714286,
+                "upper": 1.0
+              },
+              "point_estimate": 0.8571428571428571
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.12162781745571312,
+                "upper": 0.2847473987257497
+              },
+              "point_estimate": 0.2033909990898212
+            }
+          },
+          "seed_count": 1,
+          "seed_values": [
+            {
+              "mae": 0.48631508155493963,
+              "ordering": {
+                "kendall_tau_b": 0.1683587574253685,
+                "pairwise_order_accuracy": 0.8571428571428571,
+                "spearman": 0.2033909990898212
+              },
+              "seed": 0
+            }
+          ]
+        },
+        "linear": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.41817020360579593,
+              "upper": 0.4479642038810373
+            },
+            "point_estimate": 0.4329569645774102
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.10101525445522108,
+                "upper": 0.2087648592074569
+              },
+              "point_estimate": 0.07407785326716212
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.2857142857142857,
+                "upper": 0.9428571428571428
+              },
+              "point_estimate": 0.6571428571428571
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.12203459945389274,
+                "upper": 0.2522048388713783
+              },
+              "point_estimate": 0.08949203959952133
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.4291007783447573,
+              "ordering": {
+                "kendall_tau_b": 0.06060915267313265,
+                "pairwise_order_accuracy": 0.6285714285714286,
+                "spearman": 0.07322075967233564
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.4342888761694251,
+              "ordering": {
+                "kendall_tau_b": 0.10101525445522108,
+                "pairwise_order_accuracy": 0.7142857142857143,
+                "spearman": 0.12203459945389274
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.4337871266525301,
+              "ordering": {
+                "kendall_tau_b": 0.12795265564328004,
+                "pairwise_order_accuracy": 0.7714285714285715,
+                "spearman": 0.15457715930826413
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.4329569645774102,
+              "ordering": {
+                "kendall_tau_b": 0.07407785326716212,
+                "pairwise_order_accuracy": 0.6571428571428571,
+                "spearman": 0.08949203959952133
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.43239855915056,
+              "ordering": {
+                "kendall_tau_b": 0.07407785326716212,
+                "pairwise_order_accuracy": 0.6571428571428571,
+                "spearman": 0.08949203959952133
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "matched_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.43761533866483704,
+              "upper": 0.46846842722463905
+            },
+            "point_estimate": 0.45240186699626833
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.07407785326716212,
+                "upper": 0.22223355980148637
+              },
+              "point_estimate": 0.19529615861342742
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.6571428571428571,
+                "upper": 0.9714285714285714
+              },
+              "point_estimate": 0.9142857142857143
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.08949203959952133,
+                "upper": 0.26847611879856403
+              },
+              "point_estimate": 0.23593355894419263
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.4474555313821254,
+              "ordering": {
+                "kendall_tau_b": 0.19529615861342742,
+                "pairwise_order_accuracy": 0.9142857142857143,
+                "spearman": 0.23593355894419263
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.45436577529169114,
+              "ordering": {
+                "kendall_tau_b": 0.2087648592074569,
+                "pairwise_order_accuracy": 0.9428571428571428,
+                "spearman": 0.2522048388713783
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.4564044594374685,
+              "ordering": {
+                "kendall_tau_b": 0.2087648592074569,
+                "pairwise_order_accuracy": 0.9428571428571428,
+                "spearman": 0.2522048388713783
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.44918924403244265,
+              "ordering": {
+                "kendall_tau_b": 0.18182745801939793,
+                "pairwise_order_accuracy": 0.8857142857142857,
+                "spearman": 0.21966227901700694
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.45240186699626833,
+              "ordering": {
+                "kendall_tau_b": 0.19529615861342742,
+                "pairwise_order_accuracy": 0.9142857142857143,
+                "spearman": 0.23593355894419263
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "principal_component": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.4813900195958601,
+              "upper": 0.4987714266248739
+            },
+            "point_estimate": 0.48921644037816986
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.11448395504925056,
+                "upper": 0.23570226039551587
+              },
+              "point_estimate": 0.19529615861342742
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.7428571428571429,
+                "upper": 1.0
+              },
+              "point_estimate": 0.9142857142857143
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.1383058793810784,
+                "upper": 0.2847473987257497
+              },
+              "point_estimate": 0.23593355894419263
+            }
+          },
+          "seed_count": 1,
+          "seed_values": [
+            {
+              "mae": 0.48921644037816986,
+              "ordering": {
+                "kendall_tau_b": 0.19529615861342742,
+                "pairwise_order_accuracy": 0.9142857142857143,
+                "spearman": 0.23593355894419263
+              },
+              "seed": 0
+            }
+          ]
+        },
+        "wide_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.43941406922994547,
+              "upper": 0.4724313636878452
+            },
+            "point_estimate": 0.45583892531835213
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.07407785326716212,
+                "upper": 0.22223355980148637
+              },
+              "point_estimate": 0.2087648592074569
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.6571428571428571,
+                "upper": 0.9714285714285714
+              },
+              "point_estimate": 0.9428571428571428
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.08949203959952133,
+                "upper": 0.26847611879856403
+              },
+              "point_estimate": 0.2522048388713783
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.45421050932443974,
+              "ordering": {
+                "kendall_tau_b": 0.19529615861342742,
+                "pairwise_order_accuracy": 0.9142857142857143,
+                "spearman": 0.23593355894419263
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.45711581427780806,
+              "ordering": {
+                "kendall_tau_b": 0.2087648592074569,
+                "pairwise_order_accuracy": 0.9428571428571428,
+                "spearman": 0.2522048388713783
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.458658214644659,
+              "ordering": {
+                "kendall_tau_b": 0.22223355980148637,
+                "pairwise_order_accuracy": 0.9714285714285714,
+                "spearman": 0.26847611879856403
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.4530447278985147,
+              "ordering": {
+                "kendall_tau_b": 0.2087648592074569,
+                "pairwise_order_accuracy": 0.9428571428571428,
+                "spearman": 0.2522048388713783
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.45583892531835213,
+              "ordering": {
+                "kendall_tau_b": 0.19529615861342742,
+                "pairwise_order_accuracy": 0.9142857142857143,
+                "spearman": 0.23593355894419263
+              },
+              "seed": 20260902
+            }
+          ]
+        }
+      },
+      "pair_count": 4000,
+      "pareto_flags": {
+        "diagonal_metric": false,
+        "frozen_affine": false,
+        "linear": true,
+        "matched_mlp": true,
+        "principal_component": false,
+        "wide_mlp": true
+      },
+      "pareto_metric": "spearman",
+      "relation_count": 36,
+      "resampling_unit": "global_endpoint_speaker",
+      "seed_aggregation": "median within paired speaker-bootstrap replicate",
+      "shared_resamples_across_methods": true,
+      "speaker_count": 1046,
+      "tie_policy": {
+        "predicted_tie": "half_credit",
+        "zero_reference_difference": "excluded"
+      }
+    }
+  },
+  "reference_construction_sensitivity": {
+    "subgroup_aggregate": {
+      "bootstrap_replicates": 1000,
+      "bootstrap_seed": 20260905,
+      "contrasts": {
+        "linear_minus_matched_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": -0.03211720834764053,
+              "upper": -0.0005677230903298661
+            },
+            "point_estimate": -0.0158961015725812
+          }
+        },
+        "matched_mlp_minus_linear": {
+          "kendall_tau_b": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.2553112467344782,
+              "upper": 0.5842070416056206
+            },
+            "point_estimate": 0.5267440539067072
+          },
+          "pairwise_order_accuracy": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.12837078651685388,
+              "upper": 0.2937399678972713
+            },
+            "point_estimate": 0.2648475120385233
+          },
+          "spearman": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.36997686110601613,
+              "upper": 0.811465993685372
+            },
+            "point_estimate": 0.7281272869674764
+          }
+        },
+        "wide_mlp_minus_linear": {
+          "kendall_tau_b": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.2649682210561012,
+              "upper": 0.6320928646880486
+            },
+            "point_estimate": 0.5650527123726496
+          },
+          "pairwise_order_accuracy": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.1332263242375602,
+              "upper": 0.31781701444622795
+            },
+            "point_estimate": 0.2841091492776886
+          },
+          "spearman": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3850383446414751,
+              "upper": 0.8763407829936944
+            },
+            "point_estimate": 0.7815619154540375
+          }
+        }
+      },
+      "methods": {
+        "diagonal_metric": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.39974144553204066,
+              "upper": 0.4178675289649584
+            },
+            "point_estimate": 0.40851281773120524
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.023942911541213963,
+                "upper": 0.22506336848741126
+              },
+              "point_estimate": 0.11652216950057462
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.48796147672552165,
+                "upper": 0.6131621187800963
+              },
+              "point_estimate": 0.5585874799357945
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.020868475691468387,
+                "upper": 0.3167257129702823
+              },
+              "point_estimate": 0.14845813649398767
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.4085129963674866,
+              "ordering": {
+                "kendall_tau_b": 0.11652216950057462,
+                "pairwise_order_accuracy": 0.5585874799357945,
+                "spearman": 0.14845813649398767
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.40851281773120524,
+              "ordering": {
+                "kendall_tau_b": 0.11652216950057462,
+                "pairwise_order_accuracy": 0.5585874799357945,
+                "spearman": 0.14845813649398767
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.40851192179606005,
+              "ordering": {
+                "kendall_tau_b": 0.11652216950057462,
+                "pairwise_order_accuracy": 0.5585874799357945,
+                "spearman": 0.14845813649398767
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.40851405554984976,
+              "ordering": {
+                "kendall_tau_b": 0.11652216950057462,
+                "pairwise_order_accuracy": 0.5585874799357945,
+                "spearman": 0.14845813649398767
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.40851216457254125,
+              "ordering": {
+                "kendall_tau_b": 0.11652216950057462,
+                "pairwise_order_accuracy": 0.5585874799357945,
+                "spearman": 0.14845813649398767
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "frozen_affine": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.40000536405798104,
+              "upper": 0.41815190726481755
+            },
+            "point_estimate": 0.40868914466545375
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.01436574692472838,
+                "upper": 0.28891113259731516
+              },
+              "point_estimate": 0.17717754540498334
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.507223113964687,
+                "upper": 0.6452648475120385
+              },
+              "point_estimate": 0.5890850722311396
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.03499002479812763,
+                "upper": 0.4017286186597172
+              },
+              "point_estimate": 0.2537822957759321
+            }
+          },
+          "seed_count": 1,
+          "seed_values": [
+            {
+              "mae": 0.40868914466545375,
+              "ordering": {
+                "kendall_tau_b": 0.17717754540498334,
+                "pairwise_order_accuracy": 0.5890850722311396,
+                "spearman": 0.2537822957759321
+              },
+              "seed": 0
+            }
+          ]
+        },
+        "linear": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.35690316587673704,
+              "upper": 0.3799711099110317
+            },
+            "point_estimate": 0.36842023180989303
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.1963318746379545,
+                "upper": 0.036712464363194745
+              },
+              "point_estimate": -0.10694500488408903
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.4012841091492777,
+                "upper": 0.5184590690208668
+              },
+              "point_estimate": 0.4462279293739968
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.2825211128318368,
+                "upper": 0.04984227635457296
+              },
+              "point_estimate": -0.16326532270110702
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.36592036801205774,
+              "ordering": {
+                "kendall_tau_b": -0.1260993341170602,
+                "pairwise_order_accuracy": 0.43659711075441415,
+                "spearman": -0.16970322974768065
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.3698399792679336,
+              "ordering": {
+                "kendall_tau_b": -0.08140589924012748,
+                "pairwise_order_accuracy": 0.4590690208667737,
+                "spearman": -0.11073200120106626
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.3691569869320028,
+              "ordering": {
+                "kendall_tau_b": -0.1292917223225554,
+                "pairwise_order_accuracy": 0.434991974317817,
+                "spearman": -0.19017577415578474
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.36842023180989303,
+              "ordering": {
+                "kendall_tau_b": -0.09736784026760346,
+                "pairwise_order_accuracy": 0.4510433386837881,
+                "spearman": -0.15296467142658923
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.36780765969065055,
+              "ordering": {
+                "kendall_tau_b": -0.10694500488408903,
+                "pairwise_order_accuracy": 0.4462279293739968,
+                "spearman": -0.16326532270110702
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "matched_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.36874080551139005,
+              "upper": 0.4012693641027419
+            },
+            "point_estimate": 0.38431633338247423
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.19952426284344968,
+                "upper": 0.48364681313252206
+              },
+              "point_estimate": 0.41979904902261816
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.6003210272873194,
+                "upper": 0.7431781701444623
+              },
+              "point_estimate": 0.7110754414125201
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.2860973701962084,
+                "upper": 0.6569272539858956
+              },
+              "point_estimate": 0.5648619642663694
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.380489019537621,
+              "ordering": {
+                "kendall_tau_b": 0.36233606132370466,
+                "pairwise_order_accuracy": 0.6821829855537721,
+                "spearman": 0.5080796241155902
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.38730034477059827,
+              "ordering": {
+                "kendall_tau_b": 0.400644719789647,
+                "pairwise_order_accuracy": 0.7014446227929374,
+                "spearman": 0.5535312478643999
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.38776205280285353,
+              "ordering": {
+                "kendall_tau_b": 0.5059935305709884,
+                "pairwise_order_accuracy": 0.7544141252006421,
+                "spearman": 0.6678684770115474
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.3819632340281153,
+              "ordering": {
+                "kendall_tau_b": 0.41979904902261816,
+                "pairwise_order_accuracy": 0.7110754414125201,
+                "spearman": 0.5648619642663694
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.38431633338247423,
+              "ordering": {
+                "kendall_tau_b": 0.49322397774900767,
+                "pairwise_order_accuracy": 0.7479935794542536,
+                "spearman": 0.6546063884956057
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "principal_component": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.40211689623029734,
+              "upper": 0.42097332401132276
+            },
+            "point_estimate": 0.41140462288937235
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.0015961941027475978,
+                "upper": 0.24102530951488724
+              },
+              "point_estimate": 0.10056022847309865
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.49919743178170145,
+                "upper": 0.6211878009630819
+              },
+              "point_estimate": 0.550561797752809
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.0008755553583340138,
+                "upper": 0.345351866652872
+              },
+              "point_estimate": 0.15528231796335573
+            }
+          },
+          "seed_count": 1,
+          "seed_values": [
+            {
+              "mae": 0.41140462288937235,
+              "ordering": {
+                "kendall_tau_b": 0.10056022847309865,
+                "pairwise_order_accuracy": 0.550561797752809,
+                "spearman": 0.15528231796335573
+              },
+              "seed": 0
+            }
+          ]
+        },
+        "wide_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3710306262461773,
+              "upper": 0.4056426823925948
+            },
+            "point_estimate": 0.3881682236649975
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.20910142745993526,
+                "upper": 0.5251478598039596
+              },
+              "point_estimate": 0.45810770748856056
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.6051364365971108,
+                "upper": 0.7640449438202247
+              },
+              "point_estimate": 0.7303370786516854
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.3141473311981296,
+                "upper": 0.7120550520257054
+              },
+              "point_estimate": 0.6182965927529305
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.38623671859615283,
+              "ordering": {
+                "kendall_tau_b": 0.4453381546665797,
+                "pairwise_order_accuracy": 0.723916532905297,
+                "spearman": 0.6024593414183593
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.39001648229230507,
+              "ordering": {
+                "kendall_tau_b": 0.45810770748856056,
+                "pairwise_order_accuracy": 0.7303370786516854,
+                "spearman": 0.6182965927529305
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.3922742506345,
+              "ordering": {
+                "kendall_tau_b": 0.5506869654479212,
+                "pairwise_order_accuracy": 0.7768860353130016,
+                "spearman": 0.7059808867272631
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.3849462024258471,
+              "ordering": {
+                "kendall_tau_b": 0.4389533782555894,
+                "pairwise_order_accuracy": 0.7207062600321027,
+                "spearman": 0.5991116297541412
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.3881682236649975,
+              "ordering": {
+                "kendall_tau_b": 0.45810770748856056,
+                "pairwise_order_accuracy": 0.7303370786516854,
+                "spearman": 0.6301423417186259
+              },
+              "seed": 20260902
+            }
+          ]
+        }
+      },
+      "pair_count": 4000,
+      "pareto_flags": {
+        "diagonal_metric": false,
+        "frozen_affine": false,
+        "linear": true,
+        "matched_mlp": true,
+        "principal_component": false,
+        "wide_mlp": true
+      },
+      "pareto_metric": "spearman",
+      "relation_count": 36,
+      "resampling_unit": "global_endpoint_speaker",
+      "seed_aggregation": "median within paired speaker-bootstrap replicate",
+      "shared_resamples_across_methods": true,
+      "speaker_count": 1046,
+      "tie_policy": {
+        "predicted_tie": "half_credit",
+        "zero_reference_difference": "excluded"
+      }
+    },
+    "subgroup_medoid": {
+      "bootstrap_replicates": 1000,
+      "bootstrap_seed": 20260905,
+      "contrasts": {
+        "linear_minus_matched_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": -0.024789473463231827,
+              "upper": 0.002007406968405891
+            },
+            "point_estimate": -0.01084134911395468
+          }
+        },
+        "matched_mlp_minus_linear": {
+          "kendall_tau_b": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.18180650830295136,
+              "upper": 0.4884353954407649
+            },
+            "point_estimate": 0.4437419605638321
+          },
+          "pairwise_order_accuracy": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.09141252006420544,
+              "upper": 0.24558587479935795
+            },
+            "point_estimate": 0.22311396468699846
+          },
+          "spearman": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.256901461739997,
+              "upper": 0.6997779632878894
+            },
+            "point_estimate": 0.6391554115838289
+          }
+        },
+        "wide_mlp_minus_linear": {
+          "kendall_tau_b": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.2138900097681781,
+              "upper": 0.5682451005781447
+            },
+            "point_estimate": 0.5171668892902216
+          },
+          "pairwise_order_accuracy": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.10754414125200645,
+              "upper": 0.28571428571428575
+            },
+            "point_estimate": 0.26003210272873195
+          },
+          "spearman": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.301625601992544,
+              "upper": 0.8024625806807387
+            },
+            "point_estimate": 0.723363235753012
+          }
+        }
+      },
+      "methods": {
+        "diagonal_metric": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3509958091547011,
+              "upper": 0.36952976563702594
+            },
+            "point_estimate": 0.36001642067836986
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.036712464363194745,
+                "upper": 0.22506336848741126
+              },
+              "point_estimate": 0.11332978129507942
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.48154093097913325,
+                "upper": 0.6131621187800963
+              },
+              "point_estimate": 0.5569823434991974
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.052761867200194094,
+                "upper": 0.31946182346507623
+              },
+              "point_estimate": 0.15129081559448007
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.36001653832988284,
+              "ordering": {
+                "kendall_tau_b": 0.11332978129507942,
+                "pairwise_order_accuracy": 0.5569823434991974,
+                "spearman": 0.15129081559448007
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.36001642067836986,
+              "ordering": {
+                "kendall_tau_b": 0.11332978129507942,
+                "pairwise_order_accuracy": 0.5569823434991974,
+                "spearman": 0.15129081559448007
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.36001575047887163,
+              "ordering": {
+                "kendall_tau_b": 0.11332978129507942,
+                "pairwise_order_accuracy": 0.5569823434991974,
+                "spearman": 0.15129081559448007
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.360017429983591,
+              "ordering": {
+                "kendall_tau_b": 0.11332978129507942,
+                "pairwise_order_accuracy": 0.5569823434991974,
+                "spearman": 0.15129081559448007
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.3600162261348324,
+              "ordering": {
+                "kendall_tau_b": 0.11332978129507942,
+                "pairwise_order_accuracy": 0.5569823434991974,
+                "spearman": 0.15129081559448007
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "frozen_affine": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.35113835509183755,
+              "upper": 0.36989830359025194
+            },
+            "point_estimate": 0.36038787131864236
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.02402272124635134,
+                "upper": 0.2761415797753344
+              },
+              "point_estimate": 0.14206127514453618
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.4879213483146067,
+                "upper": 0.6388443017656501
+              },
+              "point_estimate": 0.5714285714285714
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.024267690612059255,
+                "upper": 0.3948046496311272
+              },
+              "point_estimate": 0.2020215231214802
+            }
+          },
+          "seed_count": 1,
+          "seed_values": [
+            {
+              "mae": 0.36038787131864236,
+              "ordering": {
+                "kendall_tau_b": 0.14206127514453618,
+                "pairwise_order_accuracy": 0.5714285714285714,
+                "spearman": 0.2020215231214802
+              },
+              "seed": 0
+            }
+          ]
+        },
+        "linear": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3209906693299031,
+              "upper": 0.34232501369286145
+            },
+            "point_estimate": 0.3312959361022297
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.2059090392544401,
+                "upper": 0.036712464363194745
+              },
+              "point_estimate": -0.11652216950057462
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.39646869983948635,
+                "upper": 0.5184590690208668
+              },
+              "point_estimate": 0.44141252006420545
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.2990118117316351,
+                "upper": 0.048821868087691025
+              },
+              "point_estimate": -0.17420976468028218
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.3293377362810112,
+              "ordering": {
+                "kendall_tau_b": -0.11652216950057462,
+                "pairwise_order_accuracy": 0.44141252006420545,
+                "spearman": -0.18360910896827964
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.3326589506270553,
+              "ordering": {
+                "kendall_tau_b": -0.0686363464181467,
+                "pairwise_order_accuracy": 0.4654895666131621,
+                "spearman": -0.11176206632851805
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.3321191776729525,
+              "ordering": {
+                "kendall_tau_b": -0.11652216950057462,
+                "pairwise_order_accuracy": 0.44141252006420545,
+                "spearman": -0.17420976468028218
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.3312959361022297,
+              "ordering": {
+                "kendall_tau_b": -0.10375261667859384,
+                "pairwise_order_accuracy": 0.4478330658105939,
+                "spearman": -0.14845813649398767
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.33073419270971577,
+              "ordering": {
+                "kendall_tau_b": -0.11971455770606983,
+                "pairwise_order_accuracy": 0.43980738362760835,
+                "spearman": -0.18837316018274414
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "matched_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3294740160101724,
+              "upper": 0.3572746344003724
+            },
+            "point_estimate": 0.34213728521618436
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.10367280697345646,
+                "upper": 0.40383710799514216
+              },
+              "point_estimate": 0.3272197910632575
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.5521268057784912,
+                "upper": 0.7030497592295345
+              },
+              "point_estimate": 0.6645264847512039
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.14703214008317161,
+                "upper": 0.5631494809919808
+              },
+              "point_estimate": 0.4649456469035468
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.34008371221888595,
+              "ordering": {
+                "kendall_tau_b": 0.2665644151588488,
+                "pairwise_order_accuracy": 0.6340288924558587,
+                "spearman": 0.3956737670824147
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.3451755083961434,
+              "ordering": {
+                "kendall_tau_b": 0.24102530951488724,
+                "pairwise_order_accuracy": 0.6211878009630819,
+                "spearman": 0.3330973105897191
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.3455136617204719,
+              "ordering": {
+                "kendall_tau_b": 0.4293762136391038,
+                "pairwise_order_accuracy": 0.7158908507223114,
+                "spearman": 0.5729737271450522
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.34145009467536636,
+              "ordering": {
+                "kendall_tau_b": 0.3272197910632575,
+                "pairwise_order_accuracy": 0.6645264847512039,
+                "spearman": 0.4649456469035468
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.34213728521618436,
+              "ordering": {
+                "kendall_tau_b": 0.3527588967072191,
+                "pairwise_order_accuracy": 0.6773675762439807,
+                "spearman": 0.494688777458717
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "principal_component": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.35321950028421734,
+              "upper": 0.3720622902660653
+            },
+            "point_estimate": 0.3623482501720061
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.011173358719233183,
+                "upper": 0.2506024741313728
+              },
+              "point_estimate": 0.14206127514453618
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.4943820224719101,
+                "upper": 0.6260032102728732
+              },
+              "point_estimate": 0.5714285714285714
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.020997233832399858,
+                "upper": 0.3581407690008904
+              },
+              "point_estimate": 0.1918496299878939
+            }
+          },
+          "seed_count": 1,
+          "seed_values": [
+            {
+              "mae": 0.3623482501720061,
+              "ordering": {
+                "kendall_tau_b": 0.14206127514453618,
+                "pairwise_order_accuracy": 0.5714285714285714,
+                "spearman": 0.1918496299878939
+              },
+              "seed": 0
+            }
+          ]
+        },
+        "wide_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3291609579214097,
+              "upper": 0.36028043105003504
+            },
+            "point_estimate": 0.3446527416110944
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.1452536633500314,
+                "upper": 0.4613000956940557
+              },
+              "point_estimate": 0.400644719789647
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.5730337078651685,
+                "upper": 0.7319422150882825
+              },
+              "point_estimate": 0.7014446227929374
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.20806027993116624,
+                "upper": 0.6386918822764757
+              },
+              "point_estimate": 0.5491534710727298
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.3429751452885669,
+              "ordering": {
+                "kendall_tau_b": 0.400644719789647,
+                "pairwise_order_accuracy": 0.7014446227929374,
+                "spearman": 0.5526299408778795
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.34608694463895157,
+              "ordering": {
+                "kendall_tau_b": 0.3399893438852383,
+                "pairwise_order_accuracy": 0.6709470304975923,
+                "spearman": 0.47511754003713313
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.34804460555788436,
+              "ordering": {
+                "kendall_tau_b": 0.49641636595450284,
+                "pairwise_order_accuracy": 0.7495987158908507,
+                "spearman": 0.6354214254968163
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.34198224302642116,
+              "ordering": {
+                "kendall_tau_b": 0.3591436731182095,
+                "pairwise_order_accuracy": 0.680577849117175,
+                "spearman": 0.4981652472638668
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.3446527416110944,
+              "ordering": {
+                "kendall_tau_b": 0.40383710799514216,
+                "pairwise_order_accuracy": 0.7030497592295345,
+                "spearman": 0.5491534710727298
+              },
+              "seed": 20260902
+            }
+          ]
+        }
+      },
+      "pair_count": 4000,
+      "pareto_flags": {
+        "diagonal_metric": false,
+        "frozen_affine": false,
+        "linear": true,
+        "matched_mlp": true,
+        "principal_component": false,
+        "wide_mlp": true
+      },
+      "pareto_metric": "spearman",
+      "relation_count": 36,
+      "resampling_unit": "global_endpoint_speaker",
+      "seed_aggregation": "median within paired speaker-bootstrap replicate",
+      "shared_resamples_across_methods": true,
+      "speaker_count": 1046,
+      "tie_policy": {
+        "predicted_tie": "half_credit",
+        "zero_reference_difference": "excluded"
+      }
+    }
+  },
+  "references": {
+    "city_nearest": {
+      "bootstrap_replicates": 1000,
+      "bootstrap_seed": 20260905,
+      "contrasts": {
+        "linear_minus_matched_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": -0.02841025001879346,
+              "upper": 0.0006114464708571017
+            },
+            "point_estimate": -0.013402050157906353
+          }
+        },
+        "matched_mlp_minus_linear": {
+          "kendall_tau_b": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.2138900097681781,
+              "upper": 0.5299364421122024
+            },
+            "point_estimate": 0.5075897246737361
+          },
+          "pairwise_order_accuracy": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.10754414125200645,
+              "upper": 0.26645264847512035
+            },
+            "point_estimate": 0.2552166934189406
+          },
+          "spearman": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.32382028653560646,
+              "upper": 0.7544132614386365
+            },
+            "point_estimate": 0.7373978731145425
+          }
+        },
+        "wide_mlp_minus_linear": {
+          "kendall_tau_b": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.2648884113509638,
+              "upper": 0.6130183451602148
+            },
+            "point_estimate": 0.5618603241671544
+          },
+          "pairwise_order_accuracy": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.13318619582664523,
+              "upper": 0.3082263242375602
+            },
+            "point_estimate": 0.2825040128410915
+          },
+          "spearman": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3947628032353246,
+              "upper": 0.8508531089963094
+            },
+            "point_estimate": 0.8284298787530934
+          }
+        }
+      },
+      "methods": {
+        "diagonal_metric": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3840423553204239,
+              "upper": 0.4023628297163661
+            },
+            "point_estimate": 0.3926668710218059
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.052674405390670725,
+                "upper": 0.1835623218159737
+              },
+              "point_estimate": 0.0654439582126515
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.47351524879614765,
+                "upper": 0.5922953451043339
+              },
+              "point_estimate": 0.5329052969502408
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.07334063707456669,
+                "upper": 0.2596697617700236
+              },
+              "point_estimate": 0.09515226614835812
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.39266688089936524,
+              "ordering": {
+                "kendall_tau_b": 0.0654439582126515,
+                "pairwise_order_accuracy": 0.5329052969502408,
+                "spearman": 0.09515226614835812
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.3926668710218059,
+              "ordering": {
+                "kendall_tau_b": 0.0654439582126515,
+                "pairwise_order_accuracy": 0.5329052969502408,
+                "spearman": 0.09515226614835812
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.3926659373146472,
+              "ordering": {
+                "kendall_tau_b": 0.0654439582126515,
+                "pairwise_order_accuracy": 0.5329052969502408,
+                "spearman": 0.09515226614835812
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.39266806998744985,
+              "ordering": {
+                "kendall_tau_b": 0.0654439582126515,
+                "pairwise_order_accuracy": 0.5329052969502408,
+                "spearman": 0.09515226614835812
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.3926662393484114,
+              "ordering": {
+                "kendall_tau_b": 0.0654439582126515,
+                "pairwise_order_accuracy": 0.5329052969502408,
+                "spearman": 0.09515226614835812
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "frozen_affine": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3842794863753582,
+              "upper": 0.4020440295594722
+            },
+            "point_estimate": 0.3928621647040202
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.017558135130223574,
+                "upper": 0.25706706024750053
+              },
+              "point_estimate": 0.10056022847309865
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.4911717495987159,
+                "upper": 0.6292536115569823
+              },
+              "point_estimate": 0.550561797752809
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.007223331706255595,
+                "upper": 0.3732730695138618
+              },
+              "point_estimate": 0.1667417925062568
+            }
+          },
+          "seed_count": 1,
+          "seed_values": [
+            {
+              "mae": 0.3928621647040202,
+              "ordering": {
+                "kendall_tau_b": 0.10056022847309865,
+                "pairwise_order_accuracy": 0.550561797752809,
+                "spearman": 0.1667417925062568
+              },
+              "seed": 0
+            }
+          ]
+        },
+        "linear": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.34485397646963206,
+              "upper": 0.3677398279517261
+            },
+            "point_estimate": 0.35557174171914685
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.18675471002146893,
+                "upper": 0.052674405390670725
+              },
+              "point_estimate": -0.09736784026760346
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.406099518459069,
+                "upper": 0.5264847512038523
+              },
+              "point_estimate": 0.4510433386837881
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.27466686623501696,
+                "upper": 0.07095861146733443
+              },
+              "point_estimate": -0.15747120635919076
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.35330734362231125,
+              "ordering": {
+                "kendall_tau_b": -0.10375261667859384,
+                "pairwise_order_accuracy": 0.4478330658105939,
+                "spearman": -0.15747120635919076
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.35716323042011316,
+              "ordering": {
+                "kendall_tau_b": -0.046289628979680336,
+                "pairwise_order_accuracy": 0.4767255216693419,
+                "spearman": -0.09437971730276927
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.35663573689311284,
+              "ordering": {
+                "kendall_tau_b": -0.11971455770606983,
+                "pairwise_order_accuracy": 0.43980738362760835,
+                "spearman": -0.17717120192170602
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.35557174171914685,
+              "ordering": {
+                "kendall_tau_b": -0.08459828744562267,
+                "pairwise_order_accuracy": 0.45746388443017655,
+                "spearman": -0.1198738292072008
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.3551935363357045,
+              "ordering": {
+                "kendall_tau_b": -0.09736784026760346,
+                "pairwise_order_accuracy": 0.4510433386837881,
+                "spearman": -0.15798623892291666
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "matched_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.35452231145486246,
+              "upper": 0.38512477500250236
+            },
+            "point_estimate": 0.3689737918770532
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.16752057108336035,
+                "upper": 0.4389533782555894
+              },
+              "point_estimate": 0.4102218844061326
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.5842295345104334,
+                "upper": 0.7207062600321027
+              },
+              "point_estimate": 0.7062600321027287
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.24822316304121578,
+                "upper": 0.610963816626883
+              },
+              "point_estimate": 0.5799266667553518
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.36556746764616366,
+              "ordering": {
+                "kendall_tau_b": 0.3367969556797431,
+                "pairwise_order_accuracy": 0.6693418940609952,
+                "spearman": 0.4950750518815114
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.3717789626403759,
+              "ordering": {
+                "kendall_tau_b": 0.3495665085017238,
+                "pairwise_order_accuracy": 0.6757624398073836,
+                "spearman": 0.49172734021729314
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.3734441467283275,
+              "ordering": {
+                "kendall_tau_b": 0.4453381546665797,
+                "pairwise_order_accuracy": 0.723916532905297,
+                "spearman": 0.6234469183901893
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.36717300988280444,
+              "ordering": {
+                "kendall_tau_b": 0.4357609900500941,
+                "pairwise_order_accuracy": 0.7191011235955056,
+                "spearman": 0.6292410347321057
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.3689737918770532,
+              "ordering": {
+                "kendall_tau_b": 0.4102218844061326,
+                "pairwise_order_accuracy": 0.7062600321027287,
+                "spearman": 0.5799266667553518
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "principal_component": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3866135665091366,
+              "upper": 0.40511124044909075
+            },
+            "point_estimate": 0.3953951873828572
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.027215109451846534,
+                "upper": 0.20910142745993526
+              },
+              "point_estimate": 0.08779067565111787
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.4863162118780096,
+                "upper": 0.6051364365971108
+              },
+              "point_estimate": 0.5441412520064205
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.044173932867373346,
+                "upper": 0.3013319169789109
+              },
+              "point_estimate": 0.1367411456692237
+            }
+          },
+          "seed_count": 1,
+          "seed_values": [
+            {
+              "mae": 0.3953951873828572,
+              "ordering": {
+                "kendall_tau_b": 0.08779067565111787,
+                "pairwise_order_accuracy": 0.5441412520064205,
+                "spearman": 0.1367411456692237
+              },
+              "seed": 0
+            }
+          ]
+        },
+        "wide_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3565108793481335,
+              "upper": 0.39004034756753114
+            },
+            "point_estimate": 0.37279268030002044
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.22506336848741126,
+                "upper": 0.5124581166871162
+              },
+              "point_estimate": 0.4644924838995509
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.6131621187800963,
+                "upper": 0.7576645264847512
+              },
+              "point_estimate": 0.7335473515248796
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.3317421311564153,
+                "upper": 0.6887659232847253
+              },
+              "point_estimate": 0.6709586723939026
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.3711667046233758,
+              "ordering": {
+                "kendall_tau_b": 0.4644924838995509,
+                "pairwise_order_accuracy": 0.7335473515248796,
+                "spearman": 0.6709586723939026
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.3748505464257931,
+              "ordering": {
+                "kendall_tau_b": 0.42618382543360855,
+                "pairwise_order_accuracy": 0.7142857142857143,
+                "spearman": 0.615463913652438
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.3774826724756698,
+              "ordering": {
+                "kendall_tau_b": 0.49322397774900767,
+                "pairwise_order_accuracy": 0.7479935794542536,
+                "spearman": 0.6815168399502834
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.3696319438769096,
+              "ordering": {
+                "kendall_tau_b": 0.45810770748856056,
+                "pairwise_order_accuracy": 0.7303370786516854,
+                "spearman": 0.6526750163816336
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.37279268030002044,
+              "ordering": {
+                "kendall_tau_b": 0.4804544249270269,
+                "pairwise_order_accuracy": 0.7415730337078652,
+                "spearman": 0.6752076910446413
+              },
+              "seed": 20260902
+            }
+          ]
+        }
+      },
+      "pair_count": 4000,
+      "pareto_flags": {
+        "diagonal_metric": false,
+        "frozen_affine": false,
+        "linear": true,
+        "matched_mlp": true,
+        "principal_component": false,
+        "wide_mlp": true
+      },
+      "pareto_metric": "spearman",
+      "relation_count": 36,
+      "resampling_unit": "global_endpoint_speaker",
+      "seed_aggregation": "median within paired speaker-bootstrap replicate",
+      "shared_resamples_across_methods": true,
+      "speaker_count": 1046,
+      "tie_policy": {
+        "predicted_tie": "half_credit",
+        "zero_reference_difference": "excluded"
+      }
+    },
+    "subgroup_aggregate": {
+      "bootstrap_replicates": 1000,
+      "bootstrap_seed": 20260905,
+      "contrasts": {
+        "linear_minus_matched_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": -0.03211720834764053,
+              "upper": -0.0005677230903298661
+            },
+            "point_estimate": -0.0158961015725812
+          }
+        },
+        "matched_mlp_minus_linear": {
+          "kendall_tau_b": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.2553112467344782,
+              "upper": 0.5842070416056206
+            },
+            "point_estimate": 0.5267440539067072
+          },
+          "pairwise_order_accuracy": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.12837078651685388,
+              "upper": 0.2937399678972713
+            },
+            "point_estimate": 0.2648475120385233
+          },
+          "spearman": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.36997686110601613,
+              "upper": 0.811465993685372
+            },
+            "point_estimate": 0.7281272869674764
+          }
+        },
+        "wide_mlp_minus_linear": {
+          "kendall_tau_b": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.2649682210561012,
+              "upper": 0.6320928646880486
+            },
+            "point_estimate": 0.5650527123726496
+          },
+          "pairwise_order_accuracy": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.1332263242375602,
+              "upper": 0.31781701444622795
+            },
+            "point_estimate": 0.2841091492776886
+          },
+          "spearman": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3850383446414751,
+              "upper": 0.8763407829936944
+            },
+            "point_estimate": 0.7815619154540375
+          }
+        }
+      },
+      "methods": {
+        "diagonal_metric": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.39974144553204066,
+              "upper": 0.4178675289649584
+            },
+            "point_estimate": 0.40851281773120524
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.023942911541213963,
+                "upper": 0.22506336848741126
+              },
+              "point_estimate": 0.11652216950057462
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.48796147672552165,
+                "upper": 0.6131621187800963
+              },
+              "point_estimate": 0.5585874799357945
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.020868475691468387,
+                "upper": 0.3167257129702823
+              },
+              "point_estimate": 0.14845813649398767
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.4085129963674866,
+              "ordering": {
+                "kendall_tau_b": 0.11652216950057462,
+                "pairwise_order_accuracy": 0.5585874799357945,
+                "spearman": 0.14845813649398767
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.40851281773120524,
+              "ordering": {
+                "kendall_tau_b": 0.11652216950057462,
+                "pairwise_order_accuracy": 0.5585874799357945,
+                "spearman": 0.14845813649398767
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.40851192179606005,
+              "ordering": {
+                "kendall_tau_b": 0.11652216950057462,
+                "pairwise_order_accuracy": 0.5585874799357945,
+                "spearman": 0.14845813649398767
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.40851405554984976,
+              "ordering": {
+                "kendall_tau_b": 0.11652216950057462,
+                "pairwise_order_accuracy": 0.5585874799357945,
+                "spearman": 0.14845813649398767
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.40851216457254125,
+              "ordering": {
+                "kendall_tau_b": 0.11652216950057462,
+                "pairwise_order_accuracy": 0.5585874799357945,
+                "spearman": 0.14845813649398767
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "frozen_affine": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.40000536405798104,
+              "upper": 0.41815190726481755
+            },
+            "point_estimate": 0.40868914466545375
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.01436574692472838,
+                "upper": 0.28891113259731516
+              },
+              "point_estimate": 0.17717754540498334
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.507223113964687,
+                "upper": 0.6452648475120385
+              },
+              "point_estimate": 0.5890850722311396
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.03499002479812763,
+                "upper": 0.4017286186597172
+              },
+              "point_estimate": 0.2537822957759321
+            }
+          },
+          "seed_count": 1,
+          "seed_values": [
+            {
+              "mae": 0.40868914466545375,
+              "ordering": {
+                "kendall_tau_b": 0.17717754540498334,
+                "pairwise_order_accuracy": 0.5890850722311396,
+                "spearman": 0.2537822957759321
+              },
+              "seed": 0
+            }
+          ]
+        },
+        "linear": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.35690316587673704,
+              "upper": 0.3799711099110317
+            },
+            "point_estimate": 0.36842023180989303
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.1963318746379545,
+                "upper": 0.036712464363194745
+              },
+              "point_estimate": -0.10694500488408903
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.4012841091492777,
+                "upper": 0.5184590690208668
+              },
+              "point_estimate": 0.4462279293739968
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.2825211128318368,
+                "upper": 0.04984227635457296
+              },
+              "point_estimate": -0.16326532270110702
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.36592036801205774,
+              "ordering": {
+                "kendall_tau_b": -0.1260993341170602,
+                "pairwise_order_accuracy": 0.43659711075441415,
+                "spearman": -0.16970322974768065
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.3698399792679336,
+              "ordering": {
+                "kendall_tau_b": -0.08140589924012748,
+                "pairwise_order_accuracy": 0.4590690208667737,
+                "spearman": -0.11073200120106626
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.3691569869320028,
+              "ordering": {
+                "kendall_tau_b": -0.1292917223225554,
+                "pairwise_order_accuracy": 0.434991974317817,
+                "spearman": -0.19017577415578474
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.36842023180989303,
+              "ordering": {
+                "kendall_tau_b": -0.09736784026760346,
+                "pairwise_order_accuracy": 0.4510433386837881,
+                "spearman": -0.15296467142658923
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.36780765969065055,
+              "ordering": {
+                "kendall_tau_b": -0.10694500488408903,
+                "pairwise_order_accuracy": 0.4462279293739968,
+                "spearman": -0.16326532270110702
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "matched_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.36874080551139005,
+              "upper": 0.4012693641027419
+            },
+            "point_estimate": 0.38431633338247423
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.19952426284344968,
+                "upper": 0.48364681313252206
+              },
+              "point_estimate": 0.41979904902261816
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.6003210272873194,
+                "upper": 0.7431781701444623
+              },
+              "point_estimate": 0.7110754414125201
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.2860973701962084,
+                "upper": 0.6569272539858956
+              },
+              "point_estimate": 0.5648619642663694
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.380489019537621,
+              "ordering": {
+                "kendall_tau_b": 0.36233606132370466,
+                "pairwise_order_accuracy": 0.6821829855537721,
+                "spearman": 0.5080796241155902
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.38730034477059827,
+              "ordering": {
+                "kendall_tau_b": 0.400644719789647,
+                "pairwise_order_accuracy": 0.7014446227929374,
+                "spearman": 0.5535312478643999
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.38776205280285353,
+              "ordering": {
+                "kendall_tau_b": 0.5059935305709884,
+                "pairwise_order_accuracy": 0.7544141252006421,
+                "spearman": 0.6678684770115474
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.3819632340281153,
+              "ordering": {
+                "kendall_tau_b": 0.41979904902261816,
+                "pairwise_order_accuracy": 0.7110754414125201,
+                "spearman": 0.5648619642663694
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.38431633338247423,
+              "ordering": {
+                "kendall_tau_b": 0.49322397774900767,
+                "pairwise_order_accuracy": 0.7479935794542536,
+                "spearman": 0.6546063884956057
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "principal_component": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.40211689623029734,
+              "upper": 0.42097332401132276
+            },
+            "point_estimate": 0.41140462288937235
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.0015961941027475978,
+                "upper": 0.24102530951488724
+              },
+              "point_estimate": 0.10056022847309865
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.49919743178170145,
+                "upper": 0.6211878009630819
+              },
+              "point_estimate": 0.550561797752809
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.0008755553583340138,
+                "upper": 0.345351866652872
+              },
+              "point_estimate": 0.15528231796335573
+            }
+          },
+          "seed_count": 1,
+          "seed_values": [
+            {
+              "mae": 0.41140462288937235,
+              "ordering": {
+                "kendall_tau_b": 0.10056022847309865,
+                "pairwise_order_accuracy": 0.550561797752809,
+                "spearman": 0.15528231796335573
+              },
+              "seed": 0
+            }
+          ]
+        },
+        "wide_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3710306262461773,
+              "upper": 0.4056426823925948
+            },
+            "point_estimate": 0.3881682236649975
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.20910142745993526,
+                "upper": 0.5251478598039596
+              },
+              "point_estimate": 0.45810770748856056
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.6051364365971108,
+                "upper": 0.7640449438202247
+              },
+              "point_estimate": 0.7303370786516854
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.3141473311981296,
+                "upper": 0.7120550520257054
+              },
+              "point_estimate": 0.6182965927529305
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.38623671859615283,
+              "ordering": {
+                "kendall_tau_b": 0.4453381546665797,
+                "pairwise_order_accuracy": 0.723916532905297,
+                "spearman": 0.6024593414183593
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.39001648229230507,
+              "ordering": {
+                "kendall_tau_b": 0.45810770748856056,
+                "pairwise_order_accuracy": 0.7303370786516854,
+                "spearman": 0.6182965927529305
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.3922742506345,
+              "ordering": {
+                "kendall_tau_b": 0.5506869654479212,
+                "pairwise_order_accuracy": 0.7768860353130016,
+                "spearman": 0.7059808867272631
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.3849462024258471,
+              "ordering": {
+                "kendall_tau_b": 0.4389533782555894,
+                "pairwise_order_accuracy": 0.7207062600321027,
+                "spearman": 0.5991116297541412
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.3881682236649975,
+              "ordering": {
+                "kendall_tau_b": 0.45810770748856056,
+                "pairwise_order_accuracy": 0.7303370786516854,
+                "spearman": 0.6301423417186259
+              },
+              "seed": 20260902
+            }
+          ]
+        }
+      },
+      "pair_count": 4000,
+      "pareto_flags": {
+        "diagonal_metric": false,
+        "frozen_affine": false,
+        "linear": true,
+        "matched_mlp": true,
+        "principal_component": false,
+        "wide_mlp": true
+      },
+      "pareto_metric": "spearman",
+      "relation_count": 36,
+      "resampling_unit": "global_endpoint_speaker",
+      "seed_aggregation": "median within paired speaker-bootstrap replicate",
+      "shared_resamples_across_methods": true,
+      "speaker_count": 1046,
+      "tie_policy": {
+        "predicted_tie": "half_credit",
+        "zero_reference_difference": "excluded"
+      }
+    },
+    "subgroup_medoid": {
+      "bootstrap_replicates": 1000,
+      "bootstrap_seed": 20260905,
+      "contrasts": {
+        "linear_minus_matched_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": -0.024789473463231827,
+              "upper": 0.002007406968405891
+            },
+            "point_estimate": -0.01084134911395468
+          }
+        },
+        "matched_mlp_minus_linear": {
+          "kendall_tau_b": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.18180650830295136,
+              "upper": 0.4884353954407649
+            },
+            "point_estimate": 0.4437419605638321
+          },
+          "pairwise_order_accuracy": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.09141252006420544,
+              "upper": 0.24558587479935795
+            },
+            "point_estimate": 0.22311396468699846
+          },
+          "spearman": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.256901461739997,
+              "upper": 0.6997779632878894
+            },
+            "point_estimate": 0.6391554115838289
+          }
+        },
+        "wide_mlp_minus_linear": {
+          "kendall_tau_b": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.2138900097681781,
+              "upper": 0.5682451005781447
+            },
+            "point_estimate": 0.5171668892902216
+          },
+          "pairwise_order_accuracy": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.10754414125200645,
+              "upper": 0.28571428571428575
+            },
+            "point_estimate": 0.26003210272873195
+          },
+          "spearman": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.301625601992544,
+              "upper": 0.8024625806807387
+            },
+            "point_estimate": 0.723363235753012
+          }
+        }
+      },
+      "methods": {
+        "diagonal_metric": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3509958091547011,
+              "upper": 0.36952976563702594
+            },
+            "point_estimate": 0.36001642067836986
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.036712464363194745,
+                "upper": 0.22506336848741126
+              },
+              "point_estimate": 0.11332978129507942
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.48154093097913325,
+                "upper": 0.6131621187800963
+              },
+              "point_estimate": 0.5569823434991974
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.052761867200194094,
+                "upper": 0.31946182346507623
+              },
+              "point_estimate": 0.15129081559448007
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.36001653832988284,
+              "ordering": {
+                "kendall_tau_b": 0.11332978129507942,
+                "pairwise_order_accuracy": 0.5569823434991974,
+                "spearman": 0.15129081559448007
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.36001642067836986,
+              "ordering": {
+                "kendall_tau_b": 0.11332978129507942,
+                "pairwise_order_accuracy": 0.5569823434991974,
+                "spearman": 0.15129081559448007
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.36001575047887163,
+              "ordering": {
+                "kendall_tau_b": 0.11332978129507942,
+                "pairwise_order_accuracy": 0.5569823434991974,
+                "spearman": 0.15129081559448007
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.360017429983591,
+              "ordering": {
+                "kendall_tau_b": 0.11332978129507942,
+                "pairwise_order_accuracy": 0.5569823434991974,
+                "spearman": 0.15129081559448007
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.3600162261348324,
+              "ordering": {
+                "kendall_tau_b": 0.11332978129507942,
+                "pairwise_order_accuracy": 0.5569823434991974,
+                "spearman": 0.15129081559448007
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "frozen_affine": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.35113835509183755,
+              "upper": 0.36989830359025194
+            },
+            "point_estimate": 0.36038787131864236
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.02402272124635134,
+                "upper": 0.2761415797753344
+              },
+              "point_estimate": 0.14206127514453618
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.4879213483146067,
+                "upper": 0.6388443017656501
+              },
+              "point_estimate": 0.5714285714285714
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.024267690612059255,
+                "upper": 0.3948046496311272
+              },
+              "point_estimate": 0.2020215231214802
+            }
+          },
+          "seed_count": 1,
+          "seed_values": [
+            {
+              "mae": 0.36038787131864236,
+              "ordering": {
+                "kendall_tau_b": 0.14206127514453618,
+                "pairwise_order_accuracy": 0.5714285714285714,
+                "spearman": 0.2020215231214802
+              },
+              "seed": 0
+            }
+          ]
+        },
+        "linear": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3209906693299031,
+              "upper": 0.34232501369286145
+            },
+            "point_estimate": 0.3312959361022297
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.2059090392544401,
+                "upper": 0.036712464363194745
+              },
+              "point_estimate": -0.11652216950057462
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.39646869983948635,
+                "upper": 0.5184590690208668
+              },
+              "point_estimate": 0.44141252006420545
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.2990118117316351,
+                "upper": 0.048821868087691025
+              },
+              "point_estimate": -0.17420976468028218
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.3293377362810112,
+              "ordering": {
+                "kendall_tau_b": -0.11652216950057462,
+                "pairwise_order_accuracy": 0.44141252006420545,
+                "spearman": -0.18360910896827964
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.3326589506270553,
+              "ordering": {
+                "kendall_tau_b": -0.0686363464181467,
+                "pairwise_order_accuracy": 0.4654895666131621,
+                "spearman": -0.11176206632851805
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.3321191776729525,
+              "ordering": {
+                "kendall_tau_b": -0.11652216950057462,
+                "pairwise_order_accuracy": 0.44141252006420545,
+                "spearman": -0.17420976468028218
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.3312959361022297,
+              "ordering": {
+                "kendall_tau_b": -0.10375261667859384,
+                "pairwise_order_accuracy": 0.4478330658105939,
+                "spearman": -0.14845813649398767
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.33073419270971577,
+              "ordering": {
+                "kendall_tau_b": -0.11971455770606983,
+                "pairwise_order_accuracy": 0.43980738362760835,
+                "spearman": -0.18837316018274414
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "matched_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3294740160101724,
+              "upper": 0.3572746344003724
+            },
+            "point_estimate": 0.34213728521618436
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.10367280697345646,
+                "upper": 0.40383710799514216
+              },
+              "point_estimate": 0.3272197910632575
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.5521268057784912,
+                "upper": 0.7030497592295345
+              },
+              "point_estimate": 0.6645264847512039
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.14703214008317161,
+                "upper": 0.5631494809919808
+              },
+              "point_estimate": 0.4649456469035468
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.34008371221888595,
+              "ordering": {
+                "kendall_tau_b": 0.2665644151588488,
+                "pairwise_order_accuracy": 0.6340288924558587,
+                "spearman": 0.3956737670824147
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.3451755083961434,
+              "ordering": {
+                "kendall_tau_b": 0.24102530951488724,
+                "pairwise_order_accuracy": 0.6211878009630819,
+                "spearman": 0.3330973105897191
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.3455136617204719,
+              "ordering": {
+                "kendall_tau_b": 0.4293762136391038,
+                "pairwise_order_accuracy": 0.7158908507223114,
+                "spearman": 0.5729737271450522
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.34145009467536636,
+              "ordering": {
+                "kendall_tau_b": 0.3272197910632575,
+                "pairwise_order_accuracy": 0.6645264847512039,
+                "spearman": 0.4649456469035468
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.34213728521618436,
+              "ordering": {
+                "kendall_tau_b": 0.3527588967072191,
+                "pairwise_order_accuracy": 0.6773675762439807,
+                "spearman": 0.494688777458717
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "principal_component": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.35321950028421734,
+              "upper": 0.3720622902660653
+            },
+            "point_estimate": 0.3623482501720061
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.011173358719233183,
+                "upper": 0.2506024741313728
+              },
+              "point_estimate": 0.14206127514453618
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.4943820224719101,
+                "upper": 0.6260032102728732
+              },
+              "point_estimate": 0.5714285714285714
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.020997233832399858,
+                "upper": 0.3581407690008904
+              },
+              "point_estimate": 0.1918496299878939
+            }
+          },
+          "seed_count": 1,
+          "seed_values": [
+            {
+              "mae": 0.3623482501720061,
+              "ordering": {
+                "kendall_tau_b": 0.14206127514453618,
+                "pairwise_order_accuracy": 0.5714285714285714,
+                "spearman": 0.1918496299878939
+              },
+              "seed": 0
+            }
+          ]
+        },
+        "wide_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.3291609579214097,
+              "upper": 0.36028043105003504
+            },
+            "point_estimate": 0.3446527416110944
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.1452536633500314,
+                "upper": 0.4613000956940557
+              },
+              "point_estimate": 0.400644719789647
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.5730337078651685,
+                "upper": 0.7319422150882825
+              },
+              "point_estimate": 0.7014446227929374
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.20806027993116624,
+                "upper": 0.6386918822764757
+              },
+              "point_estimate": 0.5491534710727298
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.3429751452885669,
+              "ordering": {
+                "kendall_tau_b": 0.400644719789647,
+                "pairwise_order_accuracy": 0.7014446227929374,
+                "spearman": 0.5526299408778795
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.34608694463895157,
+              "ordering": {
+                "kendall_tau_b": 0.3399893438852383,
+                "pairwise_order_accuracy": 0.6709470304975923,
+                "spearman": 0.47511754003713313
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.34804460555788436,
+              "ordering": {
+                "kendall_tau_b": 0.49641636595450284,
+                "pairwise_order_accuracy": 0.7495987158908507,
+                "spearman": 0.6354214254968163
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.34198224302642116,
+              "ordering": {
+                "kendall_tau_b": 0.3591436731182095,
+                "pairwise_order_accuracy": 0.680577849117175,
+                "spearman": 0.4981652472638668
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.3446527416110944,
+              "ordering": {
+                "kendall_tau_b": 0.40383710799514216,
+                "pairwise_order_accuracy": 0.7030497592295345,
+                "spearman": 0.5491534710727298
+              },
+              "seed": 20260902
+            }
+          ]
+        }
+      },
+      "pair_count": 4000,
+      "pareto_flags": {
+        "diagonal_metric": false,
+        "frozen_affine": false,
+        "linear": true,
+        "matched_mlp": true,
+        "principal_component": false,
+        "wide_mlp": true
+      },
+      "pareto_metric": "spearman",
+      "relation_count": 36,
+      "resampling_unit": "global_endpoint_speaker",
+      "seed_aggregation": "median within paired speaker-bootstrap replicate",
+      "shared_resamples_across_methods": true,
+      "speaker_count": 1046,
+      "tie_policy": {
+        "predicted_tie": "half_credit",
+        "zero_reference_difference": "excluded"
+      }
+    },
+    "taxonomy": {
+      "bootstrap_replicates": 1000,
+      "bootstrap_seed": 20260905,
+      "contrasts": {
+        "linear_minus_matched_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": -0.03617845835174465,
+              "upper": -0.003480780460100519
+            },
+            "point_estimate": -0.019444902418858157
+          }
+        },
+        "matched_mlp_minus_linear": {
+          "kendall_tau_b": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.013468700594029465,
+              "upper": 0.24243661069253059
+            },
+            "point_estimate": 0.12121830534626529
+          },
+          "pairwise_order_accuracy": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.02857142857142858,
+              "upper": 0.5142857142857142
+            },
+            "point_estimate": 0.2571428571428571
+          },
+          "spearman": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.016271279927185717,
+              "upper": 0.2928830386893425
+            },
+            "point_estimate": 0.1464415193446713
+          }
+        },
+        "wide_mlp_minus_linear": {
+          "kendall_tau_b": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.01313198307917872,
+              "upper": 0.2424366106925306
+            },
+            "point_estimate": 0.13468700594029479
+          },
+          "pairwise_order_accuracy": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.027857142857142907,
+              "upper": 0.5142857142857143
+            },
+            "point_estimate": 0.2857142857142857
+          },
+          "spearman": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.015864497929006044,
+              "upper": 0.29288303868934257
+            },
+            "point_estimate": 0.16271279927185694
+          }
+        }
+      },
+      "methods": {
+        "diagonal_metric": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.47838110665152,
+              "upper": 0.4955135827395776
+            },
+            "point_estimate": 0.4859703653221901
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.12795265564328004,
+                "upper": 0.23570226039551587
+              },
+              "point_estimate": 0.18182745801939793
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.7714285714285715,
+                "upper": 1.0
+              },
+              "point_estimate": 0.8857142857142857
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.15457715930826413,
+                "upper": 0.2847473987257497
+              },
+              "point_estimate": 0.21966227901700694
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.4859705388182277,
+              "ordering": {
+                "kendall_tau_b": 0.18182745801939793,
+                "pairwise_order_accuracy": 0.8857142857142857,
+                "spearman": 0.21966227901700694
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.4859703653221901,
+              "ordering": {
+                "kendall_tau_b": 0.18182745801939793,
+                "pairwise_order_accuracy": 0.8857142857142857,
+                "spearman": 0.21966227901700694
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.48596973536009674,
+              "ordering": {
+                "kendall_tau_b": 0.18182745801939793,
+                "pairwise_order_accuracy": 0.8857142857142857,
+                "spearman": 0.21966227901700694
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.48597184789834225,
+              "ordering": {
+                "kendall_tau_b": 0.18182745801939793,
+                "pairwise_order_accuracy": 0.8857142857142857,
+                "spearman": 0.21966227901700694
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.4859693611907021,
+              "ordering": {
+                "kendall_tau_b": 0.18182745801939793,
+                "pairwise_order_accuracy": 0.8857142857142857,
+                "spearman": 0.21966227901700694
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "frozen_affine": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.4788781072189227,
+              "upper": 0.49585809845161205
+            },
+            "point_estimate": 0.48631508155493963
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.10067853694037036,
+                "upper": 0.23570226039551587
+              },
+              "point_estimate": 0.1683587574253685
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.7135714285714286,
+                "upper": 1.0
+              },
+              "point_estimate": 0.8571428571428571
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.12162781745571312,
+                "upper": 0.2847473987257497
+              },
+              "point_estimate": 0.2033909990898212
+            }
+          },
+          "seed_count": 1,
+          "seed_values": [
+            {
+              "mae": 0.48631508155493963,
+              "ordering": {
+                "kendall_tau_b": 0.1683587574253685,
+                "pairwise_order_accuracy": 0.8571428571428571,
+                "spearman": 0.2033909990898212
+              },
+              "seed": 0
+            }
+          ]
+        },
+        "linear": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.41817020360579593,
+              "upper": 0.4479642038810373
+            },
+            "point_estimate": 0.4329569645774102
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.10101525445522108,
+                "upper": 0.2087648592074569
+              },
+              "point_estimate": 0.07407785326716212
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.2857142857142857,
+                "upper": 0.9428571428571428
+              },
+              "point_estimate": 0.6571428571428571
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": -0.12203459945389274,
+                "upper": 0.2522048388713783
+              },
+              "point_estimate": 0.08949203959952133
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.4291007783447573,
+              "ordering": {
+                "kendall_tau_b": 0.06060915267313265,
+                "pairwise_order_accuracy": 0.6285714285714286,
+                "spearman": 0.07322075967233564
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.4342888761694251,
+              "ordering": {
+                "kendall_tau_b": 0.10101525445522108,
+                "pairwise_order_accuracy": 0.7142857142857143,
+                "spearman": 0.12203459945389274
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.4337871266525301,
+              "ordering": {
+                "kendall_tau_b": 0.12795265564328004,
+                "pairwise_order_accuracy": 0.7714285714285715,
+                "spearman": 0.15457715930826413
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.4329569645774102,
+              "ordering": {
+                "kendall_tau_b": 0.07407785326716212,
+                "pairwise_order_accuracy": 0.6571428571428571,
+                "spearman": 0.08949203959952133
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.43239855915056,
+              "ordering": {
+                "kendall_tau_b": 0.07407785326716212,
+                "pairwise_order_accuracy": 0.6571428571428571,
+                "spearman": 0.08949203959952133
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "matched_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.43761533866483704,
+              "upper": 0.46846842722463905
+            },
+            "point_estimate": 0.45240186699626833
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.07407785326716212,
+                "upper": 0.22223355980148637
+              },
+              "point_estimate": 0.19529615861342742
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.6571428571428571,
+                "upper": 0.9714285714285714
+              },
+              "point_estimate": 0.9142857142857143
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.08949203959952133,
+                "upper": 0.26847611879856403
+              },
+              "point_estimate": 0.23593355894419263
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.4474555313821254,
+              "ordering": {
+                "kendall_tau_b": 0.19529615861342742,
+                "pairwise_order_accuracy": 0.9142857142857143,
+                "spearman": 0.23593355894419263
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.45436577529169114,
+              "ordering": {
+                "kendall_tau_b": 0.2087648592074569,
+                "pairwise_order_accuracy": 0.9428571428571428,
+                "spearman": 0.2522048388713783
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.4564044594374685,
+              "ordering": {
+                "kendall_tau_b": 0.2087648592074569,
+                "pairwise_order_accuracy": 0.9428571428571428,
+                "spearman": 0.2522048388713783
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.44918924403244265,
+              "ordering": {
+                "kendall_tau_b": 0.18182745801939793,
+                "pairwise_order_accuracy": 0.8857142857142857,
+                "spearman": 0.21966227901700694
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.45240186699626833,
+              "ordering": {
+                "kendall_tau_b": 0.19529615861342742,
+                "pairwise_order_accuracy": 0.9142857142857143,
+                "spearman": 0.23593355894419263
+              },
+              "seed": 20260902
+            }
+          ]
+        },
+        "principal_component": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.4813900195958601,
+              "upper": 0.4987714266248739
+            },
+            "point_estimate": 0.48921644037816986
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.11448395504925056,
+                "upper": 0.23570226039551587
+              },
+              "point_estimate": 0.19529615861342742
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.7428571428571429,
+                "upper": 1.0
+              },
+              "point_estimate": 0.9142857142857143
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.1383058793810784,
+                "upper": 0.2847473987257497
+              },
+              "point_estimate": 0.23593355894419263
+            }
+          },
+          "seed_count": 1,
+          "seed_values": [
+            {
+              "mae": 0.48921644037816986,
+              "ordering": {
+                "kendall_tau_b": 0.19529615861342742,
+                "pairwise_order_accuracy": 0.9142857142857143,
+                "spearman": 0.23593355894419263
+              },
+              "seed": 0
+            }
+          ]
+        },
+        "wide_mlp": {
+          "mae": {
+            "ci": {
+              "confidence_level": 0.95,
+              "lower": 0.43941406922994547,
+              "upper": 0.4724313636878452
+            },
+            "point_estimate": 0.45583892531835213
+          },
+          "ordering": {
+            "kendall_tau_b": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.07407785326716212,
+                "upper": 0.22223355980148637
+              },
+              "point_estimate": 0.2087648592074569
+            },
+            "pairwise_order_accuracy": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.6571428571428571,
+                "upper": 0.9714285714285714
+              },
+              "point_estimate": 0.9428571428571428
+            },
+            "spearman": {
+              "ci": {
+                "confidence_level": 0.95,
+                "lower": 0.08949203959952133,
+                "upper": 0.26847611879856403
+              },
+              "point_estimate": 0.2522048388713783
+            }
+          },
+          "seed_count": 5,
+          "seed_values": [
+            {
+              "mae": 0.45421050932443974,
+              "ordering": {
+                "kendall_tau_b": 0.19529615861342742,
+                "pairwise_order_accuracy": 0.9142857142857143,
+                "spearman": 0.23593355894419263
+              },
+              "seed": 20260829
+            },
+            {
+              "mae": 0.45711581427780806,
+              "ordering": {
+                "kendall_tau_b": 0.2087648592074569,
+                "pairwise_order_accuracy": 0.9428571428571428,
+                "spearman": 0.2522048388713783
+              },
+              "seed": 20260830
+            },
+            {
+              "mae": 0.458658214644659,
+              "ordering": {
+                "kendall_tau_b": 0.22223355980148637,
+                "pairwise_order_accuracy": 0.9714285714285714,
+                "spearman": 0.26847611879856403
+              },
+              "seed": 20260831
+            },
+            {
+              "mae": 0.4530447278985147,
+              "ordering": {
+                "kendall_tau_b": 0.2087648592074569,
+                "pairwise_order_accuracy": 0.9428571428571428,
+                "spearman": 0.2522048388713783
+              },
+              "seed": 20260901
+            },
+            {
+              "mae": 0.45583892531835213,
+              "ordering": {
+                "kendall_tau_b": 0.19529615861342742,
+                "pairwise_order_accuracy": 0.9142857142857143,
+                "spearman": 0.23593355894419263
+              },
+              "seed": 20260902
+            }
+          ]
+        }
+      },
+      "pair_count": 4000,
+      "pareto_flags": {
+        "diagonal_metric": false,
+        "frozen_affine": false,
+        "linear": true,
+        "matched_mlp": true,
+        "principal_component": false,
+        "wide_mlp": true
+      },
+      "pareto_metric": "spearman",
+      "relation_count": 36,
+      "resampling_unit": "global_endpoint_speaker",
+      "seed_aggregation": "median within paired speaker-bootstrap replicate",
+      "shared_resamples_across_methods": true,
+      "speaker_count": 1046,
+      "tie_policy": {
+        "predicted_tie": "half_credit",
+        "zero_reference_difference": "excluded"
+      }
+    }
+  },
+  "schema": "relation-ranking-clustered-v1",
+  "source_hashes": {
+    "projection_manifest": "78fff14458fb4e759dceacfd4b16e9313e53d68343df8f3b87992d30c716e3e6"
+  },
+  "status": "evaluated"
+}

@@ -13,7 +13,7 @@ from typing import Any, Iterable
 import numpy as np
 import torch
 from huggingface_hub import hf_hub_download
-from transformers import AutoFeatureExtractor, AutoModel
+from transformers import AutoConfig, AutoFeatureExtractor, AutoModel
 
 from .config import ConfigError, load_config
 
@@ -142,6 +142,7 @@ def _model_specs(config: dict[str, Any]) -> list[ModelSpec]:
                 status=str(entry["status"]),
                 license=str(entry.get("license")) if entry.get("license") is not None else None,
                 checkpoint_hash=str(entry.get("checkpoint_hash")) if entry.get("checkpoint_hash") is not None else None,
+                checkpoint=str(entry.get("checkpoint")) if entry.get("checkpoint") is not None else None,
                 cache_root=str(entry.get("cache_root")) if entry.get("cache_root") is not None else None,
             )
         )
@@ -180,25 +181,160 @@ def _sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def _local_hub_cache_file(cache_root: str | None, repo_id: str, filename: str) -> Path | None:
+def _local_hub_cache_file(
+    cache_root: str | None, repo_id: str, filename: str, revision: str | None = None
+) -> Path | None:
     if not cache_root:
         return None
     repo_dir = Path(cache_root) / f"models--{repo_id.replace('/', '--')}"
     snapshots = repo_dir / "snapshots"
     if not snapshots.is_dir():
         return None
-    for snapshot_dir in snapshots.iterdir():
+    candidates = [snapshots / revision] if revision else list(snapshots.iterdir())
+    for snapshot_dir in candidates:
         candidate = snapshot_dir / filename
         if candidate.is_file():
             return candidate
     return None
 
 
+def verify_transformer_checkpoint(spec: ModelSpec) -> dict[str, Any]:
+    validate_model_spec(spec)
+    if not spec.checkpoint:
+        raise ConfigError("transformer checkpoint filename is missing")
+    source_path = Path(spec.source)
+    if source_path.is_dir():
+        checkpoint_path = source_path / spec.checkpoint
+    else:
+        checkpoint_path = _local_hub_cache_file(
+            spec.cache_root, spec.source, spec.checkpoint, spec.revision
+        )
+        if checkpoint_path is None:
+            checkpoint_path = Path(
+                hf_hub_download(
+                    repo_id=spec.source,
+                    filename=spec.checkpoint,
+                    revision=spec.revision,
+                    cache_dir=spec.cache_root,
+                )
+            )
+    if not checkpoint_path.is_file():
+        raise ConfigError(f"transformer checkpoint is missing: {checkpoint_path}")
+    observed_hash = _sha256(checkpoint_path)
+    if spec.checkpoint_hash and observed_hash != spec.checkpoint_hash:
+        raise ConfigError("transformer checkpoint hash mismatch")
+    return {
+        "source": spec.source,
+        "revision": spec.revision,
+        "checkpoint": spec.checkpoint,
+        "checkpoint_hash": observed_hash,
+        "cache_path": str(checkpoint_path),
+        "dimension": spec.dimension,
+        "license": spec.license,
+    }
+
+
+def _migrate_legacy_weight_norm_keys(
+    state_dict: dict[str, torch.Tensor],
+) -> tuple[dict[str, torch.Tensor], int]:
+    migrated = dict(state_dict)
+    migration_count = 0
+    for key in list(state_dict):
+        if key.endswith(".weight_g"):
+            target = key[: -len(".weight_g")] + ".parametrizations.weight.original0"
+        elif key.endswith(".weight_v"):
+            target = key[: -len(".weight_v")] + ".parametrizations.weight.original1"
+        else:
+            continue
+        if target in migrated:
+            raise ConfigError(f"ambiguous legacy weight-norm state: {key}")
+        migrated[target] = migrated.pop(key)
+        migration_count += 1
+    return migrated, migration_count
+
+
+def _normalize_transformer_state_dict(
+    checkpoint_state: dict[str, torch.Tensor], expected_keys: set[str], base_prefix: str | None = None
+) -> dict[str, torch.Tensor]:
+    candidates: list[dict[str, torch.Tensor]] = [dict(checkpoint_state)]
+    if base_prefix:
+        prefix = f"{base_prefix}."
+        stripped = {
+            key[len(prefix) :]: value
+            for key, value in checkpoint_state.items()
+            if key.startswith(prefix)
+        }
+        if stripped:
+            candidates.append(stripped)
+
+    mismatch_summaries: list[str] = []
+    for candidate in candidates:
+        migrated, _ = _migrate_legacy_weight_norm_keys(candidate)
+        filtered = {key: value for key, value in migrated.items() if key in expected_keys}
+        missing = sorted(expected_keys.difference(filtered))
+        if not missing:
+            return filtered
+        mismatch_summaries.append(f"missing={len(missing)} first={missing[0]}")
+    raise ConfigError(
+        "strict transformer state mismatch: " + "; ".join(mismatch_summaries)
+    )
+
+
+def _load_checkpoint_state_dict(path: Path) -> dict[str, torch.Tensor]:
+    if path.suffix == ".safetensors":
+        from safetensors.torch import load_file
+
+        payload = load_file(str(path), device="cpu")
+    else:
+        payload = torch.load(path, map_location="cpu", weights_only=True, mmap=True)
+    if isinstance(payload, dict) and "state_dict" in payload:
+        payload = payload["state_dict"]
+    if not isinstance(payload, dict) or not payload:
+        raise ConfigError(f"invalid transformer checkpoint payload: {path}")
+    if not all(isinstance(key, str) and isinstance(value, torch.Tensor) for key, value in payload.items()):
+        raise ConfigError(f"transformer checkpoint is not a tensor state dictionary: {path}")
+    return dict(payload)
+
+
+def load_transformer_model(spec: ModelSpec) -> tuple[torch.nn.Module, dict[str, Any]]:
+    """Load every base-model tensor exactly, including legacy weight-norm keys."""
+
+    checkpoint = verify_transformer_checkpoint(spec)
+    config = AutoConfig.from_pretrained(spec.source, **_pretrained_kwargs(spec))
+    model = AutoModel.from_config(config)
+    expected_keys = set(model.state_dict())
+    raw_state = _load_checkpoint_state_dict(Path(checkpoint["cache_path"]))
+    normalized_state = _normalize_transformer_state_dict(
+        raw_state,
+        expected_keys,
+        base_prefix=getattr(model, "base_model_prefix", None),
+    )
+    legacy_count = sum(
+        key.endswith(".weight_g") or key.endswith(".weight_v") for key in raw_state
+    )
+    incompatible = model.load_state_dict(normalized_state, strict=True)
+    if incompatible.missing_keys or incompatible.unexpected_keys:
+        raise ConfigError("strict transformer load returned incompatible base-model keys")
+    audit = {
+        **checkpoint,
+        "loader": "strict-state-dict-v1",
+        "base_tensor_count": len(normalized_state),
+        "checkpoint_tensor_count": len(raw_state),
+        "excluded_task_tensor_count": len(raw_state) - len(normalized_state),
+        "legacy_weight_norm_tensors_migrated": int(legacy_count),
+        "missing_base_tensors": 0,
+        "unexpected_base_tensors": 0,
+    }
+    return model, audit
+
+
 def verify_speaker_proxy_checkpoint(spec: ModelSpec) -> dict[str, Any]:
     validate_model_spec(spec)
     if not spec.checkpoint:
         raise ConfigError("speaker proxy checkpoint filename is missing")
-    checkpoint_path = _local_hub_cache_file(spec.cache_root, spec.source, spec.checkpoint)
+    checkpoint_path = _local_hub_cache_file(
+        spec.cache_root, spec.source, spec.checkpoint, spec.revision
+    )
     if checkpoint_path is None:
         checkpoint_path = Path(
             hf_hub_download(
@@ -226,7 +362,7 @@ def smoke_transformer(spec: ModelSpec, audio_paths: Iterable[Path], device: torc
     validate_model_spec(spec)
     pretrained_kwargs = _pretrained_kwargs(spec)
     processor = AutoFeatureExtractor.from_pretrained(spec.source, **pretrained_kwargs)
-    model = AutoModel.from_pretrained(spec.source, **pretrained_kwargs)
+    model, checkpoint = load_transformer_model(spec)
     model.eval().to(device)
     observed_dimension = int(getattr(model.config, "hidden_size"))
     if observed_dimension != spec.dimension:
@@ -256,7 +392,20 @@ def smoke_transformer(spec: ModelSpec, audio_paths: Iterable[Path], device: torc
         "name": spec.name,
         "source": spec.source,
         "revision": spec.revision,
-        "checkpoint_hash": spec.checkpoint_hash,
+        "checkpoint": spec.checkpoint,
+        "checkpoint_hash": checkpoint["checkpoint_hash"],
+        "strict_load_audit": {
+            key: checkpoint[key]
+            for key in (
+                "loader",
+                "base_tensor_count",
+                "checkpoint_tensor_count",
+                "excluded_task_tensor_count",
+                "legacy_weight_norm_tensors_migrated",
+                "missing_base_tensors",
+                "unexpected_base_tensors",
+            )
+        },
         "dimension": spec.dimension,
         "license": spec.license,
         "cache_root": spec.cache_root,

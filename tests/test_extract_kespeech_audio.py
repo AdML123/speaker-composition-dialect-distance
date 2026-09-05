@@ -34,8 +34,8 @@ def test_extract_selected_audio_reads_concatenated_split_archive(tmp_path):
     )
     records = {
         "records": [
-            {"utterance_id": "u1", "audio_path": "DATA_ROOT/KeSpeech/Audio/spk1/u1.wav"},
-            {"utterance_id": "u2", "audio_path": "DATA_ROOT/KeSpeech/Audio/spk2/u2.wav"},
+            {"utterance_id": "u1", "audio_path": "DATASET_PATH_REDACTED/kespeech/KeSpeech/Audio/spk1/u1.wav"},
+            {"utterance_id": "u2", "audio_path": "DATASET_PATH_REDACTED/kespeech/KeSpeech/Audio/spk2/u2.wav"},
         ]
     }
     pairs = {"pairs": [{"source_utterance_ids": ["u1", "u2"]}]}

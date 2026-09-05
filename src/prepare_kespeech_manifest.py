@@ -70,7 +70,7 @@ def _records_for_task(
         records.append(
             {
                 "utterance_id": utterance_id,
-                "audio_path": (metadata_root.parent / Path(relative_audio)).as_posix(),
+                "audio_path": f"DATASET_PATH_REDACTED/kespeech/KeSpeech/{relative_audio}",
                 "speaker_id": speaker_id,
                 "dialect_label": dialect_label,
                 "sample_rate": 16000,

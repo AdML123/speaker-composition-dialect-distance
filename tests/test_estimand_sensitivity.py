@@ -1,6 +1,8 @@
 import pytest
 
 from src.estimand_sensitivity import (
+    aggregate_seed_bootstraps,
+    attach_design_strata,
     dyadic_weighting_bootstrap,
     relation_key,
     weighted_mae,
@@ -95,3 +97,84 @@ def test_dyadic_weighting_bootstrap_reports_all_estimands():
         assert summary["gain"] > 0
         assert summary["ci"]["lower"] > 0
         assert summary["bootstrap_replicates"] == 200
+        assert summary["gain_unit"] == "fraction"
+        assert summary["gain_orientation"] == "(baseline_mae-method_mae)/baseline_mae"
+        assert summary["resampling_unit"] == "global_endpoint_speaker"
+        assert len(summary["bootstrap_gain"]) == 200
+
+
+def test_pairing_rejects_endpoint_mismatch_even_when_pair_ids_match():
+    baseline = [
+        {
+            "pair_id": "p1",
+            "absolute_error": 0.5,
+            "speaker_ids": ["a", "b"],
+            "dialect_labels": ["B", "J"],
+            "utterance_ids": ["u1", "u2"],
+            "matched_stratum": "s1",
+        }
+    ]
+    method = [dict(baseline[0], utterance_ids=["u1", "u3"], absolute_error=0.4)]
+    with pytest.raises(ValueError, match="pair identity mismatch"):
+        dyadic_weighting_bootstrap(baseline, method, seed=7, replicates=20)
+
+
+def test_design_strata_join_uses_pair_and_endpoint_identity():
+    rows = [
+        {
+            "pair_id": "p1",
+            "utterance_ids": ["u2", "u1"],
+            "speaker_ids": ["b", "a"],
+            "dialect_labels": ["J", "B"],
+            "absolute_error": 0.2,
+        }
+    ]
+    manifest = [
+        {
+            "pair_id": "p1",
+            "source_utterance_ids": ["u1", "u2"],
+            "matched_stratum": "symmetric",
+        }
+    ]
+    joined = attach_design_strata(rows, manifest)
+    assert joined[0]["matched_stratum"] == "symmetric"
+    with pytest.raises(ValueError, match="pair identity mismatch"):
+        attach_design_strata(
+            [dict(rows[0], utterance_ids=["u2", "other"])], manifest
+        )
+
+
+def test_seed_aggregation_uses_paired_replicate_medians():
+    seed_results = [
+        {
+            "seed": 1,
+            "estimands": {
+                "pair": {
+                    "gain": 0.1,
+                    "baseline_mae": 0.5,
+                    "method_mae": 0.45,
+                    "bootstrap_gain": [0.0, 0.1, 0.2, 0.3],
+                }
+            },
+        },
+        {
+            "seed": 2,
+            "estimands": {
+                "pair": {
+                    "gain": 0.2,
+                    "baseline_mae": 0.5,
+                    "method_mae": 0.4,
+                    "bootstrap_gain": [0.1, 0.2, 0.3, 0.4],
+                }
+            },
+        },
+    ]
+    summary = aggregate_seed_bootstraps(seed_results, "pair")
+    assert summary["gain"] == pytest.approx(0.15)
+    assert summary["seed_values"] == [
+        {"seed": 1, "gain": 0.1},
+        {"seed": 2, "gain": 0.2},
+    ]
+    assert summary["ci"]["lower"] == pytest.approx(0.0575)
+    assert summary["ci"]["upper"] == pytest.approx(0.3425)
+    assert summary["gain_unit"] == "fraction"

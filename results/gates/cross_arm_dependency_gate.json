@@ -1,0 +1,9 @@
+{
+  "direction_preserved_all_models": true,
+  "full_title_dependency_passed": true,
+  "interval_lower_positive_all_models": true,
+  "nested_utterance_sensitivity_valid": true,
+  "schema": "cross-arm-dependency-gate-v1",
+  "shared_utterance_count_matches_lock": true,
+  "status": "passed"
+}

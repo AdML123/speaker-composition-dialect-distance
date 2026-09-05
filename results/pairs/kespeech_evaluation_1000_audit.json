@@ -1,0 +1,142 @@
+{
+  "schema": "pair-audit-v1",
+  "pair_manifest": "results/pairs/kespeech_evaluation_1000.json",
+  "split": "evaluation",
+  "status": "passed",
+  "record_count": 19723,
+  "speaker_count": 1999,
+  "dialect_counts": {
+    "Beijing": 265,
+    "Ji-Lu": 2809,
+    "Jiang-Huai": 2271,
+    "Jiao-Liao": 1443,
+    "Lan-Yin": 1652,
+    "Mandarin": 5000,
+    "Northeastern": 351,
+    "Southwestern": 2693,
+    "Zhongyuan": 3239
+  },
+  "group_summary": {
+    "A": {
+      "requested": 1000,
+      "available": 154338,
+      "sampled": 1000,
+      "status": "ok"
+    },
+    "B": {
+      "requested": 1000,
+      "available": 30233836,
+      "sampled": 1000,
+      "status": "ok"
+    },
+    "C": {
+      "requested": 1000,
+      "available": 28327,
+      "sampled": 1000,
+      "status": "ok"
+    },
+    "D": {
+      "requested": 1000,
+      "available": 164072002,
+      "sampled": 1000,
+      "status": "ok"
+    }
+  },
+  "within_group_utterance_reuse": {
+    "A": {
+      "unique_utterances": 2000,
+      "repeated_utterances": 0,
+      "max_repeat": 1
+    },
+    "B": {
+      "unique_utterances": 2000,
+      "repeated_utterances": 0,
+      "max_repeat": 1
+    },
+    "C": {
+      "unique_utterances": 2000,
+      "repeated_utterances": 0,
+      "max_repeat": 1
+    },
+    "D": {
+      "unique_utterances": 2000,
+      "repeated_utterances": 0,
+      "max_repeat": 1
+    }
+  },
+  "invalid_group_d_same_speaker_pairs": 0,
+  "dialect_pair_distribution": {
+    "A": {
+      "('Beijing',)": 112,
+      "('Ji-Lu',)": 111,
+      "('Jiang-Huai',)": 111,
+      "('Jiao-Liao',)": 111,
+      "('Lan-Yin',)": 111,
+      "('Mandarin',)": 111,
+      "('Northeastern',)": 111,
+      "('Southwestern',)": 111,
+      "('Zhongyuan',)": 111
+    },
+    "B": {
+      "('Beijing',)": 112,
+      "('Ji-Lu',)": 111,
+      "('Jiang-Huai',)": 111,
+      "('Jiao-Liao',)": 111,
+      "('Lan-Yin',)": 111,
+      "('Mandarin',)": 111,
+      "('Northeastern',)": 111,
+      "('Southwestern',)": 111,
+      "('Zhongyuan',)": 111
+    },
+    "C": {
+      "('Mandarin', 'Northeastern')": 83,
+      "('Ji-Lu', 'Mandarin')": 189,
+      "('Mandarin', 'Zhongyuan')": 164,
+      "('Jiao-Liao', 'Mandarin')": 122,
+      "('Jiang-Huai', 'Mandarin')": 193,
+      "('Beijing', 'Mandarin')": 34,
+      "('Mandarin', 'Southwestern')": 140,
+      "('Lan-Yin', 'Mandarin')": 75
+    },
+    "D": {
+      "('Beijing', 'Ji-Lu')": 28,
+      "('Beijing', 'Jiang-Huai')": 28,
+      "('Beijing', 'Jiao-Liao')": 28,
+      "('Beijing', 'Lan-Yin')": 28,
+      "('Beijing', 'Mandarin')": 28,
+      "('Beijing', 'Northeastern')": 28,
+      "('Beijing', 'Southwestern')": 28,
+      "('Beijing', 'Zhongyuan')": 28,
+      "('Ji-Lu', 'Jiang-Huai')": 28,
+      "('Ji-Lu', 'Jiao-Liao')": 28,
+      "('Ji-Lu', 'Lan-Yin')": 28,
+      "('Ji-Lu', 'Mandarin')": 28,
+      "('Ji-Lu', 'Northeastern')": 28,
+      "('Ji-Lu', 'Southwestern')": 28,
+      "('Ji-Lu', 'Zhongyuan')": 28,
+      "('Jiang-Huai', 'Jiao-Liao')": 28,
+      "('Jiang-Huai', 'Lan-Yin')": 28,
+      "('Jiang-Huai', 'Mandarin')": 28,
+      "('Jiang-Huai', 'Northeastern')": 28,
+      "('Jiang-Huai', 'Southwestern')": 28,
+      "('Jiang-Huai', 'Zhongyuan')": 28,
+      "('Jiao-Liao', 'Lan-Yin')": 28,
+      "('Jiao-Liao', 'Mandarin')": 28,
+      "('Jiao-Liao', 'Northeastern')": 28,
+      "('Jiao-Liao', 'Southwestern')": 28,
+      "('Jiao-Liao', 'Zhongyuan')": 28,
+      "('Lan-Yin', 'Mandarin')": 28,
+      "('Lan-Yin', 'Northeastern')": 28,
+      "('Lan-Yin', 'Southwestern')": 27,
+      "('Lan-Yin', 'Zhongyuan')": 27,
+      "('Mandarin', 'Northeastern')": 27,
+      "('Mandarin', 'Southwestern')": 27,
+      "('Mandarin', 'Zhongyuan')": 27,
+      "('Northeastern', 'Southwestern')": 27,
+      "('Northeastern', 'Zhongyuan')": 27,
+      "('Southwestern', 'Zhongyuan')": 27
+    }
+  },
+  "speaker_split_leaks": 0,
+  "notes": []
+}

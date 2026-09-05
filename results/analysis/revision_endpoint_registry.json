@@ -1,16 +1,74 @@
 {
-  "schema": "revision-endpoint-registry-v1",
+  "schema": "revision-endpoint-registry-v3",
   "declaration_status": "revision_time_declared_not_preregistered",
+  "experimental_objects": {
+    "phenomenon": {
+      "manifest": "results/pairs/kespeech_evaluation_matched.json",
+      "pair_count": 12980,
+      "estimand": "overlap_pair_weighted_stratum_median_B_minus_A",
+      "weight_formula": "n_A*n_B/(n_A+n_B)",
+      "mandatory_sensitivities": [
+        "exclude_M-A",
+        "leave_one_stratum_out",
+        "legacy_equal_stratum_median",
+        "pooled_pair_weighted",
+        "support_qualified_equal_stratum"
+      ]
+    },
+    "projection": {
+      "manifest": "results/pairs/kespeech_evaluation_1000.json",
+      "pair_count": 4000,
+      "group_counts": {
+        "A": 1000,
+        "B": 1000,
+        "C": 1000,
+        "D": 1000
+      },
+      "distinct_from_phenomenon_manifest": true
+    }
+  },
   "primary": {
     "phenomenon": {
       "model": "chinese_hubert_large",
       "estimand": "condition-aware same-dialect B-minus-A cosine-distance contrast",
-      "inference": "dyadic speaker bootstrap within matched strata"
+      "aggregation": "overlap-pair-weighted stratum medians",
+      "inference": "global endpoint-speaker bootstrap with stratum recomputation"
     },
     "projection": {
       "model": "chinese_hubert_large",
       "reference": "taxonomy",
-      "contrast": "pair-weighted linear pair-only map versus frozen affine mean absolute error"
+      "contrast": "pair-weighted linear pair-only map versus frozen affine mean absolute error",
+      "endpoint": "pair_weighted_mae"
+    }
+  },
+  "secondary": {
+    "projection": {
+      "endpoint": "relation_ordering",
+      "relations": 36,
+      "references": [
+        "taxonomy",
+        "city_nearest",
+        "subgroup_medoid",
+        "subgroup_aggregate"
+      ],
+      "methods": [
+        "frozen_affine",
+        "principal_component",
+        "diagonal_metric",
+        "linear",
+        "matched_mlp",
+        "wide_mlp"
+      ],
+      "metrics": [
+        "spearman",
+        "kendall_tau_b",
+        "pairwise_order_accuracy"
+      ],
+      "tie_policy": {
+        "reference_ties": "excluded_from_pairwise_accuracy",
+        "predicted_ties": "half_credit"
+      },
+      "global_winner": false
     }
   },
   "supporting": {
@@ -38,7 +96,8 @@
         "city_nearest"
       ],
       "adjustment": "holm",
-      "primary_lambda_cross": 0.5
+      "primary_lambda_cross": 0.5,
+      "scope": "HuBERT training package"
     }
   },
   "exploratory": {
@@ -55,5 +114,21 @@
       "familywise_claim": false,
       "reporting": "estimates and intervals without a global mechanism p-value"
     }
+  },
+  "frozen_correction_family": {
+    "branches": [
+      "scalar_subtraction",
+      "principal_component_removal",
+      "speaker_mean_normalization",
+      "ECAPA_regression",
+      "rank_one_dialect_modulation"
+    ],
+    "scope_labels": [
+      "inductive",
+      "label_free_transductive",
+      "leave_pair_out_transductive",
+      "not_applicable"
+    ],
+    "claim_boundary": "tested branches, encoders, references, and scopes only"
   }
 }

@@ -1,0 +1,943 @@
+{
+  "conceptual_excluded_stratum": "Mandarin|phase1:Accent",
+  "declaration_status": "reviewer_driven_revision_not_preregistered",
+  "models": [
+    {
+      "excluded_stratum": {
+        "estimand": "overlap_pair_weighted_stratum_median_B_minus_A",
+        "estimate": 0.21817588807445076,
+        "excluded": "evaluation|Mandarin|phase1:Accent",
+        "legacy_equal_stratum_estimate": 0.2170665718291871
+      },
+      "excluded_stratum_bootstrap": {
+        "bootstrap_estimate_standard_deviation": 0.004696775484255847,
+        "ci": {
+          "confidence_level": 0.95,
+          "lower": 0.20856050273884436,
+          "method": "percentile",
+          "upper": 0.22697114458838744
+        },
+        "different_speaker_pair_weight": "product_of_endpoint_multiplicities",
+        "missing_stratum_replicates": {
+          "evaluation|Mandarin|phase2:clean": 15
+        },
+        "replicates_requested": 1000,
+        "replicates_used": 1000,
+        "resampling_unit": "speaker_id_global_across_arms_and_strata",
+        "same_speaker_pair_weight": "one_speaker_multiplicity",
+        "seed": 20260829,
+        "stratum_medians_recomputed_per_replicate": true,
+        "stratum_weights": "fixed_observed_overlap_pair_weights"
+      },
+      "leave_one_stratum_out": [
+        {
+          "estimate": 0.21825375090390295,
+          "omitted_stratum": "evaluation|Beijing|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.22107188288754415,
+          "omitted_stratum": "evaluation|Ji-Lu|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.21488143828314404,
+          "omitted_stratum": "evaluation|Jiang-Huai|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.21730853280431378,
+          "omitted_stratum": "evaluation|Jiao-Liao|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.21867001767260497,
+          "omitted_stratum": "evaluation|Lan-Yin|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.21817588807445076,
+          "omitted_stratum": "evaluation|Mandarin|phase1:Accent",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.2177081901961617,
+          "omitted_stratum": "evaluation|Mandarin|phase1:Mandarin",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.21828132321202764,
+          "omitted_stratum": "evaluation|Mandarin|phase2:clean",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.2182512567981752,
+          "omitted_stratum": "evaluation|Mandarin|phase2:noisy",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.21851316916639507,
+          "omitted_stratum": "evaluation|Northeastern|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.21853667042337313,
+          "omitted_stratum": "evaluation|Southwestern|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.21991651888842764,
+          "omitted_stratum": "evaluation|Zhongyuan|phase1:Dialect",
+          "remaining_strata": 11
+        }
+      ],
+      "legacy_equal_stratum": {
+        "estimand": "median_of_stratum_median_B_minus_A",
+        "estimate": 0.21789048210672543,
+        "status": "sensitivity_only"
+      },
+      "model_name": "chinese_hubert_large",
+      "pooled_pair_weighted": {
+        "estimand": "pooled_pair_median_B_minus_median_A",
+        "estimate": 0.21652715706284809,
+        "status": "descriptive_only"
+      },
+      "primary": {
+        "estimand": "overlap_pair_weighted_stratum_median_B_minus_A",
+        "estimate": 0.21826192612295658,
+        "stratum_count": 12,
+        "weight_formula": "n_A*n_B/(n_A+n_B)"
+      },
+      "primary_bootstrap": {
+        "bootstrap_estimate_standard_deviation": 0.004693904676260171,
+        "ci": {
+          "confidence_level": 0.95,
+          "lower": 0.2086306056491223,
+          "method": "percentile",
+          "upper": 0.22706688713306794
+        },
+        "different_speaker_pair_weight": "product_of_endpoint_multiplicities",
+        "missing_stratum_replicates": {
+          "evaluation|Mandarin|phase1:Accent": 346,
+          "evaluation|Mandarin|phase2:clean": 15
+        },
+        "replicates_requested": 1000,
+        "replicates_used": 1000,
+        "resampling_unit": "speaker_id_global_across_arms_and_strata",
+        "same_speaker_pair_weight": "one_speaker_multiplicity",
+        "seed": 20260829,
+        "stratum_medians_recomputed_per_replicate": true,
+        "stratum_weights": "fixed_observed_overlap_pair_weights"
+      },
+      "schema": "speaker-effect-estimand-sensitivity-v1",
+      "sign_flip": {
+        "method": "exact_weighted_stratum_sign_flip",
+        "observed": 0.21826192612295658,
+        "p_value": 0.00048828125,
+        "permutations": 4096,
+        "sidedness": "two_sided"
+      },
+      "source_file": "results\\distances\\kespeech_evaluation_matched\\chinese_hubert_large.json",
+      "source_sha256": "5e05c77c1b211c3a9cfd75432c84d0a2d95d58682c252b6a530749e93e1ce007",
+      "strata": [
+        {
+          "A_median": 0.33950961677597286,
+          "A_pair_count": 56,
+          "A_unique_speaker_count": 14,
+          "B_median": 0.5582240091602366,
+          "B_pair_count": 132,
+          "B_unique_speaker_count": 37,
+          "effect": 0.21871439238426377,
+          "overlap_weight": 39.319148936170215,
+          "stratum": "evaluation|Beijing|phase1:Dialect",
+          "weighted_effect_contribution": 8.59966376864084
+        },
+        {
+          "A_median": 0.3167358906973399,
+          "A_pair_count": 570,
+          "A_unique_speaker_count": 138,
+          "B_median": 0.5224519690120557,
+          "B_pair_count": 1404,
+          "B_unique_speaker_count": 216,
+          "effect": 0.20571607831471583,
+          "overlap_weight": 405.41033434650456,
+          "stratum": "evaluation|Ji-Lu|phase1:Dialect",
+          "weighted_effect_contribution": 83.39942409002066
+        },
+        {
+          "A_median": 0.31468894335866465,
+          "A_pair_count": 422,
+          "A_unique_speaker_count": 127,
+          "B_median": 0.5539163712305442,
+          "B_pair_count": 1135,
+          "B_unique_speaker_count": 227,
+          "effect": 0.2392274278718795,
+          "overlap_weight": 307.6236351958895,
+          "stratum": "evaluation|Jiang-Huai|phase1:Dialect",
+          "weighted_effect_contribution": 73.59201100051003
+        },
+        {
+          "A_median": 0.3225726508735431,
+          "A_pair_count": 274,
+          "A_unique_speaker_count": 82,
+          "B_median": 0.5505196031646418,
+          "B_pair_count": 721,
+          "B_unique_speaker_count": 143,
+          "effect": 0.22794695229109868,
+          "overlap_weight": 198.54673366834172,
+          "stratum": "evaluation|Jiao-Liao|phase1:Dialect",
+          "weighted_effect_contribution": 45.25812282705097
+        },
+        {
+          "A_median": 0.3364909503971729,
+          "A_pair_count": 397,
+          "A_unique_speaker_count": 71,
+          "B_median": 0.5517890170407573,
+          "B_pair_count": 826,
+          "B_unique_speaker_count": 85,
+          "effect": 0.21529806664358442,
+          "overlap_weight": 268.12919051512677,
+          "stratum": "evaluation|Lan-Yin|phase1:Dialect",
+          "weighted_effect_contribution": 57.727696328616105
+        },
+        {
+          "A_median": 0.15136031002244688,
+          "A_pair_count": 1,
+          "A_unique_speaker_count": 1,
+          "B_median": 0.5613430858160204,
+          "B_pair_count": 160,
+          "B_unique_speaker_count": 283,
+          "effect": 0.40998277579357356,
+          "overlap_weight": 0.9937888198757764,
+          "stratum": "evaluation|Mandarin|phase1:Accent",
+          "weighted_effect_contribution": 0.4074362989252905
+        },
+        {
+          "A_median": 0.28903734818052856,
+          "A_pair_count": 26,
+          "A_unique_speaker_count": 25,
+          "B_median": 0.5553529849614057,
+          "B_pair_count": 862,
+          "B_unique_speaker_count": 1179,
+          "effect": 0.26631563678087716,
+          "overlap_weight": 25.23873873873874,
+          "stratum": "evaluation|Mandarin|phase1:Mandarin",
+          "weighted_effect_contribution": 6.7214707787534
+        },
+        {
+          "A_median": 0.2846020360757698,
+          "A_pair_count": 4,
+          "A_unique_speaker_count": 4,
+          "B_median": 0.49201237668556297,
+          "B_pair_count": 337,
+          "B_unique_speaker_count": 568,
+          "effect": 0.2074103406097932,
+          "overlap_weight": 3.9530791788856305,
+          "stratum": "evaluation|Mandarin|phase2:clean",
+          "weighted_effect_contribution": 0.8199094989501502
+        },
+        {
+          "A_median": 0.3060766399327095,
+          "A_pair_count": 32,
+          "A_unique_speaker_count": 32,
+          "B_median": 0.5250873087587932,
+          "B_pair_count": 1140,
+          "B_unique_speaker_count": 1667,
+          "effect": 0.21901066882608367,
+          "overlap_weight": 31.12627986348123,
+          "stratum": "evaluation|Mandarin|phase2:noisy",
+          "weighted_effect_contribution": 6.816987370968884
+        },
+        {
+          "A_median": 0.3226474145237467,
+          "A_pair_count": 32,
+          "A_unique_speaker_count": 20,
+          "B_median": 0.52058538120519,
+          "B_pair_count": 175,
+          "B_unique_speaker_count": 93,
+          "effect": 0.19793796668144337,
+          "overlap_weight": 27.053140096618357,
+          "stratum": "evaluation|Northeastern|phase1:Dialect",
+          "weighted_effect_contribution": 5.354843543072864
+        },
+        {
+          "A_median": 0.3200809585261042,
+          "A_pair_count": 598,
+          "A_unique_speaker_count": 130,
+          "B_median": 0.5371475303552913,
+          "B_pair_count": 1346,
+          "B_unique_speaker_count": 160,
+          "effect": 0.2170665718291871,
+          "overlap_weight": 414.0473251028807,
+          "stratum": "evaluation|Southwestern|phase1:Dialect",
+          "weighted_effect_contribution": 89.87583343512723
+        },
+        {
+          "A_median": 0.3222770118346997,
+          "A_pair_count": 711,
+          "A_unique_speaker_count": 151,
+          "B_median": 0.5347736256957575,
+          "B_pair_count": 1619,
+          "B_unique_speaker_count": 195,
+          "effect": 0.21249661386105778,
+          "overlap_weight": 494.0381974248927,
+          "stratum": "evaluation|Zhongyuan|phase1:Dialect",
+          "weighted_effect_contribution": 104.98144407081045
+        }
+      ],
+      "support_qualified_equal_stratum": {
+        "estimand": "median_of_stratum_median_B_minus_A",
+        "estimate": 0.2170665718291871,
+        "excluded_strata": [
+          "evaluation|Mandarin|phase1:Accent"
+        ],
+        "included_strata": [
+          "evaluation|Beijing|phase1:Dialect",
+          "evaluation|Ji-Lu|phase1:Dialect",
+          "evaluation|Jiang-Huai|phase1:Dialect",
+          "evaluation|Jiao-Liao|phase1:Dialect",
+          "evaluation|Lan-Yin|phase1:Dialect",
+          "evaluation|Mandarin|phase1:Mandarin",
+          "evaluation|Mandarin|phase2:clean",
+          "evaluation|Mandarin|phase2:noisy",
+          "evaluation|Northeastern|phase1:Dialect",
+          "evaluation|Southwestern|phase1:Dialect",
+          "evaluation|Zhongyuan|phase1:Dialect"
+        ],
+        "minimum_unique_speakers_per_arm": 2,
+        "status": "sensitivity_only"
+      }
+    },
+    {
+      "excluded_stratum": {
+        "estimand": "overlap_pair_weighted_stratum_median_B_minus_A",
+        "estimate": 0.12685041443339026,
+        "excluded": "evaluation|Mandarin|phase1:Accent",
+        "legacy_equal_stratum_estimate": 0.12569074375960032
+      },
+      "excluded_stratum_bootstrap": {
+        "bootstrap_estimate_standard_deviation": 0.003242705318639074,
+        "ci": {
+          "confidence_level": 0.95,
+          "lower": 0.12078876727076039,
+          "method": "percentile",
+          "upper": 0.1332097826089217
+        },
+        "different_speaker_pair_weight": "product_of_endpoint_multiplicities",
+        "missing_stratum_replicates": {
+          "evaluation|Mandarin|phase2:clean": 15
+        },
+        "replicates_requested": 1000,
+        "replicates_used": 1000,
+        "resampling_unit": "speaker_id_global_across_arms_and_strata",
+        "same_speaker_pair_weight": "one_speaker_multiplicity",
+        "seed": 20260829,
+        "stratum_medians_recomputed_per_replicate": true,
+        "stratum_weights": "fixed_observed_overlap_pair_weights"
+      },
+      "leave_one_stratum_out": [
+        {
+          "estimate": 0.12654635926815092,
+          "omitted_stratum": "evaluation|Beijing|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.12845024416789202,
+          "omitted_stratum": "evaluation|Ji-Lu|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.12483884169065243,
+          "omitted_stratum": "evaluation|Jiang-Huai|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.12646864908058164,
+          "omitted_stratum": "evaluation|Jiao-Liao|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.12780859883814447,
+          "omitted_stratum": "evaluation|Lan-Yin|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.12685041443339026,
+          "omitted_stratum": "evaluation|Mandarin|phase1:Accent",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.12653771983883277,
+          "omitted_stratum": "evaluation|Mandarin|phase1:Mandarin",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.12693397865689357,
+          "omitted_stratum": "evaluation|Mandarin|phase2:clean",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.1270431214645151,
+          "omitted_stratum": "evaluation|Mandarin|phase2:noisy",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.12668253600984175,
+          "omitted_stratum": "evaluation|Northeastern|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.12718888418109806,
+          "omitted_stratum": "evaluation|Southwestern|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.1278785157510829,
+          "omitted_stratum": "evaluation|Zhongyuan|phase1:Dialect",
+          "remaining_strata": 11
+        }
+      ],
+      "legacy_equal_stratum": {
+        "estimand": "median_of_stratum_median_B_minus_A",
+        "estimate": 0.1285359572569846,
+        "status": "sensitivity_only"
+      },
+      "model_name": "wavlm_large",
+      "pooled_pair_weighted": {
+        "estimand": "pooled_pair_median_B_minus_median_A",
+        "estimate": 0.12401074966575565,
+        "status": "descriptive_only"
+      },
+      "primary": {
+        "estimand": "overlap_pair_weighted_stratum_median_B_minus_A",
+        "estimate": 0.12690889918984785,
+        "stratum_count": 12,
+        "weight_formula": "n_A*n_B/(n_A+n_B)"
+      },
+      "primary_bootstrap": {
+        "bootstrap_estimate_standard_deviation": 0.0032417310137476917,
+        "ci": {
+          "confidence_level": 0.95,
+          "lower": 0.12082541636377603,
+          "method": "percentile",
+          "upper": 0.1332254109769488
+        },
+        "different_speaker_pair_weight": "product_of_endpoint_multiplicities",
+        "missing_stratum_replicates": {
+          "evaluation|Mandarin|phase1:Accent": 346,
+          "evaluation|Mandarin|phase2:clean": 15
+        },
+        "replicates_requested": 1000,
+        "replicates_used": 1000,
+        "resampling_unit": "speaker_id_global_across_arms_and_strata",
+        "same_speaker_pair_weight": "one_speaker_multiplicity",
+        "seed": 20260829,
+        "stratum_medians_recomputed_per_replicate": true,
+        "stratum_weights": "fixed_observed_overlap_pair_weights"
+      },
+      "schema": "speaker-effect-estimand-sensitivity-v1",
+      "sign_flip": {
+        "holm_adjusted_p": 0.0009765625,
+        "method": "exact_weighted_stratum_sign_flip",
+        "observed": 0.12690889918984785,
+        "p_value": 0.00048828125,
+        "permutations": 4096,
+        "sidedness": "two_sided"
+      },
+      "source_file": "results\\distances\\kespeech_evaluation_matched\\wavlm_large.json",
+      "source_sha256": "c39941d146623b0619695920846adbccda3e6d2ae271040def826a0e4800d074",
+      "strata": [
+        {
+          "A_median": 0.23262316139550665,
+          "A_pair_count": 56,
+          "A_unique_speaker_count": 14,
+          "B_median": 0.3795972211479143,
+          "B_pair_count": 132,
+          "B_unique_speaker_count": 37,
+          "effect": 0.14697405975240763,
+          "overlap_weight": 39.319148936170215,
+          "stratum": "evaluation|Beijing|phase1:Dialect",
+          "weighted_effect_contribution": 5.778894945158496
+        },
+        {
+          "A_median": 0.21079809047903308,
+          "A_pair_count": 570,
+          "A_unique_speaker_count": 138,
+          "B_median": 0.33082521847644164,
+          "B_pair_count": 1404,
+          "B_unique_speaker_count": 216,
+          "effect": 0.12002712799740856,
+          "overlap_weight": 405.41033434650456,
+          "stratum": "evaluation|Ji-Lu|phase1:Dialect",
+          "weighted_effect_contribution": 48.6602380920801
+        },
+        {
+          "A_median": 0.22299709997986933,
+          "A_pair_count": 422,
+          "A_unique_speaker_count": 127,
+          "B_median": 0.3627443219729015,
+          "B_pair_count": 1135,
+          "B_unique_speaker_count": 227,
+          "effect": 0.1397472219930322,
+          "overlap_weight": 307.6236351958895,
+          "stratum": "evaluation|Jiang-Huai|phase1:Dialect",
+          "weighted_effect_contribution": 42.98954843802352
+        },
+        {
+          "A_median": 0.21731834785237408,
+          "A_pair_count": 274,
+          "A_unique_speaker_count": 82,
+          "B_median": 0.348699518606743,
+          "B_pair_count": 721,
+          "B_unique_speaker_count": 143,
+          "effect": 0.1313811707543689,
+          "overlap_weight": 198.54673366834172,
+          "stratum": "evaluation|Jiao-Liao|phase1:Dialect",
+          "weighted_effect_contribution": 26.085302318802608
+        },
+        {
+          "A_median": 0.22392203273313083,
+          "A_pair_count": 397,
+          "A_unique_speaker_count": 71,
+          "B_median": 0.3442966546670818,
+          "B_pair_count": 826,
+          "B_unique_speaker_count": 85,
+          "effect": 0.12037462193395099,
+          "overlap_weight": 268.12919051512677,
+          "stratum": "evaluation|Lan-Yin|phase1:Dialect",
+          "weighted_effect_contribution": 32.2759499377147
+        },
+        {
+          "A_median": 0.09943830630664896,
+          "A_pair_count": 1,
+          "A_unique_speaker_count": 1,
+          "B_median": 0.3566703287605395,
+          "B_pair_count": 160,
+          "B_unique_speaker_count": 283,
+          "effect": 0.25723202245389054,
+          "overlap_weight": 0.9937888198757764,
+          "stratum": "evaluation|Mandarin|phase1:Accent",
+          "weighted_effect_contribution": 0.25563430802871107
+        },
+        {
+          "A_median": 0.1948090227327715,
+          "A_pair_count": 26,
+          "A_unique_speaker_count": 25,
+          "B_median": 0.35392920580862997,
+          "B_pair_count": 862,
+          "B_unique_speaker_count": 1179,
+          "effect": 0.15912018307585846,
+          "overlap_weight": 25.23873873873874,
+          "stratum": "evaluation|Mandarin|phase1:Mandarin",
+          "weighted_effect_contribution": 4.015992728711869
+        },
+        {
+          "A_median": 0.21624190790443354,
+          "A_pair_count": 4,
+          "A_unique_speaker_count": 4,
+          "B_median": 0.3291202491958962,
+          "B_pair_count": 337,
+          "B_unique_speaker_count": 568,
+          "effect": 0.11287834129146268,
+          "overlap_weight": 3.9530791788856305,
+          "stratum": "evaluation|Mandarin|phase2:clean",
+          "weighted_effect_contribution": 0.44621702070642727
+        },
+        {
+          "A_median": 0.20390283763869915,
+          "A_pair_count": 32,
+          "A_unique_speaker_count": 32,
+          "B_median": 0.32139240141478187,
+          "B_pair_count": 1140,
+          "B_unique_speaker_count": 1667,
+          "effect": 0.11748956377608272,
+          "overlap_weight": 31.12627986348123,
+          "stratum": "evaluation|Mandarin|phase2:noisy",
+          "weighted_effect_contribution": 3.657013043132677
+        },
+        {
+          "A_median": 0.2268701399562038,
+          "A_pair_count": 32,
+          "A_unique_speaker_count": 20,
+          "B_median": 0.37209037635376907,
+          "B_pair_count": 175,
+          "B_unique_speaker_count": 93,
+          "effect": 0.14522023639756526,
+          "overlap_weight": 27.053140096618357,
+          "stratum": "evaluation|Northeastern|phase1:Dialect",
+          "weighted_effect_contribution": 3.9286634001273693
+        },
+        {
+          "A_median": 0.22656568254311588,
+          "A_pair_count": 598,
+          "A_unique_speaker_count": 130,
+          "B_median": 0.3522564263027162,
+          "B_pair_count": 1346,
+          "B_unique_speaker_count": 160,
+          "effect": 0.12569074375960032,
+          "overlap_weight": 414.0473251028807,
+          "stratum": "evaluation|Southwestern|phase1:Dialect",
+          "weighted_effect_contribution": 52.041916243854104
+        },
+        {
+          "A_median": 0.21190405974327586,
+          "A_pair_count": 711,
+          "A_unique_speaker_count": 151,
+          "B_median": 0.33543439813769005,
+          "B_pair_count": 1619,
+          "B_unique_speaker_count": 195,
+          "effect": 0.12353033839441419,
+          "overlap_weight": 494.0381974248927,
+          "stratum": "evaluation|Zhongyuan|phase1:Dialect",
+          "weighted_effect_contribution": 61.0287057076634
+        }
+      ],
+      "support_qualified_equal_stratum": {
+        "estimand": "median_of_stratum_median_B_minus_A",
+        "estimate": 0.12569074375960032,
+        "excluded_strata": [
+          "evaluation|Mandarin|phase1:Accent"
+        ],
+        "included_strata": [
+          "evaluation|Beijing|phase1:Dialect",
+          "evaluation|Ji-Lu|phase1:Dialect",
+          "evaluation|Jiang-Huai|phase1:Dialect",
+          "evaluation|Jiao-Liao|phase1:Dialect",
+          "evaluation|Lan-Yin|phase1:Dialect",
+          "evaluation|Mandarin|phase1:Mandarin",
+          "evaluation|Mandarin|phase2:clean",
+          "evaluation|Mandarin|phase2:noisy",
+          "evaluation|Northeastern|phase1:Dialect",
+          "evaluation|Southwestern|phase1:Dialect",
+          "evaluation|Zhongyuan|phase1:Dialect"
+        ],
+        "minimum_unique_speakers_per_arm": 2,
+        "status": "sensitivity_only"
+      }
+    },
+    {
+      "excluded_stratum": {
+        "estimand": "overlap_pair_weighted_stratum_median_B_minus_A",
+        "estimate": 0.0039799836521467,
+        "excluded": "evaluation|Mandarin|phase1:Accent",
+        "legacy_equal_stratum_estimate": 0.003909189517904921
+      },
+      "excluded_stratum_bootstrap": {
+        "bootstrap_estimate_standard_deviation": 0.00011881613315250803,
+        "ci": {
+          "confidence_level": 0.95,
+          "lower": 0.003775389625653757,
+          "method": "percentile",
+          "upper": 0.004235326830603638
+        },
+        "different_speaker_pair_weight": "product_of_endpoint_multiplicities",
+        "missing_stratum_replicates": {
+          "evaluation|Mandarin|phase2:clean": 15
+        },
+        "replicates_requested": 1000,
+        "replicates_used": 1000,
+        "resampling_unit": "speaker_id_global_across_arms_and_strata",
+        "same_speaker_pair_weight": "one_speaker_multiplicity",
+        "seed": 20260829,
+        "stratum_medians_recomputed_per_replicate": true,
+        "stratum_weights": "fixed_observed_overlap_pair_weights"
+      },
+      "leave_one_stratum_out": [
+        {
+          "estimate": 0.0039624863517117,
+          "omitted_stratum": "evaluation|Beijing|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.003995360710729434,
+          "omitted_stratum": "evaluation|Ji-Lu|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.003998654478571922,
+          "omitted_stratum": "evaluation|Jiang-Huai|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.003997925942710038,
+          "omitted_stratum": "evaluation|Jiao-Liao|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.003978781478706385,
+          "omitted_stratum": "evaluation|Lan-Yin|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.0039799836521467,
+          "omitted_stratum": "evaluation|Mandarin|phase1:Accent",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.003971481229132765,
+          "omitted_stratum": "evaluation|Mandarin|phase1:Mandarin",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.003980848159454879,
+          "omitted_stratum": "evaluation|Mandarin|phase2:clean",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.003986520974688631,
+          "omitted_stratum": "evaluation|Mandarin|phase2:noisy",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.003973124448737963,
+          "omitted_stratum": "evaluation|Northeastern|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.003931164511055352,
+          "omitted_stratum": "evaluation|Southwestern|phase1:Dialect",
+          "remaining_strata": 11
+        },
+        {
+          "estimate": 0.004001257819775996,
+          "omitted_stratum": "evaluation|Zhongyuan|phase1:Dialect",
+          "remaining_strata": 11
+        }
+      ],
+      "legacy_equal_stratum": {
+        "estimand": "median_of_stratum_median_B_minus_A",
+        "estimate": 0.003906644816954102,
+        "status": "sensitivity_only"
+      },
+      "model_name": "chinese_wav2vec2_large",
+      "pooled_pair_weighted": {
+        "estimand": "pooled_pair_median_B_minus_median_A",
+        "estimate": 0.003973409423730034,
+        "status": "descriptive_only"
+      },
+      "primary": {
+        "estimand": "overlap_pair_weighted_stratum_median_B_minus_A",
+        "estimate": 0.003979592254896239,
+        "stratum_count": 12,
+        "weight_formula": "n_A*n_B/(n_A+n_B)"
+      },
+      "primary_bootstrap": {
+        "bootstrap_estimate_standard_deviation": 0.00011879160333850701,
+        "ci": {
+          "confidence_level": 0.95,
+          "lower": 0.0037748495009051523,
+          "method": "percentile",
+          "upper": 0.004235321677420514
+        },
+        "different_speaker_pair_weight": "product_of_endpoint_multiplicities",
+        "missing_stratum_replicates": {
+          "evaluation|Mandarin|phase1:Accent": 346,
+          "evaluation|Mandarin|phase2:clean": 15
+        },
+        "replicates_requested": 1000,
+        "replicates_used": 1000,
+        "resampling_unit": "speaker_id_global_across_arms_and_strata",
+        "same_speaker_pair_weight": "one_speaker_multiplicity",
+        "seed": 20260829,
+        "stratum_medians_recomputed_per_replicate": true,
+        "stratum_weights": "fixed_observed_overlap_pair_weights"
+      },
+      "schema": "speaker-effect-estimand-sensitivity-v1",
+      "sign_flip": {
+        "holm_adjusted_p": 0.0009765625,
+        "method": "exact_weighted_stratum_sign_flip",
+        "observed": 0.003979592254896239,
+        "p_value": 0.00048828125,
+        "permutations": 4096,
+        "sidedness": "two_sided"
+      },
+      "source_file": "results\\distances\\kespeech_evaluation_matched\\chinese_wav2vec2_large.json",
+      "source_sha256": "7260ceb43a80622de3cec9b3b5bca1fd1814dbfdc0ce3ffb07dd341c2fb4d0da",
+      "strata": [
+        {
+          "A_median": 0.002467448633714564,
+          "A_pair_count": 56,
+          "A_unique_speaker_count": 14,
+          "B_median": 0.007393785435690858,
+          "B_pair_count": 132,
+          "B_unique_speaker_count": 37,
+          "effect": 0.004926336801976294,
+          "overlap_weight": 39.319148936170215,
+          "stratum": "evaluation|Beijing|phase1:Dialect",
+          "weighted_effect_contribution": 0.1936993704266424
+        },
+        {
+          "A_median": 0.002299107446028903,
+          "A_pair_count": 570,
+          "A_unique_speaker_count": 138,
+          "B_median": 0.006208296963933824,
+          "B_pair_count": 1404,
+          "B_unique_speaker_count": 216,
+          "effect": 0.003909189517904921,
+          "overlap_weight": 405.41033434650456,
+          "stratum": "evaluation|Ji-Lu|phase1:Dialect",
+          "weighted_effect_contribution": 1.584825829477685
+        },
+        {
+          "A_median": 0.0023650095052662468,
+          "A_pair_count": 422,
+          "A_unique_speaker_count": 127,
+          "B_median": 0.006226379449434383,
+          "B_pair_count": 1135,
+          "B_unique_speaker_count": 227,
+          "effect": 0.003861369944168136,
+          "overlap_weight": 307.6236351958895,
+          "stratum": "evaluation|Jiang-Huai|phase1:Dialect",
+          "weighted_effect_contribution": 1.1878486590611508
+        },
+        {
+          "A_median": 0.0023613396647952922,
+          "A_pair_count": 274,
+          "A_unique_speaker_count": 82,
+          "B_median": 0.006154689533927837,
+          "B_pair_count": 721,
+          "B_unique_speaker_count": 143,
+          "effect": 0.003793349869132545,
+          "overlap_weight": 198.54673366834172,
+          "stratum": "evaluation|Jiao-Liao|phase1:Dialect",
+          "weighted_effect_contribution": 0.7531572261774984
+        },
+        {
+          "A_median": 0.0022846721126100755,
+          "A_pair_count": 397,
+          "A_unique_speaker_count": 71,
+          "B_median": 0.006270152817531849,
+          "B_pair_count": 826,
+          "B_unique_speaker_count": 85,
+          "effect": 0.003985480704921773,
+          "overlap_weight": 268.12919051512677,
+          "stratum": "evaluation|Lan-Yin|phase1:Dialect",
+          "weighted_effect_contribution": 1.0686237152243319
+        },
+        {
+          "A_median": 0.0034548927569679755,
+          "A_pair_count": 1,
+          "A_unique_speaker_count": 1,
+          "B_median": 0.00656232420951991,
+          "B_pair_count": 160,
+          "B_unique_speaker_count": 283,
+          "effect": 0.003107431452551934,
+          "overlap_weight": 0.9937888198757764,
+          "stratum": "evaluation|Mandarin|phase1:Accent",
+          "weighted_effect_contribution": 0.0030881306360764564
+        },
+        {
+          "A_median": 0.0020809703761648923,
+          "A_pair_count": 26,
+          "A_unique_speaker_count": 25,
+          "B_median": 0.006764444872246034,
+          "B_pair_count": 862,
+          "B_unique_speaker_count": 1179,
+          "effect": 0.004683474496081141,
+          "overlap_weight": 25.23873873873874,
+          "stratum": "evaluation|Mandarin|phase1:Mandarin",
+          "weighted_effect_contribution": 0.118204989196138
+        },
+        {
+          "A_median": 0.0026101370226554454,
+          "A_pair_count": 4,
+          "A_unique_speaker_count": 4,
+          "B_median": 0.005887120980784255,
+          "B_pair_count": 337,
+          "B_unique_speaker_count": 568,
+          "effect": 0.0032769839581288096,
+          "overlap_weight": 3.9530791788856305,
+          "stratum": "evaluation|Mandarin|phase2:clean",
+          "weighted_effect_contribution": 0.012954177054421218
+        },
+        {
+          "A_median": 0.002707478959060927,
+          "A_pair_count": 32,
+          "A_unique_speaker_count": 32,
+          "B_median": 0.006200833472313205,
+          "B_pair_count": 1140,
+          "B_unique_speaker_count": 1667,
+          "effect": 0.003493354513252278,
+          "overlap_weight": 31.12627986348123,
+          "stratum": "evaluation|Mandarin|phase2:noisy",
+          "weighted_effect_contribution": 0.10873513024184565
+        },
+        {
+          "A_median": 0.0029205226213567803,
+          "A_pair_count": 32,
+          "A_unique_speaker_count": 20,
+          "B_median": 0.007423319133920581,
+          "B_pair_count": 175,
+          "B_unique_speaker_count": 93,
+          "effect": 0.0045027965125638,
+          "overlap_weight": 27.053140096618357,
+          "stratum": "evaluation|Northeastern|phase1:Dialect",
+          "weighted_effect_contribution": 0.12181478488095306
+        },
+        {
+          "A_median": 0.0025175146232058743,
+          "A_pair_count": 598,
+          "A_unique_speaker_count": 130,
+          "B_median": 0.006707805740462536,
+          "B_pair_count": 1346,
+          "B_unique_speaker_count": 160,
+          "effect": 0.0041902911172566615,
+          "overlap_weight": 414.0473251028807,
+          "stratum": "evaluation|Southwestern|phase1:Dialect",
+          "weighted_effect_contribution": 1.734978828502482
+        },
+        {
+          "A_median": 0.0024555361170973677,
+          "A_pair_count": 711,
+          "A_unique_speaker_count": 151,
+          "B_median": 0.006359636233100652,
+          "B_pair_count": 1619,
+          "B_unique_speaker_count": 195,
+          "effect": 0.003904100116003284,
+          "overlap_weight": 494.0381974248927,
+          "stratum": "evaluation|Zhongyuan|phase1:Dialect",
+          "weighted_effect_contribution": 1.9287745838765769
+        }
+      ],
+      "support_qualified_equal_stratum": {
+        "estimand": "median_of_stratum_median_B_minus_A",
+        "estimate": 0.003909189517904921,
+        "excluded_strata": [
+          "evaluation|Mandarin|phase1:Accent"
+        ],
+        "included_strata": [
+          "evaluation|Beijing|phase1:Dialect",
+          "evaluation|Ji-Lu|phase1:Dialect",
+          "evaluation|Jiang-Huai|phase1:Dialect",
+          "evaluation|Jiao-Liao|phase1:Dialect",
+          "evaluation|Lan-Yin|phase1:Dialect",
+          "evaluation|Mandarin|phase1:Mandarin",
+          "evaluation|Mandarin|phase2:clean",
+          "evaluation|Mandarin|phase2:noisy",
+          "evaluation|Northeastern|phase1:Dialect",
+          "evaluation|Southwestern|phase1:Dialect",
+          "evaluation|Zhongyuan|phase1:Dialect"
+        ],
+        "minimum_unique_speakers_per_arm": 2,
+        "status": "sensitivity_only"
+      }
+    }
+  ],
+  "multiplicity": {
+    "adjustment": "holm",
+    "primary_model": "chinese_hubert_large",
+    "supporting_family": [
+      "wavlm_large",
+      "chinese_wav2vec2_large"
+    ]
+  },
+  "pair_manifest": "results\\pairs\\kespeech_evaluation_matched.json",
+  "pair_manifest_sha256": "05a50e05e788bf5aa5cd200ac4678d3f67d587c9bd9e85fe620d2cccdfa70dad",
+  "protocol": "docs\\revision\\2026-09-04-sparse-stratum-dual-endpoint-protocol.yaml",
+  "protocol_amendment": "docs\\revision\\2026-09-05-sparse-stratum-protocol-amendment.yaml",
+  "protocol_amendment_sha256": "41705ce00db7e755552702f6d37ecccc22ed9e82eaa4c5454aacebadb06beb2c",
+  "protocol_sha256": "a56c56ba0fcd58d0585541f58d7e6df77a0607919d26fb3258ac8eaa154b7bef",
+  "schema": "speaker-effect-support-sensitivity-v1",
+  "source_excluded_stratum": "evaluation|Mandarin|phase1:Accent",
+  "status": "evaluated"
+}

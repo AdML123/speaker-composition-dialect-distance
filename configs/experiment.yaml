@@ -7,32 +7,35 @@ extractors:
   count: 3
   models:
     - name: wavlm_large
-      source: MODEL_CACHE/wavlm-large
+      source: DATASET_PATH_REDACTED/models/wavlm-large
       revision: 07d9d3d8576fd3d718ee7b16b2b6242e9610d9af
       provenance_record: results/provenance/model_inventory.yaml
       dimension: 1024
       status: locked
       license: MIT
-      checkpoint_hash: 92063b9e2a29279a9fe4f7e6703f5eeece903c7b3e471aebf2d9997f24fcdc5b
-      cache_root: MODEL_CACHE
+      checkpoint: pytorch_model.bin
+      checkpoint_hash: fdee460e529396ddb2f8c8e8ce0ad74cfb747b726bc6f612e666c7c1e1963c9d
+      cache_root: LOCAL_USER_PATH_REDACTED/.cache/huggingface/hub
     - name: chinese_hubert_large
-      source: MODEL_CACHE/chinese-hubert-large
+      source: DATASET_PATH_REDACTED/models/chinese-hubert-large
       revision: 90cb660492214f687e60f5ca509b20edae6e75bd
       provenance_record: results/provenance/model_inventory.yaml
       dimension: 1024
       status: locked
       license: mit
+      checkpoint: pytorch_model.bin
       checkpoint_hash: 482c19cd60877832995d790ed10dd1203b1f8c86ed7a69b4bd27f470fc27ee43
-      cache_root: MODEL_CACHE
+      cache_root: LOCAL_USER_PATH_REDACTED/.cache/huggingface/hub
     - name: chinese_wav2vec2_large
-      source: MODEL_CACHE/chinese-wav2vec2-large
+      source: DATASET_PATH_REDACTED/models/chinese-wav2vec2-large
       revision: e3aa671ca0cfe7978171a8ebbcc4bdfecdfb2f95
       provenance_record: results/provenance/model_inventory.yaml
       dimension: 1024
       status: locked
       license: mit
+      checkpoint: pytorch_model.bin
       checkpoint_hash: c8a5554a79c3bbbe76f2e43d3d4b4369c8c2abd5515e623192e0381d7e5e7b3f
-      cache_root: MODEL_CACHE
+      cache_root: LOCAL_USER_PATH_REDACTED/.cache/huggingface/hub
 embedding:
   pooling: mean
 distance:
@@ -50,12 +53,12 @@ speaker_proxy:
   source: speechbrain/spkrec-ecapa-voxceleb
   status: locked
   checkpoint: embedding_model.ckpt
-  revision: 0f99f2d
+  revision: 0f99f2d0ebe89ac095bcc5903c4dd8f72b367286
   checkpoint_hash: 0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2
   provenance_record: results/provenance/model_inventory.yaml
   dimension: 192
   license: apache-2.0
-  cache_root: MODEL_CACHE
+  cache_root: LOCAL_USER_PATH_REDACTED/.cache/huggingface/hub
 speaker_regression:
   status: locked
   feature_source: ecapa

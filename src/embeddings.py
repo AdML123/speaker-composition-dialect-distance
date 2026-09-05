@@ -8,10 +8,18 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping
 
 import torch
-from transformers import AutoFeatureExtractor, AutoModel
+from transformers import AutoFeatureExtractor
 
 from .config import load_config
-from .model_smoke import ModelSpec, TARGET_SAMPLE_RATE, _model_specs, _pretrained_kwargs, load_mono_audio, mean_pool_hidden_state
+from .model_smoke import (
+    ModelSpec,
+    TARGET_SAMPLE_RATE,
+    _model_specs,
+    _pretrained_kwargs,
+    load_transformer_model,
+    load_mono_audio,
+    mean_pool_hidden_state,
+)
 
 
 def _resolve_external_audio_path(audio_path: str, audio_root: Path) -> Path:
@@ -44,7 +52,7 @@ def extract_transformer_embeddings(
     device: torch.device,
 ) -> dict[str, torch.Tensor]:
     processor = AutoFeatureExtractor.from_pretrained(spec.source, **_pretrained_kwargs(spec))
-    model = AutoModel.from_pretrained(spec.source, **_pretrained_kwargs(spec))
+    model, _ = load_transformer_model(spec)
     model.eval().to(device)
     observed_dimension = int(getattr(model.config, "hidden_size"))
     if observed_dimension != spec.dimension:

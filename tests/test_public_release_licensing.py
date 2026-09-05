@@ -14,10 +14,58 @@ def test_release_excludes_manuscript_pdf_and_latex_content():
     assert not list(RELEASE.rglob("*.pdf"))
 
 
+def test_release_contains_sparse_stratum_and_dual_endpoint_audits():
+    required = (
+        "results/analysis/speaker_effect_support_sensitivity.json",
+        "results/analysis/speaker_effect_dependency_sensitivity.json",
+        "results/analysis/estimand_weighting_intervals.json",
+        "results/analysis/relation_ranking_clustered.json",
+        "results/pairs/kespeech_projection_evaluation_summary.json",
+        "results/gates/sparse_stratum_dual_endpoint_gate.json",
+    )
+    assert all((RELEASE / path).is_file() for path in required)
+
+
+def test_release_text_has_no_local_paths_or_secret_names():
+    forbidden = (
+        "c:" + "/users/",
+        "d:" + "/paper48",
+        "e:" + "/paper48",
+        "access" + "token.txt",
+        "key" + ".txt",
+    )
+    for path in RELEASE.rglob("*"):
+        if any(part.startswith(".pytest") or part == "__pycache__" for part in path.parts):
+            continue
+        if not path.is_file() or path.name == "MANIFEST.sha256":
+            continue
+        try:
+            text = path.read_text(encoding="utf-8").lower()
+        except UnicodeDecodeError:
+            continue
+        assert not any(token in text for token in forbidden), path
+
+
 def test_unlicensed_sinitic_matrices_are_not_redistributed():
     reference_dir = RELEASE / "results" / "references"
     assert (reference_dir / "taxonomy_matrix.json").is_file()
     assert not list(reference_dir.glob("sinitic_data4_*.json"))
+
+
+def test_release_excludes_upstream_sinitic_archives_and_matrix_payloads():
+    forbidden_suffixes = {".zip", ".tar", ".gz", ".tgz", ".npz", ".npy", ".pkl"}
+    for path in RELEASE.rglob("*"):
+        if not path.is_file():
+            continue
+        assert path.suffix.lower() not in forbidden_suffixes, path
+        lower_name = path.name.lower()
+        assert "sinitic_data4" not in lower_name, path
+
+    provenance = yaml.safe_load(
+        (RELEASE / "results/provenance/reference_matrices.yaml").read_text(encoding="utf-8")
+    )["sincomp"]
+    assert "matrix" not in provenance
+    assert all("private_artifact" not in item for item in provenance["mappings"].values())
 
 
 def test_sinitic_provenance_pins_source_and_records_nonredistribution():
@@ -43,6 +91,8 @@ def test_release_metadata_limits_license_scope():
     third_party = (RELEASE / "THIRD_PARTY_DATA.md").read_text(encoding="utf-8")
     assert COMMIT in third_party
     assert "not redistributed" in third_party.lower()
+    assert "https://zhongguoyuyan.cn/index" in third_party
+    assert all(value in third_party for value in ("1,289", "999", "1,084", "915", "overall_distance"))
 
     zenodo = json.loads((RELEASE / "zenodo.json").read_text(encoding="utf-8"))
     assert zenodo["license"] == "MIT"

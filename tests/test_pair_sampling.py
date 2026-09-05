@@ -8,7 +8,7 @@ from src.pair_sampling import PairSamplingError, sample_pairs
 def _record(utterance_id: str, speaker_id: str, dialect_label: str, split: str, recording_condition: str = "phone-near") -> dict[str, object]:
     return {
         "utterance_id": utterance_id,
-        "audio_path": f"DATA_ROOT/audio/{utterance_id}.wav",
+        "audio_path": f"DATASET_PATH_REDACTED/audio/{utterance_id}.wav",
         "speaker_id": speaker_id,
         "dialect_label": dialect_label,
         "sample_rate": 16000,

@@ -12,12 +12,61 @@ import torchaudio
 from src.config import ConfigError
 from src.model_smoke import (
     ModelSpec,
+    _normalize_transformer_state_dict,
     load_audio_paths,
     load_mono_audio,
     mean_pool_hidden_state,
     smoke_transformer,
+    verify_transformer_checkpoint,
     verify_speaker_proxy_checkpoint,
 )
+
+
+def test_normalize_transformer_state_dict_migrates_legacy_weight_norm_keys():
+    legacy = {
+        "encoder.pos_conv_embed.conv.weight_g": torch.ones(1, 1, 4),
+        "encoder.pos_conv_embed.conv.weight_v": torch.ones(8, 2, 4),
+        "encoder.pos_conv_embed.conv.bias": torch.zeros(8),
+    }
+    expected = {
+        "encoder.pos_conv_embed.conv.parametrizations.weight.original0",
+        "encoder.pos_conv_embed.conv.parametrizations.weight.original1",
+        "encoder.pos_conv_embed.conv.bias",
+    }
+
+    normalized = _normalize_transformer_state_dict(legacy, expected)
+
+    assert set(normalized) == expected
+    assert torch.equal(
+        normalized["encoder.pos_conv_embed.conv.parametrizations.weight.original0"],
+        legacy["encoder.pos_conv_embed.conv.weight_g"],
+    )
+    assert torch.equal(
+        normalized["encoder.pos_conv_embed.conv.parametrizations.weight.original1"],
+        legacy["encoder.pos_conv_embed.conv.weight_v"],
+    )
+
+
+def test_normalize_transformer_state_dict_extracts_base_model_prefix():
+    checkpoint = {
+        "wav2vec2.encoder.layer.weight": torch.ones(2, 2),
+        "wav2vec2.encoder.layer.bias": torch.zeros(2),
+        "project_q.weight": torch.ones(1, 2),
+    }
+    expected = {"encoder.layer.weight", "encoder.layer.bias"}
+
+    normalized = _normalize_transformer_state_dict(checkpoint, expected, base_prefix="wav2vec2")
+
+    assert set(normalized) == expected
+    assert "project_q.weight" not in normalized
+
+
+def test_normalize_transformer_state_dict_fails_when_base_weights_are_missing():
+    with pytest.raises(ConfigError, match="strict transformer state mismatch"):
+        _normalize_transformer_state_dict(
+            {"encoder.layer.weight": torch.ones(2, 2)},
+            {"encoder.layer.weight", "encoder.layer.bias"},
+        )
 
 
 def _write_wav(path: Path, waveform: torch.Tensor, sample_rate: int) -> None:
@@ -97,7 +146,20 @@ def test_smoke_transformer_validates_dimension_and_finite_outputs(tmp_path, monk
             return SimpleNamespace(last_hidden_state=torch.ones(1, 3, 1024))
 
     monkeypatch.setattr("src.model_smoke.AutoFeatureExtractor.from_pretrained", lambda *args, **kwargs: FakeProcessor())
-    monkeypatch.setattr("src.model_smoke.AutoModel.from_pretrained", lambda *args, **kwargs: FakeModel())
+    strict_audit = {
+        "checkpoint_hash": "f2443e98b0a97613614f31258463dcb3e95c904c",
+        "loader": "strict-state-dict-v1",
+        "base_tensor_count": 1,
+        "checkpoint_tensor_count": 1,
+        "excluded_task_tensor_count": 0,
+        "legacy_weight_norm_tensors_migrated": 2,
+        "missing_base_tensors": 0,
+        "unexpected_base_tensors": 0,
+    }
+    monkeypatch.setattr(
+        "src.model_smoke.load_transformer_model",
+        lambda spec: (FakeModel(), strict_audit),
+    )
 
     spec = ModelSpec(
         name="wavlm_large",
@@ -108,6 +170,7 @@ def test_smoke_transformer_validates_dimension_and_finite_outputs(tmp_path, monk
         status="locked",
         license="MIT",
         checkpoint_hash="f2443e98b0a97613614f31258463dcb3e95c904c",
+        checkpoint="pytorch_model.bin",
         cache_root=str(tmp_path),
     )
 
@@ -153,13 +216,23 @@ def test_smoke_transformer_uses_local_directory_without_hub_revision(tmp_path, m
         assert kwargs == {"local_files_only": True}
         return FakeProcessor()
 
-    def fake_model_from_pretrained(source, **kwargs):
-        assert source == str(local_model_dir)
-        assert kwargs == {"local_files_only": True}
-        return FakeModel()
-
     monkeypatch.setattr("src.model_smoke.AutoFeatureExtractor.from_pretrained", fake_processor_from_pretrained)
-    monkeypatch.setattr("src.model_smoke.AutoModel.from_pretrained", fake_model_from_pretrained)
+    monkeypatch.setattr(
+        "src.model_smoke.load_transformer_model",
+        lambda spec: (
+            FakeModel(),
+            {
+                "checkpoint_hash": "unused",
+                "loader": "strict-state-dict-v1",
+                "base_tensor_count": 1,
+                "checkpoint_tensor_count": 1,
+                "excluded_task_tensor_count": 0,
+                "legacy_weight_norm_tensors_migrated": 2,
+                "missing_base_tensors": 0,
+                "unexpected_base_tensors": 0,
+            },
+        ),
+    )
 
     spec = ModelSpec(
         name="wavlm_large",
@@ -170,6 +243,7 @@ def test_smoke_transformer_uses_local_directory_without_hub_revision(tmp_path, m
         status="locked",
         license="MIT",
         checkpoint_hash="unused",
+        checkpoint="pytorch_model.bin",
         cache_root=str(tmp_path),
     )
 
@@ -203,3 +277,44 @@ def test_verify_speaker_proxy_checkpoint_hash(tmp_path, monkeypatch):
 
     assert report["checkpoint_hash"] == expected_hash
     assert report["dimension"] == 192
+
+
+def test_verify_transformer_checkpoint_hash_for_local_model(tmp_path):
+    model_dir = tmp_path / "model"
+    model_dir.mkdir()
+    checkpoint = model_dir / "pytorch_model.bin"
+    checkpoint.write_bytes(b"locked-transformer")
+    expected_hash = hashlib.sha256(checkpoint.read_bytes()).hexdigest()
+    spec = ModelSpec(
+        name="wavlm_large",
+        source=str(model_dir),
+        revision="full-commit",
+        provenance_record="results/provenance/model_inventory.yaml",
+        dimension=1024,
+        status="locked",
+        checkpoint="pytorch_model.bin",
+        checkpoint_hash=expected_hash,
+        cache_root=str(tmp_path),
+    )
+    report = verify_transformer_checkpoint(spec)
+    assert report["checkpoint"] == "pytorch_model.bin"
+    assert report["checkpoint_hash"] == expected_hash
+
+
+def test_verify_transformer_checkpoint_rejects_wrong_hash(tmp_path):
+    model_dir = tmp_path / "model"
+    model_dir.mkdir()
+    (model_dir / "pytorch_model.bin").write_bytes(b"actual")
+    spec = ModelSpec(
+        name="wavlm_large",
+        source=str(model_dir),
+        revision="full-commit",
+        provenance_record="results/provenance/model_inventory.yaml",
+        dimension=1024,
+        status="locked",
+        checkpoint="pytorch_model.bin",
+        checkpoint_hash="0" * 64,
+        cache_root=str(tmp_path),
+    )
+    with pytest.raises(ConfigError, match="checkpoint hash mismatch"):
+        verify_transformer_checkpoint(spec)

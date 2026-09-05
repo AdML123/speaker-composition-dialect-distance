@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def test_final_weighting_report_covers_all_declared_estimands():
     payload = json.loads(
-        (ROOT / "results/analysis/estimand_weighting_sensitivity.json").read_text()
+        (ROOT / "results/analysis/estimand_weighting_intervals.json").read_text()
     )
     assert payload["status"] == "evaluated"
     assert set(payload["weightings"]) == {
@@ -16,11 +16,21 @@ def test_final_weighting_report_covers_all_declared_estimands():
         "dialect_relation",
         "matched_stratum",
     }
-    assert payload["run_count"] == 134
-    assert all(
-        set(run["estimands"]) == set(payload["weightings"])
-        for run in payload["runs"]
+    assert payload["primary_method"] == "hubert_linear_pair_only"
+    assert payload["seed_count"] == 5
+    assert payload["source_hashes"]["projection_manifest"] == (
+        "59404e971b7b5c7a6e2b828be3fd935c9b09e2b9ed4db942b1ca4843dae5d18d"
     )
+    assert len(payload["source_hashes"]["design_strata_manifest"]) == 64
+    assert set(payload["references"]) == {"taxonomy", "city_nearest"}
+    for reference in payload["references"].values():
+        assert set(reference["estimands"]) == set(payload["weightings"])
+        for row in reference["estimands"].values():
+            assert row["gain_unit"] == "fraction"
+            assert row["sample_size"]["pairs"] == 4000
+            assert row["independent_unit"] == "global_endpoint_speaker"
+            assert len(row["seed_values"]) == 5
+            assert row["ci"]["lower"] <= row["gain"] <= row["ci"]["upper"]
 
 
 def test_statistical_semantics_gate_is_terminal_and_has_wording():

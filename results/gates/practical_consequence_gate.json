@@ -1,318 +1,36 @@
 {
-  "schema": "practical-consequence-gate-v1",
-  "status": "passed",
-  "reference_checks": {
-    "taxonomy": {
-      "passed": true,
-      "candidates": [
-        {
-          "method": "frozen_affine",
-          "median_pair_mae": 0.48631508155493963,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": false,
-            "kendall_tau_b": false,
-            "pairwise_order_accuracy": false
-          }
-        },
-        {
-          "method": "frozen_pca256_affine",
-          "median_pair_mae": 0.48921644037816986,
-          "mae_not_worse": false,
-          "ranking_improvements": {
-            "spearman": true,
-            "kendall_tau_b": true,
-            "pairwise_order_accuracy": true
-          }
-        },
-        {
-          "method": "diagonal_metric",
-          "median_pair_mae": 0.4859703653221901,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": true,
-            "kendall_tau_b": true,
-            "pairwise_order_accuracy": true
-          }
-        },
-        {
-          "method": "linear__lambda_0",
-          "median_pair_mae": 0.4329569645774102,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": false,
-            "kendall_tau_b": false,
-            "pairwise_order_accuracy": false
-          }
-        },
-        {
-          "method": "linear__lambda_0.25",
-          "median_pair_mae": 0.43230783731014344,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": false,
-            "kendall_tau_b": false,
-            "pairwise_order_accuracy": false
-          }
-        },
-        {
-          "method": "linear__lambda_0.5",
-          "median_pair_mae": 0.4334575844786116,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": false,
-            "kendall_tau_b": false,
-            "pairwise_order_accuracy": false
-          }
-        },
-        {
-          "method": "linear__lambda_1",
-          "median_pair_mae": 0.4374306078315088,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": false,
-            "kendall_tau_b": false,
-            "pairwise_order_accuracy": false
-          }
-        },
-        {
-          "method": "mlp_parameter_matched__lambda_0",
-          "median_pair_mae": 0.45240186699626833,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": true,
-            "kendall_tau_b": true,
-            "pairwise_order_accuracy": true
-          }
-        },
-        {
-          "method": "mlp_parameter_matched__lambda_0.25",
-          "median_pair_mae": 0.44632627802422553,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": true,
-            "kendall_tau_b": true,
-            "pairwise_order_accuracy": true
-          }
-        },
-        {
-          "method": "mlp_parameter_matched__lambda_0.5",
-          "median_pair_mae": 0.4444557461613912,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": true,
-            "kendall_tau_b": true,
-            "pairwise_order_accuracy": true
-          }
-        },
-        {
-          "method": "mlp_parameter_matched__lambda_1",
-          "median_pair_mae": 0.4449445724592139,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": true,
-            "kendall_tau_b": true,
-            "pairwise_order_accuracy": true
-          }
-        },
-        {
-          "method": "mlp_wide__lambda_0",
-          "median_pair_mae": 0.45583892531835213,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": true,
-            "kendall_tau_b": true,
-            "pairwise_order_accuracy": true
-          }
-        },
-        {
-          "method": "mlp_wide__lambda_0.25",
-          "median_pair_mae": 0.4450718061996121,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": true,
-            "kendall_tau_b": true,
-            "pairwise_order_accuracy": true
-          }
-        },
-        {
-          "method": "mlp_wide__lambda_0.5",
-          "median_pair_mae": 0.4427095217113219,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": true,
-            "kendall_tau_b": true,
-            "pairwise_order_accuracy": true
-          }
-        },
-        {
-          "method": "mlp_wide__lambda_1",
-          "median_pair_mae": 0.44335258643794995,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": true,
-            "kendall_tau_b": true,
-            "pairwise_order_accuracy": true
-          }
-        }
-      ]
-    },
+  "better_ordering_wording_allowed": true,
+  "contrast_support": {
     "city_nearest": {
-      "passed": true,
-      "candidates": [
-        {
-          "method": "frozen_affine",
-          "median_pair_mae": 0.3928621647040202,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": false,
-            "kendall_tau_b": false,
-            "pairwise_order_accuracy": false
-          }
-        },
-        {
-          "method": "frozen_pca256_affine",
-          "median_pair_mae": 0.3953951873828572,
-          "mae_not_worse": false,
-          "ranking_improvements": {
-            "spearman": false,
-            "kendall_tau_b": false,
-            "pairwise_order_accuracy": false
-          }
-        },
-        {
-          "method": "diagonal_metric",
-          "median_pair_mae": 0.3926668710218059,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": false,
-            "kendall_tau_b": false,
-            "pairwise_order_accuracy": false
-          }
-        },
-        {
-          "method": "linear__lambda_0",
-          "median_pair_mae": 0.35557174171914685,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": false,
-            "kendall_tau_b": false,
-            "pairwise_order_accuracy": false
-          }
-        },
-        {
-          "method": "linear__lambda_0.25",
-          "median_pair_mae": 0.3566353417169395,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": false,
-            "kendall_tau_b": false,
-            "pairwise_order_accuracy": false
-          }
-        },
-        {
-          "method": "linear__lambda_0.5",
-          "median_pair_mae": 0.35835271851074924,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": false,
-            "kendall_tau_b": false,
-            "pairwise_order_accuracy": false
-          }
-        },
-        {
-          "method": "linear__lambda_1",
-          "median_pair_mae": 0.361642235645588,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": false,
-            "kendall_tau_b": false,
-            "pairwise_order_accuracy": false
-          }
-        },
-        {
-          "method": "mlp_parameter_matched__lambda_0",
-          "median_pair_mae": 0.3689737918770532,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": true,
-            "kendall_tau_b": true,
-            "pairwise_order_accuracy": true
-          }
-        },
-        {
-          "method": "mlp_parameter_matched__lambda_0.25",
-          "median_pair_mae": 0.3667134251820753,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": true,
-            "kendall_tau_b": true,
-            "pairwise_order_accuracy": true
-          }
-        },
-        {
-          "method": "mlp_parameter_matched__lambda_0.5",
-          "median_pair_mae": 0.36547008845597545,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": true,
-            "kendall_tau_b": true,
-            "pairwise_order_accuracy": true
-          }
-        },
-        {
-          "method": "mlp_parameter_matched__lambda_1",
-          "median_pair_mae": 0.365437009281133,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": true,
-            "kendall_tau_b": true,
-            "pairwise_order_accuracy": true
-          }
-        },
-        {
-          "method": "mlp_wide__lambda_0",
-          "median_pair_mae": 0.37279268030002044,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": true,
-            "kendall_tau_b": true,
-            "pairwise_order_accuracy": true
-          }
-        },
-        {
-          "method": "mlp_wide__lambda_0.25",
-          "median_pair_mae": 0.36605301273224083,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": true,
-            "kendall_tau_b": true,
-            "pairwise_order_accuracy": true
-          }
-        },
-        {
-          "method": "mlp_wide__lambda_0.5",
-          "median_pair_mae": 0.3629779553182315,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": true,
-            "kendall_tau_b": true,
-            "pairwise_order_accuracy": true
-          }
-        },
-        {
-          "method": "mlp_wide__lambda_1",
-          "median_pair_mae": 0.36288548446089136,
-          "mae_not_worse": true,
-          "ranking_improvements": {
-            "spearman": true,
-            "kendall_tau_b": true,
-            "pairwise_order_accuracy": true
-          }
-        }
-      ]
+      "kendall_tau_b": true,
+      "pairwise_order_accuracy": true,
+      "spearman": true
+    },
+    "taxonomy": {
+      "kendall_tau_b": true,
+      "pairwise_order_accuracy": true,
+      "spearman": true
     }
   },
-  "selected_wording": "Pair-only multilayer projections improved all three operational relation-order measures while reducing mean absolute error under both references; the lower-error linear map did not improve ordering.",
-  "failure_wording": "the correction results are limited to mean absolute error; no practical ordering claim is made"
+  "failure_wording": "If a paired interval includes zero, report only the higher point estimate for that metric and reference.",
+  "mae_contrast_support": {
+    "city_nearest": false,
+    "taxonomy": true
+  },
+  "ordering_contrast_support": {
+    "city_nearest": {
+      "kendall_tau_b": true,
+      "pairwise_order_accuracy": true,
+      "spearman": true
+    },
+    "taxonomy": {
+      "kendall_tau_b": true,
+      "pairwise_order_accuracy": true,
+      "spearman": true
+    }
+  },
+  "paired_contrast": "parameter_matched_mlp_minus_linear",
+  "schema": "practical-consequence-gate-v2",
+  "selected_wording": "The parameter-matched MLP has better operational relation ordering under both primary references. The linear map has lower MAE point estimates under both, with paired-interval support under the binary reference.",
+  "status": "passed"
 }

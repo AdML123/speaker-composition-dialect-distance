@@ -525,7 +525,7 @@
     ]
   },
   "schema": "reference-representative-sensitivity-v1",
-  "source_archive": "SOURCE_ARCHIVE_LOCAL_PATH_REDACTED",
+  "source_archive": "D:\\paper48\\Sinitic_Data-main.zip",
   "source_archive_sha256": "020f399824a9e4073f4092078099b5c9b6a995f1ef7d6eae6887f6b1250923c5",
   "source_counts": {
     "Beijing": 16,

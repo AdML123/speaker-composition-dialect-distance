@@ -41,9 +41,9 @@ def test_locked_model_provenance_values_are_present():
     config = load_config(CONFIG_PATH)
 
     assert [model["source"] for model in config["extractors"]["models"]] == [
-        "MODEL_CACHE/wavlm-large",
-        "MODEL_CACHE/chinese-hubert-large",
-        "MODEL_CACHE/chinese-wav2vec2-large",
+        "DATASET_PATH_REDACTED/models/wavlm-large",
+        "DATASET_PATH_REDACTED/models/chinese-hubert-large",
+        "DATASET_PATH_REDACTED/models/chinese-wav2vec2-large",
     ]
     assert [model["revision"] for model in config["extractors"]["models"]] == [
         "07d9d3d8576fd3d718ee7b16b2b6242e9610d9af",
@@ -59,7 +59,7 @@ def test_locked_model_provenance_values_are_present():
     assert config["speaker_proxy"]["status"] == "locked"
     assert config["speaker_proxy"]["source"] == "speechbrain/spkrec-ecapa-voxceleb"
     assert config["speaker_proxy"]["checkpoint"] == "embedding_model.ckpt"
-    assert config["speaker_proxy"]["revision"] == "0f99f2d"
+    assert config["speaker_proxy"]["revision"] == "0f99f2d0ebe89ac095bcc5903c4dd8f72b367286"
     assert config["speaker_proxy"]["checkpoint_hash"] == "0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2"
     assert config["speaker_proxy"]["dimension"] == 192
     assert config["speaker_proxy"]["license"] == "apache-2.0"
@@ -98,7 +98,7 @@ def test_non_positive_threshold_is_rejected(tmp_path):
 
 def test_revision_requires_provenance_record(tmp_path):
     text = CONFIG_PATH.read_text(encoding="utf-8").replace(
-        "  checkpoint: embedding_model.ckpt\n  revision: 0f99f2d\n  checkpoint_hash: 0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2\n  provenance_record: results/provenance/model_inventory.yaml",
+        "  checkpoint: embedding_model.ckpt\n  revision: 0f99f2d0ebe89ac095bcc5903c4dd8f72b367286\n  checkpoint_hash: 0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2\n  provenance_record: results/provenance/model_inventory.yaml",
         "  checkpoint: model.ckpt\n  revision: abc123\n  checkpoint_hash: 0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2\n  provenance_record: pending_provenance",
     )
     path = tmp_path / "unprovenanced.yaml"
@@ -148,8 +148,8 @@ def test_locked_gate_values_cannot_be_changed(tmp_path, field, value):
 
 def test_speaker_proxy_status_matches_pending_or_locked_fields(tmp_path):
     pending_with_checkpoint = CONFIG_PATH.read_text(encoding="utf-8").replace(
-        "speaker_proxy:\n  name: ecapa\n  source: speechbrain/spkrec-ecapa-voxceleb\n  status: locked\n  checkpoint: embedding_model.ckpt\n  revision: 0f99f2d\n  checkpoint_hash: 0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2\n  provenance_record: results/provenance/model_inventory.yaml\n  dimension: 192\n  license: apache-2.0\n  cache_root: MODEL_CACHE",
-        "speaker_proxy:\n  name: ecapa\n  source: speechbrain/spkrec-ecapa-voxceleb\n  status: pending_provenance\n  checkpoint: model.ckpt\n  revision: 0f99f2d\n  checkpoint_hash: 0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2\n  provenance_record: results/provenance/model_inventory.yaml\n  dimension: 192\n  license: apache-2.0\n  cache_root: MODEL_CACHE",
+        "speaker_proxy:\n  name: ecapa\n  source: speechbrain/spkrec-ecapa-voxceleb\n  status: locked\n  checkpoint: embedding_model.ckpt\n  revision: 0f99f2d0ebe89ac095bcc5903c4dd8f72b367286\n  checkpoint_hash: 0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2\n  provenance_record: results/provenance/model_inventory.yaml\n  dimension: 192\n  license: apache-2.0\n  cache_root: LOCAL_USER_PATH_REDACTED/.cache/huggingface/hub",
+        "speaker_proxy:\n  name: ecapa\n  source: speechbrain/spkrec-ecapa-voxceleb\n  status: pending_provenance\n  checkpoint: model.ckpt\n  revision: 0f99f2d0ebe89ac095bcc5903c4dd8f72b367286\n  checkpoint_hash: 0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2\n  provenance_record: results/provenance/model_inventory.yaml\n  dimension: 192\n  license: apache-2.0\n  cache_root: LOCAL_USER_PATH_REDACTED/.cache/huggingface/hub",
     )
     path = tmp_path / "pending-mismatch.yaml"
     path.write_text(pending_with_checkpoint, encoding="utf-8")
@@ -169,8 +169,8 @@ def test_locked_references_require_concrete_matrix_and_provenance(tmp_path):
         load_config(path)
 
     locked_with_audit_pending = CONFIG_PATH.read_text(encoding="utf-8").replace(
-        "speaker_proxy:\n  name: ecapa\n  source: speechbrain/spkrec-ecapa-voxceleb\n  status: locked\n  checkpoint: embedding_model.ckpt\n  revision: 0f99f2d\n  checkpoint_hash: 0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2\n  provenance_record: results/provenance/model_inventory.yaml\n  dimension: 192\n  license: apache-2.0\n  cache_root: MODEL_CACHE",
-        "speaker_proxy:\n  name: ecapa\n  source: speechbrain/spkrec-ecapa-voxceleb\n  status: locked\n  checkpoint: model.ckpt\n  revision: abc123\n  checkpoint_hash: 0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2\n  provenance_record: pending_audit\n  dimension: 192\n  license: apache-2.0\n  cache_root: MODEL_CACHE",
+        "speaker_proxy:\n  name: ecapa\n  source: speechbrain/spkrec-ecapa-voxceleb\n  status: locked\n  checkpoint: embedding_model.ckpt\n  revision: 0f99f2d0ebe89ac095bcc5903c4dd8f72b367286\n  checkpoint_hash: 0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2\n  provenance_record: results/provenance/model_inventory.yaml\n  dimension: 192\n  license: apache-2.0\n  cache_root: LOCAL_USER_PATH_REDACTED/.cache/huggingface/hub",
+        "speaker_proxy:\n  name: ecapa\n  source: speechbrain/spkrec-ecapa-voxceleb\n  status: locked\n  checkpoint: model.ckpt\n  revision: abc123\n  checkpoint_hash: 0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2\n  provenance_record: pending_audit\n  dimension: 192\n  license: apache-2.0\n  cache_root: LOCAL_USER_PATH_REDACTED/.cache/huggingface/hub",
     )
     path.write_text(locked_with_audit_pending, encoding="utf-8")
     with pytest.raises(ConfigError, match="speaker_proxy"):
@@ -248,8 +248,8 @@ def test_locked_block_regularized_dialect_perturbation_base_alpha_grid_is_positi
         load_config(path)
 
     locked_with_pending = CONFIG_PATH.read_text(encoding="utf-8").replace(
-        "speaker_proxy:\n  name: ecapa\n  source: speechbrain/spkrec-ecapa-voxceleb\n  status: locked\n  checkpoint: embedding_model.ckpt\n  revision: 0f99f2d\n  checkpoint_hash: 0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2\n  provenance_record: results/provenance/model_inventory.yaml\n  dimension: 192\n  license: apache-2.0\n  cache_root: MODEL_CACHE",
-        "speaker_proxy:\n  name: ecapa\n  source: speechbrain/spkrec-ecapa-voxceleb\n  status: locked\n  checkpoint: pending_provenance\n  revision: pending_provenance\n  checkpoint_hash: pending_provenance\n  provenance_record: pending_provenance\n  dimension: 192\n  license: apache-2.0\n  cache_root: MODEL_CACHE",
+        "speaker_proxy:\n  name: ecapa\n  source: speechbrain/spkrec-ecapa-voxceleb\n  status: locked\n  checkpoint: embedding_model.ckpt\n  revision: 0f99f2d0ebe89ac095bcc5903c4dd8f72b367286\n  checkpoint_hash: 0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2\n  provenance_record: results/provenance/model_inventory.yaml\n  dimension: 192\n  license: apache-2.0\n  cache_root: LOCAL_USER_PATH_REDACTED/.cache/huggingface/hub",
+        "speaker_proxy:\n  name: ecapa\n  source: speechbrain/spkrec-ecapa-voxceleb\n  status: locked\n  checkpoint: pending_provenance\n  revision: pending_provenance\n  checkpoint_hash: pending_provenance\n  provenance_record: pending_provenance\n  dimension: 192\n  license: apache-2.0\n  cache_root: LOCAL_USER_PATH_REDACTED/.cache/huggingface/hub",
     )
     path.write_text(locked_with_pending, encoding="utf-8")
     with pytest.raises(ConfigError, match="speaker_proxy"):
@@ -314,3 +314,4 @@ def test_locked_block_regularized_dialect_perturbation_status_cannot_be_unlocked
 
     with pytest.raises(ConfigError, match="speaker_regression status"):
         load_config(path)
+

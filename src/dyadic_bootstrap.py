@@ -25,6 +25,49 @@ def endpoint_multiplicity(
     return product
 
 
+def global_speaker_multiplicities(
+    rows: Iterable[Mapping[str, Any]], *, seed: int
+) -> Counter[str]:
+    """Draw one global speaker bootstrap shared by every arm and stratum."""
+    checked = _checked_rows(rows)
+    speakers = sorted(
+        {
+            str(speaker)
+            for row in checked
+            for speaker in row["speaker_ids"]
+        }
+    )
+    rng = np.random.default_rng(seed)
+    sampled = rng.choice(speakers, size=len(speakers), replace=True)
+    return Counter(map(str, sampled.tolist()))
+
+
+def global_utterance_multiplicities(
+    rows: Iterable[Mapping[str, Any]], *, seed: int
+) -> Counter[str]:
+    """Draw one global utterance bootstrap shared by every arm occurrence."""
+    checked = [dict(row) for row in rows]
+    utterances = sorted(
+        {
+            str(utterance)
+            for row in checked
+            for utterance in row.get("utterance_ids", [])
+        }
+    )
+    if not checked or not utterances:
+        raise ValueError("utterance_ids are required")
+    if any(
+        not isinstance(row.get("utterance_ids"), list)
+        or not row["utterance_ids"]
+        or any(str(utterance).strip() == "" for utterance in row["utterance_ids"])
+        for row in checked
+    ):
+        raise ValueError("utterance_ids are required")
+    rng = np.random.default_rng(seed)
+    sampled = rng.choice(utterances, size=len(utterances), replace=True)
+    return Counter(map(str, sampled.tolist()))
+
+
 def _weighted_median(values: Sequence[float], weights: Sequence[int]) -> float:
     positive = sorted(
         (float(value), int(weight))

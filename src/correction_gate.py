@@ -15,6 +15,17 @@ from typing import Any, Iterable, Mapping, Sequence
 DEFAULT_LAMBDAS = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.5, 2.0]
 
 
+def scalar_subtraction_scope_contract() -> dict[str, Any]:
+    """Declare the evaluation information used by scalar subtraction."""
+    return {
+        "fit_scope": "calibration_speakers",
+        "evaluation_feature_scope": "current_pair_only",
+        "inference_class": "inductive",
+        "evaluation_statistic": "current pair endpoint speaker-embedding distance",
+        "fallback_count": 0,
+    }
+
+
 def threshold_sensitivity(
     method_rows: Sequence[Mapping[str, Any]],
     *,

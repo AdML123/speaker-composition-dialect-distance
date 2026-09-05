@@ -1,30 +1,119 @@
-schema: public-model-inventory-v1
-cache_root: MODEL_CACHE
+schema: model-inventory-v1
+generated: 2026-09-05
+preprocessing:
+  sample_rate_hz: 16000
+  channels: 1
+  channel_conversion: arithmetic_mean_to_mono
+  sample_rate_conversion: linear_interpolation_to_16000_hz_when_needed
+  selected_layer: last_hidden_state
+  pooling: time_mean
+  explicit_l2_normalization: false
+  pre_distance_normalization: none_explicit
+  distance_metric: cosine
+  metric_internal_normalization: vector_norms_in_cosine_denominator
+  source: results/analysis/embedding_diagnostics.json
+runtime:
+  python: 3.10.20
+  torch: 2.11.0+cu128
+  torchaudio: 2.11.0+cu128
+  transformers: 4.37.2
+  speechbrain: 1.1.1
+  numpy: 2.2.6
+  scipy: 1.15.3
+transformer_loader:
+  implementation: src/model_smoke.py::load_transformer_model
+  mode: strict-state-dict-v1
+  legacy_weight_norm_mapping:
+    weight_g: parametrizations.weight.original0
+    weight_v: parametrizations.weight.original1
+  strict_missing_base_tensors: 0
+  strict_unexpected_base_tensors: 0
+  locked_embedding_equivalence:
+    artifact: results/provenance/transformer_loader_equivalence.json
+    artifact_sha256: 7705ffe920057eb9852a682cb34b7b83deeb940ee7b2b6d57b8401c7bfb261fa
+    utterances_per_model: 105
+    maximum_absolute_difference: 0.0
+    interpretation: locked full embeddings retained after exact pilot equivalence
 models:
   extractors:
-    - name: wavlm_large
-      source: microsoft/wavlm-large
-      revision: 07d9d3d8576fd3d718ee7b16b2b6242e9610d9af
-      checkpoint_hash: 92063b9e2a29279a9fe4f7e6703f5eeece903c7b3e471aebf2d9997f24fcdc5b
-      dimension: 1024
-      license: MIT
-    - name: chinese_hubert_large
-      source: TencentGameMate/chinese-hubert-large
-      revision: 90cb660492214f687e60f5ca509b20edae6e75bd
-      checkpoint_hash: 482c19cd60877832995d790ed10dd1203b1f8c86ed7a69b4bd27f470fc27ee43
-      dimension: 1024
-      license: MIT
-    - name: chinese_wav2vec2_large
-      source: TencentGameMate/chinese-wav2vec2-large
-      revision: e3aa671ca0cfe7978171a8ebbcc4bdfecdfb2f95
-      checkpoint_hash: c8a5554a79c3bbbe76f2e43d3d4b4369c8c2abd5515e623192e0381d7e5e7b3f
-      dimension: 1024
-      license: MIT
+  - name: wavlm_large
+    source: microsoft/wavlm-large
+    repository_url: https://huggingface.co/microsoft/wavlm-large
+    revision: 07d9d3d8576fd3d718ee7b16b2b6242e9610d9af
+    checkpoint_file: pytorch_model.bin
+    checkpoint_hash: fdee460e529396ddb2f8c8e8ce0ad74cfb747b726bc6f612e666c7c1e1963c9d
+    parameter_equivalence_audit:
+      comparison_file: model.safetensors
+      comparison_sha256: 92063b9e2a29279a9fe4f7e6703f5eeece903c7b3e471aebf2d9997f24fcdc5b
+      common_tensor_count: 488
+      key_sets_equal: true
+      all_tensors_bitwise_equal: true
+    dimension: 1024
+    license: MIT
+    runtime_backend: transformers
+    selected_output: last_hidden_state
+    pooling: time_mean
+    audio:
+      sample_rate_hz: 16000
+      channels: 1
+    pre_distance_normalization: none_explicit
+  - name: chinese_hubert_large
+    source: TencentGameMate/chinese-hubert-large
+    repository_url: https://huggingface.co/TencentGameMate/chinese-hubert-large
+    revision: 90cb660492214f687e60f5ca509b20edae6e75bd
+    checkpoint_file: pytorch_model.bin
+    checkpoint_hash: 482c19cd60877832995d790ed10dd1203b1f8c86ed7a69b4bd27f470fc27ee43
+    dimension: 1024
+    license: mit
+    runtime_backend: transformers
+    selected_output: last_hidden_state
+    pooling: time_mean
+    audio:
+      sample_rate_hz: 16000
+      channels: 1
+    pre_distance_normalization: none_explicit
+  - name: chinese_wav2vec2_large
+    source: TencentGameMate/chinese-wav2vec2-large
+    repository_url: https://huggingface.co/TencentGameMate/chinese-wav2vec2-large
+    revision: e3aa671ca0cfe7978171a8ebbcc4bdfecdfb2f95
+    checkpoint_file: pytorch_model.bin
+    checkpoint_hash: c8a5554a79c3bbbe76f2e43d3d4b4369c8c2abd5515e623192e0381d7e5e7b3f
+    dimension: 1024
+    license: mit
+    runtime_backend: transformers
+    selected_output: last_hidden_state
+    pooling: time_mean
+    audio:
+      sample_rate_hz: 16000
+      channels: 1
+    pre_distance_normalization: none_explicit
   speaker_proxy:
     name: ecapa
     source: speechbrain/spkrec-ecapa-voxceleb
-    revision: 0f99f2d
+    repository_url: https://huggingface.co/speechbrain/spkrec-ecapa-voxceleb
+    revision: 0f99f2d0ebe89ac095bcc5903c4dd8f72b367286
     checkpoint: embedding_model.ckpt
+    checkpoint_file: embedding_model.ckpt
     checkpoint_hash: 0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2
     dimension: 192
-    license: Apache-2.0
+    license: apache-2.0
+    runtime_backend: speechbrain
+    selected_output: embedding_model
+    pooling: ecapa_attentive_statistical_pooling
+    encode_batch_normalize: false
+    audio:
+      sample_rate_hz: 16000
+      channels: 1
+    pre_distance_normalization: none_explicit
+projection_training:
+  input_dimension: 1024
+  projection_output_dimension: 256
+  dialect_loss_symbol: L_d
+  dialect_classifier: linear
+  classifier_input: projected_features
+  classifier_loss: cross_entropy
+  joint_optimizer: AdamW
+  jointly_optimized_with_projection: true
+  classifier_gradients_reach_projection: true
+  evaluation_labels_used: false
+  implementation: src/cross_dialect_projection_head.py

@@ -1,0 +1,11 @@
+{
+  "downstream_status": "verified",
+  "group_counts_valid": true,
+  "invalidated_report_count": 0,
+  "manifest_identity_valid": true,
+  "pair_id_only_join_forbidden": true,
+  "schema": "projection-evaluation-manifest-gate-v1",
+  "speaker_disjoint": true,
+  "status": "passed",
+  "within_group_utterance_reuse_absent": true
+}

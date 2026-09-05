@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from collections import defaultdict
 from pathlib import Path
@@ -135,7 +136,7 @@ def dyadic_weighting_bootstrap(
     seed: int,
     replicates: int,
 ) -> dict[str, Any]:
-    """Bootstrap four MAE estimands by endpoint speaker within stratum."""
+    """Bootstrap four paired MAE estimands by global endpoint speaker."""
     if replicates <= 0:
         raise ValueError("replicates must be positive")
     baseline_by_id = {str(row["pair_id"]): dict(row) for row in baseline_rows}
@@ -145,32 +146,35 @@ def dyadic_weighting_bootstrap(
     pair_ids = sorted(baseline_by_id)
     baseline = [baseline_by_id[pair_id] for pair_id in pair_ids]
     method = [method_by_id[pair_id] for pair_id in pair_ids]
+    identity_fields = ("utterance_ids", "speaker_ids", "dialect_labels", "matched_stratum")
+    for pair_id, baseline_row, method_row in zip(pair_ids, baseline, method):
+        for field in identity_fields:
+            left = baseline_row.get(field)
+            right = method_row.get(field)
+            if field in {"speaker_ids", "dialect_labels"}:
+                left = tuple(sorted(dict.fromkeys(map(str, left or []))))
+                right = tuple(sorted(dict.fromkeys(map(str, right or []))))
+            elif field == "utterance_ids":
+                left = tuple(sorted(map(str, left or [])))
+                right = tuple(sorted(map(str, right or [])))
+            if left != right:
+                raise ValueError(f"pair identity mismatch for {pair_id}: {field}")
     if any(not row.get("matched_stratum") for row in baseline):
         raise ValueError("dyadic bootstrap requires matched_stratum on every row")
 
-    cluster_keys = sorted(
-        {
-            (str(row["matched_stratum"]), speaker)
-            for row in baseline
-            for speaker in dict.fromkeys(map(str, row["speaker_ids"]))
-        }
-    )
-    cluster_index = {key: index for index, key in enumerate(cluster_keys)}
-    global_speakers = sorted(
-        {speaker for _, speaker in cluster_keys}
-    )
+    global_speakers = sorted({
+        speaker
+        for row in baseline
+        for speaker in dict.fromkeys(map(str, row["speaker_ids"]))
+    })
     speaker_index = {speaker: index for index, speaker in enumerate(global_speakers)}
-    clusters_by_stratum: dict[str, list[int]] = defaultdict(list)
-    for index, (stratum, _) in enumerate(cluster_keys):
-        clusters_by_stratum[stratum].append(index)
 
     rng = np.random.default_rng(seed)
-    cluster_counts = np.zeros((replicates, len(cluster_keys)), dtype=np.float64)
-    for indices in clusters_by_stratum.values():
-        draws = rng.multinomial(
-            len(indices), np.full(len(indices), 1.0 / len(indices)), size=replicates
-        )
-        cluster_counts[:, indices] = draws
+    speaker_counts = rng.multinomial(
+        len(global_speakers),
+        np.full(len(global_speakers), 1.0 / len(global_speakers)),
+        size=replicates,
+    ).astype(np.float64)
 
     left_cluster = []
     right_cluster = []
@@ -179,19 +183,18 @@ def dyadic_weighting_bootstrap(
     incidence_rows = []
     incidence_columns = []
     for row_number, row in enumerate(baseline):
-        stratum = str(row["matched_stratum"])
         speakers = list(dict.fromkeys(map(str, row["speaker_ids"])))
-        left_cluster.append(cluster_index[(stratum, speakers[0])])
-        right_cluster.append(cluster_index[(stratum, speakers[-1])])
+        left_cluster.append(speaker_index[speakers[0]])
+        right_cluster.append(speaker_index[speakers[-1]])
         relation_labels.append("|".join(relation_key(row["dialect_labels"])))
-        stratum_labels.append(stratum)
+        stratum_labels.append(str(row["matched_stratum"]))
         for speaker in speakers:
             incidence_rows.append(row_number)
             incidence_columns.append(speaker_index[speaker])
     left_cluster_array = np.asarray(left_cluster, dtype=int)
     right_cluster_array = np.asarray(right_cluster, dtype=int)
-    left_counts = cluster_counts[:, left_cluster_array]
-    right_counts = cluster_counts[:, right_cluster_array]
+    left_counts = speaker_counts[:, left_cluster_array]
+    right_counts = speaker_counts[:, right_cluster_array]
     same_endpoint = left_cluster_array == right_cluster_array
     row_weights = left_counts * right_counts
     row_weights[:, same_endpoint] = left_counts[:, same_endpoint]
@@ -203,17 +206,7 @@ def dyadic_weighting_bootstrap(
         ),
         shape=(len(pair_ids), len(global_speakers)),
     )
-    cluster_to_speaker = sparse.csr_matrix(
-        (
-            np.ones(len(cluster_keys)),
-            (
-                np.arange(len(cluster_keys)),
-                [speaker_index[speaker] for _, speaker in cluster_keys],
-            ),
-        ),
-        shape=(len(cluster_keys), len(global_speakers)),
-    )
-    sampled_speaker_counts = np.asarray(cluster_counts @ cluster_to_speaker)
+    sampled_speaker_counts = speaker_counts
     baseline_errors = np.asarray(
         [float(row["absolute_error"]) for row in baseline], dtype=float
     )
@@ -264,9 +257,84 @@ def dyadic_weighting_bootstrap(
             },
             "bootstrap_replicates": replicates,
             "finite_replicates": int(len(finite)),
-            "resampling_unit": "endpoint_speaker_within_matched_stratum",
+            "resampling_unit": "global_endpoint_speaker",
+            "gain_unit": "fraction",
+            "gain_orientation": "(baseline_mae-method_mae)/baseline_mae",
+            "bootstrap_gain": list(map(float, bootstrap_gain)),
         }
     return output
+
+
+def attach_design_strata(
+    rows: Sequence[Mapping[str, Any]],
+    manifest_rows: Sequence[Mapping[str, Any]],
+) -> list[dict[str, Any]]:
+    """Attach a symmetric design stratum after verifying pair endpoints."""
+    manifest_by_id = {str(row["pair_id"]): row for row in manifest_rows}
+    if len(manifest_by_id) != len(manifest_rows):
+        raise ValueError("design manifest contains duplicate pair IDs")
+    output = []
+    for row in rows:
+        pair_id = str(row["pair_id"])
+        if pair_id not in manifest_by_id:
+            raise ValueError(f"pair identity mismatch for {pair_id}: missing manifest row")
+        manifest = manifest_by_id[pair_id]
+        actual = tuple(sorted(map(str, row.get("utterance_ids", []))))
+        expected = tuple(sorted(map(str, manifest.get("source_utterance_ids", []))))
+        if actual != expected:
+            raise ValueError(f"pair identity mismatch for {pair_id}: utterance_ids")
+        checked = dict(row)
+        checked["matched_stratum"] = str(manifest["matched_stratum"])
+        output.append(checked)
+    if len(output) != len(manifest_rows):
+        raise ValueError("pair identity mismatch: row count differs from manifest")
+    return output
+
+
+def aggregate_seed_bootstraps(
+    seed_results: Sequence[Mapping[str, Any]], weighting: str
+) -> dict[str, Any]:
+    """Summarize a five-seed endpoint using paired replicate medians."""
+    if not seed_results:
+        raise ValueError("at least one seed result is required")
+    seed_values = [
+        {
+            "seed": int(row["seed"]),
+            "gain": float(row["estimands"][weighting]["gain"]),
+        }
+        for row in seed_results
+    ]
+    bootstrap = np.asarray(
+        [row["estimands"][weighting]["bootstrap_gain"] for row in seed_results],
+        dtype=float,
+    )
+    if bootstrap.ndim != 2 or len({len(row) for row in bootstrap}) != 1:
+        raise ValueError("seed bootstraps require the same paired replicate count")
+    replicate_medians = np.nanmedian(bootstrap, axis=0)
+    finite = replicate_medians[np.isfinite(replicate_medians)]
+    if not len(finite):
+        raise ValueError("no finite paired seed-median replicates")
+    first = seed_results[0]["estimands"][weighting]
+    return {
+        "gain": float(np.median([row["gain"] for row in seed_values])),
+        "baseline_mae": float(first["baseline_mae"]),
+        "method_mae_seed_median": float(
+            np.median([
+                row["estimands"][weighting]["method_mae"] for row in seed_results
+            ])
+        ),
+        "ci": {
+            "lower": float(np.quantile(finite, 0.025)),
+            "upper": float(np.quantile(finite, 0.975)),
+            "confidence_level": 0.95,
+        },
+        "seed_values": seed_values,
+        "bootstrap_replicates": int(bootstrap.shape[1]),
+        "finite_replicates": int(len(finite)),
+        "independent_unit": "global_endpoint_speaker",
+        "gain_unit": "fraction",
+        "gain_orientation": "(baseline_mae-method_mae)/baseline_mae",
+    }
 
 
 def summarize_method(rows: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
@@ -282,6 +350,226 @@ def summarize_method(rows: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
         "pair_count": len(rows),
         "estimands": estimands,
     }
+
+
+def _sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def _sample_size(rows: Sequence[Mapping[str, Any]]) -> dict[str, int]:
+    return {
+        "pairs": len(rows),
+        "speakers": len({
+            str(speaker) for row in rows for speaker in row["speaker_ids"]
+        }),
+        "dialect_relations": len({
+            relation_key(row["dialect_labels"]) for row in rows
+        }),
+        "design_strata": len({str(row["matched_stratum"]) for row in rows}),
+    }
+
+
+def _audit_old_report(payload: Mapping[str, Any]) -> dict[str, Any]:
+    inconsistent = []
+    checked = 0
+    for run in payload.get("runs", []):
+        for weighting, result in run.get("estimands", {}).items():
+            baseline = float(result["baseline_mae"])
+            method = float(result["method_mae"])
+            expected = (baseline - method) / baseline
+            stored = float(result["gain"])
+            checked += 1
+            if not np.isclose(expected, stored, atol=1e-12, rtol=1e-10):
+                inconsistent.append({
+                    "reference": run.get("reference"),
+                    "method": run.get("method"),
+                    "seed": run.get("seed"),
+                    "weighting": weighting,
+                    "stored_gain": stored,
+                    "recalculated_gain": expected,
+                })
+    return {
+        "source_schema": payload.get("schema"),
+        "checked_estimand_rows": checked,
+        "gain_orientation": "(baseline_mae-method_mae)/baseline_mae",
+        "gain_unit": "fraction",
+        "orientation_mismatches": inconsistent,
+        "orientation_verified": not inconsistent,
+        "invalidated_dimension": "matched_stratum",
+        "invalidation_reason": (
+            "The superseded annotation used one ordered endpoint for cross-relation "
+            "strata; all intervals are regenerated with the symmetric 126-stratum key."
+        ),
+    }
+
+
+def build_interval_report(
+    *,
+    architecture_path: Path,
+    baselines_path: Path,
+    design_manifest_path: Path,
+    old_report_path: Path,
+    seed: int,
+    replicates: int,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Build complete primary HuBERT MAE intervals from locked pair rows."""
+    architecture = json.loads(architecture_path.read_text(encoding="utf-8"))
+    baselines = json.loads(baselines_path.read_text(encoding="utf-8"))
+    design_manifest = json.loads(design_manifest_path.read_text(encoding="utf-8"))
+    old_report = json.loads(old_report_path.read_text(encoding="utf-8"))
+    manifest_rows = design_manifest["pairs"]
+    references: dict[str, Any] = {}
+    all_branch_points = []
+    for reference_name in ("taxonomy", "city_nearest"):
+        baseline_source = baselines["references"][reference_name]["methods"]
+        baseline_rows = attach_design_strata(
+            baseline_source["frozen_affine"]["per_pair"], manifest_rows
+        )
+        primary_cells = [
+            cell
+            for cell in architecture["cells"]
+            if str(cell["reference"]) == reference_name
+            and str(cell["head"]) == "linear"
+            and float(cell["lambda_cross"]) == 0.0
+        ]
+        if len(primary_cells) != 5:
+            raise ValueError(
+                f"{reference_name} requires five linear pair-only seed cells"
+            )
+        seed_results = []
+        for cell in sorted(primary_cells, key=lambda row: int(row["seed"])):
+            method_rows = attach_design_strata(cell["per_pair"], manifest_rows)
+            estimands = dyadic_weighting_bootstrap(
+                baseline_rows,
+                method_rows,
+                seed=seed,
+                replicates=replicates,
+            )
+            seed_results.append({
+                "seed": int(cell["seed"]),
+                "method": "linear",
+                "lambda_cross": 0.0,
+                "estimands": estimands,
+            })
+        sample_size = _sample_size(baseline_rows)
+        aggregate = {}
+        for weighting in WEIGHTINGS:
+            row = aggregate_seed_bootstraps(seed_results, weighting)
+            row["sample_size"] = sample_size
+            row["estimand_definition"] = {
+                "pair": "equal mean over pair rows",
+                "endpoint_speaker": (
+                    "equal mean over speakers after averaging incident-pair errors"
+                ),
+                "dialect_relation": (
+                    "equal mean over unordered dialect relations after within-relation averaging"
+                ),
+                "matched_stratum": (
+                    "equal mean over nonempty symmetric design strata after within-stratum averaging"
+                ),
+            }[weighting]
+            aggregate[weighting] = row
+        references[reference_name] = {
+            "baseline": "frozen_affine",
+            "sample_size": sample_size,
+            "baseline_estimands": {
+                weighting: weighted_mae(baseline_rows, weighting)
+                for weighting in WEIGHTINGS
+            },
+            "seed_results": seed_results,
+            "estimands": aggregate,
+        }
+
+        for cell in architecture["cells"]:
+            if str(cell["reference"]) != reference_name:
+                continue
+            method_rows = attach_design_strata(cell["per_pair"], manifest_rows)
+            all_branch_points.append({
+                "reference": reference_name,
+                "head": str(cell["head"]),
+                "lambda_cross": float(cell["lambda_cross"]),
+                "seed": int(cell["seed"]),
+                "estimands": {
+                    weighting: weighted_mae(method_rows, weighting)
+                    for weighting in WEIGHTINGS
+                },
+            })
+
+    lower_bounds = [
+        float(row["ci"]["lower"])
+        for reference in references.values()
+        for row in reference["estimands"].values()
+    ]
+    report = {
+        "schema": "estimand-weighting-intervals-v1",
+        "status": "evaluated",
+        "primary_method": "hubert_linear_pair_only",
+        "model": "chinese_hubert_large",
+        "seed_count": 5,
+        "weightings": list(WEIGHTINGS),
+        "manuscript_weighting_name": {
+            "matched_stratum": "design_stratum"
+        },
+        "bootstrap": {
+            "replicates": replicates,
+            "random_seed": seed,
+            "resampling_unit": "global_endpoint_speaker",
+            "paired_across_methods_references_and_seeds": True,
+            "same_speaker_pair_multiplicity": "one speaker multiplicity",
+            "different_speaker_pair_multiplicity": "product of endpoint multiplicities",
+            "seed_aggregation": "median gain within each paired replicate",
+        },
+        "old_report_audit": _audit_old_report(old_report),
+        "source_files": {
+            str(path): _sha256(path)
+            for path in (
+                architecture_path,
+                baselines_path,
+                design_manifest_path,
+                old_report_path,
+            )
+        },
+        "source_hashes": {
+            "projection_manifest": str(design_manifest["base_manifest_sha256"]),
+            "design_strata_manifest": _sha256(design_manifest_path),
+        },
+        "references": references,
+        "trainable_branch_point_estimands": all_branch_points,
+        "trainable_branch_point_count": len(all_branch_points),
+        "boundary": (
+            "Intervals quantify agreement with two operational references for "
+            "HuBERT on one locked KeSpeech pair manifest; they do not validate "
+            "perceptual dialect geometry."
+        ),
+    }
+    status = "passed" if all(value > 0 for value in lower_bounds) else "narrowed"
+    gate = {
+        "schema": "estimand-weighting-gate-v3",
+        "status": status,
+        "primary_method": "hubert_linear_pair_only",
+        "required_weightings": list(WEIGHTINGS),
+        "required_reference_count": 2,
+        "all_rows_complete": True,
+        "all_paired_cluster_lower_bounds_positive": all(
+            value > 0 for value in lower_bounds
+        ),
+        "gain_unit": "fraction",
+        "gain_orientation": "(baseline_mae-method_mae)/baseline_mae",
+        "selected_wording": (
+            "The HuBERT linear pair-only gain retains its direction under all four declared MAE estimands."
+            if status == "passed"
+            else "The HuBERT linear pair-only result is limited to the named MAE estimands whose paired intervals remain positive."
+        ),
+        "failure_wording": (
+            "A reversed direction limits efficacy to the pair-weighted endpoint; "
+            "an interval crossing zero is reported as imprecise."
+        ),
+    }
+    return report, gate
 
 
 def _method_rows(reference: Mapping[str, Any]) -> dict[str, Sequence[Mapping[str, Any]]]:
@@ -348,14 +636,25 @@ def build_report(
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--speaker-effect", type=Path, required=True)
-    parser.add_argument("--projection-report", type=Path, required=True)
+    parser.add_argument("--architecture", type=Path, required=True)
+    parser.add_argument("--baselines", type=Path, required=True)
+    parser.add_argument("--design-manifest", type=Path, required=True)
+    parser.add_argument("--old-report", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument(
         "--gate", type=Path, default=Path("results/gates/estimand_weighting_gate.json")
     )
+    parser.add_argument("--seed", type=int, default=20260905)
+    parser.add_argument("--replicates", type=int, default=1000)
     args = parser.parse_args()
-    report, gate = build_report(args.speaker_effect, args.projection_report)
+    report, gate = build_interval_report(
+        architecture_path=args.architecture,
+        baselines_path=args.baselines,
+        design_manifest_path=args.design_manifest,
+        old_report_path=args.old_report,
+        seed=args.seed,
+        replicates=args.replicates,
+    )
     for path, payload in ((args.output, report), (args.gate, gate)):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(

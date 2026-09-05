@@ -11,6 +11,28 @@ from pathlib import Path
 from statistics import mean
 from typing import Any, Iterable, Mapping, Sequence
 
+
+def speaker_regression_scope_contracts() -> list[dict[str, Any]]:
+    """Declare evaluation centroid scopes used by ECAPA-based corrections."""
+    return [
+        {
+            "fit_scope": "calibration_speakers",
+            "evaluation_feature_scope": "evaluation_speaker_pool",
+            "inference_class": "label_free_transductive",
+        },
+        {
+            "fit_scope": "calibration_speakers",
+            "evaluation_feature_scope": "leave_pair_out_pool",
+            "inference_class": "leave_pair_out_transductive",
+        },
+        {
+            "fit_scope": "calibration_speakers",
+            "evaluation_feature_scope": "current_pair_only",
+            "inference_class": "inductive",
+            "status": "not_applicable_without_enrollment",
+        },
+    ]
+
 import numpy as np
 from sklearn.linear_model import Ridge
 from sklearn.metrics import r2_score

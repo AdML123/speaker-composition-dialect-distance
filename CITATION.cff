@@ -2,13 +2,13 @@ cff-version: 1.2.0
 title: Speaker-Composition Sensitivity of Frozen-Embedding Dialect Distance
 message: Please cite the archived software record and the IEEE Signal Processing Letters article when available.
 type: software
-version: 1.1.5
+version: 1.1.6
 date-released: 2026-09-04
 repository-code: https://github.com/AdML123/speaker-composition-dialect-distance
-url: https://github.com/AdML123/speaker-composition-dialect-distance/releases/tag/v1.1.5
+url: https://github.com/AdML123/speaker-composition-dialect-distance/releases/tag/v1.1.6
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.22377026
+    value: 10.5281/zenodo.22382165
     description: Archived software and aggregate evidence record
 authors:
   - family-names: Zhang

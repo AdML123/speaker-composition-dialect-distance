@@ -26,6 +26,8 @@ _LOCAL_PATH_REPLACEMENTS = (
 )
 
 _ANALYSIS_KEEP = {
+    "binary_zero_rule_sensitivity.json",
+    "calibration_leakage_audit.json",
     "architecture_cross_loss_factorial.json",
     "correction_threshold_sensitivity.json",
     "cross_dialect_gradient_norm_log.json",
@@ -49,6 +51,7 @@ _ANALYSIS_KEEP = {
     "speaker_effect_clustered.json",
     "speaker_effect_dependency_sensitivity.json",
     "speaker_effect_support_sensitivity.json",
+    "speaker_support_sensitivity.json",
     "target_prevalence_mechanism.json",
     "target_prevalence_process_traces.json",
     "target_prevalence_rule_transfer.json",
@@ -56,6 +59,8 @@ _ANALYSIS_KEEP = {
 }
 
 _GATE_KEEP = {
+    "binary_zero_rule_sensitivity_gate.json",
+    "calibration_manifest_role_gate.json",
     "architecture_factorial_gate.json",
     "correction_threshold_gate.json",
     "cross_arm_dependency_gate.json",
@@ -76,12 +81,15 @@ _GATE_KEEP = {
     "speaker_dialect_variance_gate.json",
     "speaker_effect_clustered_gate.json",
     "speaker_effect_support_gate.json",
+    "speaker_mean_normalization_gate.json",
+    "sign_flip_finite_strata_gate.json",
     "statistical_semantics_gate.json",
     "target_prevalence_mechanism_gate.json",
     "target_prevalence_rule_transfer_gate.json",
 }
 
 _PAIR_KEEP = {
+    "calibration_manifest_roles.json",
     "kespeech_calibration_1000.json",
     "kespeech_calibration_matched.json",
     "kespeech_calibration_matched_exact_content.json",

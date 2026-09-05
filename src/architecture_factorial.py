@@ -14,6 +14,7 @@ import numpy as np
 import yaml
 
 from .config import load_config
+from .calibration_leakage_audit import audit_projection_sources
 from .cross_dialect_gradient_isolation import _run_training_condition
 from .cross_dialect_projection_head import (
     _make_projection_model,
@@ -169,6 +170,7 @@ def _run_cell(
     reference: Mapping[str, Mapping[str, float]],
     cross_examples: Sequence[Mapping[str, Any]],
     pair_count: int,
+    source_audit: Mapping[str, Any],
 ) -> dict[str, Any]:
     config = copy.deepcopy(dict(base_config))
     head_config = config["projection_head"]
@@ -231,6 +233,7 @@ def _run_cell(
         "baseline_estimands": _estimands(baseline_rows),
         "loss_history": run["fitted"]["loss_history"],
         "per_pair": method_rows,
+        "calibration_source_audit": dict(source_audit),
     }
 
 
@@ -368,10 +371,20 @@ def run_factorial(
         name: build_training_examples(calibration_records, calibration_pairs, reference)
         for name, reference in references.items()
     }
+    source_audit = audit_projection_sources(
+        calibration_pairs=calibration_pairs,
+        cross_examples=examples[REFERENCES[0]]["cross_dialect_examples"],
+        evaluation_pairs=evaluation_pairs,
+        fitted_sources={
+            "projection_calibration": calibration_pairs,
+            "calibration_auxiliary_cross_pair": examples[REFERENCES[0]]["cross_dialect_examples"],
+        },
+    )
     for position, job in enumerate(jobs, start=1):
         path = _cell_path(checkpoint_root, job)
         if path.exists():
             cell = json.loads(path.read_text(encoding="utf-8"))
+            cell.setdefault("calibration_source_audit", dict(source_audit))
         else:
             cell = _run_cell(
                 job,
@@ -385,6 +398,7 @@ def run_factorial(
                 reference=references[str(job["reference"])],
                 cross_examples=examples[str(job["reference"])]["cross_dialect_examples"],
                 pair_count=len(examples[str(job["reference"])]["pair_examples"]),
+                source_audit=source_audit,
             )
             path.write_text(
                 json.dumps(cell, ensure_ascii=False, separators=(",", ":")) + "\n",
@@ -400,6 +414,7 @@ def run_factorial(
             flush=True,
         )
     gate = _gate(cells)
+    gate["calibration_source_audit"] = source_audit
     report = {
         "schema": "architecture-cross-loss-factorial-v1",
         "status": "evaluated",

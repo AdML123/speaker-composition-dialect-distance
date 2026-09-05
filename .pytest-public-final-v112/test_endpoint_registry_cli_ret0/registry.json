@@ -2,38 +2,6 @@
   "schema": "revision-endpoint-registry-v3",
   "declaration_status": "revision_time_declared_not_preregistered",
   "experimental_objects": {
-    "calibration_roles": {
-      "legacy_ab_audit": {
-        "manifest": "results/pairs/kespeech_calibration_matched.json",
-        "pair_count": 2000,
-        "groups": {
-          "A": 1000,
-          "B": 1000
-        },
-        "used_by_lp": false
-      },
-      "projection_calibration": {
-        "manifest": "results/pairs/kespeech_calibration_1000.json",
-        "pair_count": 3123,
-        "groups": {
-          "A": 1000,
-          "B": 1000,
-          "C": 688,
-          "D": 435
-        },
-        "used_by_lp": true
-      },
-      "auxiliary_cross_pair": {
-        "pair_count": 14821,
-        "used_by_lc": true,
-        "source_split": "calibration"
-      },
-      "projection_evaluation": {
-        "manifest": "results/pairs/kespeech_evaluation_1000.json",
-        "pair_count": 4000,
-        "used_for_fitting": false
-      }
-    },
     "phenomenon": {
       "manifest": "results/pairs/kespeech_evaluation_matched.json",
       "pair_count": 12980,
@@ -114,13 +82,6 @@
     }
   },
   "confirmatory": {
-    "binary_zero_rule_sensitivity": {
-      "artifact": "results/analysis/binary_zero_rule_sensitivity.json",
-      "gate": "results/gates/binary_zero_rule_sensitivity_gate.json",
-      "primary_rule": "documented_beijing_mandarin_zero",
-      "alternate_rule": "beijing_mandarin_off_diagonal_one",
-      "claim_branch": "restrict_claims_to_primary_binary_rule"
-    },
     "continuous_reference_constructions": {
       "variants": [
         "city_nearest",

@@ -16,6 +16,7 @@ import yaml
 
 from .dyadic_bootstrap import endpoint_multiplicity
 from .statistical_gate import holm_adjust
+from .speaker_support_sensitivity import build_support_report
 
 
 def overlap_pair_weight(n_a: int, n_b: int) -> float:
@@ -324,6 +325,8 @@ def exact_weighted_sign_flip(
     summaries: Sequence[Mapping[str, Any]],
 ) -> dict[str, Any]:
     """Enumerate the two-sided sign-flip null over matched stratum effects."""
+    if not summaries or any("effect" not in row or "overlap_weight" not in row for row in summaries):
+        raise ValueError("stratum effect and overlap_weight are required")
     effects = np.asarray([float(row["effect"]) for row in summaries], dtype=float)
     weights = np.asarray([float(row["overlap_weight"]) for row in summaries], dtype=float)
     observed = float(np.average(effects, weights=weights))
@@ -336,6 +339,10 @@ def exact_weighted_sign_flip(
         "method": "exact_weighted_stratum_sign_flip",
         "sidedness": "two_sided",
         "permutations": len(null),
+        "enumeration_family_size": len(null),
+        "exchangeability_unit": "stratum_effect_sign",
+        "sharp_null": "stratum signs exchangeable at fixed magnitudes and weights",
+        "tail_resolution": 2.0 / len(null),
         "observed": observed,
         "p_value": extreme / len(null),
     }
@@ -422,6 +429,9 @@ def build_report(
                 "primary_bootstrap": primary_bootstrap,
                 "excluded_stratum_bootstrap": excluded_bootstrap,
                 "sign_flip": sign_flip,
+                "speaker_support": build_support_report(
+                    rows, excluded_stratum=excluded
+                ),
             }
         )
 

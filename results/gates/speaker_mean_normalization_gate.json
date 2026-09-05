@@ -1,0 +1,577 @@
+{
+  "schema": "speaker-mean-normalization-gate-v1",
+  "seed": 20260829,
+  "ablation_seeds": [
+    20260829,
+    20260830,
+    20260831,
+    20260901,
+    20260902
+  ],
+  "thresholds": {
+    "correction_improvement": 0.05,
+    "matched_speaker_tolerance": 0.01
+  },
+  "method": {
+    "normalization": "per_split_label_free_speaker_mean",
+    "formula": "e_clean = e - mu_speaker + mu_global",
+    "affine_scaling": "fit_on_calibration_and_freeze_to_evaluation",
+    "evaluation_preprocessing_note": "Evaluation embeddings are used only to estimate label-free speaker means; dialect labels, reference distances, and evaluation errors are not used for normalization or selection."
+  },
+  "status": "failed",
+  "decision": "stop_before_manuscript_and_release",
+  "models": [
+    {
+      "model_name": "chinese_hubert_large",
+      "status": "failed",
+      "references": [
+        {
+          "model_name": "chinese_hubert_large",
+          "reference_name": "taxonomy_mandarin_subgroup",
+          "calibration_pair_count": 3123,
+          "evaluation_pair_count": 4000,
+          "normalization": {
+            "formula": "e_clean = e - mu_speaker + mu_global",
+            "calibration_summary": {
+              "mode": "speaker_mean",
+              "utterance_count": 2573,
+              "speaker_count": 75,
+              "fallback_speaker_count": 0
+            },
+            "evaluation_summary": {
+              "mode": "speaker_mean",
+              "utterance_count": 19723,
+              "speaker_count": 1999,
+              "fallback_speaker_count": 0
+            },
+            "uses_evaluation_labels_or_errors": false,
+            "scalar_parameter": null
+          },
+          "baseline_scale": {
+            "intercept": 0.15031953335345824,
+            "slope": 0.4315437020931776
+          },
+          "corrected_scale": {
+            "intercept": -0.09521221569113825,
+            "slope": 0.9768071452511927
+          },
+          "baseline_mae": 0.4863150815549396,
+          "corrected_mae": 0.4810458934712753,
+          "improvement_ratio": 0.010834926333801169,
+          "ci": {
+            "lower": 0.002255808545221861,
+            "upper": 0.01930896980020325,
+            "confidence_level": 0.95
+          },
+          "matched_speaker_mae_increase_ratio": -0.02047027060413378,
+          "matched_speaker_ci": {
+            "increase_upper": -0.007595019035752975,
+            "confidence_level": 0.95
+          },
+          "matched_speaker_groups": {
+            "A": {
+              "baseline_mae": 0.29588670940125206,
+              "corrected_mae": 0.3376293624363675,
+              "improvement_ratio": -0.1410764718685225,
+              "mae_increase_ratio": 0.1410764718685225
+            },
+            "C": {
+              "baseline_mae": 0.6603004995566479,
+              "corrected_mae": 0.5989844356059529,
+              "improvement_ratio": 0.09286084743516784,
+              "mae_increase_ratio": -0.09286084743516784
+            }
+          },
+          "leave_pair_out": {
+            "mae": 0.48697581274014246,
+            "improvement_ratio": -0.001358648354252684,
+            "fallback_endpoint_count": 44,
+            "fallback_pair_count": 23,
+            "fallback_endpoint_ratio": 0.0055,
+            "fallback_pair_ratio": 0.00575
+          },
+          "ablation": {
+            "shuffled_speaker": {
+              "improvement_ratios": [
+                -0.0028595410272457115,
+                -0.0031025178972541425,
+                -0.0028160015909026318,
+                -0.0033366011848016508,
+                -0.00338848243513825
+              ],
+              "max_improvement_ratio": -0.0028160015909026318
+            },
+            "wrong_mean": {
+              "improvement_ratios": [
+                -0.01135958020311132,
+                -0.015732354289262968,
+                -0.015816866980179506,
+                -0.014061301617956132,
+                -0.01603715263349635
+              ],
+              "max_improvement_ratio": -0.01135958020311132
+            }
+          },
+          "status": "failed"
+        },
+        {
+          "model_name": "chinese_hubert_large",
+          "reference_name": "sinitic_data4_overall_distance",
+          "calibration_pair_count": 3123,
+          "evaluation_pair_count": 4000,
+          "normalization": {
+            "formula": "e_clean = e - mu_speaker + mu_global",
+            "calibration_summary": {
+              "mode": "speaker_mean",
+              "utterance_count": 2573,
+              "speaker_count": 75,
+              "fallback_speaker_count": 0
+            },
+            "evaluation_summary": {
+              "mode": "speaker_mean",
+              "utterance_count": 19723,
+              "speaker_count": 1999,
+              "fallback_speaker_count": 0
+            },
+            "uses_evaluation_labels_or_errors": false,
+            "scalar_parameter": null
+          },
+          "baseline_scale": {
+            "intercept": 0.08246648263890866,
+            "slope": 0.2459876414357464
+          },
+          "corrected_scale": {
+            "intercept": -0.04710099998598874,
+            "slope": 0.5339185164631398
+          },
+          "baseline_mae": 0.2645472781118678,
+          "corrected_mae": 0.2625222415878955,
+          "improvement_ratio": 0.007654724472787707,
+          "ci": {
+            "lower": -0.0010351547702811274,
+            "upper": 0.016402645641681313,
+            "confidence_level": 0.95
+          },
+          "matched_speaker_mae_increase_ratio": -0.015037475465688637,
+          "matched_speaker_ci": {
+            "increase_upper": -0.0016342355609877718,
+            "confidence_level": 0.95
+          },
+          "matched_speaker_groups": {
+            "A": {
+              "baseline_mae": 0.16544238086839405,
+              "corrected_mae": 0.18947843172439527,
+              "improvement_ratio": -0.14528351641119933,
+              "mae_increase_ratio": 0.14528351641119933
+            },
+            "C": {
+              "baseline_mae": 0.3453112923705222,
+              "corrected_mae": 0.3135947956841804,
+              "improvement_ratio": 0.0918489994017042,
+              "mae_increase_ratio": -0.0918489994017042
+            }
+          },
+          "leave_pair_out": {
+            "mae": 0.2653214554304632,
+            "improvement_ratio": -0.0029264232999140606,
+            "fallback_endpoint_count": 44,
+            "fallback_pair_count": 23,
+            "fallback_endpoint_ratio": 0.0055,
+            "fallback_pair_ratio": 0.00575
+          },
+          "ablation": {
+            "shuffled_speaker": {
+              "improvement_ratios": [
+                -0.0030370964173200604,
+                -0.0031706458887957594,
+                -0.002926508162418341,
+                -0.0034322429214014676,
+                -0.0035201106378148737
+              ],
+              "max_improvement_ratio": -0.002926508162418341
+            },
+            "wrong_mean": {
+              "improvement_ratios": [
+                -0.011503248276733784,
+                -0.01618354449894346,
+                -0.016132050136243966,
+                -0.014499391273597168,
+                -0.016465344046340435
+              ],
+              "max_improvement_ratio": -0.011503248276733784
+            }
+          },
+          "status": "failed"
+        }
+      ]
+    },
+    {
+      "model_name": "chinese_wav2vec2_large",
+      "status": "failed",
+      "references": [
+        {
+          "model_name": "chinese_wav2vec2_large",
+          "reference_name": "taxonomy_mandarin_subgroup",
+          "calibration_pair_count": 3123,
+          "evaluation_pair_count": 4000,
+          "normalization": {
+            "formula": "e_clean = e - mu_speaker + mu_global",
+            "calibration_summary": {
+              "mode": "speaker_mean",
+              "utterance_count": 2573,
+              "speaker_count": 75,
+              "fallback_speaker_count": 0
+            },
+            "evaluation_summary": {
+              "mode": "speaker_mean",
+              "utterance_count": 19723,
+              "speaker_count": 1999,
+              "fallback_speaker_count": 0
+            },
+            "uses_evaluation_labels_or_errors": false,
+            "scalar_parameter": null
+          },
+          "baseline_scale": {
+            "intercept": 0.29008737742193114,
+            "slope": 11.199529210891242
+          },
+          "corrected_scale": {
+            "intercept": 0.24407842487492504,
+            "slope": 29.396418412039573
+          },
+          "baseline_mae": 0.4929341015593454,
+          "corrected_mae": 0.4880479601572784,
+          "improvement_ratio": 0.009912362294696603,
+          "ci": {
+            "lower": 0.005355042239605385,
+            "upper": 0.013828544392699094,
+            "confidence_level": 0.95
+          },
+          "matched_speaker_mae_increase_ratio": -0.017863763024395,
+          "matched_speaker_ci": {
+            "increase_upper": -0.012362336504893325,
+            "confidence_level": 0.95
+          },
+          "matched_speaker_groups": {
+            "A": {
+              "baseline_mae": 0.3268077526063809,
+              "corrected_mae": 0.3402610912314256,
+              "improvement_ratio": -0.0411659102874723,
+              "mae_increase_ratio": 0.0411659102874723
+            },
+            "C": {
+              "baseline_mae": 0.6500351970168128,
+              "corrected_mae": 0.6191317674276483,
+              "improvement_ratio": 0.047541163510820134,
+              "mae_increase_ratio": -0.047541163510820134
+            }
+          },
+          "leave_pair_out": {
+            "mae": 0.4887035886177918,
+            "improvement_ratio": 0.008582309335407812,
+            "fallback_endpoint_count": 44,
+            "fallback_pair_count": 23,
+            "fallback_endpoint_ratio": 0.0055,
+            "fallback_pair_ratio": 0.00575
+          },
+          "ablation": {
+            "shuffled_speaker": {
+              "improvement_ratios": [
+                -0.0007509692070698194,
+                -0.0013686337518648247,
+                -0.0010915516318770293,
+                -0.0011071421366652616,
+                -0.0005594264472192983
+              ],
+              "max_improvement_ratio": -0.0005594264472192983
+            },
+            "wrong_mean": {
+              "improvement_ratios": [
+                -0.0039404665808530585,
+                -0.0038923100204019787,
+                -0.003846851657386518,
+                -0.0039056788721336818,
+                -0.0035881539003111847
+              ],
+              "max_improvement_ratio": -0.0035881539003111847
+            }
+          },
+          "status": "failed"
+        },
+        {
+          "model_name": "chinese_wav2vec2_large",
+          "reference_name": "sinitic_data4_overall_distance",
+          "calibration_pair_count": 3123,
+          "evaluation_pair_count": 4000,
+          "normalization": {
+            "formula": "e_clean = e - mu_speaker + mu_global",
+            "calibration_summary": {
+              "mode": "speaker_mean",
+              "utterance_count": 2573,
+              "speaker_count": 75,
+              "fallback_speaker_count": 0
+            },
+            "evaluation_summary": {
+              "mode": "speaker_mean",
+              "utterance_count": 19723,
+              "speaker_count": 1999,
+              "fallback_speaker_count": 0
+            },
+            "uses_evaluation_labels_or_errors": false,
+            "scalar_parameter": null
+          },
+          "baseline_scale": {
+            "intercept": 0.1638783313247445,
+            "slope": 6.049328510632178
+          },
+          "corrected_scale": {
+            "intercept": 0.1397062195015776,
+            "slope": 15.68679266407847
+          },
+          "baseline_mae": 0.2683493584650753,
+          "corrected_mae": 0.26587123562896375,
+          "improvement_ratio": 0.009234688878281999,
+          "ci": {
+            "lower": 0.004836892979772896,
+            "upper": 0.013167338206792358,
+            "confidence_level": 0.95
+          },
+          "matched_speaker_mae_increase_ratio": -0.016778992441444752,
+          "matched_speaker_ci": {
+            "increase_upper": -0.011661559856306555,
+            "confidence_level": 0.95
+          },
+          "matched_speaker_groups": {
+            "A": {
+              "baseline_mae": 0.18371252331099186,
+              "corrected_mae": 0.191032116550135,
+              "improvement_ratio": -0.039842647127285906,
+              "mae_increase_ratio": 0.039842647127285906
+            },
+            "C": {
+              "baseline_mae": 0.3391306507048588,
+              "corrected_mae": 0.32303827580084277,
+              "improvement_ratio": 0.04745184450467452,
+              "mae_increase_ratio": -0.04745184450467452
+            }
+          },
+          "leave_pair_out": {
+            "mae": 0.26629996237100817,
+            "improvement_ratio": 0.007637044879814183,
+            "fallback_endpoint_count": 44,
+            "fallback_pair_count": 23,
+            "fallback_endpoint_ratio": 0.0055,
+            "fallback_pair_ratio": 0.00575
+          },
+          "ablation": {
+            "shuffled_speaker": {
+              "improvement_ratios": [
+                -0.0007508813183098457,
+                -0.0013598786013266327,
+                -0.0010849188155683197,
+                -0.0010767895507625858,
+                -0.000513015399901946
+              ],
+              "max_improvement_ratio": -0.000513015399901946
+            },
+            "wrong_mean": {
+              "improvement_ratios": [
+                -0.003946148695320586,
+                -0.003924167927547859,
+                -0.0036273007900648065,
+                -0.003864596402522145,
+                -0.0034141426002378275
+              ],
+              "max_improvement_ratio": -0.0034141426002378275
+            }
+          },
+          "status": "failed"
+        }
+      ]
+    },
+    {
+      "model_name": "wavlm_large",
+      "status": "failed",
+      "references": [
+        {
+          "model_name": "wavlm_large",
+          "reference_name": "taxonomy_mandarin_subgroup",
+          "calibration_pair_count": 3123,
+          "evaluation_pair_count": 4000,
+          "normalization": {
+            "formula": "e_clean = e - mu_speaker + mu_global",
+            "calibration_summary": {
+              "mode": "speaker_mean",
+              "utterance_count": 2573,
+              "speaker_count": 75,
+              "fallback_speaker_count": 0
+            },
+            "evaluation_summary": {
+              "mode": "speaker_mean",
+              "utterance_count": 19723,
+              "speaker_count": 1999,
+              "fallback_speaker_count": 0
+            },
+            "uses_evaluation_labels_or_errors": false,
+            "scalar_parameter": null
+          },
+          "baseline_scale": {
+            "intercept": 0.18716419962098096,
+            "slope": 0.5337356803649306
+          },
+          "corrected_scale": {
+            "intercept": 0.04443455721417411,
+            "slope": 1.076892989483066
+          },
+          "baseline_mae": 0.49121559763394756,
+          "corrected_mae": 0.48689179129524984,
+          "improvement_ratio": 0.008802257826348197,
+          "ci": {
+            "lower": 0.0026455263421879447,
+            "upper": 0.014658640608734484,
+            "confidence_level": 0.95
+          },
+          "matched_speaker_mae_increase_ratio": -0.01316471532408812,
+          "matched_speaker_ci": {
+            "increase_upper": -0.0034014380113631783,
+            "confidence_level": 0.95
+          },
+          "matched_speaker_groups": {
+            "A": {
+              "baseline_mae": 0.31089163716410195,
+              "corrected_mae": 0.3426269908992979,
+              "improvement_ratio": -0.102078505631995,
+              "mae_increase_ratio": 0.102078505631995
+            },
+            "C": {
+              "baseline_mae": 0.6572986576731475,
+              "corrected_mae": 0.6128173543268743,
+              "improvement_ratio": 0.06767289545933054,
+              "mae_increase_ratio": -0.06767289545933054
+            }
+          },
+          "leave_pair_out": {
+            "mae": 0.49066399864721555,
+            "improvement_ratio": 0.0011229264489745821,
+            "fallback_endpoint_count": 44,
+            "fallback_pair_count": 23,
+            "fallback_endpoint_ratio": 0.0055,
+            "fallback_pair_ratio": 0.00575
+          },
+          "ablation": {
+            "shuffled_speaker": {
+              "improvement_ratios": [
+                -0.0010525774676082554,
+                -0.002153360692943342,
+                -0.0020071913624209636,
+                -0.001808459276041078,
+                -0.001561265778792736
+              ],
+              "max_improvement_ratio": -0.0010525774676082554
+            },
+            "wrong_mean": {
+              "improvement_ratios": [
+                -0.0050802098865414085,
+                -0.0063758910113651795,
+                -0.007279397899461852,
+                -0.006364890167429611,
+                -0.0064929154951828055
+              ],
+              "max_improvement_ratio": -0.0050802098865414085
+            }
+          },
+          "status": "failed"
+        },
+        {
+          "model_name": "wavlm_large",
+          "reference_name": "sinitic_data4_overall_distance",
+          "calibration_pair_count": 3123,
+          "evaluation_pair_count": 4000,
+          "normalization": {
+            "formula": "e_clean = e - mu_speaker + mu_global",
+            "calibration_summary": {
+              "mode": "speaker_mean",
+              "utterance_count": 2573,
+              "speaker_count": 75,
+              "fallback_speaker_count": 0
+            },
+            "evaluation_summary": {
+              "mode": "speaker_mean",
+              "utterance_count": 19723,
+              "speaker_count": 1999,
+              "fallback_speaker_count": 0
+            },
+            "uses_evaluation_labels_or_errors": false,
+            "scalar_parameter": null
+          },
+          "baseline_scale": {
+            "intercept": 0.10631364271615276,
+            "slope": 0.29482002436700716
+          },
+          "corrected_scale": {
+            "intercept": 0.03223516710291968,
+            "slope": 0.5779752327969687
+          },
+          "baseline_mae": 0.26737339077497985,
+          "corrected_mae": 0.2655849741606877,
+          "improvement_ratio": 0.0066888354488396145,
+          "ci": {
+            "lower": 0.0004440308066988892,
+            "upper": 0.01264586059433222,
+            "confidence_level": 0.95
+          },
+          "matched_speaker_mae_increase_ratio": -0.008924982152095463,
+          "matched_speaker_ci": {
+            "increase_upper": 0.00033562412393111203,
+            "confidence_level": 0.95
+          },
+          "matched_speaker_groups": {
+            "A": {
+              "baseline_mae": 0.17465707092089577,
+              "corrected_mae": 0.19227691958956655,
+              "improvement_ratio": -0.10088253842669223,
+              "mae_increase_ratio": 0.10088253842669223
+            },
+            "C": {
+              "baseline_mae": 0.34324951522598846,
+              "corrected_mae": 0.321007359519504,
+              "improvement_ratio": 0.06479879714277437,
+              "mae_increase_ratio": -0.06479879714277437
+            }
+          },
+          "leave_pair_out": {
+            "mae": 0.2672885694687829,
+            "improvement_ratio": 0.0003172391461660243,
+            "fallback_endpoint_count": 44,
+            "fallback_pair_count": 23,
+            "fallback_endpoint_ratio": 0.0055,
+            "fallback_pair_ratio": 0.00575
+          },
+          "ablation": {
+            "shuffled_speaker": {
+              "improvement_ratios": [
+                -0.0011393837275485161,
+                -0.002200765698759032,
+                -0.0020358080716069613,
+                -0.0018232122434324253,
+                -0.0015790587267930259
+              ],
+              "max_improvement_ratio": -0.0011393837275485161
+            },
+            "wrong_mean": {
+              "improvement_ratios": [
+                -0.005166393427287449,
+                -0.006490723734806937,
+                -0.0072548031020876055,
+                -0.006495663153188471,
+                -0.006449898276986653
+              ],
+              "max_improvement_ratio": -0.005166393427287449
+            }
+          },
+          "status": "failed"
+        }
+      ]
+    }
+  ]
+}

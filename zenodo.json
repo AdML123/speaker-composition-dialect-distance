@@ -1,13 +1,13 @@
 {
   "title": "Speaker-Composition Sensitivity of Frozen-Embedding Dialect Distance",
   "upload_type": "software",
-  "version": "v1.1.1",
+  "version": "v1.1.2",
   "access_right": "open",
   "description": "Code, sanitized pair manifests, an author-defined binary reference, tests, and aggregate report-level outputs for an IEEE Signal Processing Letters study of speaker-composition sensitivity in frozen speech-embedding dialect distance. The manuscript, paper PDFs, and LaTeX or TikZ sources are not included. The MIT license covers this project material only; third-party Sinitic_Data matrices are not included and must be rebuilt from the pinned upstream commit under its provider terms.",
   "license": "MIT",
   "related_identifiers": [
     {
-      "identifier": "https://github.com/AdML123/speaker-composition-dialect-distance/releases/tag/v1.1.1",
+      "identifier": "https://github.com/AdML123/speaker-composition-dialect-distance/releases/tag/v1.1.2",
       "relation": "isSupplementTo",
       "resource_type": "software"
     }

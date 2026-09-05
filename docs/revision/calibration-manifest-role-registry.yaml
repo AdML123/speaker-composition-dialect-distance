@@ -1,0 +1,51 @@
+schema: calibration-manifest-role-registry-v1
+generated_from: locked_keSpeech_pair_manifests
+manifests:
+  - path: results/pairs/kespeech_evaluation_matched.json
+    role: phenomenon_evaluation
+    split: evaluation
+    sha256: 05a50e05e788bf5aa5cd200ac4678d3f67d587c9bd9e85fe620d2cccdfa70dad
+    pair_count: 12980
+    groups: {A: 3123, B: 9857}
+    endpoint_speaker_count: 1999
+    split_speaker_count: 1999
+    used_by_lp: false
+    used_by_lc: false
+    used_by_model_selection: false
+    used_by_evaluation: true
+  - path: results/pairs/kespeech_calibration_matched.json
+    role: legacy_ab_calibration_audit
+    split: calibration
+    sha256: 52dcf984f92d223add001682c18c271ac86646e3b43a17c0df6c3fad8cacc13
+    pair_count: 2000
+    groups: {A: 1000, B: 1000}
+    endpoint_speaker_count: 100
+    split_speaker_count: 100
+    used_by_lp: false
+    used_by_lc: false
+    used_by_model_selection: false
+    used_by_evaluation: false
+  - path: results/pairs/kespeech_calibration_1000.json
+    role: projection_calibration
+    split: calibration
+    sha256: d8c787f23f7a7f6f0994ddca95e436ff66d1dd6265eb505cd2d42462894e238d
+    pair_count: 3123
+    groups: {A: 1000, B: 1000, C: 688, D: 435}
+    endpoint_speaker_count: 75
+    split_speaker_count: 100
+    used_by_lp: true
+    used_by_lc: false
+    used_by_model_selection: true
+    used_by_evaluation: false
+  - path: results/pairs/kespeech_evaluation_1000.json
+    role: projection_evaluation
+    split: evaluation
+    sha256: 59404e971b7b5c7a6e2b828be3fd935c9b09e2b9ed4db942b1ca4843dae5d18d
+    pair_count: 4000
+    groups: {A: 1000, B: 1000, C: 1000, D: 1000}
+    endpoint_speaker_count: 1046
+    split_speaker_count: 1999
+    used_by_lp: false
+    used_by_lc: false
+    used_by_model_selection: false
+    used_by_evaluation: true

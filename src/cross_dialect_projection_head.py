@@ -15,6 +15,8 @@ import numpy as np
 import torch
 from torch import nn
 
+from .calibration_leakage_audit import audit_projection_sources
+
 
 class SupportError(ValueError):
     """Raised when a locked calibration support requirement is not met."""
@@ -1579,6 +1581,18 @@ def evaluate_projection_head_gate(
         for reference_item in references:
             reference_name = str(reference_item["name"])
             reference = reference_item["matrix"]
+            source_examples = build_training_examples(
+                calibration_records, calibration_pairs, reference
+            )
+            source_audit = audit_projection_sources(
+                calibration_pairs=calibration_pairs,
+                cross_examples=source_examples["cross_dialect_examples"],
+                evaluation_pairs=evaluation_pairs,
+                fitted_sources={
+                    "projection_calibration": calibration_pairs,
+                    "calibration_auxiliary_cross_pair": source_examples["cross_dialect_examples"],
+                },
+            )
             record_index = {str(record["utterance_id"]): record for record in records}
             baseline_cal = _raw_pair_rows(calibration_pairs, calibration_embeddings, reference, record_index)
             baseline_eval = _raw_pair_rows(evaluation_pairs, evaluation_embeddings, reference, record_index)
@@ -1765,6 +1779,7 @@ def evaluate_projection_head_gate(
                     "training": {
                         "backbone_frozen": True,
                         "evaluation_labels_used": False,
+                        "calibration_source_audit": source_audit,
                         "same_speaker_cross_dialect_count": fitted["same_speaker_cross_dialect_count"],
                         "folds_used": fitted["folds_used"],
                         "head_kind": head_kind,

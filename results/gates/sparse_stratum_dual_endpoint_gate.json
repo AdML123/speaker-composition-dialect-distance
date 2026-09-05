@@ -77,7 +77,7 @@
     "citation_provenance": "results/references/citation_verification.json"
   },
   "source_sha256": {
-    "speaker_effect_support": "56a5523fbdf904cd90d6835b218b484303939b253243fb19d448410903e14ffe",
+    "speaker_effect_support": "c75e47089026add6187cfd6473ec4c6bda993d7651aae225716c9d19a66593ee",
     "speaker_effect_support_gate": "b551c32d9cccfec821298d5ae8d174651aa2576ced7f8676aa5f505a03f1bb1a",
     "speaker_effect_dependency": "480e07a3b91e3b167ce0c3119f448b82fe66e0fead12bb076f47dbcb00d0ebbc",
     "cross_arm_dependency_gate": "bcc6d909e77d3dd863a0c7afda36f9428f26134c24f93c5897c8b708c3d605c4",

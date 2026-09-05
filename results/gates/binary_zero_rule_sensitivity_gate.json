@@ -1,0 +1,13 @@
+{
+  "schema": "binary-zero-rule-sensitivity-gate-v1",
+  "status": "pending",
+  "construction_checks": {
+    "targets_valid": true,
+    "same_manifest": true,
+    "same_seed_schedule": true,
+    "same_training_budget": true
+  },
+  "projection_status": "evaluated",
+  "claim_branch": "restrict_claims_to_primary_binary_rule",
+  "failure_action": "restrict claims to the primary binary rule if the alternate direction changes"
+}

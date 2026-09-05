@@ -1,0 +1,15 @@
+{
+  "schema": "calibration-manifest-role-gate-v1",
+  "status": "passed",
+  "audit": "results\\analysis\\calibration_leakage_audit.json",
+  "evaluation_rows_used_for_fitting": false,
+  "legacy_ab_manifest_used_by_lp": false,
+  "source_roles": [
+    "calibration_auxiliary_cross_pair",
+    "projection_calibration"
+  ],
+  "raw_pair_id_namespace_overlap_only": true,
+  "exact_pair_identity_intersections": 0,
+  "speaker_intersections": 0,
+  "utterance_intersections": 0
+}

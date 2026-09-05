@@ -1,0 +1,47 @@
+{
+  "schema": "sign-flip-finite-strata-gate-v1",
+  "status": "passed",
+  "stratum_count": 12,
+  "enumeration_family_size": 4096,
+  "exchangeability_unit": "stratum_effect_sign",
+  "sharp_null": "stratum signs exchangeable at fixed magnitudes and weights",
+  "tail_resolution": 0.00048828125,
+  "models": [
+    {
+      "enumeration_family_size": 4096,
+      "exchangeability_unit": "stratum_effect_sign",
+      "method": "exact_weighted_stratum_sign_flip",
+      "observed": 0.21826192612295658,
+      "p_value": 0.00048828125,
+      "permutations": 4096,
+      "sharp_null": "stratum signs exchangeable at fixed magnitudes and weights",
+      "sidedness": "two_sided",
+      "tail_resolution": 0.00048828125
+    },
+    {
+      "enumeration_family_size": 4096,
+      "exchangeability_unit": "stratum_effect_sign",
+      "holm_adjusted_p": 0.0009765625,
+      "method": "exact_weighted_stratum_sign_flip",
+      "observed": 0.12690889918984785,
+      "p_value": 0.00048828125,
+      "permutations": 4096,
+      "sharp_null": "stratum signs exchangeable at fixed magnitudes and weights",
+      "sidedness": "two_sided",
+      "tail_resolution": 0.00048828125
+    },
+    {
+      "enumeration_family_size": 4096,
+      "exchangeability_unit": "stratum_effect_sign",
+      "holm_adjusted_p": 0.0009765625,
+      "method": "exact_weighted_stratum_sign_flip",
+      "observed": 0.003979592254896239,
+      "p_value": 0.00048828125,
+      "permutations": 4096,
+      "sharp_null": "stratum signs exchangeable at fixed magnitudes and weights",
+      "sidedness": "two_sided",
+      "tail_resolution": 0.00048828125
+    }
+  ],
+  "interpretation": "stratum-level randomization test; not 4,096 independent experiments"
+}\n
